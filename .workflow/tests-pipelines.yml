@@ -1,0 +1,51 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+name: Lints-and-Tests
+parameters:
+  - name: clean
+    displayName: Checkout clean
+    type: boolean
+    default: false
+    values:
+      - false
+      - true
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - develop
+
+pool:
+  name: Dev Agents
+
+steps:
+  - checkout: self
+    clean: ${{ parameters.clean }}
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "16.x"
+    displayName: "Install Node.js"
+
+  - script: |
+      npm i -g yarn
+    displayName: "Install yarn"
+
+  - script: |
+      yarn
+    displayName: "yarn install"
+
+  - script: |
+      yarn lint
+    displayName: "yarn lint"
+
+  - script: |
+      yarn test -- --watchAll=false --silent
+    displayName: "yarn test"
+
+  - script: |
+      yarn compile
+    displayName: "yarn compile"

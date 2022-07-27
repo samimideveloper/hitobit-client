@@ -1,0 +1,21 @@
+{
+  "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json",
+  "reactHooks": true,
+  "dir": "./src/shared-services/src/services",
+  "useInfiniteQuery": [
+    "useGetAuthV1PrivateApikeyList",
+    "useGetAuthV1PrivateUsertrusteddeviceLoginhistoryList",
+    "useGetAnalyticsV1PrivateUserloginhistoryGetuserloginhistory",
+    "useGetAuthV1PrivateUsertrusteddeviceList",
+    "useGetCapitalV1PrivateSettlementList",
+    "useGetAnalyticsV1PrivateUserloginhistoryList",
+    "useGetAnalyticsV1PrivateSecurityactivityList",
+    "useGetCapitalV1PrivateWithdrawList",
+    "useGetCapitalV1PrivateDepositList",
+    "useGetCapitalV1PrivatePosList",
+    "useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory",
+    "useGetExchangeV1PrivateAlltrades",
+    "useGetExchangeV1PrivateAllorders"
+  ],
+  "generateEnumAsType": true
+}

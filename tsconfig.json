@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "module": "esnext",
+    "noImplicitAny": true,
+    "noUnusedLocals": false,
+    "skipLibCheck": true,
+    "downlevelIteration": true
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "src",
+    "src/web-core/src/custom.d.ts",
+    "src/web-core/src/customLocale.d.ts",
+    "src/web-next/next-env.d.ts",
+    "src/web-next/custom.d.ts",
+    "src/custom.d.ts",
+    "src/global.d.ts"
+  ]
+}

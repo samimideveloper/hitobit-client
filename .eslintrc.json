@@ -1,0 +1,35 @@
+{
+  "settings": {
+    "next": {
+      "rootDir": "src/web/"
+    }
+  },
+  "extends": [
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals"
+  ],
+  "plugins": ["react"],
+  "rules": {
+    "@next/next/no-html-link-for-pages": ["error", "src/web-next/pages/"],
+    "react-hooks/exhaustive-deps": "error",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-empty-interface": "off",
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "no-prototype-builtins": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/ban-types": "off"
+  },
+  "overrides": [
+    {
+      "files": ["./src/mobile-*/**/*.ts", "./src/mobile-*/**/*.tsx"],
+      "rules": {
+        "jsx-a11y/alt-text": "off"
+      }
+    }
+  ]
+}

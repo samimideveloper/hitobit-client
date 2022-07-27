@@ -1,0 +1,5 @@
+const FIVE_MINUTE = 1000 * 60 * 5;
+const ONE_MINUTE = 1000 * 60 * 1;
+const TWENTY_SECOND = 1000 * 20;
+
+export { FIVE_MINUTE, ONE_MINUTE, TWENTY_SECOND };

@@ -1,0 +1,15 @@
+*.jsbundle
+*.tsbuildinfo
+.DS_Store
+.history
+.jest
+.vscode
+**/*/.eslintcache
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarnrc
+debug.log
+build
+tsconfig.tsbuildinfo

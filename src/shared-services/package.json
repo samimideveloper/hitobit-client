@@ -1,0 +1,13 @@
+{
+  "name": "shared-services",
+  "version": "0.0.1",
+  "private": true,
+  "sideEffects": false,
+  "main": "src/",
+  "types": "src/",
+  "dependencies": {
+    "@persian-tools/persian-tools": "^3.2.1",
+    "buffer": "^6.0.3",
+    "axios": "^0.26.1"
+  }
+}
