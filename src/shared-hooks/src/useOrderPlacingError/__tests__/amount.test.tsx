@@ -1,9 +1,8 @@
 import { render, waitFor } from "@testing-library/react";
-import i18n from "i18next";
-import { View } from "reactjs-view";
+import { i18n } from "shared-modules/src";
 import { useOrderPlacingError } from "..";
-import { ConvertProvider, useErrorContext } from "../../convertForm";
-import { HooksAndStoresProvider } from "../../hooksAndStoresProvider";
+import { ConvertProvider } from "../../convertForm";
+import { HitobitClientProvider } from "../../hooksAndStoresProvider";
 import { MarketTickerProvider } from "../../marketTicker";
 
 describe("Home", () => {
@@ -27,8 +26,8 @@ describe("Home", () => {
     const { getAmountError } = useOrderPlacingError();
     return (
       <>
-        <View
-          testID="test-valid"
+        <div
+          data-testid="test-valid"
           data-amount-error-1={getAmountError({
             baseQuantity: 0.001,
             symbol: "BTCIRR",
@@ -63,17 +62,16 @@ describe("Home", () => {
             symbol: "BTCIRR",
             side: "Sell",
           })}
-        ></View>
+        ></div>
       </>
     );
   };
   const InvalidTest = () => {
-    const errorMessages = useErrorContext();
-    const { getAmountError } = useOrderPlacingError(errorMessages);
+    const { getAmountError } = useOrderPlacingError();
     return (
       <>
-        <View
-          testID="test-invalid"
+        <div
+          data-testid="test-invalid"
           data-amount-error-1={getAmountError({
             baseQuantity: 10,
             symbol: "BTCIRR",
@@ -102,7 +100,7 @@ describe("Home", () => {
             symbol: "BTCIRR",
             side: "Sell",
           })}
-        ></View>
+        ></div>
       </>
     );
   };
@@ -111,11 +109,11 @@ describe("Home", () => {
 
   test("Valid Order Placement", async () => {
     const instance = render(
-      <HooksAndStoresProvider>
+      <HitobitClientProvider>
         <MarketTickerProvider>
           <ValidTest />
         </MarketTickerProvider>
-      </HooksAndStoresProvider>,
+      </HitobitClientProvider>,
     );
     await waitFor(() => sleep(500), { timeout: 2000 });
     const data = await waitFor(() => instance.getByTestId("test-valid"));
@@ -128,25 +126,13 @@ describe("Home", () => {
   });
   test("invalid Order Placement", async () => {
     const instance = render(
-      <HooksAndStoresProvider>
+      <HitobitClientProvider>
         <MarketTickerProvider>
-          <ConvertProvider
-            errors={{
-              INSUFFICIENT_BALANCE: i18n.t("insufficientBalance"),
-              AMOUNT_LESS_THAN_MIN_PRICE: i18n.t(
-                "valueShouldBeMoreThanMinPrice",
-                { minPrice: "0.00001" },
-              ),
-              AMOUNT_MORE_THAN_MAX_PRICE: i18n.t(
-                "valueShouldBeLessThanMaxPrice",
-                { maxPrice: "9000" },
-              ),
-            }}
-          >
+          <ConvertProvider>
             <InvalidTest />
           </ConvertProvider>
         </MarketTickerProvider>
-      </HooksAndStoresProvider>,
+      </HitobitClientProvider>,
     );
     await waitFor(() => sleep(500), { timeout: 2000 });
     const data = await waitFor(() => instance.getByTestId("test-invalid"));
@@ -163,7 +149,7 @@ describe("Home", () => {
       i18n.t("valueShouldBeMoreThanMinPrice", { minPrice: "0.00001" }),
     );
     expect(data.getAttribute("data-amount-error-5")).toBe(
-      i18n.t("valueShouldBeLessThanMaxPrice", { maxPrice: "9000" }),
+      i18n.t("valueShouldBeLessThanMaxPrice", { maxPrice: "9,000" }),
     );
   });
 });

@@ -1,7 +1,7 @@
-import i18next from "i18next";
 import moment from "moment";
 import { useRef } from "react";
 import { useQueryClient } from "react-query";
+import { i18n } from "shared-modules/src";
 import {
   AppOrderSide,
   AppOrderStatus,
@@ -171,7 +171,7 @@ const updateOrders = (
     case "FILLED": {
       if (order.currentOrderStatus === "FILLED") {
         successNotification({
-          message: i18next.t("orderSuccessfullyFilled") as string,
+          message: i18n.t("orderSuccessfullyFilled") as string,
         });
       }
 

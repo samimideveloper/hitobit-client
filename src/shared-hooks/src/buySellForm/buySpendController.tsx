@@ -1,12 +1,12 @@
 import { groupBy, map } from "lodash-es";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import { MarketTicker } from "../marketTicker";
+import { useTranslation } from "shared-modules/src";
+import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useMarketFilters } from "../useMarketFilters";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
 import { BuySellContext, BuySellFormProps } from "./context";
-import { useBuySellErrorContext, useMarketsTickerContext } from "./provider";
 
 type BuySpendRenderProps = {
   render: (state: {
@@ -30,6 +30,7 @@ export const BuySpendController = ({
   render,
   renderErrorComponent,
 }: BuySpendRenderProps) => {
+  const { t } = useTranslation();
   const { lastChangeInput, selected, spend } = BuySellContext.useWatch();
 
   const { errors } = BuySellContext.useFormState();
@@ -39,11 +40,9 @@ export const BuySpendController = ({
 
   register("shouldCharge");
 
-  const errorMessages = useBuySellErrorContext();
+  const { getTotalError } = useOrderPlacingError();
 
-  const { getTotalError } = useOrderPlacingError(errorMessages);
-
-  const { marketsTicker, getSymbolMarketTicker } = useMarketsTickerContext();
+  const { marketsTicker, getSymbolMarketTicker } = useMarketTicker();
 
   const marketsTickerGrouped = map(
     groupBy(
@@ -77,10 +76,7 @@ export const BuySpendController = ({
                 return undefined;
               }
               if (!value) {
-                if (typeof errorMessages.REQUIRED === "function") {
-                  return errorMessages.REQUIRED();
-                }
-                return errorMessages.REQUIRED;
+                return t("enterAmount");
               }
               if (
                 isChargeable &&
@@ -88,12 +84,8 @@ export const BuySpendController = ({
                   Number(value)
               ) {
                 setValue("shouldCharge", true);
-                if (
-                  typeof errorMessages.INSUFFICIENT_BALANCE_FUND === "function"
-                ) {
-                  return errorMessages.INSUFFICIENT_BALANCE_FUND();
-                }
-                return errorMessages.INSUFFICIENT_BALANCE_FUND;
+
+                return t("insufficientBalance");
               } else {
                 setValue("shouldCharge", false);
               }

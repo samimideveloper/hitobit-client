@@ -1,15 +1,15 @@
 import { useMemo } from "react";
 import starkString from "starkstring";
+import { useMarketTicker } from "../marketTicker";
 import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 import { BuySellContext } from "./context";
-import { useMarketsTickerContext } from "./provider";
 
 export const useBuySellPrice = (mode: "buy" | "sell") => {
   if (typeof BuySellContext.context === "undefined") {
     throw new Error("You must use this hook under the BuySellProvider.");
   }
 
-  const { getSymbolMarketTicker } = useMarketsTickerContext();
+  const { getSymbolMarketTicker } = useMarketTicker();
 
   const convert = useConvertBaseToQuote();
 

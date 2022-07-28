@@ -1,24 +1,11 @@
 import { render, waitFor } from "@testing-library/react";
-import i18next from "i18next";
-import { View } from "reactjs-view";
+import { initializeI18n } from "shared-modules/src";
 import { useSymbolPrice } from "..";
-import { HooksAndStoresProvider } from "../../hooksAndStoresProvider";
+import { HitobitClientProvider } from "../../hooksAndStoresProvider";
 
 describe("useSymbolPrice", () => {
   beforeAll(() => {
-    i18next.init({
-      resources: {
-        fa: {
-          translation: {},
-        },
-        en: {
-          translation: {},
-        },
-      },
-      lng: "en",
-      fallbackLng: "fa",
-      debug: true,
-    });
+    initializeI18n("en");
     jest.useRealTimers();
   });
   const ValidTest = () => {
@@ -30,13 +17,13 @@ describe("useSymbolPrice", () => {
     } = useSymbolPrice("BTCUSDT");
 
     return (
-      <View
-        testID="test-valid"
+      <div
+        data-testid="test-valid"
         data-price={price}
         data-24h-percent={price24hChangePercent}
         data-week-percent={priceWeekChangePercent}
         data-month-percent={priceMonthChangePercent}
-      ></View>
+      ></div>
     );
   };
 
@@ -44,9 +31,9 @@ describe("useSymbolPrice", () => {
 
   test("validate", async () => {
     const instance = render(
-      <HooksAndStoresProvider>
+      <HitobitClientProvider>
         <ValidTest />
-      </HooksAndStoresProvider>,
+      </HitobitClientProvider>,
     );
 
     await waitFor(() => sleep(500), { timeout: 2000 });

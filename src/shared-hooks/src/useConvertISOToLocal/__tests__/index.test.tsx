@@ -1,12 +1,9 @@
 import { render } from "@testing-library/react";
-import i18next from "i18next";
 import moment from "moment-jalaali";
 //@ts-ignore
 import fa from "moment/locale/fa";
-import { initReactI18next } from "react-i18next";
+import { initializeI18n } from "shared-modules/src";
 import { useConvertISOToLocal } from "..";
-
-i18next.use(initReactI18next);
 
 function TestComp() {
   const { convertISOToLocal } = useConvertISOToLocal();
@@ -32,19 +29,7 @@ function TestComp() {
 
 describe("useConvertISOToLocal fa", () => {
   beforeAll(() => {
-    i18next.init({
-      resources: {
-        fa: {
-          translation: {},
-        },
-        en: {
-          translation: {},
-        },
-      },
-      lng: "fa",
-      fallbackLng: "fa",
-      debug: true,
-    });
+    initializeI18n("fa");
     moment.updateLocale("fa", fa);
     moment.loadPersian();
   });
@@ -64,19 +49,7 @@ describe("useConvertISOToLocal fa", () => {
 
 describe("useConvertISOToLocal en", () => {
   beforeAll(() => {
-    i18next.init({
-      resources: {
-        fa: {
-          translation: {},
-        },
-        en: {
-          translation: {},
-        },
-      },
-      lng: "en",
-      fallbackLng: "fa",
-      debug: true,
-    });
+    initializeI18n("en");
     moment.locale("en");
   });
 

@@ -1,7 +1,7 @@
 import originalMoment from "moment";
 import moment from "moment-jalaali";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "shared-modules/src";
 import { invariant } from "shared-utils";
 
 function useConvertISOToLocal() {

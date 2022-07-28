@@ -1,6 +1,5 @@
 export * from "./addressWithCDN";
 export * from "./converter";
-export * from "./createIcomonIcon";
 export * from "./getErrorMessage";
 export * from "./invariant";
 export * from "./mobileValidator";

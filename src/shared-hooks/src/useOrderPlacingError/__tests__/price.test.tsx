@@ -1,9 +1,9 @@
 import { render, waitFor } from "@testing-library/react";
-import i18n from "i18next";
 import { View } from "reactjs-view";
+import { i18n } from "shared-modules/src";
 import { useOrderPlacingError } from "..";
-import { ConvertProvider, useErrorContext } from "../../convertForm";
-import { HooksAndStoresProvider } from "../../hooksAndStoresProvider";
+import { ConvertProvider } from "../../convertForm";
+import { HitobitClientProvider } from "../../hooksAndStoresProvider";
 import { MarketTickerProvider } from "../../marketTicker";
 
 describe("Home", () => {
@@ -62,8 +62,7 @@ describe("Home", () => {
     );
   };
   const InvalidTest = () => {
-    const errorMessages = useErrorContext();
-    const { getPriceError } = useOrderPlacingError(errorMessages);
+    const { getPriceError } = useOrderPlacingError();
     return (
       <>
         <View
@@ -85,11 +84,11 @@ describe("Home", () => {
 
   test("Valid Order Placement", async () => {
     const instance = render(
-      <HooksAndStoresProvider>
+      <HitobitClientProvider>
         <MarketTickerProvider>
           <ValidTest />
         </MarketTickerProvider>
-      </HooksAndStoresProvider>,
+      </HitobitClientProvider>,
     );
     await waitFor(() => sleep(500), { timeout: 2000 });
     const data = await waitFor(() => instance.getByTestId("test-valid"));
@@ -103,32 +102,21 @@ describe("Home", () => {
   });
   test("invalid Order Placement", async () => {
     const instance = render(
-      <HooksAndStoresProvider>
+      <HitobitClientProvider>
         <MarketTickerProvider>
-          <ConvertProvider
-            errors={{
-              PRICE_LESS_THAN_MIN_PRICE: i18n.t(
-                "priceShouldBeMoreThanMinPrice",
-                { minPrice: 0.0001 },
-              ),
-              PRICE_MORE_THAN_MAX_PRICE: i18n.t(
-                "priceShouldBeLessThanMaxPrice",
-                { maxPrice: 250000000000 },
-              ),
-            }}
-          >
+          <ConvertProvider>
             <InvalidTest />
           </ConvertProvider>
         </MarketTickerProvider>
-      </HooksAndStoresProvider>,
+      </HitobitClientProvider>,
     );
     await waitFor(() => sleep(500), { timeout: 2000 });
     const data = await waitFor(() => instance.getByTestId("test-invalid"));
     expect(data.getAttribute("data-price-error")).toBe(
-      i18n.t("priceShouldBeMoreThanMinPrice", { minPrice: 0.0001 }),
+      i18n.t("priceShouldBeMoreThanMinPrice", { minPrice: "0.0001" }),
     );
     expect(data.getAttribute("data-price-error-1")).toBe(
-      i18n.t("priceShouldBeLessThanMaxPrice", { maxPrice: 250000000000 }),
+      i18n.t("priceShouldBeLessThanMaxPrice", { maxPrice: "250,000,000,000" }),
     );
   });
 });

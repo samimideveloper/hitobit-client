@@ -1,4 +1,4 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import {
   useGetPartyV1PrivateUsersettingPreference,
   usePostExchangeV1PrivateOrder,
@@ -11,6 +11,7 @@ const useSubmit = ({
 }: {
   onOpenConfirmationModal?: (onConfirm: () => void) => void;
 }) => {
+  const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
   const { selectedOption } = SellForm.useWatch();
   const { handleSubmit, setError, reset } = SellForm.useFormContext();

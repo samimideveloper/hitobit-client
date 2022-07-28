@@ -8,12 +8,14 @@
     "prettier",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "next/core-web-vitals"
+    "plugin:prettier/recommended"
   ],
-  "plugins": ["react"],
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
   "rules": {
-    "@next/next/no-html-link-for-pages": ["error", "src/web-next/pages/"],
+    "react/react-in-jsx-scope": "off",
     "react-hooks/exhaustive-deps": "error",
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-empty-interface": "off",
@@ -23,13 +25,5 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/ban-types": "off"
-  },
-  "overrides": [
-    {
-      "files": ["./src/mobile-*/**/*.ts", "./src/mobile-*/**/*.tsx"],
-      "rules": {
-        "jsx-a11y/alt-text": "off"
-      }
-    }
-  ]
+  }
 }

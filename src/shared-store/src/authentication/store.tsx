@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { createStore } from "react-principal";
-import { CookiePersistKey, cookieStorage } from "shared-modules";
+import { AsyncStorage, CookiePersistKey } from "shared-modules";
 import { initialState, InitialState } from "./initialState";
 import reducer from "./reducers";
 
@@ -8,7 +8,7 @@ export const StoreAuthentication = createStore<InitialState>({
   reducer,
   initialState,
   persistKey: CookiePersistKey.AUTHENTICATION,
-  storage: cookieStorage,
+  storage: AsyncStorage,
   mapStateToPersist: ({ signalRToken }) => ({
     signalRToken,
   }),

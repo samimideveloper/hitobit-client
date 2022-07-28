@@ -26,4 +26,6 @@ const convertInitialValues: ConvertFormProps = {
 
 const ConvertContext = createFormContext(convertInitialValues, "onChange");
 
-export { ConvertContext };
+const ConvertProvider = ConvertContext.Provider;
+
+export { ConvertContext, ConvertProvider };

@@ -1,10 +1,9 @@
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import { MarketTicker } from "../marketTicker";
+import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useMarketFilters } from "../useMarketFilters";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { BuySellContext, BuySellFormProps } from "./context";
-import { useBuySellErrorContext, useMarketsTickerContext } from "./provider";
 
 type SellRecieveRenderProps = {
   render: (state: {
@@ -32,11 +31,9 @@ export const SellRecieveController = ({
 
   const { setValue, clearErrors } = BuySellContext.useFormContext();
 
-  const errorMessages = useBuySellErrorContext();
+  const { getTotalError } = useOrderPlacingError();
 
-  const { getTotalError } = useOrderPlacingError(errorMessages);
-
-  const { marketsTicker, getSymbolMarketTicker } = useMarketsTickerContext();
+  const { marketsTicker, getSymbolMarketTicker } = useMarketTicker();
 
   const selectedMarket = getSymbolMarketTicker(selected);
 

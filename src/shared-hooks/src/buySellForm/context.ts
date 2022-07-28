@@ -24,4 +24,6 @@ const buySellInitialValues: BuySellFormProps = {
 
 const BuySellContext = createFormContext(buySellInitialValues, "onChange");
 
-export { BuySellContext };
+const BuySellProvider = BuySellContext.Provider;
+
+export { BuySellContext, BuySellProvider };

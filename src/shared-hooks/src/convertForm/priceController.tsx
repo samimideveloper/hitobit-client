@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { ConvertContext, ConvertFormProps } from "./context";
-import { useErrorContext } from "./provider";
 
 type ConvertPriceRenderProps = {
   render: (state: {
@@ -21,9 +21,9 @@ export const ConvertPriceController = ({
 }: ConvertPriceRenderProps) => {
   const { toMarket, fromAmount, fromAsset } = ConvertContext.useWatch();
 
-  const { getPriceError } = useOrderPlacingError();
+  const { t } = useTranslation();
 
-  const errorMessages = useErrorContext();
+  const { getPriceError } = useOrderPlacingError();
 
   const { errors } = ConvertContext.useFormState();
 
@@ -38,10 +38,7 @@ export const ConvertPriceController = ({
           validate: {
             amount: (value) => {
               if (!value) {
-                if (typeof errorMessages.REQUIRED === "function") {
-                  return errorMessages.REQUIRED();
-                }
-                return errorMessages.REQUIRED;
+                t("enterPrice");
               }
               return getPriceError({
                 price: Number(value),

@@ -1,4 +1,5 @@
 import Decimal from "decimal.js";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "react-oidc-js";
 import {
   applyMarketMock,
@@ -8,7 +9,6 @@ import {
   MarketFilterPriceFilter,
 } from "shared-utils";
 import starkstring from "starkstring";
-import { ConvertErrorTypes } from "../convertForm";
 import { useMarketTicker } from "../marketTicker";
 import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 
@@ -17,7 +17,8 @@ if (__MOCK__) {
 }
 
 // Pass functions to handleValidate of React Hook Form
-export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
+export function useOrderPlacingError() {
+  const { t } = useTranslation();
   const { marketsTicker } = useMarketTicker();
   const convert = useConvertBaseToQuote();
   const { userData } = useAuth();
@@ -40,28 +41,14 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
       ) as MarketFilterPriceFilter) || {};
 
     if (price < minPrice) {
-      if (typeof errors?.PRICE_LESS_THAN_MIN_PRICE === "function") {
-        return errors?.PRICE_LESS_THAN_MIN_PRICE(
-          starkstring(minPrice).toCurrency().toString(),
-        );
-      }
-      return errors?.PRICE_LESS_THAN_MIN_PRICE;
-
-      // return t("priceShouldBeMoreThanMinPrice", {
-      //   minPrice: starkstring(minPrice).toCurrency().toString(),
-      // });
+      return t("priceShouldBeMoreThanMinPrice", {
+        minPrice: starkstring(minPrice).toCurrency().toString(),
+      });
     }
     if (maxPrice !== undefined && price > maxPrice) {
-      if (typeof errors?.PRICE_MORE_THAN_MAX_PRICE === "function") {
-        return errors?.PRICE_MORE_THAN_MAX_PRICE(
-          starkstring(minPrice).toCurrency().toString(),
-        );
-      }
-      return errors?.PRICE_MORE_THAN_MAX_PRICE;
-
-      // return t("priceShouldBeLessThanMaxPrice", {
-      //   maxPrice: starkstring(maxPrice).toCurrency().toString(),
-      // });
+      return t("priceShouldBeLessThanMaxPrice", {
+        maxPrice: starkstring(maxPrice).toCurrency().toString(),
+      });
     }
     return undefined;
   };
@@ -96,29 +83,14 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
     ) as MarketFilterLotSize) || {};
 
     if (baseQuantity.lessThan(minQty)) {
-      if (typeof errors?.AMOUNT_LESS_THAN_MIN_PRICE === "function") {
-        return errors?.AMOUNT_LESS_THAN_MIN_PRICE(
-          starkstring(minQty).toCurrency().toString(),
-        );
-      }
-
-      return errors?.AMOUNT_LESS_THAN_MIN_PRICE;
-
-      // return t("valueShouldBeMoreThanMinPrice", {
-      //   minPrice: starkstring(minQty).toCurrency().toString(),
-      // });
+      return t("valueShouldBeMoreThanMinPrice", {
+        minPrice: starkstring(minQty).toCurrency().toString(),
+      });
     }
     if (maxQty !== undefined && baseQuantity.greaterThan(maxQty)) {
-      if (typeof errors?.AMOUNT_MORE_THAN_MAX_PRICE === "function") {
-        return errors?.AMOUNT_MORE_THAN_MAX_PRICE(
-          starkstring(minQty).toCurrency().toString(),
-        );
-      }
-
-      return errors?.AMOUNT_MORE_THAN_MAX_PRICE;
-      // return t("valueShouldBeLessThanMaxPrice", {
-      //   maxPrice: starkstring(maxQty).toCurrency().toString(),
-      // });
+      return t("valueShouldBeLessThanMaxPrice", {
+        maxPrice: starkstring(maxQty).toCurrency().toString(),
+      });
     }
 
     const validQty = new Decimal(baseQuantity)
@@ -126,12 +98,7 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
       .toString();
     // return `baseQuantity ${baseQuantity} validQty ${validQty}`;
     if (validQty !== baseQuantity.toString()) {
-      if (typeof errors?.INVALID_VALUE === "function") {
-        return errors?.INVALID_VALUE();
-      }
-
-      return errors?.INVALID_VALUE;
-      // return t("invalidValue");
+      return t("invalidValue");
     }
 
     if (!__MOCK__ && !userData?.access_token) return undefined;
@@ -139,12 +106,7 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
     if (side === "Buy") {
       const total = new Decimal(price).mul(baseQuantity);
       if (total.greaterThan(targetMarket.quoteCurrency?.availableRemain || 0)) {
-        if (typeof errors?.INSUFFICIENT_BALANCE === "function") {
-          return errors?.INSUFFICIENT_BALANCE();
-        }
-
-        return errors?.INSUFFICIENT_BALANCE;
-        // return t("insufficientBalance");
+        return t("insufficientBalance");
       }
     } else {
       if (
@@ -152,12 +114,7 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
           targetMarket.baseCurrency?.availableRemain || 0,
         )
       ) {
-        if (typeof errors?.INSUFFICIENT_BALANCE === "function") {
-          return errors?.INSUFFICIENT_BALANCE();
-        }
-
-        return errors?.INSUFFICIENT_BALANCE;
-        // return t("insufficientBalance");
+        return t("insufficientBalance");
       }
     }
 
@@ -193,15 +150,9 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
       ) as MarketFilterMinNotional) || {};
 
     if (minNotional !== undefined && total.lessThan(minNotional)) {
-      if (typeof errors?.PRICE_LESS_THAN_MIN_PRICE === "function") {
-        return errors?.PRICE_LESS_THAN_MIN_PRICE(
-          starkstring(minNotional).toCurrency().toString(),
-        );
-      }
-      return errors?.PRICE_LESS_THAN_MIN_PRICE;
-      // return t("priceShouldBeMoreThanMinPrice", {
-      //   minPrice: starkstring(minNotional).toCurrency().toString(),
-      // });
+      return t("priceShouldBeMoreThanMinPrice", {
+        minPrice: starkstring(minNotional).toCurrency().toString(),
+      });
     }
 
     const maxNotional = maxQty
@@ -209,16 +160,9 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
       : undefined;
 
     if (maxNotional && total.greaterThan(maxNotional)) {
-      if (typeof errors?.PRICE_MORE_THAN_MAX_PRICE === "function") {
-        return errors?.PRICE_MORE_THAN_MAX_PRICE(
-          starkstring(maxNotional).toCurrency().toString(),
-        );
-      }
-      return errors?.PRICE_MORE_THAN_MAX_PRICE;
-
-      // return t("priceShouldBeLessThanMaxPrice", {
-      //   maxPrice: starkstring(maxNotional).toCurrency().toString(),
-      // });
+      return t("priceShouldBeLessThanMaxPrice", {
+        maxPrice: starkstring(maxNotional).toCurrency().toString(),
+      });
     }
 
     if (!__MOCK__ && !userData?.access_token) return undefined;
@@ -229,13 +173,7 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
           Number(targetMarket?.quoteCurrency?.availableRemain || 0),
         )
       ) {
-        if (typeof errors?.INSUFFICIENT_BALANCE_FUND === "function") {
-          return errors?.INSUFFICIENT_BALANCE_FUND();
-        }
-
-        return errors?.INSUFFICIENT_BALANCE_FUND;
-
-        // return t("insufficientBalancePleaseFund");
+        return t("insufficientBalancePleaseFund");
         // Check if user does not order more than what he/she has
       }
 
@@ -247,12 +185,7 @@ export function useOrderPlacingError(errors?: Partial<ConvertErrorTypes>) {
           targetMarket?.baseCurrency?.availableRemain || 0,
         )
       ) {
-        if (typeof errors?.INSUFFICIENT_BALANCE === "function") {
-          return errors?.INSUFFICIENT_BALANCE();
-        }
-
-        return errors?.INSUFFICIENT_BALANCE;
-        // return t("insufficientBalance");
+        return t("insufficientBalance");
       }
       return undefined;
     }

@@ -9,10 +9,9 @@ import {
   usePostPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder,
 } from "shared-services/src";
 import { v4 as uuidv4 } from "uuid";
-import { MarketTicker } from "../marketTicker";
+import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 import { BuySellContext, BuySellProps } from "./context";
-import { useMarketsTickerContext } from "./provider";
 
 type OrderProps = {
   triggerBeforeOrder?: () => void;
@@ -41,7 +40,7 @@ export const useBuySell = (callbacks?: BuySellProps) => {
   const { lastChangeInput, recieve, selected, spend, shouldCharge } =
     BuySellContext.useWatch();
 
-  const { getSymbolMarketTicker, marketsTicker } = useMarketsTickerContext();
+  const { getSymbolMarketTicker, marketsTicker } = useMarketTicker();
 
   const selectedMarket = getSymbolMarketTicker(selected);
 

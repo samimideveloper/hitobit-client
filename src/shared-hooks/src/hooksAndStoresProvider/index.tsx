@@ -1,17 +1,15 @@
 import { Fragment, lazy } from "react";
 import { QueryClientProvider, useQuery } from "react-query";
 import { queryClient, UserSignalRConnection } from "shared-hooks";
+import { initializeI18n } from "shared-modules/src";
 import {
   AuthenticationProvider,
-  BalanceVisibilityStoreProvider,
   BaseCurrencyStoreProvider,
   SelectedSymbolStoreProvider,
   setStoredAuthentication,
-  setStoredBalance,
   setStoredBaseCurrency,
   setStoredSeletedSymbol,
 } from "shared-store";
-import { setStoredTheme, ThemeProvider } from "shared-theme";
 
 const UserManagerProvider = lazy(
   () => import("shared-services/src/context/userManager"),
@@ -19,9 +17,15 @@ const UserManagerProvider = lazy(
 
 export interface ProvidersProps {
   children: JSX.Element;
+  initializer?: () => Promise<void>;
+  language?: "fa" | "en";
 }
 
-const HooksAndStoresProvider = ({ children }: ProvidersProps) => {
+const HitobitClientProvider = ({
+  children,
+  initializer,
+  language,
+}: ProvidersProps) => {
   const MaybeUserManagerProvider =
     typeof window === "undefined" ? Fragment : UserManagerProvider;
 
@@ -29,17 +33,13 @@ const HooksAndStoresProvider = ({ children }: ProvidersProps) => {
     <MaybeUserManagerProvider>
       <QueryClientProvider client={queryClient}>
         <AuthenticationProvider>
-          <ThemeProvider>
-            <BaseCurrencyStoreProvider>
-              <SelectedSymbolStoreProvider>
-                <BalanceVisibilityStoreProvider>
-                  <UserSignalRConnection>
-                    <Child>{children}</Child>
-                  </UserSignalRConnection>
-                </BalanceVisibilityStoreProvider>
-              </SelectedSymbolStoreProvider>
-            </BaseCurrencyStoreProvider>
-          </ThemeProvider>
+          <BaseCurrencyStoreProvider>
+            <SelectedSymbolStoreProvider>
+              <UserSignalRConnection>
+                <Child {...{ initializer, language }}>{children}</Child>
+              </UserSignalRConnection>
+            </SelectedSymbolStoreProvider>
+          </BaseCurrencyStoreProvider>
         </AuthenticationProvider>
       </QueryClientProvider>
     </MaybeUserManagerProvider>
@@ -48,15 +48,15 @@ const HooksAndStoresProvider = ({ children }: ProvidersProps) => {
 
 const ChildInitialSymbol = Symbol();
 
-const Child = ({ children }: ProvidersProps) => {
+const Child = ({ children, initializer, language }: ProvidersProps) => {
   const { data } = useQuery(
     [ChildInitialSymbol],
     async () => {
-      await setStoredTheme();
       await setStoredAuthentication();
-      await setStoredBalance();
       await setStoredSeletedSymbol();
       await setStoredBaseCurrency();
+      initializeI18n(language);
+      await initializer?.();
       return true;
     },
     {
@@ -67,4 +67,4 @@ const Child = ({ children }: ProvidersProps) => {
   return data || typeof window === "undefined" ? children : null;
 };
 
-export { HooksAndStoresProvider };
+export { HitobitClientProvider };

@@ -12,6 +12,15 @@
     "shared-constants": "*",
     "shared-store": "*",
     "shared-theme": "*",
-    "shared-utils": "*"
+    "shared-utils": "*",
+    "react-hook-form": "^7.33.1",
+    "lodash-es": "^4.17.21",
+    "moment-jalaali": "^0.9.6",
+    "starkstring": "^0.4.3"
+  },
+  "devDependencies": {
+    "@types/moment-jalaali": "^0.7.5",
+    "@types/lodash-es": "^4.17.6",
+    "react-query": "^3.39.2"
   }
 }

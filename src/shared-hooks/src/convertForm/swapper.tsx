@@ -1,8 +1,8 @@
 import { Fragment, ReactNode, useMemo } from "react";
 import { useAssets } from "../useAssets";
+import { useMarkets } from "../useMarkets";
 import { useMatchedMarketsList } from "../useMatchedMarketsList";
 import { ConvertContext } from "./context";
-import { useAssetMarketContext } from "./provider";
 
 type SwapRenderProps = {
   canSwap: boolean | undefined;
@@ -24,7 +24,7 @@ export const ConvertSwapper = ({ render }: ConvertSwapperProps) => {
     toMarket,
   });
 
-  const { marketsSymbols } = useAssetMarketContext();
+  const { marketsSymbols } = useMarkets();
 
   const availableSymbols = marketsSymbols?.filter(
     (item) => fromAsset === item.baseAsset || fromAsset === item.quoteAsset,

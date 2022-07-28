@@ -1,2 +1,2 @@
-const cookieStorage = localStorage;
-export { cookieStorage };
+const AsyncStorage = localStorage;
+export { AsyncStorage };

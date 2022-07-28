@@ -2,14 +2,15 @@ import Decimal from "decimal.js";
 import { ReactNode, useMemo, useTransition } from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import { useQueryClient } from "react-query";
+import { useTranslation } from "shared-modules/src";
 import { postExchangeV1PrivateOrder } from "shared-services/src";
 import { Asset, useAssets } from "../useAssets";
 import { useMarketFilters } from "../useMarketFilters";
+import { useMarkets } from "../useMarkets";
 import { useMatchedMarketsList } from "../useMatchedMarketsList";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
 import { ConvertContext, ConvertFormProps } from "./context";
-import { useAssetMarketContext, useErrorContext } from "./provider";
 
 type ConvertFromRenderProps = {
   render: (state: {
@@ -34,14 +35,13 @@ export const ConvertFromController = ({
   render,
   renderErrorComponent,
 }: ConvertFromRenderProps) => {
+  const { t } = useTranslation();
   const { toMarket, fromAmount, fromAsset, lastChangedField } =
     ConvertContext.useWatch();
 
   const queryClient = useQueryClient();
 
-  const { marketsSymbols } = useAssetMarketContext();
-
-  const errorMessages = useErrorContext();
+  const { marketsSymbols } = useMarkets();
 
   const [, startTransition] = useTransition();
 
@@ -52,7 +52,7 @@ export const ConvertFromController = ({
 
   register("lastChangedField");
 
-  const { getAmountError, getTotalError } = useOrderPlacingError(errorMessages);
+  const { getAmountError, getTotalError } = useOrderPlacingError();
 
   const { allAssets } = useAssets({
     onSuccess: (data) => {
@@ -108,10 +108,7 @@ export const ConvertFromController = ({
           validate: {
             amount: (value) => {
               if (!lastChangedField && !value) {
-                if (typeof errorMessages.REQUIRED === "function") {
-                  return errorMessages.REQUIRED();
-                }
-                return errorMessages.REQUIRED;
+                t("enterAmount");
               }
 
               if (lastChangedField !== "from") return undefined;

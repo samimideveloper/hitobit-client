@@ -62,12 +62,10 @@
     "mobile:ios": "yarn workspace mobile-native  ios",
     "mobile:studio": "yarn workspace mobile-native studio",
     "mobile:xcode": "yarn workspace mobile-native xcode",
-    "resolve-nodes": "node ./scripts/resolveReactnative.js",
     "compile": "rimraf \"**/tsconfig.tsbuildinfo\" && tsc -b",
-    "test": "react-app-rewired test --silent --detectOpenHandles",
+    "test": "react-app-rewired test --detectOpenHandles",
     "lint": "eslint . --ext tsx,ts --quiet",
-    "format": "prettier --write .",
-    "prepare": "yarn resolve-nodes"
+    "format": "prettier --write ."
   },
   "browserslist": {
     "production": [

@@ -2,12 +2,11 @@ import Decimal from "decimal.js";
 import { groupBy, map } from "lodash-es";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import { MarketTicker } from "../marketTicker";
+import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useMarketFilters } from "../useMarketFilters";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
 import { BuySellContext, BuySellFormProps } from "./context";
-import { useBuySellErrorContext, useMarketsTickerContext } from "./provider";
 
 type SellSpendRenderProps = {
   render: (state: {
@@ -37,13 +36,11 @@ export const SellSpendController = ({
 
   const { errors } = BuySellContext.useFormState();
 
-  const errorMessages = useBuySellErrorContext();
-
   const { setValue, clearErrors } = BuySellContext.useFormContext();
 
-  const { getAmountError } = useOrderPlacingError(errorMessages);
+  const { getAmountError } = useOrderPlacingError();
 
-  const { marketsTicker, getSymbolMarketTicker } = useMarketsTickerContext();
+  const { marketsTicker, getSymbolMarketTicker } = useMarketTicker();
 
   const marketsTickerGrouped = map(
     groupBy(

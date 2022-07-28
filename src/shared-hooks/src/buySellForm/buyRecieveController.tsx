@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import { MarketTicker } from "../marketTicker";
+import { useTranslation } from "shared-modules/src";
+import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 import { useMarketFilters } from "../useMarketFilters";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
 import { BuySellContext, BuySellFormProps } from "./context";
-import { useBuySellErrorContext, useMarketsTickerContext } from "./provider";
 
 type BuyRecieveRenderProps = {
   render: (state: {
@@ -30,22 +30,21 @@ export const BuyRecieveController = ({
   render,
   renderErrorComponent,
 }: BuyRecieveRenderProps) => {
+  const { t } = useTranslation();
   const { lastChangeInput, selected, spend } = BuySellContext.useWatch();
 
   const { errors } = BuySellContext.useFormState();
 
   const convert = useConvertBaseToQuote();
 
-  const errorMessages = useBuySellErrorContext();
-
   const { setValue, clearErrors, register, trigger } =
     BuySellContext.useFormContext();
 
   register("shouldCharge");
 
-  const { getAmountError } = useOrderPlacingError(errorMessages);
+  const { getAmountError } = useOrderPlacingError();
 
-  const { marketsTicker, getSymbolMarketTicker } = useMarketsTickerContext();
+  const { marketsTicker, getSymbolMarketTicker } = useMarketTicker();
 
   const selectedMarket = getSymbolMarketTicker(selected);
 
@@ -76,10 +75,7 @@ export const BuyRecieveController = ({
                 return undefined;
               }
               if (!value) {
-                if (typeof errorMessages.REQUIRED === "function") {
-                  return errorMessages.REQUIRED();
-                }
-                return errorMessages.REQUIRED;
+                return t("enterAmount");
               }
 
               const convertedBaseQuantity = convert(
@@ -93,12 +89,7 @@ export const BuyRecieveController = ({
                   convertedBaseQuantity
               ) {
                 setValue("shouldCharge", true);
-                if (
-                  typeof errorMessages.INSUFFICIENT_BALANCE_FUND === "function"
-                ) {
-                  return errorMessages.INSUFFICIENT_BALANCE_FUND();
-                }
-                return errorMessages.INSUFFICIENT_BALANCE_FUND;
+                return t("insufficientBalance");
               } else {
                 setValue("shouldCharge", false);
               }

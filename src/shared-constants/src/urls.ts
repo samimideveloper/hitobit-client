@@ -1,7 +1,3 @@
-import { cookieStorage } from "shared-modules";
-
-export const TRADE_BASE_URLS = "http://api.binance.com";
-
 const API_DEV = "http://dev.hitobit.com/hapi/";
 const API_STAGE = "http://stage.hitobit.com/hapi/";
 const API_STAGE_TEST = "http://test.hitobit.com/hapi/";
@@ -21,70 +17,34 @@ const SIGNALR_PRODUCTION = "https://msg.septapay.com/hub";
 
 function getBaseUrl() {
   if (__STAGE__) {
-    const hapi = __PLATFORM__ === "web" && cookieStorage.getItem("hapiAddress");
-
-    return hapi || API_STAGE;
+    return API_STAGE;
   }
 
   if (__STAGE_TEST__) {
-    const hapi = __PLATFORM__ === "web" && cookieStorage.getItem("hapiAddress");
-
-    return hapi || API_STAGE_TEST;
+    return API_STAGE_TEST;
   }
 
   if (__TESTNET__) {
     return API_TESTNET;
   }
 
-  const hapi = __PLATFORM__ === "web" && cookieStorage.getItem("hapiAddress");
-
-  return hapi || API_DEV;
-}
-
-function getMobileBaseUrl() {
-  if (__PLATFORM__ === "pwa") {
-    return window.location.origin;
-  }
-  if (__STAGE__) {
-    return "http://m.stage.hitobit.com";
-  }
-
-  if (__DEV__) {
-    return "http://m.dev.hitobit.com";
-  }
-
-  if (__TESTNET__) {
-    return "http://m.testnet.hitobit.com";
-  }
-
-  const defaultUrl = "http://m.hitobit.com";
-
-  return defaultUrl;
+  return API_DEV;
 }
 
 function getSignalRBaseUrl() {
   if (__STAGE__) {
-    const stream =
-      __PLATFORM__ === "web" && cookieStorage.getItem("streamAddress");
-
-    return stream || SIGNALR_STAGE;
+    return SIGNALR_STAGE;
   }
 
   if (__STAGE_TEST__) {
-    const stream =
-      __PLATFORM__ === "web" && cookieStorage.getItem("streamAddress");
-
-    return stream || SIGNALR_STAGE_TEST;
+    return SIGNALR_STAGE_TEST;
   }
 
   if (__TESTNET__) {
     return SIGNALR_TESTNET;
   }
 
-  const stream =
-    __PLATFORM__ === "web" && cookieStorage.getItem("streamAddress");
-
-  return stream || SIGNALR_DEV;
+  return SIGNALR_DEV;
 }
 
 function getCDNBaseUrl() {
@@ -103,4 +63,4 @@ function getCDNBaseUrl() {
   return CDN_DEV;
 }
 
-export { getBaseUrl, getSignalRBaseUrl, getCDNBaseUrl, getMobileBaseUrl };
+export { getBaseUrl, getSignalRBaseUrl, getCDNBaseUrl };

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { createReducer, createStore, Provider } from "react-principal";
-import { CookiePersistKey, cookieStorage } from "shared-modules";
+import { AsyncStorage, CookiePersistKey } from "shared-modules";
 import { SymbolStatus } from "shared-services";
 
 const CHANGE_BASE_CURRENCY = Symbol();
@@ -36,7 +36,7 @@ const reducer = createReducer<InitialState>({
 export const baseCurrencyStore = createStore<InitialState>({
   reducer,
   initialState,
-  storage: cookieStorage,
+  storage: AsyncStorage,
   persistKey: CookiePersistKey.BASE_CURRENCY,
   mapStateToPersist: (state) => state,
 });
