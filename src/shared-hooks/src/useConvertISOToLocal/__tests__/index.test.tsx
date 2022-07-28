@@ -39,8 +39,8 @@ describe("useConvertISOToLocal fa", () => {
     const tree = component.getByTestId("test");
     expect(tree.getAttribute("data-human")).toEqual("3 ماه پیش");
     expect(tree.getAttribute("data-date")).toEqual("1400/12/21");
-    expect(tree.getAttribute("data-datetime")).toEqual("1400/12/21 11:02");
-    expect(tree.getAttribute("data-time")).toEqual("11:02");
+    expect(tree.getAttribute("data-datetime")).toEqual("1400/12/21 07:32");
+    expect(tree.getAttribute("data-time")).toEqual("07:32");
     expect(tree.getAttribute("data-year")).toEqual("1400");
     expect(tree.getAttribute("data-month")).toEqual("اسفند");
     expect(tree.getAttribute("data-day")).toEqual("21");
@@ -58,8 +58,8 @@ describe("useConvertISOToLocal en", () => {
     const tree = component.getByTestId("test");
     expect(tree.getAttribute("data-human")).toEqual("3 months ago");
     expect(tree.getAttribute("data-date")).toEqual("2022/12/03");
-    expect(tree.getAttribute("data-datetime")).toEqual("2022/12/03 11:02");
-    expect(tree.getAttribute("data-time")).toEqual("11:02");
+    expect(tree.getAttribute("data-datetime")).toEqual("2022/12/03 07:32");
+    expect(tree.getAttribute("data-time")).toEqual("07:32");
     expect(tree.getAttribute("data-year")).toEqual("2022");
     expect(tree.getAttribute("data-month")).toEqual("March");
     expect(tree.getAttribute("data-day")).toEqual("12");

@@ -7,5 +7,4 @@ declare namespace globalThis {
   export const __TESTNET__: boolean;
   export const __DEV__: boolean;
   export const __MOCK__: boolean;
-  export const __THEME__: "binance" | "hitobit";
 }

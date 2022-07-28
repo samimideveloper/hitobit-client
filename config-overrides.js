@@ -27,7 +27,6 @@ module.exports = {
       __STAGE_TEST__: false,
       __TESTNET__: false,
       __PLATFORM__: "web",
-      __THEME__: "binance",
     };
     config.modulePaths = [
       ...config.modulePaths,

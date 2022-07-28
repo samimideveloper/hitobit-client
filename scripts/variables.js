@@ -13,7 +13,6 @@ module.exports = {
     const __STAGE_TEST__ = process.env.__STAGE_TEST__;
     const __TESTNET__ = process.env.__TESTNET__;
 
-    const __THEME__ = process.env.__THEME__;
     const __PLATFORM__ = process.env.__PLATFORM__;
 
     config.plugins.push(
@@ -25,7 +24,6 @@ module.exports = {
         __STAGE_TEST__,
         __MOCK__: false,
         __TESTNET__,
-        __THEME__: `"${__THEME__}"`,
         __PLATFORM__: `"${__PLATFORM__}"`,
       }),
     );
