@@ -35,7 +35,7 @@ module.exports = {
 
     config.transformIgnorePatterns = [
       // ...config.transformIgnorePatterns,
-      "/node_modules/(?!(lodash-es|reactjs-view-core|reactjs-view|reactjs-view-share|react-route-type)/.*)",
+      "/node_modules/(?!(lodash-es|reactjs-view-core|reactjs-view|reactjs-view-share)/.*)",
     ];
 
     config.moduleNameMapper = {

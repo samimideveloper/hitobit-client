@@ -11,12 +11,10 @@
     "skipLibCheck": true,
     "downlevelIteration": true
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "include": [
     "src",
-    "src/shared-modules/src/customLocale.d.ts",
+    "src/hitobit-modules/src/customLocale.d.ts",
     "src/custom.d.ts",
     "src/global.d.ts"
   ]

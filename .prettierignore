@@ -2,6 +2,3 @@ node_modules
 build
 coverage
 .vscode
-
-src/web-next/.next
-src/web-next/public

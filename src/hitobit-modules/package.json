@@ -1,0 +1,18 @@
+{
+  "name": "hitobit-modules",
+  "version": "0.0.1",
+  "private": true,
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "i18next": "^21.8.3",
+    "react-i18next": "^11.16.9",
+    "buffer": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4",
+    "react-native-device-info": "^10.0.2"
+  }
+}

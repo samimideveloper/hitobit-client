@@ -1,0 +1,11 @@
+{
+  "name": "hitobit-constants",
+  "version": "0.0.1",
+  "private": true,
+  "sideEffects": false,
+  "main": "src/",
+  "types": "src/",
+  "dependencies": {
+    "buffer": "^6.0.3"
+  }
+}
