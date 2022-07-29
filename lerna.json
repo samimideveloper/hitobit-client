@@ -1,0 +1,21 @@
+{
+  "packages": [
+    "src/hitobit-constants",
+    "src/hitobit-hooks",
+    "src/hitobit-modules",
+    "src/hitobit-services",
+    "src/hitobit-store",
+    "src/hitobit-utils"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {},
+    "version": {
+      "message": "chore(release): publish %s",
+      "conventionalCommits": true,
+      "yes": true
+    }
+  },
+  "version": "0.0.1"
+}
