@@ -1,13 +1,13 @@
 {
   "name": "hitobit-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "sideEffects": false,
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {
-    "hitobit-hooks": "^0.0.3",
-    "hitobit-services": "^0.0.3",
-    "hitobit-store": "^0.0.3",
-    "hitobit-utils": "^0.0.3"
+    "hitobit-hooks": "^0.0.4",
+    "hitobit-services": "^0.0.4",
+    "hitobit-store": "^0.0.4",
+    "hitobit-utils": "^0.0.4"
   }
 }
