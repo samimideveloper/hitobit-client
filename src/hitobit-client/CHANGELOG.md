@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.10](https://github.com/hosseinmd/hitobit-client/compare/v0.0.9...v0.0.10) (2022-07-30)
+
+
+### Bug Fixes
+
+* getErrorMessage type ([7d0081d](https://github.com/hosseinmd/hitobit-client/commit/7d0081d6a8d4b04b8f60663f574978d743b2e4b9))
+
+
+
+
+
 ## [0.0.9](https://github.com/hosseinmd/hitobit-client/compare/v0.0.8...v0.0.9) (2022-07-30)
 
 
