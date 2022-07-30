@@ -1,11 +1,11 @@
 {
   "name": "hitobit-utils",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "sideEffects": false,
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {
-    "hitobit-constants": "^0.0.5",
-    "hitobit-services": "^0.0.5"
+    "hitobit-constants": "^0.0.6",
+    "hitobit-services": "^0.0.6"
   }
 }

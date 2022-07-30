@@ -1,11 +1,11 @@
 {
   "name": "hitobit-store",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "sideEffects": false,
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {
-    "hitobit-services": "^0.0.5",
+    "hitobit-services": "^0.0.6",
     "react-principal": "^2.0.7"
   }
 }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.6](https://github.com/hosseinmd/hitobit-client/compare/v0.0.5...v0.0.6) (2022-07-30)
+
+
+### Bug Fixes
+
+* add service to hitobit-client ([aa5e297](https://github.com/hosseinmd/hitobit-client/commit/aa5e297baed96b2fa19921c550c58c1733129b57))
+
+
+
+
+
 ## [0.0.5](https://github.com/hosseinmd/hitobit-client/compare/v0.0.4...v0.0.5) (2022-07-30)
 
 
