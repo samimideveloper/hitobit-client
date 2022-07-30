@@ -2,8 +2,24 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## get start
 
-In the project directory, you can run:
+`yarn add hitobit-client`
 
-### `yarn add hitobit-client`
+Add provider to Top of your app
+
+```js
+function App(){
+  return (
+    <HitobitClientProvider
+      language="fa"
+      initializer={async () => {
+        await setStoredTheme();
+        await setStoredBalance();
+      }}
+    >
+      <Routes>
+    </HitobitClientProvider>
+  );
+}
+```
