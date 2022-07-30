@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.9](https://github.com/hosseinmd/hitobit-client/compare/v0.0.8...v0.0.9) (2022-07-30)
+
+
+### Bug Fixes
+
+* export StatusCode and getDeviceId ([d7e8c03](https://github.com/hosseinmd/hitobit-client/commit/d7e8c030764487bc10b32fa7120bfaec67336fa0))
+
+
+
+
+
 ## [0.0.8](https://github.com/hosseinmd/hitobit-client/compare/v0.0.7...v0.0.8) (2022-07-30)
 
 **Note:** Version bump only for package hitobit-client
