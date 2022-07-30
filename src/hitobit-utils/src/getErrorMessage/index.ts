@@ -3,16 +3,8 @@ import { RequestError } from "hitobit-services";
 import i18n from "i18next";
 import { FieldErrors } from "react-hook-form";
 
-export function getErrorMessage<T extends object | never>(
-  error?:
-    | Error
-    | false
-    | null
-    | AxiosError
-    | RequestError
-    | Error
-    | FieldErrors<T>
-    | T,
+export function getErrorMessage<T extends FieldErrors<any> | object | unknown>(
+  error?: Error | false | null | AxiosError | RequestError | Error | T,
   field?: keyof Required<T>,
 ): string {
   if (!error) {
