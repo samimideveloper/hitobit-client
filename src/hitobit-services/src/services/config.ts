@@ -120,15 +120,20 @@ class RequestError extends Error {
   errors?: any[];
 
   constructor({ message, status, response, errors }: ErrorParam) {
-    super();
+    super(message);
     this.message = message;
     this.status = status;
     this.response = response;
     this.errors = errors;
   }
 
-  _isApiException = true;
+  isApiException = true;
 
+  static isRequestError(error: any): error is RequestError {
+    return error?.isApiException;
+  }
+
+  /** @deprecated Use isRequestError instead */
   static isApiException(error: any): error is RequestError {
     return error?._isApiException;
   }
