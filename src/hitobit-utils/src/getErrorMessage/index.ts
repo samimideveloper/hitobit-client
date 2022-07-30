@@ -12,7 +12,8 @@ export function getErrorMessage<T extends object>(
     | RequestError
     | Error
     | FieldErrors<T>
-    | T,
+    | T
+    | unknown,
   field?: keyof Required<T>,
 ): string {
   if (!error) {

@@ -8,6 +8,7 @@
     "hitobit-hooks": "^0.0.8",
     "hitobit-services": "^0.0.8",
     "hitobit-store": "^0.0.8",
+    "hitobit-modules": "^0.0.8",
     "hitobit-utils": "^0.0.8"
   }
 }
