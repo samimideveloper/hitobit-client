@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## get start
 
-`yarn add hitobit-client`
+`yarn add hitobit-client hitobit-services`
 
 Add provider to Top of your app
 
@@ -27,7 +27,7 @@ function App(){
 ### Services
 
 ```js
-import { useGetCapitalV1PublicCurrencyAll } from "hitobit-client";
+import { useGetCapitalV1PublicCurrencyAll } from "hitobit-services";
 
 const Comp = () => {
   const { data, isLoading } = useGetCapitalV1PublicCurrencyAll();
