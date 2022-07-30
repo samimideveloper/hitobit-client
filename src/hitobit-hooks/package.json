@@ -11,6 +11,7 @@
     "faker": "^5.5.3",
     "hermes-channel": "^2.1.2",
     "hitobit-constants": "^0.0.3",
+    "hitobit-modules": "^0.0.3",
     "hitobit-services": "^0.0.3",
     "hitobit-store": "^0.0.3",
     "hitobit-utils": "^0.0.3",
