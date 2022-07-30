@@ -1,4 +1,9 @@
-export { StatusCodes } from "hitobit-constants";
+export {
+  FIVE_MINUTE,
+  ONE_MINUTE,
+  StatusCodes,
+  TWENTY_SECOND,
+} from "hitobit-constants";
 export * from "hitobit-hooks";
 export { getDeviceId } from "hitobit-modules";
 export * from "hitobit-store";
