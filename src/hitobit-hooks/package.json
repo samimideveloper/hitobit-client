@@ -17,7 +17,7 @@
     "hitobit-utils": "^0.0.4",
     "lodash-es": "^4.17.21",
     "moment-jalaali": "^0.9.6",
-    "react-hook-form": "^7.33.1",
+    "react-hook-form": "^7.34.0",
     "react-hook-form-context": "^0.0.3",
     "react-oidc-js": "^2.0.7",
     "react-signalr": "^0.2.14",
