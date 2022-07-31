@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.16](https://github.com/hosseinmd/hitobit-client/compare/v0.0.15...v0.0.16) (2022-07-31)
+
+
+### Bug Fixes
+
+* asyncStorage ([e02c8f3](https://github.com/hosseinmd/hitobit-client/commit/e02c8f30e38ba26b1effad4d44fea59f20bc73d7))
+
+
+
+
+
 ## [0.0.15](https://github.com/hosseinmd/hitobit-client/compare/v0.0.14...v0.0.15) (2022-07-31)
 
 **Note:** Version bump only for package hitobit-modules
