@@ -8,6 +8,8 @@
     "buffer": "^6.0.3",
     "i18next": "^21.8.3",
     "react-i18next": "^11.16.9",
+    "hitobit-constants": "^0.0.12",
+    "cookies-next": "^2.1.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

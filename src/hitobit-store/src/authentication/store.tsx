@@ -1,4 +1,5 @@
-import { AsyncStorage, CookiePersistKey } from "hitobit-modules";
+import { PersistKey } from "hitobit-constants/src";
+import { AsyncStorage } from "hitobit-modules";
 import { ReactNode } from "react";
 import { createStore } from "react-principal";
 import { initialState, InitialState } from "./initialState";
@@ -7,7 +8,7 @@ import reducer from "./reducers";
 export const StoreAuthentication = createStore<InitialState>({
   reducer,
   initialState,
-  persistKey: CookiePersistKey.AUTHENTICATION,
+  persistKey: PersistKey.AUTHENTICATION,
   storage: AsyncStorage,
   mapStateToPersist: ({ signalRToken }) => ({
     signalRToken,

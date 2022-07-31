@@ -1,7 +1,5 @@
-import {
-  GetExchangeV1PublicKlinesQueryParams,
-  persistKey,
-} from "hitobit-services";
+import { PersistKey } from "hitobit-constants/src";
+import { GetExchangeV1PublicKlinesQueryParams } from "hitobit-services";
 import { ReactNode } from "react";
 import { createReducer, createStore, Provider } from "react-principal";
 
@@ -51,7 +49,7 @@ const reducer = createReducer<SelectedSymbolState>({
 export const selectedSymbolStore = createStore<SelectedSymbolState>({
   reducer,
   initialState,
-  persistKey: persistKey.SELECTED_SYMBOL,
+  persistKey: PersistKey.SELECTED_SYMBOL,
   mapStateToPersist: ({ interval }) => ({ interval }),
 });
 

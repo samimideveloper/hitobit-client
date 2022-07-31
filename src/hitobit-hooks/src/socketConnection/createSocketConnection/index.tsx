@@ -1,5 +1,5 @@
 import { HubConnectionState } from "@microsoft/signalr";
-import { getSignalRBaseUrl } from "hitobit-constants";
+import { URLManager } from "hitobit-modules";
 import { createContext, useContext, useEffect } from "react";
 import { createSignalRContext } from "react-signalr";
 import { Context } from "react-signalr/lib/signalr/types";
@@ -38,7 +38,7 @@ export const createSocketConnection = <T extends string>(
     return (
       <HasProviderContext.Provider value={true}>
         <SocketConnection.Provider
-          url={`${getSignalRBaseUrl()}`}
+          url={URLManager.signalRBaseUrl}
           onOpen={() => {
             if (
               SocketConnection.connection?.state ===

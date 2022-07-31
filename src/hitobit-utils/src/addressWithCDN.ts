@@ -1,5 +1,5 @@
-import { getCDNBaseUrl } from "hitobit-constants";
+import { URLManager } from "hitobit-modules";
 
 export const addressWithCDN = (src = ""): string => {
-  return `${getCDNBaseUrl()}/${src.replace("\\", "//")}`;
+  return `${URLManager.CDNBaseUrl}/${src.replace("\\", "//")}`;
 };

@@ -1,4 +1,4 @@
-import { getSignalRBaseUrl } from "hitobit-constants";
+import { URLManager } from "hitobit-modules";
 import { handleAccessTokenExpired } from "hitobit-services/src/context/userManager";
 import { RequestError } from "hitobit-services/src/services/config";
 import { ReactNode } from "react";
@@ -21,8 +21,8 @@ const UserSignalRConnection = ({ children }: { children: ReactNode }): any => {
           }
         }
       }}
-      dependencies={[!!userData?.access_token, getSignalRBaseUrl()]}
-      url={getSignalRBaseUrl()}
+      dependencies={[!!userData?.access_token, URLManager.signalRBaseUrl]}
+      url={URLManager.signalRBaseUrl}
     >
       <>
         <ConnectToSignalRListeners />

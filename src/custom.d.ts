@@ -5,6 +5,7 @@ declare namespace globalThis {
   export const __STAGE_TEST__: boolean;
   export const __PLATFORM__: "web" | "native" | "pwa";
   export const __TESTNET__: boolean;
+  export const __PRODUCTION__: boolean;
   export const __DEV__: boolean;
   export const __MOCK__: boolean;
 }

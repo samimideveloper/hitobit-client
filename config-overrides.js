@@ -27,6 +27,7 @@ module.exports = {
       __STAGE_TEST__: false,
       __TESTNET__: false,
       __PLATFORM__: "web",
+      __PRODUCTION__: false,
     };
     config.modulePaths = [
       ...config.modulePaths,

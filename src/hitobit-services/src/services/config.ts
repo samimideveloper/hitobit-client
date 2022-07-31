@@ -9,8 +9,8 @@ import Axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
-import { getBaseUrl, StatusCodes } from "hitobit-constants";
-import { getDeviceId } from "hitobit-modules/src";
+import { StatusCodes } from "hitobit-constants";
+import { getDeviceId, URLManager } from "hitobit-modules/src";
 import i18n from "i18next";
 //@ts-ignore
 import qs from "qs";
@@ -101,7 +101,7 @@ function getAxiosInstance(security: any): AxiosInstance {
     });
   }
 
-  axiosInstance.defaults.baseURL = getBaseUrl();
+  axiosInstance.defaults.baseURL = URLManager.baseUrl;
 
   return axiosInstance;
 }
