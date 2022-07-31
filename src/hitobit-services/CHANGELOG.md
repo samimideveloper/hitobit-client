@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.13](https://github.com/hosseinmd/hitobit-client/compare/v0.0.12...v0.0.13) (2022-07-31)
+
+
+### Bug Fixes
+
+* add URLManager ([e895b06](https://github.com/hosseinmd/hitobit-client/commit/e895b06969ce099edab2e168cd7004c71cd76465))
+* isApiException deprecated ([7403b62](https://github.com/hosseinmd/hitobit-client/commit/7403b626ff22ae9554984dd87f011421d6867be4))
+
+
+
+
+
 ## [0.0.12](https://github.com/hosseinmd/hitobit-client/compare/v0.0.11...v0.0.12) (2022-07-31)
 
 **Note:** Version bump only for package hitobit-services

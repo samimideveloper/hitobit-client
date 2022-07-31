@@ -1,15 +1,15 @@
 {
   "name": "hitobit-modules",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "sideEffects": false,
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {
     "buffer": "^6.0.3",
+    "cookies-next": "^2.1.1",
+    "hitobit-constants": "^0.0.13",
     "i18next": "^21.8.3",
     "react-i18next": "^11.16.9",
-    "hitobit-constants": "^0.0.12",
-    "cookies-next": "^2.1.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
