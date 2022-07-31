@@ -13,7 +13,7 @@
   "scripts": {
     "build": "rimraf \"**/tsconfig.tsbuildinfo\" && lerna run build --include-dependencies --stream",
     "test": "yarn build && cross-env TZ=UTC react-app-rewired test --silent --detectOpenHandles",
-    "release": " yarn test -- --watchAll=false && yarn lint && yarn compile && npx lerna publish",
+    "release": " yarn test -- --watchAll=false && yarn lint && npx lerna publish",
     "lint": "eslint . --ext tsx,ts --quiet",
     "format": "prettier --write ."
   },

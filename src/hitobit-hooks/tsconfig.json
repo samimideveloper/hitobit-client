@@ -15,7 +15,7 @@
   "include": [
     "src/**/*",
     "../custom.d.ts",
-    "../hitobit-modules/src/customLocale.d.ts"
+    "../customLocale.d.ts"
   ],
   "exclude": [
     "node_modules",

@@ -1081,4 +1081,6 @@ const fa = {
   accountName: "نام حساب",
 };
 
+export type Fa = typeof fa;
+
 export default fa;

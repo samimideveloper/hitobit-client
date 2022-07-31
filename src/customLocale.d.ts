@@ -1,11 +1,11 @@
+import { Fa } from "hitobit-modules/src/i18n/messages/fa";
 import "i18next";
 import "react-i18next";
-import fa from "./i18n/messages/fa";
 declare module "react-i18next" {
-  // and extend them!
+  // and extend them
   interface Resources {
     // typeof fa
-    translation: Record<keyof typeof fa, string>;
+    translation: Record<keyof Fa, string>;
     server: Record<string, string>;
   }
 
