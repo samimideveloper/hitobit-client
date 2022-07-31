@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.15](https://github.com/hosseinmd/hitobit-client/compare/v0.0.14...v0.0.15) (2022-07-31)
+
+
+### Bug Fixes
+
+* add persistKey to client export ([5adea2f](https://github.com/hosseinmd/hitobit-client/commit/5adea2f1f05c4e5ec33429c943937d42eb04723f))
+
+
+
+
+
 ## [0.0.14](https://github.com/hosseinmd/hitobit-client/compare/v0.0.13...v0.0.14) (2022-07-31)
 
 
