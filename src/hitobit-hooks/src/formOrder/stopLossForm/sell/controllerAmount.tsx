@@ -1,6 +1,6 @@
 import Decimal from "decimal.js";
 import { useMarketTicker, useStepSize } from "hitobit-hooks/src";
-import { selectedSymbolStore } from "hitobit-store/src";
+import { selectedSymbolStore } from "hitobit-store";
 import { ControllerRenderProps } from "react-hook-form";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { MarketOrderValues, SellForm } from "../types";

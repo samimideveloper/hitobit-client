@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {
+    "axios-mock-adapter": "^1.21.1",
     "hitobit-constants": "^0.0.11",
     "hitobit-services": "^0.0.11"
   }

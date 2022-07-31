@@ -33,3 +33,15 @@ const Comp = () => {
   const { data, isLoading } = useGetCapitalV1PublicCurrencyAll();
 };
 ```
+
+### webpack
+
+Add This modules to include
+
+    "node_modules/hitobit-client",
+    "node_modules/hitobit-constants",
+    "node_modules/hitobit-hooks",
+    "node_modules/hitobit-modules",
+    "node_modules/hitobit-services",
+    "node_modules/hitobit-store",
+    "node_modules/hitobit-utils"

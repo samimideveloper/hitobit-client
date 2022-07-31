@@ -3976,7 +3976,7 @@ axe-core@^4.4.3:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.3.tgz#11c74d23d5013c0fa5d183796729bc3482bd2f6f"
   integrity sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==
 
-axios-mock-adapter@^1.20.0:
+axios-mock-adapter@^1.20.0, axios-mock-adapter@^1.21.1:
   version "1.21.1"
   resolved "https://registry.yarnpkg.com/axios-mock-adapter/-/axios-mock-adapter-1.21.1.tgz#efe7e46ad1b0d2acd72188afa91c5720660777b3"
   integrity sha512-Pdm7nZuhkz/DSucQ4Bbo9qVBqfm9j7ev9ycTvIXHqvAjnJEjWPHKYfTfpounVp8MwjFFSHXGS7hCkTwAswtSTA==
@@ -10810,10 +10810,10 @@ react-hook-form-context@^0.0.3:
   dependencies:
     invariant "^2.2.4"
 
-react-hook-form@^7.33.1:
-  version "7.33.1"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.33.1.tgz#8c4410e3420788d3b804d62cc4c142915c2e46d0"
-  integrity sha512-ydTfTxEJdvgjCZBj5DDXRc58oTEfnFupEwwTAQ9FSKzykEJkX+3CiAkGtAMiZG7IPWHuzgT6AOBfogiKhUvKgg==
+react-hook-form@^7.34.0:
+  version "7.34.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.34.0.tgz#22883b5e014e5c5e35f3061d0e3862153b0df2ec"
+  integrity sha512-s0/TJ09NVlEk2JPp3yit1WnMuPNBXFmUKEQPulgDi9pYBw/ZmmAFHe6AXWq73Y+kp8ye4OcMf0Jv+i/qLPektg==
 
 react-i18next@^11.16.9:
   version "11.18.3"
