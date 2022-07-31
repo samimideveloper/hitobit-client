@@ -13,7 +13,7 @@ import { queryClient } from "../queryClient";
 import { UserSignalRConnection } from "../userSignalRConnection";
 
 const UserManagerProvider = lazy(
-  () => import("hitobit-services/src/context/userManager"),
+  () => import("hitobit-services/dist/context/userManager"),
 );
 
 export interface ProvidersProps {
