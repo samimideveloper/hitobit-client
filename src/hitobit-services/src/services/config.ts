@@ -135,7 +135,7 @@ class RequestError extends Error {
 
   /** @deprecated Use isRequestError instead */
   static isApiException(error: any): error is RequestError {
-    return error?._isApiException;
+    return error?.isApiException;
   }
 }
 
