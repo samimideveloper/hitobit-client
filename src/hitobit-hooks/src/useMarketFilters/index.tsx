@@ -3,7 +3,7 @@ import {
   MarketFilterMinNotional,
   MarketFilterPriceFilter,
   MarketSymbolResponse,
-} from "hitobit-utils/src";
+} from "hitobit-utils";
 import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 
 const useMarketFilters = ({

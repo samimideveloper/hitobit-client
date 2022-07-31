@@ -1,5 +1,5 @@
 import { useTranslation } from "hitobit-modules";
-import { AppOrderStatus } from "hitobit-services/src";
+import { AppOrderStatus } from "hitobit-services";
 
 const useOrderStatusDisplay = () => {
   const { t } = useTranslation();

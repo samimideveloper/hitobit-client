@@ -1,11 +1,11 @@
-import { useNotification } from "hitobit-hooks/src";
 import { useTranslation } from "hitobit-modules";
 import {
   useDeletePartyV1PrivateFavoritemarket,
   useGetPartyV1PrivateFavoritemarket,
   usePostPartyV1PrivateFavoritemarket,
-} from "hitobit-services/src";
+} from "hitobit-services";
 import { useAuth } from "react-oidc-js";
+import { useNotification } from "../notification";
 
 export const useFavoriteMarket = (onFail?: () => void) => {
   const { userData } = useAuth();

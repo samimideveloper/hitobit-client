@@ -1,5 +1,5 @@
 import { RequestError, useGetExchangeV1PublicMarkets } from "hitobit-services";
-import { MarketResponse, MarketSymbolResponse } from "hitobit-utils/src";
+import { MarketResponse, MarketSymbolResponse } from "hitobit-utils";
 import { groupBy, map } from "lodash-es";
 import { useCallback, useMemo } from "react";
 import { Asset, useAssets } from "../useAssets";

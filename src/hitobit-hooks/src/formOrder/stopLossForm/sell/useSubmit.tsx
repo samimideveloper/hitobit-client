@@ -1,5 +1,5 @@
 import { useTranslation } from "hitobit-modules";
-import { usePostExchangeV1PrivateOrder } from "hitobit-services/src";
+import { usePostExchangeV1PrivateOrder } from "hitobit-services";
 import { selectedSymbolStore } from "hitobit-store";
 import { MarketOrderValues, SellForm } from "../types";
 
