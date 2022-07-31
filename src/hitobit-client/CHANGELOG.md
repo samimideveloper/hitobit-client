@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.14](https://github.com/hosseinmd/hitobit-client/compare/v0.0.13...v0.0.14) (2022-07-31)
+
+
+### Bug Fixes
+
+* add missed exported modules ([f98c1b6](https://github.com/hosseinmd/hitobit-client/commit/f98c1b61430daff8f1562629d3fec8eceaa7b7ac))
+
+
+
+
+
 ## [0.0.13](https://github.com/hosseinmd/hitobit-client/compare/v0.0.12...v0.0.13) (2022-07-31)
 
 **Note:** Version bump only for package hitobit-client
