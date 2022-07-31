@@ -2,8 +2,8 @@ import { useTranslation } from "hitobit-modules";
 import {
   useGetPartyV1PrivateUsersettingPreference,
   usePostExchangeV1PrivateOrder,
-} from "hitobit-services/src";
-import { selectedSymbolStore } from "hitobit-store/src";
+} from "hitobit-services";
+import { selectedSymbolStore } from "hitobit-store";
 import { MarketOrderValues, SellForm } from "../types";
 
 const useSubmit = ({

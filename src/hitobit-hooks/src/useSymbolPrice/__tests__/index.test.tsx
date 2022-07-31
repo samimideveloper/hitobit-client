@@ -1,5 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
-import { initializeI18n } from "hitobit-modules/src";
+import { initializeI18n } from "hitobit-modules";
 import { useSymbolPrice } from "..";
 import { HitobitClientProvider } from "../../hooksAndStoresProvider";
 

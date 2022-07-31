@@ -1,4 +1,4 @@
-import { PersistKey } from "hitobit-constants/src";
+import { PersistKey } from "hitobit-constants";
 import { GetExchangeV1PublicKlinesQueryParams } from "hitobit-services";
 import { ReactNode } from "react";
 import { createReducer, createStore, Provider } from "react-principal";

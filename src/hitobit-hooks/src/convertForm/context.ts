@@ -1,4 +1,4 @@
-import { OrderAckInfoResponseVM, RequestError } from "hitobit-services/src";
+import { OrderAckInfoResponseVM, RequestError } from "hitobit-services";
 import { createFormContext } from "react-hook-form-context";
 
 export interface ConvertFormProps {

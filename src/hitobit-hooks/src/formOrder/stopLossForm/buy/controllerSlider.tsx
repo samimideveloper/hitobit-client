@@ -1,5 +1,5 @@
 import Decimal from "decimal.js";
-import { selectedSymbolStore } from "hitobit-store/src";
+import { selectedSymbolStore } from "hitobit-store";
 import { ControllerRenderProps } from "react-hook-form";
 import { useMarketTicker } from "../../../marketTicker";
 import { useStepSize } from "../../../useStepSize";

@@ -1,7 +1,8 @@
 import Decimal from "decimal.js";
-import { useStepSize, useUserSelectedUserAssets } from "hitobit-hooks";
 import { selectedSymbolStore } from "hitobit-store";
 import { ControllerRenderProps } from "react-hook-form";
+import { useStepSize } from "../../../useStepSize";
+import { useUserSelectedUserAssets } from "../../../useUserSelectedUserAssets";
 import { BuyForm, StopLimitOrderValues } from "../types";
 
 const ControllerSlider = ({

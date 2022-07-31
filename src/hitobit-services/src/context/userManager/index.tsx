@@ -1,5 +1,5 @@
 import { AUTHORIZATION } from "hitobit-constants";
-import { getDeviceId } from "hitobit-modules/src";
+import { getDeviceId } from "hitobit-modules";
 import { ReactNode } from "react";
 import { createUserManagerContext } from "react-oidc-js";
 
@@ -12,9 +12,7 @@ const {
   axiosMiddle,
 } = createUserManagerContext({
   onRefresh: async (user) => {
-    const { postAuthV1PublicAuthConnectToken } = await import(
-      "hitobit-services"
-    );
+    const { postAuthV1PublicAuthConnectToken } = await import("../../services");
     const res = await postAuthV1PublicAuthConnectToken(
       {
         refreshToken: user?.refresh_token,

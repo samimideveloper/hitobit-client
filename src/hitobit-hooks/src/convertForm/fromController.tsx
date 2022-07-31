@@ -1,6 +1,6 @@
 import Decimal from "decimal.js";
-import { useTranslation } from "hitobit-modules/src";
-import { postExchangeV1PrivateOrder } from "hitobit-services/src";
+import { useTranslation } from "hitobit-modules";
+import { postExchangeV1PrivateOrder } from "hitobit-services";
 import { ReactNode, useMemo, useTransition } from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import { useQueryClient } from "react-query";

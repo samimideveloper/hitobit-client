@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules/src";
+import { useTranslation } from "hitobit-modules";
 import { invariant } from "hitobit-utils";
 import originalMoment from "moment";
 import moment from "moment-jalaali";

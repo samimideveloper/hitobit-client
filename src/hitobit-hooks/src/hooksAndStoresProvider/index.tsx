@@ -1,5 +1,4 @@
-import { queryClient, UserSignalRConnection } from "hitobit-hooks";
-import { initializeI18n } from "hitobit-modules/src";
+import { initializeI18n } from "hitobit-modules";
 import {
   AuthenticationProvider,
   BaseCurrencyStoreProvider,
@@ -10,6 +9,8 @@ import {
 } from "hitobit-store";
 import { Fragment, lazy } from "react";
 import { QueryClientProvider, useQuery } from "react-query";
+import { queryClient } from "../queryClient";
+import { UserSignalRConnection } from "../userSignalRConnection";
 
 const UserManagerProvider = lazy(
   () => import("hitobit-services/src/context/userManager"),

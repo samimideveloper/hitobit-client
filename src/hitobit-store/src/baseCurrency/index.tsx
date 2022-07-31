@@ -1,4 +1,4 @@
-import { PersistKey } from "hitobit-constants/src";
+import { PersistKey } from "hitobit-constants";
 import { AsyncStorage } from "hitobit-modules";
 import { SymbolStatus } from "hitobit-services";
 import { ReactNode } from "react";

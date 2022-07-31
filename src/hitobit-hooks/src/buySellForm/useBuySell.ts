@@ -5,7 +5,7 @@ import {
   usePostExchangeV1PrivateOrder,
   usePostPaymentV1PrivateEpayrequestCharge,
   usePostPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder,
-} from "hitobit-services/src";
+} from "hitobit-services";
 import { groupBy, map } from "lodash-es";
 import { useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";

@@ -1,5 +1,4 @@
 import { HubConnectionState } from "@microsoft/signalr";
-import { SocketConnection } from "hitobit-hooks";
 import {
   OrderBookResponseVM,
   useGetExchangeV1PublicDepth,
@@ -18,6 +17,7 @@ import {
   useState,
 } from "react";
 import { useMarketTicker } from "../marketTicker";
+import { SocketConnection } from "../socketConnection";
 import { useDebounceAnimationFrameCallback } from "../useDebounceAnimationFrameCallback";
 
 if (__MOCK__) {
@@ -120,7 +120,7 @@ const OrderBookProvider = memo<Props>(({ children }) => {
   SocketConnection.useEvent(
     `${selectedSymbol?.symbol.toLowerCase()}@depth`,
     (data: DepthItem) => {
-      const { e, E, s, U, u, b, a } = data;
+      const { E, s, U, u, b, a } = data;
 
       if (s.toLowerCase() !== selectedSymbol?.symbol.toLowerCase()) {
         return;

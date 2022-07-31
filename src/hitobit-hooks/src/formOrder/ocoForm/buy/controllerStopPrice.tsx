@@ -1,7 +1,7 @@
-import { useOrderPlacingError } from "hitobit-hooks";
 import { useTranslation } from "hitobit-modules";
 import { selectedSymbolStore } from "hitobit-store";
 import { ControllerRenderProps } from "react-hook-form";
+import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { BuyForm, OcoOrderValues } from "../types";
 
 const ControllerStopPrice = ({

@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules/src";
+import { useTranslation } from "hitobit-modules";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import { MarketTicker, useMarketTicker } from "../marketTicker";

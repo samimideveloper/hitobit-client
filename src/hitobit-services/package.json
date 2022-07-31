@@ -2,9 +2,18 @@
   "name": "hitobit-services",
   "version": "0.0.17",
   "sideEffects": false,
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p ./tsconfig.json",
+    "build:typings": "tsc -p ./tsconfig.json --declarationDir dist"
+  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
+    "hitobit-modules": "^0.0.17",
+    "hitobit-constants": "^0.0.17",
     "axios": "^0.27.2",
     "buffer": "^6.0.3"
   }

@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules/src";
+import { useTranslation } from "hitobit-modules";
 import starkString from "starkstring";
 
 type Abbreviation = "kilo" | "million" | "billion" | "trillion";

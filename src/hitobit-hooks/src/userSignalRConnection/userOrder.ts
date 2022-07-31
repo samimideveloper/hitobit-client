@@ -1,4 +1,4 @@
-import { i18n } from "hitobit-modules/src";
+import { i18n } from "hitobit-modules";
 import {
   AppOrderSide,
   AppOrderStatus,

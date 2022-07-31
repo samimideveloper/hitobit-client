@@ -10,7 +10,7 @@ import Axios, {
   AxiosResponse,
 } from "axios";
 import { StatusCodes } from "hitobit-constants";
-import { getDeviceId, URLManager } from "hitobit-modules/src";
+import { getDeviceId, URLManager } from "hitobit-modules";
 import i18n from "i18next";
 //@ts-ignore
 import qs from "qs";

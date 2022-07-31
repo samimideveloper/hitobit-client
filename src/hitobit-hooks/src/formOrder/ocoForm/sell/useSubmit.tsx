@@ -4,7 +4,6 @@ import {
   usePostExchangeV1PrivateOrderOco,
 } from "hitobit-services";
 import { selectedSymbolStore } from "hitobit-store";
-import { useMarketTicker } from "../../..";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { OcoOrderValues, SellForm } from "../types";
 
@@ -16,9 +15,6 @@ const useSubmit = ({
   const { t } = useTranslation();
 
   const { selectedSymbol } = selectedSymbolStore.useState();
-
-  const { getSymbolMarketTicker } = useMarketTicker();
-  const selectedTicker = getSymbolMarketTicker(selectedSymbol?.symbol);
 
   const {
     handleSubmit: sellHandleSubmit,

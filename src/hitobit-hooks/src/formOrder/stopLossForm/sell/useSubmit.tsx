@@ -1,13 +1,12 @@
 import { useTranslation } from "hitobit-modules";
 import { usePostExchangeV1PrivateOrder } from "hitobit-services/src";
-import { selectedSymbolStore } from "hitobit-store/src";
+import { selectedSymbolStore } from "hitobit-store";
 import { MarketOrderValues, SellForm } from "../types";
 
 const useSubmit = () => {
   const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
-  const { selectedOption } = SellForm.useWatch();
-  const { handleSubmit, register, reset, setError } = SellForm.useFormContext();
+  const { handleSubmit, reset, setError } = SellForm.useFormContext();
   const { mutate, isLoading, error } = usePostExchangeV1PrivateOrder({
     onSuccess: () => {
       reset();

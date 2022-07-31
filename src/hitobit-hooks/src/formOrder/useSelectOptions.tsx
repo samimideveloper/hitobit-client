@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules/src";
+import { useTranslation } from "hitobit-modules";
 import { SellSelectType } from "./marketForm/types";
 
 const useSelectOptions = () => {

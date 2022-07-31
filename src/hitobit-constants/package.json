@@ -2,8 +2,15 @@
   "name": "hitobit-constants",
   "version": "0.0.17",
   "sideEffects": false,
-  "main": "src/",
-  "types": "src/",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "build:typings": "tsc -p ./tsconfig.json --declarationDir dist"
+  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "buffer": "^6.0.3"
   }

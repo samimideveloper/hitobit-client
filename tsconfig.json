@@ -5,13 +5,14 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "module": "esnext",
     "noImplicitAny": true,
     "noUnusedLocals": false,
     "skipLibCheck": true,
     "downlevelIteration": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "src",
     "src/hitobit-modules/src/customLocale.d.ts",

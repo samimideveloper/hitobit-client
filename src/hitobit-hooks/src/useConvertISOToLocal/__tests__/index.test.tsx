@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { initializeI18n } from "hitobit-modules/src";
+import { initializeI18n } from "hitobit-modules";
 import moment from "moment-jalaali";
 //@ts-ignore
 import fa from "moment/locale/fa";

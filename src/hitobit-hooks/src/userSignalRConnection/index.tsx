@@ -1,6 +1,6 @@
 import { URLManager } from "hitobit-modules";
+import { RequestError } from "hitobit-services";
 import { handleAccessTokenExpired } from "hitobit-services/src/context/userManager";
-import { RequestError } from "hitobit-services/src/services/config";
 import { ReactNode } from "react";
 import { useAuth } from "react-oidc-js";
 import { UserSignalRContext } from "./signalRContext";

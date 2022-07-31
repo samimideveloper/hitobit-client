@@ -4,7 +4,6 @@ import {
   usePostExchangeV1PrivateOrderOco,
 } from "hitobit-services";
 import { selectedSymbolStore } from "hitobit-store";
-import { useMarketTicker } from "../../..";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { BuyForm, OcoOrderValues } from "../types";
 
@@ -15,9 +14,6 @@ const useSubmit = ({
 }) => {
   const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
-
-  const { getSymbolMarketTicker } = useMarketTicker();
-  const selectedTicker = getSymbolMarketTicker(selectedSymbol?.symbol);
 
   const {
     handleSubmit: buyHandleSubmit,
@@ -68,8 +64,6 @@ const useSubmit = ({
 
     const placeOrder = () => {
       mutate({
-        // @todo type property is redundant
-        // @ts-ignore
         requestBody: {
           symbol: selectedSymbol?.symbol,
           side: "BUY",

@@ -1,8 +1,9 @@
 import Decimal from "decimal.js";
-import { useOrderPlacingError, useStepSize } from "hitobit-hooks";
 import { useTranslation } from "hitobit-modules";
 import { selectedSymbolStore } from "hitobit-store";
 import { ControllerRenderProps } from "react-hook-form";
+import { useOrderPlacingError } from "../../../useOrderPlacingError";
+import { useStepSize } from "../../../useStepSize";
 import { BuyForm, OcoOrderValues } from "../types";
 
 const ControllerLimit = ({
@@ -15,11 +16,7 @@ const ControllerLimit = ({
   const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
 
-  const {
-    setValue: buySetValue,
-    getValues,
-    trigger,
-  } = BuyForm.useFormContext();
+  const { setValue: buySetValue, getValues } = BuyForm.useFormContext();
 
   const { toTickSize } = useStepSize(selectedSymbol?.symbol);
 

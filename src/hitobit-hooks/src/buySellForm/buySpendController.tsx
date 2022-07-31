@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules/src";
+import { useTranslation } from "hitobit-modules";
 import { groupBy, map } from "lodash-es";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";

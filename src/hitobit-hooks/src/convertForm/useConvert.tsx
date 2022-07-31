@@ -1,7 +1,4 @@
-import {
-  AppOrderType,
-  usePostExchangeV1PrivateOrder,
-} from "hitobit-services/src";
+import { AppOrderType, usePostExchangeV1PrivateOrder } from "hitobit-services";
 import { useMatchedMarketsList } from "../useMatchedMarketsList";
 import { useQuantity } from "../useQuantity";
 import { ConvertContext, ConvertProps } from "./context";

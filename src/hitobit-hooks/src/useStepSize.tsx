@@ -1,8 +1,5 @@
 import Decimal from "decimal.js";
-import {
-  MarketFilterLotSize,
-  MarketFilterPriceFilter,
-} from "hitobit-utils/src";
+import { MarketFilterLotSize, MarketFilterPriceFilter } from "hitobit-utils";
 import { useCallback } from "react";
 import { useMarketTicker } from "./marketTicker";
 

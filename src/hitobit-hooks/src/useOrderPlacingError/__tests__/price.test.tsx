@@ -1,5 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
-import { i18n } from "hitobit-modules/src";
+import { i18n } from "hitobit-modules";
 import { useOrderPlacingError } from "..";
 import { ConvertProvider } from "../../convertForm";
 import { HitobitClientProvider } from "../../hooksAndStoresProvider";

@@ -12,6 +12,12 @@
     "rootDir": "./src",
     "noEmit": false
   },
-  "include": ["src/**/*", "src/custom.d.ts", "src/customLocale.d.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*",
+    "../custom.d.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

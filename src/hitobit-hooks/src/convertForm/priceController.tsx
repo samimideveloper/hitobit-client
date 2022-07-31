@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules/src";
+import { useTranslation } from "hitobit-modules";
 import { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import { useOrderPlacingError } from "../useOrderPlacingError";

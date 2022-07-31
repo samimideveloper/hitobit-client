@@ -34,6 +34,8 @@ module.exports = {
       // "<rootDir>/node_modules/lodash-es",
     ];
 
+    config.testPathIgnorePatterns = [".*/dist/.*"];
+
     config.transformIgnorePatterns = [
       // ...config.transformIgnorePatterns,
       "/node_modules/(?!(lodash-es|reactjs-view-core|reactjs-view|reactjs-view-share)/.*)",

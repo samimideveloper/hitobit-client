@@ -1,5 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
-import { getAxiosInstance } from "hitobit-services/src/services/config";
+import { getAxiosInstance } from "hitobit-services";
 
 let mock: MockAdapter;
 // Mock any GET request to /users

@@ -1,12 +1,12 @@
 {
   "packages": [
-    "src/hitobit-client",
     "src/hitobit-constants",
-    "src/hitobit-hooks",
     "src/hitobit-modules",
     "src/hitobit-services",
+    "src/hitobit-utils",
     "src/hitobit-store",
-    "src/hitobit-utils"
+    "src/hitobit-hooks",
+    "src/hitobit-client"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,

@@ -1,11 +1,9 @@
 import Decimal from "decimal.js";
-import {
-  useMarketTicker,
-  useStepSize,
-  useUserSelectedUserAssets,
-} from "hitobit-hooks/src";
-import { selectedSymbolStore } from "hitobit-store/src";
+import { selectedSymbolStore } from "hitobit-store";
 import { ControllerRenderProps } from "react-hook-form";
+import { useMarketTicker } from "../../../marketTicker";
+import { useStepSize } from "../../../useStepSize";
+import { useUserSelectedUserAssets } from "../../../useUserSelectedUserAssets";
 import { MarketOrderValues, SellForm } from "../types";
 
 const ControllerSlider = ({

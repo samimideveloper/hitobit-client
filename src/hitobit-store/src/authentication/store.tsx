@@ -1,4 +1,4 @@
-import { PersistKey } from "hitobit-constants/src";
+import { PersistKey } from "hitobit-constants";
 import { AsyncStorage } from "hitobit-modules";
 import { ReactNode } from "react";
 import { createStore } from "react-principal";

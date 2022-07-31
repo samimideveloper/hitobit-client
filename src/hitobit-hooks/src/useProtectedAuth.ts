@@ -1,5 +1,8 @@
-import { PurposeType, usePostAuthV1PrivateAuthGetcode } from "hitobit-services";
-import { RequestError } from "hitobit-services/src/services/config";
+import {
+  PurposeType,
+  RequestError,
+  usePostAuthV1PrivateAuthGetcode,
+} from "hitobit-services";
 import { useRef, useState } from "react";
 
 export type UserData = {
