@@ -1,6 +1,7 @@
 export {
   FIVE_MINUTE,
   ONE_MINUTE,
+  PersistKey,
   StatusCodes,
   TWENTY_SECOND,
 } from "hitobit-constants";
