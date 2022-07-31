@@ -5,6 +5,6 @@ export {
   TWENTY_SECOND,
 } from "hitobit-constants";
 export * from "hitobit-hooks";
-export { getDeviceId } from "hitobit-modules";
+export { cookieStorage, getDeviceId, URLManager } from "hitobit-modules";
 export * from "hitobit-store";
 export * from "hitobit-utils";
