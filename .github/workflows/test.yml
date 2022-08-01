@@ -23,9 +23,9 @@ jobs:
         run: npm i -g yarn
       - name: Install project dependencies
         run: yarn install
+      - name: Run tests
+        run: yarn test -- --watchAll=false --silent
       - name: Lint
         run: yarn lint
       - name: Compile
         run: tsc
-      - name: Run tests
-        run: yarn test -- --watchAll=false --silent
