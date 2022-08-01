@@ -1,6 +1,6 @@
 {
   "name": "hitobit-client",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,10 +12,10 @@
     "dist"
   ],
   "dependencies": {
-    "hitobit-hooks": "^0.0.21",
-    "hitobit-modules": "^0.0.21",
-    "hitobit-services": "^0.0.21",
-    "hitobit-store": "^0.0.21",
-    "hitobit-utils": "^0.0.21"
+    "hitobit-hooks": "^0.0.22",
+    "hitobit-modules": "^0.0.22",
+    "hitobit-services": "^0.0.22",
+    "hitobit-store": "^0.0.22",
+    "hitobit-utils": "^0.0.22"
   }
 }
