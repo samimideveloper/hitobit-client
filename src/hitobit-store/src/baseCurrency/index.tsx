@@ -1,5 +1,5 @@
 import { PersistKey } from "hitobit-constants";
-import { AsyncStorage } from "hitobit-modules";
+import { cookieStorage } from "hitobit-modules";
 import { SymbolStatus } from "hitobit-services";
 import { ReactNode } from "react";
 import { createReducer, createStore, Provider } from "react-principal";
@@ -37,7 +37,7 @@ const reducer = createReducer<InitialState>({
 export const baseCurrencyStore = createStore<InitialState>({
   reducer,
   initialState,
-  storage: AsyncStorage,
+  storage: cookieStorage,
   persistKey: PersistKey.BASE_CURRENCY,
   mapStateToPersist: (state) => state,
 });
