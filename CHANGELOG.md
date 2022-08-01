@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.23](https://github.com/hosseinmd/hitobit-client/compare/v0.0.22...v0.0.23) (2022-08-01)
+
+
+### Bug Fixes
+
+* lint ([e505e2b](https://github.com/hosseinmd/hitobit-client/commit/e505e2b93d2e38abea556e5f53e0134b61799c20))
+
+
+
+
+
 ## [0.0.22](https://github.com/hosseinmd/hitobit-client/compare/v0.0.21...v0.0.22) (2022-08-01)
 
 
