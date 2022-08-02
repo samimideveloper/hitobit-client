@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/hosseinmd/hitobit-client/compare/v0.0.23...v0.1.0) (2022-08-02)
+
+
+### Features
+
+* useEpayPay usePosPay useChargeAndPay useCharge ([af676d5](https://github.com/hosseinmd/hitobit-client/commit/af676d570f2185719316a3637fb67a4f210dbd58))
+
+
+
+
+
 ## [0.0.23](https://github.com/hosseinmd/hitobit-client/compare/v0.0.22...v0.0.23) (2022-08-01)
 
 **Note:** Version bump only for package hitobit-services
