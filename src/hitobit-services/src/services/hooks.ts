@@ -19,183 +19,6 @@ import {
 import { RequestError, SwaggerResponse } from "./config";
 import { getPageSize, getTotal, paginationFlattenData } from "./hooksConfig";
 import {
-  deleteAuthV1PrivateApikey,
-  deleteAuthV1PrivateAuthEmail,
-  deleteAuthV1PrivateUsertrusteddevice,
-  deleteExchangeV1PrivateOpenorders,
-  deleteExchangeV1PrivateOrder,
-  deleteExchangeV1PrivateOrderlist,
-  deletePartyV1PrivateFavoritemarket,
-  deletePartyV1PrivateNotification,
-  deletePartyV1PrivateNotificationAll,
-  deleteSettlementV1PrivateAddressbook,
-  deleteWalletV1PrivateWalletpermission,
-  getAnalyticsV1PrivateResellercommissionhistoryActiveusercount,
-  getAnalyticsV1PrivateResellercommissionhistoryNewusercount,
-  getAnalyticsV1PrivateResellercommissionhistoryTotalincome,
-  getAnalyticsV1PrivateResellercommissionhistoryTransactioncount,
-  getAnalyticsV1PrivateSecurityactivityList,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent,
-  getAnalyticsV1PrivateUserloginhistoryLast,
-  getAnalyticsV1PrivateUserloginhistoryList,
-  getAnalyticsV1PublicTradereferralcommissionhistoryRank,
-  getAuthV1PrivateApikey,
-  getAuthV1PrivateApikeyList,
-  getAuthV1PrivateAuthGetqrcode,
-  getAuthV1PrivateAuthUserstatus,
-  getAuthV1PrivateIdentityresourceGetpropertylist,
-  getAuthV1PrivateIdentityresourceGetscopelist,
-  getAuthV1PrivateUsertrusteddeviceList,
-  getAuthV1PrivateUsertrusteddeviceLoginhistoryList,
-  getAuthV1PublicAuthIsphonenumberregistered,
-  getBaseinfoV1PublicCityList,
-  getBaseinfoV1PublicCountryAll,
-  getBaseinfoV1PublicProvinceList,
-  getCapitalV1PrivateDepositList,
-  getCapitalV1PrivateDepositRecent,
-  getCapitalV1PrivatePosList,
-  getCapitalV1PrivateSettlementList,
-  getCapitalV1PrivateWithdrawDetail,
-  getCapitalV1PrivateWithdrawList,
-  getCapitalV1PrivateWithdrawRecent,
-  getCapitalV1PrivateWithdrawTodaytotal,
-  getCapitalV1PublicCurrencyAll,
-  getCapitalV1PublicMoneynetworkAll,
-  getExchangeV1PrivateAllorderlist,
-  getExchangeV1PrivateAllorders,
-  getExchangeV1PrivateAlltrades,
-  getExchangeV1PrivateOpenocoorderlist,
-  getExchangeV1PrivateOpenorders,
-  getExchangeV1PrivateOrder,
-  getExchangeV1PrivateOrderlist,
-  getExchangeV1PrivateUsertraderlevel,
-  getExchangeV1PublicAlltickers24hr,
-  getExchangeV1PublicDepth,
-  getExchangeV1PublicDomaintraderlevels,
-  getExchangeV1PublicKlines,
-  getExchangeV1PublicMarkets,
-  getExchangeV1PublicTicker24hr,
-  getExchangeV1PublicTrades,
-  getPartyV1PrivateDeviceAll,
-  getPartyV1PrivateDomainForcetwofa,
-  getPartyV1PrivateDomainSetting,
-  getPartyV1PrivateFavoritemarket,
-  getPartyV1PrivateIdentificationlevelInfo,
-  getPartyV1PrivateIdentificationlevelUserInfo,
-  getPartyV1PrivateNotificationAll,
-  getPartyV1PrivateNotificationTypes,
-  getPartyV1PrivatePluginList,
-  getPartyV1PrivateUserByuserreferralprogramid,
-  getPartyV1PrivateUsersettingPreference,
-  getPartyV1PrivateWalletsettingMaxreferalprogrampercent,
-  getPartyV1PublicIdentificationlevelGuide,
-  getPaymentV1PrivateEpayrequestCommission,
-  getPaymentV1PrivateEpayrequestCount,
-  getPaymentV1PrivateEpayrequestCountFromme,
-  getPaymentV1PrivateEpayrequestInfoClientuniqueid,
-  getPaymentV1PrivateEpayrequestInfoToken,
-  getPaymentV1PrivateEpayrequestList,
-  getPaymentV1PrivateEpayrequestListFromme,
-  getPaymentV1PrivateEpayrequestPluginCount,
-  getPaymentV1PrivateEpayrequestSmsResend,
-  getPaymentV1PublicEpayrequestGetblockchainaddress,
-  getPaymentV1PublicEpayrequestReceiptinfoClientuniqueid,
-  getPaymentV1PublicEpayrequestReceiptinfoToken,
-  getSettlementV1Private,
-  getSettlementV1PrivateAddressbook,
-  getSettlementV1PrivateAddressbookAll,
-  getSettlementV1PrivateCount,
-  getSettlementV1PrivateGlobalwalletproviderAll,
-  getSettlementV1PrivateList,
-  getSettlementV1PrivateReport,
-  getSettlementV1PrivateSubuser,
-  getStorageV1PrivateFileDownload,
-  getWalletV1PrivateAll,
-  getWalletV1PrivateBankAll,
-  getWalletV1PrivateFind,
-  getWalletV1PrivateGrouptransferCommission,
-  getWalletV1PrivateInternalwithdrawInfo,
-  getWalletV1PrivateSubuserAll,
-  getWalletV1PrivateSubuserAssignable,
-  getWalletV1PrivateTransferCommission,
-  getWalletV1PrivateUserassetAll,
-  getWalletV1PrivateUserassetSpotDefault,
-  getWalletV1PrivateUserassetSpotDefaultAll,
-  getWalletV1PrivateUserbankAll,
-  getWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank,
-  getWalletV1PrivateUserbankStatus,
-  getWalletV1PrivateUserreferralprogramAll,
-  getWalletV1PrivateUserreferralprogramDefault,
-  getWalletV1PublicCurrencyInfo,
-  patchWalletV1Private,
-  postApiCspreportLog,
-  postAuthV1PrivateApikey,
-  postAuthV1PrivateAuthDisabletwofactor,
-  postAuthV1PrivateAuthEmail,
-  postAuthV1PrivateAuthEmailSendcode,
-  postAuthV1PrivateAuthEnabletwofactor,
-  postAuthV1PrivateAuthGeneratewebsocketusertoken,
-  postAuthV1PrivateAuthGetcode,
-  postAuthV1PrivateAuthPhonecallSendcode,
-  postAuthV1PrivateAuthRevoketoken,
-  postAuthV1PublicAuthAnonyverifysecure,
-  postAuthV1PublicAuthChecktwofactorisenable,
-  postAuthV1PublicAuthConnectToken,
-  postAuthV1PublicAuthGetcaptcha,
-  postAuthV1PublicAuthGetcode,
-  postAuthV1PublicAuthRegister,
-  postAuthV1PublicAuthRegisterverify,
-  postAuthV1PublicAuthSetuserbasicinfo,
-  postAuthV1PublicAuthValidatecaptcha,
-  postCapitalV1PrivateDepositQueryuserdepositaddress,
-  postCapitalV1ProtectedWithdrawApply,
-  postExchangeV1PrivateOrder,
-  postExchangeV1PrivateOrderOco,
-  postPartyV1PrivateFavoritemarket,
-  postPartyV1PrivateIdentificationlevelLevelthree,
-  postPartyV1PrivateIdentificationlevelLeveltwo,
-  postPartyV1PrivateUserProfileimage,
-  postPaymentV1PrivateEpayrequestCharge,
-  postPaymentV1PrivateEpayrequestDivideipg,
-  postPaymentV1PrivateEpayrequestDividelink,
-  postPaymentV1PrivateEpayrequestIpg,
-  postPaymentV1PrivateEpayrequestLink,
-  postPaymentV1PrivateEpayrequestPaywithwallet,
-  postPaymentV1PrivateEpayrequestPostactioninternaldepositepayrequest,
-  postPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder,
-  postPaymentV1PrivateEpayrequestSetpayercurrenyinfo,
-  postPaymentV1PrivateEpayrequestUnblock,
-  postPaymentV1PublicEpayrequestPos,
-  postSettlementV1PrivateAddressbook,
-  postSettlementV1PrivateExcel,
-  postSettlementV1PrivateUserWalletNumber,
-  postStorageV1PrivateFileUploadfile,
-  postWalletV1Private,
-  postWalletV1PrivateTransfer,
-  postWalletV1PrivateUserbank,
-  postWalletV1PrivateUserreferralprogram,
-  postWalletV1PrivateWalletpermission,
-  putAuthV1PrivateApikey,
-  putAuthV1PrivateAuthEmail,
-  putAuthV1ProtectAuthChangepassword,
-  putAuthV1PublicAuthForgotpassword,
-  putPartyV1PrivateNotificationRead,
-  putPartyV1PrivateNotificationReadall,
-  putPartyV1PrivatePluginChangestatus,
-  putPartyV1PrivateUsersettingPreference,
-  putPaymentV1PrivateEpayrequestAssigneduser,
-  putPaymentV1PrivateEpayrequestCustomdata,
-  putPaymentV1PublicEpayrequestCancel,
-  putSettlementV1PrivateAddressbookWhitelistDisable,
-  putSettlementV1PrivateAddressbookWhitelistEnable,
-  putWalletV1PrivateUserreferralprogramDefault,
-  putWalletV1PrivateWalletpermission,
-} from "./services";
-import {
   AddPostActionInternalDepositEPayRequestRequestVM,
   AddPostActionPlaceMarketBuyOrderRequestVM,
   AddPostActionResponseVM,
@@ -226,12 +49,15 @@ import {
   CreateIpgRequestRequestVM,
   CreateLinkRequestRequestVM,
   CreatePosRequestRequestVM,
+  CreateSettlementRequestVM,
+  CreateUserBankDetailRequestVM,
   CreateUserBankRequestVM,
   CreateUserWalletRequestVM,
   CreateWithdrawRequestUserWalletResponseVM,
   CurrencyResponseVM,
   DeleteAuthV1PrivateApikeyQueryParams,
   DeleteAuthV1PrivateUsertrusteddeviceQueryParams,
+  DeleteEngagementV1PrivateNotificationClearallQueryParams,
   DepositTransactionHistoryListResponseVM,
   DomainCurrencyResponseVM,
   DomainSettingVM,
@@ -266,6 +92,7 @@ import {
   GetCapitalV1PrivateSettlementListQueryParams,
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
+  GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
   GetExchangeV1PrivateAlltradesQueryParams,
@@ -296,21 +123,25 @@ import {
   GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
   GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
   GetSettlementV1PrivateAddressbookQueryParams,
+  GetSettlementV1PrivateCommissionQueryParams,
   GetSettlementV1PrivateCountQueryParams,
   GetSettlementV1PrivateListQueryParams,
   GetSettlementV1PrivateQueryParams,
   GetSettlementV1PrivateReportQueryParams,
   GetSettlementV1PrivateSubuserQueryParams,
   GetStorageV1PrivateFileDownloadQueryParams,
-  GetWalletV1PrivateFindQueryParams,
   GetWalletV1PrivateGrouptransferCommissionQueryParams,
   GetWalletV1PrivateInternalwithdrawInfoQueryParams,
+  GetWalletV1PrivateQueryParams,
   GetWalletV1PrivateSubuserAllQueryParams,
   GetWalletV1PrivateSubuserAssignableQueryParams,
   GetWalletV1PrivateTransferCommissionQueryParams,
   GetWalletV1PrivateUserassetSpotDefaultQueryParams,
   GetWalletV1PrivateUserbankStatusQueryParams,
+  GetWalletV1PublicFindQueryParams,
   GlobalWalletProviderResponseVM,
+  GroupTransferMoneyRequestVM,
+  GroupTransferResponseVM,
   IdentificationLevel,
   IdentificationLevelGuideResponseVM,
   IdentityStatus,
@@ -321,7 +152,8 @@ import {
   MarketTickerPriceResponseVM,
   MoneyNetworkResponseVM,
   NewEmailRequestVM,
-  NewSettlementRequestVM,
+  Notification2ListResponseVM,
+  NotificationCountByTypeResponseVM,
   NotificationListResponseVM,
   NotificationTypesReadCountResponseVM,
   OcoOrderResultInfoResponseVM,
@@ -344,6 +176,7 @@ import {
   PreferenceUserSettingRequestVM,
   ProvinceResponseVM,
   PurposeType,
+  PutEngagementV1PrivateNotificationReadallQueryParams,
   PutPaymentV1PublicEpayrequestCancelQueryParams,
   PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
   PuzzleModelResponseVM,
@@ -358,9 +191,9 @@ import {
   RevokeTokenRequestVM,
   SecurityActivityListVM,
   SettlementExcelResponseVM,
+  SettlementFilterRequestVM,
   SettlementRequestInfoListResponseVM,
   SettlementRequestInfoResponseVM,
-  SettlementSearchRequestVM,
   SettlementTransactionHistoryListResponseVM,
   SubuserAccessRequestVM,
   TodayTotalWithdrawResponseVM,
@@ -399,10 +232,12 @@ import {
   UserTraderLevelResponseVM,
   UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
+  UserWalletDisplayDetailResponseVM,
   UserWalletDisplayResponseVM,
   UserWalletResponseVM,
   VerifySecureRequestVM,
   VerifyUserPhoneNumberRequestVM,
+  WalletDepositAddressRequestVM,
   WithdrawRequestUserWalletCreateRequestVM,
   WithdrawTransactionHistoryListResponseVM,
 } from "./types";
@@ -435,31 +270,33 @@ const useHasMore = (
     return false;
   }, [pages, list, queryParams]);
 
-type InternalMutationDefaultParams<TExtra> = {
+export type SwaggerTypescriptMutationDefaultParams<TExtra> = {
   _extraVariables?: TExtra;
   configOverride?: AxiosRequestConfig;
 };
-type InternalUseQueryOptions<TData> = UseQueryOptions<
+type SwaggerTypescriptUseQueryOptions<TData> = UseQueryOptions<
   SwaggerResponse<TData>,
   RequestError | Error
 >;
 
-type InternalUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
-  SwaggerResponse<TData>,
-  RequestError | Error,
-  TRequest & InternalMutationDefaultParams<TExtra>
->;
+type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
+  UseMutationOptions<
+    SwaggerResponse<TData>,
+    RequestError | Error,
+    TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
+  >;
 
-type InternalUseMutationOptionsVoid<TData, TExtra> = UseMutationOptions<
-  SwaggerResponse<TData>,
-  RequestError | Error,
-  InternalMutationDefaultParams<TExtra> | void
->;
+type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
+  UseMutationOptions<
+    SwaggerResponse<TData>,
+    RequestError | Error,
+    SwaggerTypescriptMutationDefaultParams<TExtra> | void
+  >;
 
 export const useDeleteAuthV1PrivateApikey = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { queryParams: DeleteAuthV1PrivateApikeyQueryParams },
+    { queryParams?: DeleteAuthV1PrivateApikeyQueryParams },
     TExtra
   >,
 ) => {
@@ -470,8 +307,18 @@ export const useDeleteAuthV1PrivateApikey = <TExtra>(
   }, options);
 };
 
+export const useDeleteAuthV1PrivateApikeyAll = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
+) => {
+  return useMutation((_o) => {
+    const { configOverride } = _o || {};
+
+    return deleteAuthV1PrivateApikeyAll(configOverride);
+  }, options);
+};
+
 export const useDeleteAuthV1PrivateAuthEmail = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: RemoveEmailRequestVM },
     TExtra
@@ -493,9 +340,9 @@ export const useDeleteAuthV1PrivateAuthEmail = <TExtra>(
 };
 
 export const useDeleteAuthV1PrivateUsertrusteddevice = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { queryParams: DeleteAuthV1PrivateUsertrusteddeviceQueryParams },
+    { queryParams?: DeleteAuthV1PrivateUsertrusteddeviceQueryParams },
     TExtra
   >,
 ) => {
@@ -506,8 +353,25 @@ export const useDeleteAuthV1PrivateUsertrusteddevice = <TExtra>(
   }, options);
 };
 
+export const useDeleteEngagementV1PrivateNotificationClearall = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { queryParams?: DeleteEngagementV1PrivateNotificationClearallQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const { queryParams, configOverride } = _o || {};
+
+    return deleteEngagementV1PrivateNotificationClearall(
+      queryParams,
+      configOverride,
+    );
+  }, options);
+};
+
 export const useDeleteExchangeV1PrivateOpenorders = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     CancelOrderResponseVM[],
     { requestBody: CancelAllOrdersRequestVM },
     TExtra
@@ -529,7 +393,7 @@ export const useDeleteExchangeV1PrivateOpenorders = <TExtra>(
 };
 
 export const useDeleteExchangeV1PrivateOrder = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     CancelOrderResponseVM,
     { requestBody: CancelOrderRequestVM },
     TExtra
@@ -551,7 +415,7 @@ export const useDeleteExchangeV1PrivateOrder = <TExtra>(
 };
 
 export const useDeleteExchangeV1PrivateOrderlist = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     CancelOcoOrderResponseVM,
     { requestBody: CancelOcoOrderRequestVM },
     TExtra
@@ -573,7 +437,7 @@ export const useDeleteExchangeV1PrivateOrderlist = <TExtra>(
 };
 
 export const useDeletePartyV1PrivateFavoritemarket = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UpdateFavoriteMarketRequestVM[] },
     TExtra
@@ -595,7 +459,11 @@ export const useDeletePartyV1PrivateFavoritemarket = <TExtra>(
 };
 
 export const useDeletePartyV1PrivateNotification = <TExtra>(
-  options?: InternalUseMutationOptions<any, { requestBody: number[] }, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: number[] },
+    TExtra
+  >,
 ) => {
   return useMutation((_o) => {
     const {
@@ -613,7 +481,7 @@ export const useDeletePartyV1PrivateNotification = <TExtra>(
 };
 
 export const useDeletePartyV1PrivateNotificationAll = <TExtra>(
-  options?: InternalUseMutationOptionsVoid<any, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
 ) => {
   return useMutation((_o) => {
     const { configOverride } = _o || {};
@@ -623,7 +491,11 @@ export const useDeletePartyV1PrivateNotificationAll = <TExtra>(
 };
 
 export const useDeleteSettlementV1PrivateAddressbook = <TExtra>(
-  options?: InternalUseMutationOptions<any, { requestBody: number[] }, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: number[] },
+    TExtra
+  >,
 ) => {
   return useMutation((_o) => {
     const {
@@ -641,7 +513,7 @@ export const useDeleteSettlementV1PrivateAddressbook = <TExtra>(
 };
 
 export const useDeleteWalletV1PrivateWalletpermission = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: SubuserAccessRequestVM },
     TExtra
@@ -664,8 +536,8 @@ export const useDeleteWalletV1PrivateWalletpermission = <TExtra>(
 
 export const useGetAnalyticsV1PrivateResellercommissionhistoryActiveusercount =
   (
-    queryParams: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
-    options?: InternalUseQueryOptions<number>,
+    queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
+    options?: SwaggerTypescriptUseQueryOptions<number>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
@@ -673,10 +545,10 @@ export const useGetAnalyticsV1PrivateResellercommissionhistoryActiveusercount =
         queryParams,
         configOverride,
       );
-    return useQuery(key, () => fun(), options);
+    return useQuery(key, fun, options);
   };
 useGetAnalyticsV1PrivateResellercommissionhistoryActiveusercount.info = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -695,8 +567,8 @@ useGetAnalyticsV1PrivateResellercommissionhistoryActiveusercount.info = (
 };
 useGetAnalyticsV1PrivateResellercommissionhistoryActiveusercount.prefetch = (
   client: QueryClient,
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -710,8 +582,8 @@ useGetAnalyticsV1PrivateResellercommissionhistoryActiveusercount.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAnalyticsV1PrivateResellercommissionhistoryNewusercount = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -719,10 +591,10 @@ export const useGetAnalyticsV1PrivateResellercommissionhistoryNewusercount = (
       queryParams,
       configOverride,
     );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAnalyticsV1PrivateResellercommissionhistoryNewusercount.info = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -741,8 +613,8 @@ useGetAnalyticsV1PrivateResellercommissionhistoryNewusercount.info = (
 };
 useGetAnalyticsV1PrivateResellercommissionhistoryNewusercount.prefetch = (
   client: QueryClient,
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -756,8 +628,8 @@ useGetAnalyticsV1PrivateResellercommissionhistoryNewusercount.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAnalyticsV1PrivateResellercommissionhistoryTotalincome = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -765,10 +637,10 @@ export const useGetAnalyticsV1PrivateResellercommissionhistoryTotalincome = (
       queryParams,
       configOverride,
     );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAnalyticsV1PrivateResellercommissionhistoryTotalincome.info = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -787,8 +659,8 @@ useGetAnalyticsV1PrivateResellercommissionhistoryTotalincome.info = (
 };
 useGetAnalyticsV1PrivateResellercommissionhistoryTotalincome.prefetch = (
   client: QueryClient,
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -803,8 +675,8 @@ useGetAnalyticsV1PrivateResellercommissionhistoryTotalincome.prefetch = (
 };
 export const useGetAnalyticsV1PrivateResellercommissionhistoryTransactioncount =
   (
-    queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
-    options?: InternalUseQueryOptions<number>,
+    queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
+    options?: SwaggerTypescriptUseQueryOptions<number>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
@@ -812,10 +684,10 @@ export const useGetAnalyticsV1PrivateResellercommissionhistoryTransactioncount =
         queryParams,
         configOverride,
       );
-    return useQuery(key, () => fun(), options);
+    return useQuery(key, fun, options);
   };
 useGetAnalyticsV1PrivateResellercommissionhistoryTransactioncount.info = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -834,8 +706,8 @@ useGetAnalyticsV1PrivateResellercommissionhistoryTransactioncount.info = (
 };
 useGetAnalyticsV1PrivateResellercommissionhistoryTransactioncount.prefetch = (
   client: QueryClient,
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -849,7 +721,7 @@ useGetAnalyticsV1PrivateResellercommissionhistoryTransactioncount.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAnalyticsV1PrivateSecurityactivityList = (
-  queryParams: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<SecurityActivityListVM>,
     RequestError | Error
@@ -884,7 +756,7 @@ export const useGetAnalyticsV1PrivateSecurityactivityList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetAnalyticsV1PrivateSecurityactivityList.info = (
-  queryParams: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -908,7 +780,7 @@ useGetAnalyticsV1PrivateSecurityactivityList.info = (
 };
 useGetAnalyticsV1PrivateSecurityactivityList.prefetch = (
   client: QueryClient,
-  queryParams: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<SecurityActivityListVM>,
     RequestError | Error
@@ -926,8 +798,8 @@ useGetAnalyticsV1PrivateSecurityactivityList.prefetch = (
 };
 export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-    options?: InternalUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
+    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
@@ -935,11 +807,11 @@ export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionreb
         queryParams,
         configOverride,
       );
-    return useQuery(key, () => fun(), options);
+    return useQuery(key, fun, options);
   };
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.info =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
     configOverride?: AxiosRequestConfig,
   ) => {
     return {
@@ -959,8 +831,8 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.info 
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.prefetch =
   (
     client: QueryClient,
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-    options?: InternalUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
+    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
@@ -975,7 +847,7 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.prefe
   };
 export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent =
   (
-    options?: InternalUseQueryOptions<
+    options?: SwaggerTypescriptUseQueryOptions<
       TradeReferralCommissionHistoryResponseVM[]
     >,
     configOverride?: AxiosRequestConfig,
@@ -984,7 +856,7 @@ export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionreb
       useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.info(
         configOverride,
       );
-    return useQuery(key, () => fun(), options);
+    return useQuery(key, fun, options);
   };
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.info =
   (configOverride?: AxiosRequestConfig) => {
@@ -1001,7 +873,7 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.inf
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.prefetch =
   (
     client: QueryClient,
-    options?: InternalUseQueryOptions<
+    options?: SwaggerTypescriptUseQueryOptions<
       TradeReferralCommissionHistoryResponseVM[]
     >,
     configOverride?: AxiosRequestConfig,
@@ -1017,7 +889,7 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.pre
   };
 export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
     options?: UseInfiniteQueryOptions<
       SwaggerResponse<ReferralHistoryListVM>,
       RequestError | Error
@@ -1053,7 +925,7 @@ export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhisto
     return { ...rest, data, list, hasMore, total };
   };
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.info = (
-  queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
+  queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1078,7 +950,7 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.info = (
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.prefetch =
   (
     client: QueryClient,
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
     options?: UseInfiniteQueryOptions<
       SwaggerResponse<ReferralHistoryListVM>,
       RequestError | Error
@@ -1097,8 +969,8 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.prefetch =
   };
 export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
-    options?: InternalUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
+    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
@@ -1106,11 +978,11 @@ export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickb
         queryParams,
         configOverride,
       );
-    return useQuery(key, () => fun(), options);
+    return useQuery(key, fun, options);
   };
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.info =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
     configOverride?: AxiosRequestConfig,
   ) => {
     return {
@@ -1130,8 +1002,8 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.info 
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.prefetch =
   (
     client: QueryClient,
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
-    options?: InternalUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
+    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
@@ -1146,7 +1018,7 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.prefe
   };
 export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent =
   (
-    options?: InternalUseQueryOptions<
+    options?: SwaggerTypescriptUseQueryOptions<
       TradeReferralCommissionHistoryResponseVM[]
     >,
     configOverride?: AxiosRequestConfig,
@@ -1155,7 +1027,7 @@ export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickb
       useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.info(
         configOverride,
       );
-    return useQuery(key, () => fun(), options);
+    return useQuery(key, fun, options);
   };
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.info =
   (configOverride?: AxiosRequestConfig) => {
@@ -1172,7 +1044,7 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.inf
 useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.prefetch =
   (
     client: QueryClient,
-    options?: InternalUseQueryOptions<
+    options?: SwaggerTypescriptUseQueryOptions<
       TradeReferralCommissionHistoryResponseVM[]
     >,
     configOverride?: AxiosRequestConfig,
@@ -1187,12 +1059,12 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.pre
       : client.prefetchQuery(key, () => fun(), options);
   };
 export const useGetAnalyticsV1PrivateUserloginhistoryLast = (
-  options?: InternalUseQueryOptions<UserLoginHistoryDetailsVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserLoginHistoryDetailsVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetAnalyticsV1PrivateUserloginhistoryLast.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAnalyticsV1PrivateUserloginhistoryLast.info = (
   configOverride?: AxiosRequestConfig,
@@ -1204,7 +1076,7 @@ useGetAnalyticsV1PrivateUserloginhistoryLast.info = (
 };
 useGetAnalyticsV1PrivateUserloginhistoryLast.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserLoginHistoryDetailsVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserLoginHistoryDetailsVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -1215,7 +1087,7 @@ useGetAnalyticsV1PrivateUserloginhistoryLast.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAnalyticsV1PrivateUserloginhistoryList = (
-  queryParams: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<UserLoginHistoryListVM>,
     RequestError | Error
@@ -1250,7 +1122,7 @@ export const useGetAnalyticsV1PrivateUserloginhistoryList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetAnalyticsV1PrivateUserloginhistoryList.info = (
-  queryParams: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1274,7 +1146,7 @@ useGetAnalyticsV1PrivateUserloginhistoryList.info = (
 };
 useGetAnalyticsV1PrivateUserloginhistoryList.prefetch = (
   client: QueryClient,
-  queryParams: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<UserLoginHistoryListVM>,
     RequestError | Error
@@ -1291,14 +1163,16 @@ useGetAnalyticsV1PrivateUserloginhistoryList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAnalyticsV1PublicTradereferralcommissionhistoryRank = (
-  options?: InternalUseQueryOptions<TradeReferralCommissionRankingResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    TradeReferralCommissionRankingResponseVM[]
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info(
       configOverride,
     );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info = (
   configOverride?: AxiosRequestConfig,
@@ -1313,7 +1187,9 @@ useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info = (
 };
 useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<TradeReferralCommissionRankingResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    TradeReferralCommissionRankingResponseVM[]
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -1326,18 +1202,18 @@ useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateApikey = (
-  queryParams: GetAuthV1PrivateApikeyQueryParams,
-  options?: InternalUseQueryOptions<ApiKeyResponseVM>,
+  queryParams?: GetAuthV1PrivateApikeyQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ApiKeyResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PrivateApikey.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAuthV1PrivateApikey.info = (
-  queryParams: GetAuthV1PrivateApikeyQueryParams,
+  queryParams?: GetAuthV1PrivateApikeyQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1352,8 +1228,8 @@ useGetAuthV1PrivateApikey.info = (
 };
 useGetAuthV1PrivateApikey.prefetch = (
   client: QueryClient,
-  queryParams: GetAuthV1PrivateApikeyQueryParams,
-  options?: InternalUseQueryOptions<ApiKeyResponseVM>,
+  queryParams?: GetAuthV1PrivateApikeyQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ApiKeyResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PrivateApikey.info(
@@ -1366,7 +1242,7 @@ useGetAuthV1PrivateApikey.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateApikeyList = (
-  queryParams: GetAuthV1PrivateApikeyListQueryParams,
+  queryParams?: GetAuthV1PrivateApikeyListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<ApiKeyListResponseVM>,
     RequestError | Error
@@ -1401,7 +1277,7 @@ export const useGetAuthV1PrivateApikeyList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetAuthV1PrivateApikeyList.info = (
-  queryParams: GetAuthV1PrivateApikeyListQueryParams,
+  queryParams?: GetAuthV1PrivateApikeyListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1419,7 +1295,7 @@ useGetAuthV1PrivateApikeyList.info = (
 };
 useGetAuthV1PrivateApikeyList.prefetch = (
   client: QueryClient,
-  queryParams: GetAuthV1PrivateApikeyListQueryParams,
+  queryParams?: GetAuthV1PrivateApikeyListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<ApiKeyListResponseVM>,
     RequestError | Error
@@ -1436,11 +1312,11 @@ useGetAuthV1PrivateApikeyList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateAuthGetqrcode = (
-  options?: InternalUseQueryOptions<QrCodeResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<QrCodeResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PrivateAuthGetqrcode.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAuthV1PrivateAuthGetqrcode.info = (
   configOverride?: AxiosRequestConfig,
@@ -1452,7 +1328,7 @@ useGetAuthV1PrivateAuthGetqrcode.info = (
 };
 useGetAuthV1PrivateAuthGetqrcode.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<QrCodeResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<QrCodeResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PrivateAuthGetqrcode.info(configOverride);
@@ -1462,11 +1338,11 @@ useGetAuthV1PrivateAuthGetqrcode.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateAuthUserstatus = (
-  options?: InternalUseQueryOptions<UserStatusResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserStatusResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PrivateAuthUserstatus.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAuthV1PrivateAuthUserstatus.info = (
   configOverride?: AxiosRequestConfig,
@@ -1478,7 +1354,7 @@ useGetAuthV1PrivateAuthUserstatus.info = (
 };
 useGetAuthV1PrivateAuthUserstatus.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserStatusResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserStatusResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PrivateAuthUserstatus.info(configOverride);
@@ -1488,12 +1364,12 @@ useGetAuthV1PrivateAuthUserstatus.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateIdentityresourceGetpropertylist = (
-  options?: InternalUseQueryOptions<string[]>,
+  options?: SwaggerTypescriptUseQueryOptions<string[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetAuthV1PrivateIdentityresourceGetpropertylist.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAuthV1PrivateIdentityresourceGetpropertylist.info = (
   configOverride?: AxiosRequestConfig,
@@ -1505,7 +1381,7 @@ useGetAuthV1PrivateIdentityresourceGetpropertylist.info = (
 };
 useGetAuthV1PrivateIdentityresourceGetpropertylist.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<string[]>,
+  options?: SwaggerTypescriptUseQueryOptions<string[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -1516,12 +1392,12 @@ useGetAuthV1PrivateIdentityresourceGetpropertylist.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateIdentityresourceGetscopelist = (
-  options?: InternalUseQueryOptions<ApiScopeResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ApiScopeResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetAuthV1PrivateIdentityresourceGetscopelist.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAuthV1PrivateIdentityresourceGetscopelist.info = (
   configOverride?: AxiosRequestConfig,
@@ -1533,7 +1409,7 @@ useGetAuthV1PrivateIdentityresourceGetscopelist.info = (
 };
 useGetAuthV1PrivateIdentityresourceGetscopelist.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<ApiScopeResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ApiScopeResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -1544,7 +1420,7 @@ useGetAuthV1PrivateIdentityresourceGetscopelist.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateUsertrusteddeviceList = (
-  queryParams: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<UserTrustedDeviceListResponseVM>,
     RequestError | Error
@@ -1579,7 +1455,7 @@ export const useGetAuthV1PrivateUsertrusteddeviceList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetAuthV1PrivateUsertrusteddeviceList.info = (
-  queryParams: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1597,7 +1473,7 @@ useGetAuthV1PrivateUsertrusteddeviceList.info = (
 };
 useGetAuthV1PrivateUsertrusteddeviceList.prefetch = (
   client: QueryClient,
-  queryParams: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<UserTrustedDeviceListResponseVM>,
     RequestError | Error
@@ -1614,7 +1490,7 @@ useGetAuthV1PrivateUsertrusteddeviceList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PrivateUsertrusteddeviceLoginhistoryList = (
-  queryParams: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<UserLoginHistoryListVM>,
     RequestError | Error
@@ -1650,7 +1526,7 @@ export const useGetAuthV1PrivateUsertrusteddeviceLoginhistoryList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetAuthV1PrivateUsertrusteddeviceLoginhistoryList.info = (
-  queryParams: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1674,7 +1550,7 @@ useGetAuthV1PrivateUsertrusteddeviceLoginhistoryList.info = (
 };
 useGetAuthV1PrivateUsertrusteddeviceLoginhistoryList.prefetch = (
   client: QueryClient,
-  queryParams: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<UserLoginHistoryListVM>,
     RequestError | Error
@@ -1692,18 +1568,18 @@ useGetAuthV1PrivateUsertrusteddeviceLoginhistoryList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetAuthV1PublicAuthIsphonenumberregistered = (
-  queryParams: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
-  options?: InternalUseQueryOptions<boolean>,
+  queryParams?: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PublicAuthIsphonenumberregistered.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetAuthV1PublicAuthIsphonenumberregistered.info = (
-  queryParams: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
+  queryParams?: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1722,8 +1598,8 @@ useGetAuthV1PublicAuthIsphonenumberregistered.info = (
 };
 useGetAuthV1PublicAuthIsphonenumberregistered.prefetch = (
   client: QueryClient,
-  queryParams: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
-  options?: InternalUseQueryOptions<boolean>,
+  queryParams?: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAuthV1PublicAuthIsphonenumberregistered.info(
@@ -1736,18 +1612,18 @@ useGetAuthV1PublicAuthIsphonenumberregistered.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetBaseinfoV1PublicCityList = (
-  queryParams: GetBaseinfoV1PublicCityListQueryParams,
-  options?: InternalUseQueryOptions<CityResponseVM[]>,
+  queryParams?: GetBaseinfoV1PublicCityListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<CityResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBaseinfoV1PublicCityList.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetBaseinfoV1PublicCityList.info = (
-  queryParams: GetBaseinfoV1PublicCityListQueryParams,
+  queryParams?: GetBaseinfoV1PublicCityListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1762,8 +1638,8 @@ useGetBaseinfoV1PublicCityList.info = (
 };
 useGetBaseinfoV1PublicCityList.prefetch = (
   client: QueryClient,
-  queryParams: GetBaseinfoV1PublicCityListQueryParams,
-  options?: InternalUseQueryOptions<CityResponseVM[]>,
+  queryParams?: GetBaseinfoV1PublicCityListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<CityResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBaseinfoV1PublicCityList.info(
@@ -1776,18 +1652,18 @@ useGetBaseinfoV1PublicCityList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetBaseinfoV1PublicCountryAll = (
-  queryParams: GetBaseinfoV1PublicCountryAllQueryParams,
-  options?: InternalUseQueryOptions<CountryResponseVM[]>,
+  queryParams?: GetBaseinfoV1PublicCountryAllQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<CountryResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBaseinfoV1PublicCountryAll.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetBaseinfoV1PublicCountryAll.info = (
-  queryParams: GetBaseinfoV1PublicCountryAllQueryParams,
+  queryParams?: GetBaseinfoV1PublicCountryAllQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1802,8 +1678,8 @@ useGetBaseinfoV1PublicCountryAll.info = (
 };
 useGetBaseinfoV1PublicCountryAll.prefetch = (
   client: QueryClient,
-  queryParams: GetBaseinfoV1PublicCountryAllQueryParams,
-  options?: InternalUseQueryOptions<CountryResponseVM[]>,
+  queryParams?: GetBaseinfoV1PublicCountryAllQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<CountryResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBaseinfoV1PublicCountryAll.info(
@@ -1816,18 +1692,18 @@ useGetBaseinfoV1PublicCountryAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetBaseinfoV1PublicProvinceList = (
-  queryParams: GetBaseinfoV1PublicProvinceListQueryParams,
-  options?: InternalUseQueryOptions<ProvinceResponseVM[]>,
+  queryParams?: GetBaseinfoV1PublicProvinceListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ProvinceResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBaseinfoV1PublicProvinceList.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetBaseinfoV1PublicProvinceList.info = (
-  queryParams: GetBaseinfoV1PublicProvinceListQueryParams,
+  queryParams?: GetBaseinfoV1PublicProvinceListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1842,8 +1718,8 @@ useGetBaseinfoV1PublicProvinceList.info = (
 };
 useGetBaseinfoV1PublicProvinceList.prefetch = (
   client: QueryClient,
-  queryParams: GetBaseinfoV1PublicProvinceListQueryParams,
-  options?: InternalUseQueryOptions<ProvinceResponseVM[]>,
+  queryParams?: GetBaseinfoV1PublicProvinceListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ProvinceResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBaseinfoV1PublicProvinceList.info(
@@ -1856,7 +1732,7 @@ useGetBaseinfoV1PublicProvinceList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivateDepositList = (
-  queryParams: GetCapitalV1PrivateDepositListQueryParams,
+  queryParams?: GetCapitalV1PrivateDepositListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<DepositTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -1891,7 +1767,7 @@ export const useGetCapitalV1PrivateDepositList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetCapitalV1PrivateDepositList.info = (
-  queryParams: GetCapitalV1PrivateDepositListQueryParams,
+  queryParams?: GetCapitalV1PrivateDepositListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1909,7 +1785,7 @@ useGetCapitalV1PrivateDepositList.info = (
 };
 useGetCapitalV1PrivateDepositList.prefetch = (
   client: QueryClient,
-  queryParams: GetCapitalV1PrivateDepositListQueryParams,
+  queryParams?: GetCapitalV1PrivateDepositListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<DepositTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -1926,11 +1802,11 @@ useGetCapitalV1PrivateDepositList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivateDepositRecent = (
-  options?: InternalUseQueryOptions<DepositTransactionHistoryListResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<DepositTransactionHistoryListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetCapitalV1PrivateDepositRecent.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetCapitalV1PrivateDepositRecent.info = (
   configOverride?: AxiosRequestConfig,
@@ -1942,7 +1818,7 @@ useGetCapitalV1PrivateDepositRecent.info = (
 };
 useGetCapitalV1PrivateDepositRecent.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<DepositTransactionHistoryListResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<DepositTransactionHistoryListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetCapitalV1PrivateDepositRecent.info(configOverride);
@@ -1952,7 +1828,7 @@ useGetCapitalV1PrivateDepositRecent.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivatePosList = (
-  queryParams: GetCapitalV1PrivatePosListQueryParams,
+  queryParams?: GetCapitalV1PrivatePosListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<POSTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -1987,7 +1863,7 @@ export const useGetCapitalV1PrivatePosList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetCapitalV1PrivatePosList.info = (
-  queryParams: GetCapitalV1PrivatePosListQueryParams,
+  queryParams?: GetCapitalV1PrivatePosListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2005,7 +1881,7 @@ useGetCapitalV1PrivatePosList.info = (
 };
 useGetCapitalV1PrivatePosList.prefetch = (
   client: QueryClient,
-  queryParams: GetCapitalV1PrivatePosListQueryParams,
+  queryParams?: GetCapitalV1PrivatePosListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<POSTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -2022,7 +1898,7 @@ useGetCapitalV1PrivatePosList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivateSettlementList = (
-  queryParams: GetCapitalV1PrivateSettlementListQueryParams,
+  queryParams?: GetCapitalV1PrivateSettlementListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<SettlementTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -2057,7 +1933,7 @@ export const useGetCapitalV1PrivateSettlementList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetCapitalV1PrivateSettlementList.info = (
-  queryParams: GetCapitalV1PrivateSettlementListQueryParams,
+  queryParams?: GetCapitalV1PrivateSettlementListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2075,7 +1951,7 @@ useGetCapitalV1PrivateSettlementList.info = (
 };
 useGetCapitalV1PrivateSettlementList.prefetch = (
   client: QueryClient,
-  queryParams: GetCapitalV1PrivateSettlementListQueryParams,
+  queryParams?: GetCapitalV1PrivateSettlementListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<SettlementTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -2092,18 +1968,18 @@ useGetCapitalV1PrivateSettlementList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivateWithdrawDetail = (
-  queryParams: GetCapitalV1PrivateWithdrawDetailQueryParams,
-  options?: InternalUseQueryOptions<TransactionHistoryDetailResponseVM>,
+  queryParams?: GetCapitalV1PrivateWithdrawDetailQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TransactionHistoryDetailResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetCapitalV1PrivateWithdrawDetail.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetCapitalV1PrivateWithdrawDetail.info = (
-  queryParams: GetCapitalV1PrivateWithdrawDetailQueryParams,
+  queryParams?: GetCapitalV1PrivateWithdrawDetailQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2118,8 +1994,8 @@ useGetCapitalV1PrivateWithdrawDetail.info = (
 };
 useGetCapitalV1PrivateWithdrawDetail.prefetch = (
   client: QueryClient,
-  queryParams: GetCapitalV1PrivateWithdrawDetailQueryParams,
-  options?: InternalUseQueryOptions<TransactionHistoryDetailResponseVM>,
+  queryParams?: GetCapitalV1PrivateWithdrawDetailQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TransactionHistoryDetailResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetCapitalV1PrivateWithdrawDetail.info(
@@ -2132,7 +2008,7 @@ useGetCapitalV1PrivateWithdrawDetail.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivateWithdrawList = (
-  queryParams: GetCapitalV1PrivateWithdrawListQueryParams,
+  queryParams?: GetCapitalV1PrivateWithdrawListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<WithdrawTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -2167,7 +2043,7 @@ export const useGetCapitalV1PrivateWithdrawList = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetCapitalV1PrivateWithdrawList.info = (
-  queryParams: GetCapitalV1PrivateWithdrawListQueryParams,
+  queryParams?: GetCapitalV1PrivateWithdrawListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2185,7 +2061,7 @@ useGetCapitalV1PrivateWithdrawList.info = (
 };
 useGetCapitalV1PrivateWithdrawList.prefetch = (
   client: QueryClient,
-  queryParams: GetCapitalV1PrivateWithdrawListQueryParams,
+  queryParams?: GetCapitalV1PrivateWithdrawListQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<WithdrawTransactionHistoryListResponseVM>,
     RequestError | Error
@@ -2202,12 +2078,12 @@ useGetCapitalV1PrivateWithdrawList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivateWithdrawRecent = (
-  options?: InternalUseQueryOptions<WithdrawTransactionHistoryListResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<WithdrawTransactionHistoryListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetCapitalV1PrivateWithdrawRecent.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetCapitalV1PrivateWithdrawRecent.info = (
   configOverride?: AxiosRequestConfig,
@@ -2219,7 +2095,7 @@ useGetCapitalV1PrivateWithdrawRecent.info = (
 };
 useGetCapitalV1PrivateWithdrawRecent.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<WithdrawTransactionHistoryListResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<WithdrawTransactionHistoryListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -2230,12 +2106,12 @@ useGetCapitalV1PrivateWithdrawRecent.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PrivateWithdrawTodaytotal = (
-  options?: InternalUseQueryOptions<TodayTotalWithdrawResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<TodayTotalWithdrawResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetCapitalV1PrivateWithdrawTodaytotal.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetCapitalV1PrivateWithdrawTodaytotal.info = (
   configOverride?: AxiosRequestConfig,
@@ -2247,7 +2123,7 @@ useGetCapitalV1PrivateWithdrawTodaytotal.info = (
 };
 useGetCapitalV1PrivateWithdrawTodaytotal.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<TodayTotalWithdrawResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<TodayTotalWithdrawResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -2258,11 +2134,11 @@ useGetCapitalV1PrivateWithdrawTodaytotal.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PublicCurrencyAll = (
-  options?: InternalUseQueryOptions<CurrencyResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<CurrencyResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetCapitalV1PublicCurrencyAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetCapitalV1PublicCurrencyAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -2274,7 +2150,7 @@ useGetCapitalV1PublicCurrencyAll.info = (
 };
 useGetCapitalV1PublicCurrencyAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<CurrencyResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<CurrencyResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetCapitalV1PublicCurrencyAll.info(configOverride);
@@ -2284,12 +2160,12 @@ useGetCapitalV1PublicCurrencyAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetCapitalV1PublicMoneynetworkAll = (
-  options?: InternalUseQueryOptions<MoneyNetworkResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<MoneyNetworkResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetCapitalV1PublicMoneynetworkAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetCapitalV1PublicMoneynetworkAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -2301,7 +2177,7 @@ useGetCapitalV1PublicMoneynetworkAll.info = (
 };
 useGetCapitalV1PublicMoneynetworkAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<MoneyNetworkResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<MoneyNetworkResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -2311,19 +2187,91 @@ useGetCapitalV1PublicMoneynetworkAll.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
+export const useGetEngagementV1PrivateNotification = (
+  queryParams?: GetEngagementV1PrivateNotificationQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<Notification2ListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetEngagementV1PrivateNotification.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetEngagementV1PrivateNotification.info = (
+  queryParams?: GetEngagementV1PrivateNotificationQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getEngagementV1PrivateNotification.key, queryParams] as QueryKey,
+    fun: () =>
+      getEngagementV1PrivateNotification(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetEngagementV1PrivateNotification.prefetch = (
+  client: QueryClient,
+  queryParams?: GetEngagementV1PrivateNotificationQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<Notification2ListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetEngagementV1PrivateNotification.info(
+    queryParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetEngagementV1PrivateNotificationCount = (
+  options?: SwaggerTypescriptUseQueryOptions<
+    NotificationCountByTypeResponseVM[]
+  >,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetEngagementV1PrivateNotificationCount.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetEngagementV1PrivateNotificationCount.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getEngagementV1PrivateNotificationCount.key] as QueryKey,
+    fun: () => getEngagementV1PrivateNotificationCount(configOverride),
+  };
+};
+useGetEngagementV1PrivateNotificationCount.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<
+    NotificationCountByTypeResponseVM[]
+  >,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetEngagementV1PrivateNotificationCount.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const useGetExchangeV1PrivateAllorderlist = (
-  queryParams: GetExchangeV1PrivateAllorderlistQueryParams,
-  options?: InternalUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
+  queryParams?: GetExchangeV1PrivateAllorderlistQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateAllorderlist.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PrivateAllorderlist.info = (
-  queryParams: GetExchangeV1PrivateAllorderlistQueryParams,
+  queryParams?: GetExchangeV1PrivateAllorderlistQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2338,8 +2286,8 @@ useGetExchangeV1PrivateAllorderlist.info = (
 };
 useGetExchangeV1PrivateAllorderlist.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PrivateAllorderlistQueryParams,
-  options?: InternalUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
+  queryParams?: GetExchangeV1PrivateAllorderlistQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateAllorderlist.info(
@@ -2352,7 +2300,7 @@ useGetExchangeV1PrivateAllorderlist.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PrivateAllorders = (
-  queryParams: GetExchangeV1PrivateAllordersQueryParams,
+  queryParams?: GetExchangeV1PrivateAllordersQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<OrderResultInfoListResponseVM>,
     RequestError | Error
@@ -2387,7 +2335,7 @@ export const useGetExchangeV1PrivateAllorders = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetExchangeV1PrivateAllorders.info = (
-  queryParams: GetExchangeV1PrivateAllordersQueryParams,
+  queryParams?: GetExchangeV1PrivateAllordersQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2405,7 +2353,7 @@ useGetExchangeV1PrivateAllorders.info = (
 };
 useGetExchangeV1PrivateAllorders.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PrivateAllordersQueryParams,
+  queryParams?: GetExchangeV1PrivateAllordersQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<OrderResultInfoListResponseVM>,
     RequestError | Error
@@ -2422,7 +2370,7 @@ useGetExchangeV1PrivateAllorders.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PrivateAlltrades = (
-  queryParams: GetExchangeV1PrivateAlltradesQueryParams,
+  queryParams?: GetExchangeV1PrivateAlltradesQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<TradeResposneListVM>,
     RequestError | Error
@@ -2457,7 +2405,7 @@ export const useGetExchangeV1PrivateAlltrades = (
   return { ...rest, data, list, hasMore, total };
 };
 useGetExchangeV1PrivateAlltrades.info = (
-  queryParams: GetExchangeV1PrivateAlltradesQueryParams,
+  queryParams?: GetExchangeV1PrivateAlltradesQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2475,7 +2423,7 @@ useGetExchangeV1PrivateAlltrades.info = (
 };
 useGetExchangeV1PrivateAlltrades.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PrivateAlltradesQueryParams,
+  queryParams?: GetExchangeV1PrivateAlltradesQueryParams,
   options?: UseInfiniteQueryOptions<
     SwaggerResponse<TradeResposneListVM>,
     RequestError | Error
@@ -2492,18 +2440,18 @@ useGetExchangeV1PrivateAlltrades.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PrivateOpenocoorderlist = (
-  queryParams: GetExchangeV1PrivateOpenocoorderlistQueryParams,
-  options?: InternalUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
+  queryParams?: GetExchangeV1PrivateOpenocoorderlistQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOpenocoorderlist.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PrivateOpenocoorderlist.info = (
-  queryParams: GetExchangeV1PrivateOpenocoorderlistQueryParams,
+  queryParams?: GetExchangeV1PrivateOpenocoorderlistQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2518,8 +2466,8 @@ useGetExchangeV1PrivateOpenocoorderlist.info = (
 };
 useGetExchangeV1PrivateOpenocoorderlist.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PrivateOpenocoorderlistQueryParams,
-  options?: InternalUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
+  queryParams?: GetExchangeV1PrivateOpenocoorderlistQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OcoOrderResultInfoResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOpenocoorderlist.info(
@@ -2532,18 +2480,18 @@ useGetExchangeV1PrivateOpenocoorderlist.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PrivateOpenorders = (
-  queryParams: GetExchangeV1PrivateOpenordersQueryParams,
-  options?: InternalUseQueryOptions<OrderResultInfoResponseVM[]>,
+  queryParams?: GetExchangeV1PrivateOpenordersQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OrderResultInfoResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOpenorders.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PrivateOpenorders.info = (
-  queryParams: GetExchangeV1PrivateOpenordersQueryParams,
+  queryParams?: GetExchangeV1PrivateOpenordersQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2558,8 +2506,8 @@ useGetExchangeV1PrivateOpenorders.info = (
 };
 useGetExchangeV1PrivateOpenorders.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PrivateOpenordersQueryParams,
-  options?: InternalUseQueryOptions<OrderResultInfoResponseVM[]>,
+  queryParams?: GetExchangeV1PrivateOpenordersQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OrderResultInfoResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOpenorders.info(
@@ -2572,18 +2520,18 @@ useGetExchangeV1PrivateOpenorders.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PrivateOrder = (
-  queryParams: GetExchangeV1PrivateOrderQueryParams,
-  options?: InternalUseQueryOptions<OrderFullInfoResponseVM>,
+  queryParams?: GetExchangeV1PrivateOrderQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OrderFullInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOrder.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PrivateOrder.info = (
-  queryParams: GetExchangeV1PrivateOrderQueryParams,
+  queryParams?: GetExchangeV1PrivateOrderQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2598,8 +2546,8 @@ useGetExchangeV1PrivateOrder.info = (
 };
 useGetExchangeV1PrivateOrder.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PrivateOrderQueryParams,
-  options?: InternalUseQueryOptions<OrderFullInfoResponseVM>,
+  queryParams?: GetExchangeV1PrivateOrderQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OrderFullInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOrder.info(
@@ -2612,18 +2560,18 @@ useGetExchangeV1PrivateOrder.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PrivateOrderlist = (
-  queryParams: GetExchangeV1PrivateOrderlistQueryParams,
-  options?: InternalUseQueryOptions<GetOcoOrderResponseVM>,
+  queryParams?: GetExchangeV1PrivateOrderlistQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<GetOcoOrderResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOrderlist.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PrivateOrderlist.info = (
-  queryParams: GetExchangeV1PrivateOrderlistQueryParams,
+  queryParams?: GetExchangeV1PrivateOrderlistQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2638,8 +2586,8 @@ useGetExchangeV1PrivateOrderlist.info = (
 };
 useGetExchangeV1PrivateOrderlist.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PrivateOrderlistQueryParams,
-  options?: InternalUseQueryOptions<GetOcoOrderResponseVM>,
+  queryParams?: GetExchangeV1PrivateOrderlistQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<GetOcoOrderResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOrderlist.info(
@@ -2652,12 +2600,12 @@ useGetExchangeV1PrivateOrderlist.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PrivateUsertraderlevel = (
-  options?: InternalUseQueryOptions<UserTraderLevelResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserTraderLevelResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetExchangeV1PrivateUsertraderlevel.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PrivateUsertraderlevel.info = (
   configOverride?: AxiosRequestConfig,
@@ -2669,7 +2617,7 @@ useGetExchangeV1PrivateUsertraderlevel.info = (
 };
 useGetExchangeV1PrivateUsertraderlevel.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserTraderLevelResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserTraderLevelResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -2680,12 +2628,12 @@ useGetExchangeV1PrivateUsertraderlevel.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PublicAlltickers24hr = (
-  options?: InternalUseQueryOptions<MarketTickerPriceResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<MarketTickerPriceResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetExchangeV1PublicAlltickers24hr.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PublicAlltickers24hr.info = (
   configOverride?: AxiosRequestConfig,
@@ -2697,7 +2645,7 @@ useGetExchangeV1PublicAlltickers24hr.info = (
 };
 useGetExchangeV1PublicAlltickers24hr.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<MarketTickerPriceResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<MarketTickerPriceResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -2708,18 +2656,18 @@ useGetExchangeV1PublicAlltickers24hr.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PublicDepth = (
-  queryParams: GetExchangeV1PublicDepthQueryParams,
-  options?: InternalUseQueryOptions<OrderBookResponseVM>,
+  queryParams?: GetExchangeV1PublicDepthQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OrderBookResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicDepth.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PublicDepth.info = (
-  queryParams: GetExchangeV1PublicDepthQueryParams,
+  queryParams?: GetExchangeV1PublicDepthQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2734,8 +2682,8 @@ useGetExchangeV1PublicDepth.info = (
 };
 useGetExchangeV1PublicDepth.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PublicDepthQueryParams,
-  options?: InternalUseQueryOptions<OrderBookResponseVM>,
+  queryParams?: GetExchangeV1PublicDepthQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<OrderBookResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicDepth.info(
@@ -2748,12 +2696,12 @@ useGetExchangeV1PublicDepth.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PublicDomaintraderlevels = (
-  options?: InternalUseQueryOptions<DomainTraderLevelResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<DomainTraderLevelResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetExchangeV1PublicDomaintraderlevels.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PublicDomaintraderlevels.info = (
   configOverride?: AxiosRequestConfig,
@@ -2765,7 +2713,7 @@ useGetExchangeV1PublicDomaintraderlevels.info = (
 };
 useGetExchangeV1PublicDomaintraderlevels.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<DomainTraderLevelResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<DomainTraderLevelResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -2776,18 +2724,18 @@ useGetExchangeV1PublicDomaintraderlevels.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PublicKlines = (
-  queryParams: GetExchangeV1PublicKlinesQueryParams,
-  options?: InternalUseQueryOptions<KlineDataResponseVM[]>,
+  queryParams?: GetExchangeV1PublicKlinesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<KlineDataResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicKlines.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PublicKlines.info = (
-  queryParams: GetExchangeV1PublicKlinesQueryParams,
+  queryParams?: GetExchangeV1PublicKlinesQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2802,8 +2750,8 @@ useGetExchangeV1PublicKlines.info = (
 };
 useGetExchangeV1PublicKlines.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PublicKlinesQueryParams,
-  options?: InternalUseQueryOptions<KlineDataResponseVM[]>,
+  queryParams?: GetExchangeV1PublicKlinesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<KlineDataResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicKlines.info(
@@ -2816,18 +2764,18 @@ useGetExchangeV1PublicKlines.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PublicMarkets = (
-  queryParams: GetExchangeV1PublicMarketsQueryParams,
-  options?: InternalUseQueryOptions<MarketResponseVM>,
+  queryParams?: GetExchangeV1PublicMarketsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<MarketResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicMarkets.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PublicMarkets.info = (
-  queryParams: GetExchangeV1PublicMarketsQueryParams,
+  queryParams?: GetExchangeV1PublicMarketsQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2842,8 +2790,8 @@ useGetExchangeV1PublicMarkets.info = (
 };
 useGetExchangeV1PublicMarkets.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PublicMarketsQueryParams,
-  options?: InternalUseQueryOptions<MarketResponseVM>,
+  queryParams?: GetExchangeV1PublicMarketsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<MarketResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicMarkets.info(
@@ -2856,18 +2804,18 @@ useGetExchangeV1PublicMarkets.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PublicTicker24hr = (
-  queryParams: GetExchangeV1PublicTicker24hrQueryParams,
-  options?: InternalUseQueryOptions<MarketTickerPriceResponseVM>,
+  queryParams?: GetExchangeV1PublicTicker24hrQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<MarketTickerPriceResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicTicker24hr.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PublicTicker24hr.info = (
-  queryParams: GetExchangeV1PublicTicker24hrQueryParams,
+  queryParams?: GetExchangeV1PublicTicker24hrQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2882,8 +2830,8 @@ useGetExchangeV1PublicTicker24hr.info = (
 };
 useGetExchangeV1PublicTicker24hr.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PublicTicker24hrQueryParams,
-  options?: InternalUseQueryOptions<MarketTickerPriceResponseVM>,
+  queryParams?: GetExchangeV1PublicTicker24hrQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<MarketTickerPriceResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicTicker24hr.info(
@@ -2896,18 +2844,18 @@ useGetExchangeV1PublicTicker24hr.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetExchangeV1PublicTrades = (
-  queryParams: GetExchangeV1PublicTradesQueryParams,
-  options?: InternalUseQueryOptions<RecentTradeResponseVM[]>,
+  queryParams?: GetExchangeV1PublicTradesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<RecentTradeResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicTrades.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetExchangeV1PublicTrades.info = (
-  queryParams: GetExchangeV1PublicTradesQueryParams,
+  queryParams?: GetExchangeV1PublicTradesQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2922,8 +2870,8 @@ useGetExchangeV1PublicTrades.info = (
 };
 useGetExchangeV1PublicTrades.prefetch = (
   client: QueryClient,
-  queryParams: GetExchangeV1PublicTradesQueryParams,
-  options?: InternalUseQueryOptions<RecentTradeResponseVM[]>,
+  queryParams?: GetExchangeV1PublicTradesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<RecentTradeResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicTrades.info(
@@ -2936,11 +2884,11 @@ useGetExchangeV1PublicTrades.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateDeviceAll = (
-  options?: InternalUseQueryOptions<UserTrustDeviceResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserTrustDeviceResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateDeviceAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateDeviceAll.info = (configOverride?: AxiosRequestConfig) => {
   return {
@@ -2950,7 +2898,7 @@ useGetPartyV1PrivateDeviceAll.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetPartyV1PrivateDeviceAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserTrustDeviceResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserTrustDeviceResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateDeviceAll.info(configOverride);
@@ -2960,12 +2908,12 @@ useGetPartyV1PrivateDeviceAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateDomainForcetwofa = (
-  options?: InternalUseQueryOptions<boolean>,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetPartyV1PrivateDomainForcetwofa.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateDomainForcetwofa.info = (
   configOverride?: AxiosRequestConfig,
@@ -2977,7 +2925,7 @@ useGetPartyV1PrivateDomainForcetwofa.info = (
 };
 useGetPartyV1PrivateDomainForcetwofa.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<boolean>,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -2987,12 +2935,40 @@ useGetPartyV1PrivateDomainForcetwofa.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
+export const useGetPartyV1PrivateDomainMultiwallet = (
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetPartyV1PrivateDomainMultiwallet.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetPartyV1PrivateDomainMultiwallet.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getPartyV1PrivateDomainMultiwallet.key] as QueryKey,
+    fun: () => getPartyV1PrivateDomainMultiwallet(configOverride),
+  };
+};
+useGetPartyV1PrivateDomainMultiwallet.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetPartyV1PrivateDomainMultiwallet.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const useGetPartyV1PrivateDomainSetting = (
-  options?: InternalUseQueryOptions<DomainSettingVM>,
+  options?: SwaggerTypescriptUseQueryOptions<DomainSettingVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateDomainSetting.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateDomainSetting.info = (
   configOverride?: AxiosRequestConfig,
@@ -3004,7 +2980,7 @@ useGetPartyV1PrivateDomainSetting.info = (
 };
 useGetPartyV1PrivateDomainSetting.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<DomainSettingVM>,
+  options?: SwaggerTypescriptUseQueryOptions<DomainSettingVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateDomainSetting.info(configOverride);
@@ -3014,18 +2990,18 @@ useGetPartyV1PrivateDomainSetting.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateFavoritemarket = (
-  queryParams: GetPartyV1PrivateFavoritemarketQueryParams,
-  options?: InternalUseQueryOptions<string[]>,
+  queryParams?: GetPartyV1PrivateFavoritemarketQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<string[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateFavoritemarket.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateFavoritemarket.info = (
-  queryParams: GetPartyV1PrivateFavoritemarketQueryParams,
+  queryParams?: GetPartyV1PrivateFavoritemarketQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3040,8 +3016,8 @@ useGetPartyV1PrivateFavoritemarket.info = (
 };
 useGetPartyV1PrivateFavoritemarket.prefetch = (
   client: QueryClient,
-  queryParams: GetPartyV1PrivateFavoritemarketQueryParams,
-  options?: InternalUseQueryOptions<string[]>,
+  queryParams?: GetPartyV1PrivateFavoritemarketQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<string[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateFavoritemarket.info(
@@ -3054,12 +3030,12 @@ useGetPartyV1PrivateFavoritemarket.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateIdentificationlevelInfo = (
-  options?: InternalUseQueryOptions<IdentificationLevel>,
+  options?: SwaggerTypescriptUseQueryOptions<IdentificationLevel>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetPartyV1PrivateIdentificationlevelInfo.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateIdentificationlevelInfo.info = (
   configOverride?: AxiosRequestConfig,
@@ -3071,7 +3047,7 @@ useGetPartyV1PrivateIdentificationlevelInfo.info = (
 };
 useGetPartyV1PrivateIdentificationlevelInfo.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<IdentificationLevel>,
+  options?: SwaggerTypescriptUseQueryOptions<IdentificationLevel>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3082,12 +3058,12 @@ useGetPartyV1PrivateIdentificationlevelInfo.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateIdentificationlevelUserInfo = (
-  options?: InternalUseQueryOptions<UserInfoVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserInfoVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetPartyV1PrivateIdentificationlevelUserInfo.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateIdentificationlevelUserInfo.info = (
   configOverride?: AxiosRequestConfig,
@@ -3099,7 +3075,7 @@ useGetPartyV1PrivateIdentificationlevelUserInfo.info = (
 };
 useGetPartyV1PrivateIdentificationlevelUserInfo.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserInfoVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserInfoVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3110,18 +3086,18 @@ useGetPartyV1PrivateIdentificationlevelUserInfo.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateNotificationAll = (
-  queryParams: GetPartyV1PrivateNotificationAllQueryParams,
-  options?: InternalUseQueryOptions<NotificationListResponseVM>,
+  queryParams?: GetPartyV1PrivateNotificationAllQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<NotificationListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateNotificationAll.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateNotificationAll.info = (
-  queryParams: GetPartyV1PrivateNotificationAllQueryParams,
+  queryParams?: GetPartyV1PrivateNotificationAllQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3136,8 +3112,8 @@ useGetPartyV1PrivateNotificationAll.info = (
 };
 useGetPartyV1PrivateNotificationAll.prefetch = (
   client: QueryClient,
-  queryParams: GetPartyV1PrivateNotificationAllQueryParams,
-  options?: InternalUseQueryOptions<NotificationListResponseVM>,
+  queryParams?: GetPartyV1PrivateNotificationAllQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<NotificationListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateNotificationAll.info(
@@ -3150,12 +3126,14 @@ useGetPartyV1PrivateNotificationAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateNotificationTypes = (
-  options?: InternalUseQueryOptions<NotificationTypesReadCountResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    NotificationTypesReadCountResponseVM[]
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetPartyV1PrivateNotificationTypes.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateNotificationTypes.info = (
   configOverride?: AxiosRequestConfig,
@@ -3167,7 +3145,9 @@ useGetPartyV1PrivateNotificationTypes.info = (
 };
 useGetPartyV1PrivateNotificationTypes.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<NotificationTypesReadCountResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    NotificationTypesReadCountResponseVM[]
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3178,18 +3158,18 @@ useGetPartyV1PrivateNotificationTypes.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivatePluginList = (
-  queryParams: GetPartyV1PrivatePluginListQueryParams,
-  options?: InternalUseQueryOptions<UserPluginResponseVM[]>,
+  queryParams?: GetPartyV1PrivatePluginListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserPluginResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivatePluginList.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivatePluginList.info = (
-  queryParams: GetPartyV1PrivatePluginListQueryParams,
+  queryParams?: GetPartyV1PrivatePluginListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3204,8 +3184,8 @@ useGetPartyV1PrivatePluginList.info = (
 };
 useGetPartyV1PrivatePluginList.prefetch = (
   client: QueryClient,
-  queryParams: GetPartyV1PrivatePluginListQueryParams,
-  options?: InternalUseQueryOptions<UserPluginResponseVM[]>,
+  queryParams?: GetPartyV1PrivatePluginListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserPluginResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivatePluginList.info(
@@ -3218,18 +3198,18 @@ useGetPartyV1PrivatePluginList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateUserByuserreferralprogramid = (
-  queryParams: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
-  options?: InternalUseQueryOptions<UserReferralInfoVM[]>,
+  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserReferralInfoVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateUserByuserreferralprogramid.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateUserByuserreferralprogramid.info = (
-  queryParams: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
+  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3248,8 +3228,8 @@ useGetPartyV1PrivateUserByuserreferralprogramid.info = (
 };
 useGetPartyV1PrivateUserByuserreferralprogramid.prefetch = (
   client: QueryClient,
-  queryParams: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
-  options?: InternalUseQueryOptions<UserReferralInfoVM[]>,
+  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserReferralInfoVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivateUserByuserreferralprogramid.info(
@@ -3262,12 +3242,12 @@ useGetPartyV1PrivateUserByuserreferralprogramid.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateUsersettingPreference = (
-  options?: InternalUseQueryOptions<UserSettingPreferenseResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserSettingPreferenseResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetPartyV1PrivateUsersettingPreference.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateUsersettingPreference.info = (
   configOverride?: AxiosRequestConfig,
@@ -3279,7 +3259,7 @@ useGetPartyV1PrivateUsersettingPreference.info = (
 };
 useGetPartyV1PrivateUsersettingPreference.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserSettingPreferenseResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserSettingPreferenseResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3290,14 +3270,14 @@ useGetPartyV1PrivateUsersettingPreference.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent = (
-  options?: InternalUseQueryOptions<number>,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent.info(
       configOverride,
     );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent.info = (
   configOverride?: AxiosRequestConfig,
@@ -3312,7 +3292,7 @@ useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent.info = (
 };
 useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<number>,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3325,12 +3305,14 @@ useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPartyV1PublicIdentificationlevelGuide = (
-  options?: InternalUseQueryOptions<IdentificationLevelGuideResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    IdentificationLevelGuideResponseVM[]
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetPartyV1PublicIdentificationlevelGuide.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPartyV1PublicIdentificationlevelGuide.info = (
   configOverride?: AxiosRequestConfig,
@@ -3342,7 +3324,9 @@ useGetPartyV1PublicIdentificationlevelGuide.info = (
 };
 useGetPartyV1PublicIdentificationlevelGuide.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<IdentificationLevelGuideResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    IdentificationLevelGuideResponseVM[]
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3353,18 +3337,18 @@ useGetPartyV1PublicIdentificationlevelGuide.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestCommission = (
-  queryParams: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestCommission.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestCommission.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3383,8 +3367,8 @@ useGetPaymentV1PrivateEpayrequestCommission.info = (
 };
 useGetPaymentV1PrivateEpayrequestCommission.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestCommission.info(
@@ -3397,18 +3381,18 @@ useGetPaymentV1PrivateEpayrequestCommission.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestCount = (
-  queryParams: GetPaymentV1PrivateEpayrequestCountQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestCountResponseVM[]>,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestCountResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestCount.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestCount.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestCountQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3423,8 +3407,8 @@ useGetPaymentV1PrivateEpayrequestCount.info = (
 };
 useGetPaymentV1PrivateEpayrequestCount.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestCountQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestCountResponseVM[]>,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestCountResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestCount.info(
@@ -3437,18 +3421,18 @@ useGetPaymentV1PrivateEpayrequestCount.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestCountFromme = (
-  queryParams: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestCountResponseVM[]>,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestCountResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestCountFromme.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestCountFromme.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3467,8 +3451,8 @@ useGetPaymentV1PrivateEpayrequestCountFromme.info = (
 };
 useGetPaymentV1PrivateEpayrequestCountFromme.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestCountResponseVM[]>,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestCountResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestCountFromme.info(
@@ -3481,18 +3465,18 @@ useGetPaymentV1PrivateEpayrequestCountFromme.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestInfoClientuniqueid = (
-  queryParams: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestInfoResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestInfoClientuniqueid.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestInfoClientuniqueid.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3511,8 +3495,8 @@ useGetPaymentV1PrivateEpayrequestInfoClientuniqueid.info = (
 };
 useGetPaymentV1PrivateEpayrequestInfoClientuniqueid.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestInfoResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestInfoClientuniqueid.info(
@@ -3525,18 +3509,18 @@ useGetPaymentV1PrivateEpayrequestInfoClientuniqueid.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestInfoToken = (
-  queryParams: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestInfoResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestInfoToken.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestInfoToken.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3551,8 +3535,8 @@ useGetPaymentV1PrivateEpayrequestInfoToken.info = (
 };
 useGetPaymentV1PrivateEpayrequestInfoToken.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestInfoResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestInfoToken.info(
@@ -3565,18 +3549,18 @@ useGetPaymentV1PrivateEpayrequestInfoToken.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestList = (
-  queryParams: GetPaymentV1PrivateEpayrequestListQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestListResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestList.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestList.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestListQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3591,8 +3575,8 @@ useGetPaymentV1PrivateEpayrequestList.info = (
 };
 useGetPaymentV1PrivateEpayrequestList.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestListQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestListResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestList.info(
@@ -3605,18 +3589,18 @@ useGetPaymentV1PrivateEpayrequestList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestListFromme = (
-  queryParams: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestListResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestListFromme.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestListFromme.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3635,8 +3619,8 @@ useGetPaymentV1PrivateEpayrequestListFromme.info = (
 };
 useGetPaymentV1PrivateEpayrequestListFromme.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
-  options?: InternalUseQueryOptions<EpayRequestListResponseVM>,
+  queryParams?: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestListFromme.info(
@@ -3649,18 +3633,18 @@ useGetPaymentV1PrivateEpayrequestListFromme.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestPluginCount = (
-  queryParams: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestPluginCount.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestPluginCount.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3679,8 +3663,8 @@ useGetPaymentV1PrivateEpayrequestPluginCount.info = (
 };
 useGetPaymentV1PrivateEpayrequestPluginCount.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestPluginCount.info(
@@ -3693,18 +3677,18 @@ useGetPaymentV1PrivateEpayrequestPluginCount.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PrivateEpayrequestSmsResend = (
-  queryParams: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
-  options?: InternalUseQueryOptions<any>,
+  queryParams?: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<any>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestSmsResend.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PrivateEpayrequestSmsResend.info = (
-  queryParams: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3719,8 +3703,8 @@ useGetPaymentV1PrivateEpayrequestSmsResend.info = (
 };
 useGetPaymentV1PrivateEpayrequestSmsResend.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
-  options?: InternalUseQueryOptions<any>,
+  queryParams?: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<any>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PrivateEpayrequestSmsResend.info(
@@ -3733,8 +3717,8 @@ useGetPaymentV1PrivateEpayrequestSmsResend.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PublicEpayrequestGetblockchainaddress = (
-  queryParams: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
-  options?: InternalUseQueryOptions<BlockchainAddressResponseVM>,
+  queryParams?: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<BlockchainAddressResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3742,10 +3726,10 @@ export const useGetPaymentV1PublicEpayrequestGetblockchainaddress = (
       queryParams,
       configOverride,
     );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PublicEpayrequestGetblockchainaddress.info = (
-  queryParams: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
+  queryParams?: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3764,8 +3748,8 @@ useGetPaymentV1PublicEpayrequestGetblockchainaddress.info = (
 };
 useGetPaymentV1PublicEpayrequestGetblockchainaddress.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
-  options?: InternalUseQueryOptions<BlockchainAddressResponseVM>,
+  queryParams?: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<BlockchainAddressResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3779,8 +3763,8 @@ useGetPaymentV1PublicEpayrequestGetblockchainaddress.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PublicEpayrequestReceiptinfoClientuniqueid = (
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3788,10 +3772,10 @@ export const useGetPaymentV1PublicEpayrequestReceiptinfoClientuniqueid = (
       queryParams,
       configOverride,
     );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PublicEpayrequestReceiptinfoClientuniqueid.info = (
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3810,8 +3794,8 @@ useGetPaymentV1PublicEpayrequestReceiptinfoClientuniqueid.info = (
 };
 useGetPaymentV1PublicEpayrequestReceiptinfoClientuniqueid.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3825,18 +3809,18 @@ useGetPaymentV1PublicEpayrequestReceiptinfoClientuniqueid.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetPaymentV1PublicEpayrequestReceiptinfoToken = (
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PublicEpayrequestReceiptinfoToken.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetPaymentV1PublicEpayrequestReceiptinfoToken.info = (
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3855,8 +3839,8 @@ useGetPaymentV1PublicEpayrequestReceiptinfoToken.info = (
 };
 useGetPaymentV1PublicEpayrequestReceiptinfoToken.prefetch = (
   client: QueryClient,
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
-  options?: InternalUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<EPayRequestReceiptInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPaymentV1PublicEpayrequestReceiptinfoToken.info(
@@ -3869,18 +3853,18 @@ useGetPaymentV1PublicEpayrequestReceiptinfoToken.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetSettlementV1Private = (
-  queryParams: GetSettlementV1PrivateQueryParams,
-  options?: InternalUseQueryOptions<SettlementRequestInfoResponseVM>,
+  queryParams?: GetSettlementV1PrivateQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SettlementRequestInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1Private.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1Private.info = (
-  queryParams: GetSettlementV1PrivateQueryParams,
+  queryParams?: GetSettlementV1PrivateQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3895,8 +3879,8 @@ useGetSettlementV1Private.info = (
 };
 useGetSettlementV1Private.prefetch = (
   client: QueryClient,
-  queryParams: GetSettlementV1PrivateQueryParams,
-  options?: InternalUseQueryOptions<SettlementRequestInfoResponseVM>,
+  queryParams?: GetSettlementV1PrivateQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SettlementRequestInfoResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1Private.info(
@@ -3909,18 +3893,18 @@ useGetSettlementV1Private.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetSettlementV1PrivateAddressbook = (
-  queryParams: GetSettlementV1PrivateAddressbookQueryParams,
-  options?: InternalUseQueryOptions<AddressBookResponseVM>,
+  queryParams?: GetSettlementV1PrivateAddressbookQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<AddressBookResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateAddressbook.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1PrivateAddressbook.info = (
-  queryParams: GetSettlementV1PrivateAddressbookQueryParams,
+  queryParams?: GetSettlementV1PrivateAddressbookQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -3935,8 +3919,8 @@ useGetSettlementV1PrivateAddressbook.info = (
 };
 useGetSettlementV1PrivateAddressbook.prefetch = (
   client: QueryClient,
-  queryParams: GetSettlementV1PrivateAddressbookQueryParams,
-  options?: InternalUseQueryOptions<AddressBookResponseVM>,
+  queryParams?: GetSettlementV1PrivateAddressbookQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<AddressBookResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateAddressbook.info(
@@ -3949,12 +3933,12 @@ useGetSettlementV1PrivateAddressbook.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetSettlementV1PrivateAddressbookAll = (
-  options?: InternalUseQueryOptions<AddressBookResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<AddressBookResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetSettlementV1PrivateAddressbookAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1PrivateAddressbookAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -3966,7 +3950,7 @@ useGetSettlementV1PrivateAddressbookAll.info = (
 };
 useGetSettlementV1PrivateAddressbookAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<AddressBookResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<AddressBookResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -3976,19 +3960,59 @@ useGetSettlementV1PrivateAddressbookAll.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
+export const useGetSettlementV1PrivateCommission = (
+  queryParams?: GetSettlementV1PrivateCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetSettlementV1PrivateCommission.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetSettlementV1PrivateCommission.info = (
+  queryParams?: GetSettlementV1PrivateCommissionQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getSettlementV1PrivateCommission.key, queryParams] as QueryKey,
+    fun: () =>
+      getSettlementV1PrivateCommission(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetSettlementV1PrivateCommission.prefetch = (
+  client: QueryClient,
+  queryParams?: GetSettlementV1PrivateCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetSettlementV1PrivateCommission.info(
+    queryParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const useGetSettlementV1PrivateCount = (
-  queryParams: GetSettlementV1PrivateCountQueryParams,
-  options?: InternalUseQueryOptions<AggregationResultResponseVM>,
+  queryParams?: GetSettlementV1PrivateCountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationResultResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateCount.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1PrivateCount.info = (
-  queryParams: GetSettlementV1PrivateCountQueryParams,
+  queryParams?: GetSettlementV1PrivateCountQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4003,8 +4027,8 @@ useGetSettlementV1PrivateCount.info = (
 };
 useGetSettlementV1PrivateCount.prefetch = (
   client: QueryClient,
-  queryParams: GetSettlementV1PrivateCountQueryParams,
-  options?: InternalUseQueryOptions<AggregationResultResponseVM>,
+  queryParams?: GetSettlementV1PrivateCountQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationResultResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateCount.info(
@@ -4017,12 +4041,12 @@ useGetSettlementV1PrivateCount.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetSettlementV1PrivateGlobalwalletproviderAll = (
-  options?: InternalUseQueryOptions<GlobalWalletProviderResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<GlobalWalletProviderResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetSettlementV1PrivateGlobalwalletproviderAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1PrivateGlobalwalletproviderAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -4034,7 +4058,7 @@ useGetSettlementV1PrivateGlobalwalletproviderAll.info = (
 };
 useGetSettlementV1PrivateGlobalwalletproviderAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<GlobalWalletProviderResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<GlobalWalletProviderResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -4045,18 +4069,18 @@ useGetSettlementV1PrivateGlobalwalletproviderAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetSettlementV1PrivateList = (
-  queryParams: GetSettlementV1PrivateListQueryParams,
-  options?: InternalUseQueryOptions<SettlementRequestInfoListResponseVM>,
+  queryParams?: GetSettlementV1PrivateListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SettlementRequestInfoListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateList.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1PrivateList.info = (
-  queryParams: GetSettlementV1PrivateListQueryParams,
+  queryParams?: GetSettlementV1PrivateListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4071,8 +4095,8 @@ useGetSettlementV1PrivateList.info = (
 };
 useGetSettlementV1PrivateList.prefetch = (
   client: QueryClient,
-  queryParams: GetSettlementV1PrivateListQueryParams,
-  options?: InternalUseQueryOptions<SettlementRequestInfoListResponseVM>,
+  queryParams?: GetSettlementV1PrivateListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SettlementRequestInfoListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateList.info(
@@ -4085,18 +4109,18 @@ useGetSettlementV1PrivateList.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetSettlementV1PrivateReport = (
-  queryParams: GetSettlementV1PrivateReportQueryParams,
-  options?: InternalUseQueryOptions<ReportResultResponseVM[]>,
+  queryParams?: GetSettlementV1PrivateReportQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ReportResultResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateReport.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1PrivateReport.info = (
-  queryParams: GetSettlementV1PrivateReportQueryParams,
+  queryParams?: GetSettlementV1PrivateReportQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4111,8 +4135,8 @@ useGetSettlementV1PrivateReport.info = (
 };
 useGetSettlementV1PrivateReport.prefetch = (
   client: QueryClient,
-  queryParams: GetSettlementV1PrivateReportQueryParams,
-  options?: InternalUseQueryOptions<ReportResultResponseVM[]>,
+  queryParams?: GetSettlementV1PrivateReportQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ReportResultResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateReport.info(
@@ -4125,18 +4149,18 @@ useGetSettlementV1PrivateReport.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetSettlementV1PrivateSubuser = (
-  queryParams: GetSettlementV1PrivateSubuserQueryParams,
-  options?: InternalUseQueryOptions<SettlementRequestInfoListResponseVM>,
+  queryParams?: GetSettlementV1PrivateSubuserQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SettlementRequestInfoListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateSubuser.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetSettlementV1PrivateSubuser.info = (
-  queryParams: GetSettlementV1PrivateSubuserQueryParams,
+  queryParams?: GetSettlementV1PrivateSubuserQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4151,8 +4175,8 @@ useGetSettlementV1PrivateSubuser.info = (
 };
 useGetSettlementV1PrivateSubuser.prefetch = (
   client: QueryClient,
-  queryParams: GetSettlementV1PrivateSubuserQueryParams,
-  options?: InternalUseQueryOptions<SettlementRequestInfoListResponseVM>,
+  queryParams?: GetSettlementV1PrivateSubuserQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SettlementRequestInfoListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSettlementV1PrivateSubuser.info(
@@ -4165,18 +4189,18 @@ useGetSettlementV1PrivateSubuser.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetStorageV1PrivateFileDownload = (
-  queryParams: GetStorageV1PrivateFileDownloadQueryParams,
-  options?: InternalUseQueryOptions<any>,
+  queryParams?: GetStorageV1PrivateFileDownloadQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<any>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetStorageV1PrivateFileDownload.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetStorageV1PrivateFileDownload.info = (
-  queryParams: GetStorageV1PrivateFileDownloadQueryParams,
+  queryParams?: GetStorageV1PrivateFileDownloadQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4191,8 +4215,8 @@ useGetStorageV1PrivateFileDownload.info = (
 };
 useGetStorageV1PrivateFileDownload.prefetch = (
   client: QueryClient,
-  queryParams: GetStorageV1PrivateFileDownloadQueryParams,
-  options?: InternalUseQueryOptions<any>,
+  queryParams?: GetStorageV1PrivateFileDownloadQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<any>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetStorageV1PrivateFileDownload.info(
@@ -4204,12 +4228,46 @@ useGetStorageV1PrivateFileDownload.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
+export const useGetWalletV1Private = (
+  queryParams?: GetWalletV1PrivateQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserWalletDisplayDetailResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetWalletV1Private.info(queryParams, configOverride);
+  return useQuery(key, fun, options);
+};
+useGetWalletV1Private.info = (
+  queryParams?: GetWalletV1PrivateQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getWalletV1Private.key, queryParams] as QueryKey,
+    fun: () =>
+      getWalletV1Private(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetWalletV1Private.prefetch = (
+  client: QueryClient,
+  queryParams?: GetWalletV1PrivateQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserWalletDisplayDetailResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetWalletV1Private.info(queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const useGetWalletV1PrivateAll = (
-  options?: InternalUseQueryOptions<UserWalletDisplayResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserWalletDisplayResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateAll.info = (configOverride?: AxiosRequestConfig) => {
   return {
@@ -4219,7 +4277,7 @@ useGetWalletV1PrivateAll.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetWalletV1PrivateAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserWalletDisplayResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserWalletDisplayResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateAll.info(configOverride);
@@ -4229,11 +4287,11 @@ useGetWalletV1PrivateAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateBankAll = (
-  options?: InternalUseQueryOptions<BanksResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<BanksResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateBankAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateBankAll.info = (configOverride?: AxiosRequestConfig) => {
   return {
@@ -4243,7 +4301,7 @@ useGetWalletV1PrivateBankAll.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetWalletV1PrivateBankAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<BanksResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<BanksResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateBankAll.info(configOverride);
@@ -4252,59 +4310,19 @@ useGetWalletV1PrivateBankAll.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetWalletV1PrivateFind = (
-  queryParams: GetWalletV1PrivateFindQueryParams,
-  options?: InternalUseQueryOptions<FindUserWalletResponseVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetWalletV1PrivateFind.info(
-    queryParams,
-    configOverride,
-  );
-  return useQuery(key, () => fun(), options);
-};
-useGetWalletV1PrivateFind.info = (
-  queryParams: GetWalletV1PrivateFindQueryParams,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getWalletV1PrivateFind.key, queryParams] as QueryKey,
-    fun: () =>
-      getWalletV1PrivateFind(
-        queryParams,
-
-        configOverride,
-      ),
-  };
-};
-useGetWalletV1PrivateFind.prefetch = (
-  client: QueryClient,
-  queryParams: GetWalletV1PrivateFindQueryParams,
-  options?: InternalUseQueryOptions<FindUserWalletResponseVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetWalletV1PrivateFind.info(
-    queryParams,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
 export const useGetWalletV1PrivateGrouptransferCommission = (
-  queryParams: GetWalletV1PrivateGrouptransferCommissionQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetWalletV1PrivateGrouptransferCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateGrouptransferCommission.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateGrouptransferCommission.info = (
-  queryParams: GetWalletV1PrivateGrouptransferCommissionQueryParams,
+  queryParams?: GetWalletV1PrivateGrouptransferCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4323,8 +4341,8 @@ useGetWalletV1PrivateGrouptransferCommission.info = (
 };
 useGetWalletV1PrivateGrouptransferCommission.prefetch = (
   client: QueryClient,
-  queryParams: GetWalletV1PrivateGrouptransferCommissionQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetWalletV1PrivateGrouptransferCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateGrouptransferCommission.info(
@@ -4337,18 +4355,18 @@ useGetWalletV1PrivateGrouptransferCommission.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateInternalwithdrawInfo = (
-  queryParams: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
-  options?: InternalUseQueryOptions<InternalWithdrawResponseVM>,
+  queryParams?: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<InternalWithdrawResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateInternalwithdrawInfo.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateInternalwithdrawInfo.info = (
-  queryParams: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
+  queryParams?: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4363,8 +4381,8 @@ useGetWalletV1PrivateInternalwithdrawInfo.info = (
 };
 useGetWalletV1PrivateInternalwithdrawInfo.prefetch = (
   client: QueryClient,
-  queryParams: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
-  options?: InternalUseQueryOptions<InternalWithdrawResponseVM>,
+  queryParams?: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<InternalWithdrawResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateInternalwithdrawInfo.info(
@@ -4377,18 +4395,18 @@ useGetWalletV1PrivateInternalwithdrawInfo.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateSubuserAll = (
-  queryParams: GetWalletV1PrivateSubuserAllQueryParams,
-  options?: InternalUseQueryOptions<UserMinimalResponseVM[]>,
+  queryParams?: GetWalletV1PrivateSubuserAllQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserMinimalResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateSubuserAll.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateSubuserAll.info = (
-  queryParams: GetWalletV1PrivateSubuserAllQueryParams,
+  queryParams?: GetWalletV1PrivateSubuserAllQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4403,8 +4421,8 @@ useGetWalletV1PrivateSubuserAll.info = (
 };
 useGetWalletV1PrivateSubuserAll.prefetch = (
   client: QueryClient,
-  queryParams: GetWalletV1PrivateSubuserAllQueryParams,
-  options?: InternalUseQueryOptions<UserMinimalResponseVM[]>,
+  queryParams?: GetWalletV1PrivateSubuserAllQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserMinimalResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateSubuserAll.info(
@@ -4417,18 +4435,18 @@ useGetWalletV1PrivateSubuserAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateSubuserAssignable = (
-  queryParams: GetWalletV1PrivateSubuserAssignableQueryParams,
-  options?: InternalUseQueryOptions<UserMinimalResponseVM[]>,
+  queryParams?: GetWalletV1PrivateSubuserAssignableQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserMinimalResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateSubuserAssignable.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateSubuserAssignable.info = (
-  queryParams: GetWalletV1PrivateSubuserAssignableQueryParams,
+  queryParams?: GetWalletV1PrivateSubuserAssignableQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4443,8 +4461,8 @@ useGetWalletV1PrivateSubuserAssignable.info = (
 };
 useGetWalletV1PrivateSubuserAssignable.prefetch = (
   client: QueryClient,
-  queryParams: GetWalletV1PrivateSubuserAssignableQueryParams,
-  options?: InternalUseQueryOptions<UserMinimalResponseVM[]>,
+  queryParams?: GetWalletV1PrivateSubuserAssignableQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserMinimalResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateSubuserAssignable.info(
@@ -4457,18 +4475,18 @@ useGetWalletV1PrivateSubuserAssignable.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateTransferCommission = (
-  queryParams: GetWalletV1PrivateTransferCommissionQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetWalletV1PrivateTransferCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateTransferCommission.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateTransferCommission.info = (
-  queryParams: GetWalletV1PrivateTransferCommissionQueryParams,
+  queryParams?: GetWalletV1PrivateTransferCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4483,8 +4501,8 @@ useGetWalletV1PrivateTransferCommission.info = (
 };
 useGetWalletV1PrivateTransferCommission.prefetch = (
   client: QueryClient,
-  queryParams: GetWalletV1PrivateTransferCommissionQueryParams,
-  options?: InternalUseQueryOptions<number>,
+  queryParams?: GetWalletV1PrivateTransferCommissionQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<number>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateTransferCommission.info(
@@ -4497,11 +4515,11 @@ useGetWalletV1PrivateTransferCommission.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateUserassetAll = (
-  options?: InternalUseQueryOptions<UserAssetResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserAssetResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserassetAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateUserassetAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -4513,7 +4531,7 @@ useGetWalletV1PrivateUserassetAll.info = (
 };
 useGetWalletV1PrivateUserassetAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserAssetResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserAssetResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserassetAll.info(configOverride);
@@ -4523,18 +4541,18 @@ useGetWalletV1PrivateUserassetAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateUserassetSpotDefault = (
-  queryParams: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
-  options?: InternalUseQueryOptions<UserCurrencyResponseVM>,
+  queryParams?: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserCurrencyResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserassetSpotDefault.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateUserassetSpotDefault.info = (
-  queryParams: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
+  queryParams?: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4549,8 +4567,8 @@ useGetWalletV1PrivateUserassetSpotDefault.info = (
 };
 useGetWalletV1PrivateUserassetSpotDefault.prefetch = (
   client: QueryClient,
-  queryParams: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
-  options?: InternalUseQueryOptions<UserCurrencyResponseVM>,
+  queryParams?: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<UserCurrencyResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserassetSpotDefault.info(
@@ -4563,12 +4581,12 @@ useGetWalletV1PrivateUserassetSpotDefault.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateUserassetSpotDefaultAll = (
-  options?: InternalUseQueryOptions<UserAssetResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserAssetResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetWalletV1PrivateUserassetSpotDefaultAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateUserassetSpotDefaultAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -4580,7 +4598,7 @@ useGetWalletV1PrivateUserassetSpotDefaultAll.info = (
 };
 useGetWalletV1PrivateUserassetSpotDefaultAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserAssetResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserAssetResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -4591,11 +4609,11 @@ useGetWalletV1PrivateUserassetSpotDefaultAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateUserbankAll = (
-  options?: InternalUseQueryOptions<UserBankResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserbankAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateUserbankAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -4607,7 +4625,7 @@ useGetWalletV1PrivateUserbankAll.info = (
 };
 useGetWalletV1PrivateUserbankAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserBankResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserbankAll.info(configOverride);
@@ -4618,14 +4636,14 @@ useGetWalletV1PrivateUserbankAll.prefetch = (
 };
 export const useGetWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank =
   (
-    options?: InternalUseQueryOptions<boolean>,
+    options?: SwaggerTypescriptUseQueryOptions<boolean>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
       useGetWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank.info(
         configOverride,
       );
-    return useQuery(key, () => fun(), options);
+    return useQuery(key, fun, options);
   };
 useGetWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank.info = (
   configOverride?: AxiosRequestConfig,
@@ -4643,7 +4661,7 @@ useGetWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank.info = (
 useGetWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank.prefetch =
   (
     client: QueryClient,
-    options?: InternalUseQueryOptions<boolean>,
+    options?: SwaggerTypescriptUseQueryOptions<boolean>,
     configOverride?: AxiosRequestConfig,
   ) => {
     const { key, fun } =
@@ -4656,18 +4674,18 @@ useGetWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank.prefetch =
       : client.prefetchQuery(key, () => fun(), options);
   };
 export const useGetWalletV1PrivateUserbankStatus = (
-  queryParams: GetWalletV1PrivateUserbankStatusQueryParams,
-  options?: InternalUseQueryOptions<IdentityStatus>,
+  queryParams?: GetWalletV1PrivateUserbankStatusQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<IdentityStatus>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserbankStatus.info(
     queryParams,
     configOverride,
   );
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateUserbankStatus.info = (
-  queryParams: GetWalletV1PrivateUserbankStatusQueryParams,
+  queryParams?: GetWalletV1PrivateUserbankStatusQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4682,8 +4700,8 @@ useGetWalletV1PrivateUserbankStatus.info = (
 };
 useGetWalletV1PrivateUserbankStatus.prefetch = (
   client: QueryClient,
-  queryParams: GetWalletV1PrivateUserbankStatusQueryParams,
-  options?: InternalUseQueryOptions<IdentityStatus>,
+  queryParams?: GetWalletV1PrivateUserbankStatusQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<IdentityStatus>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateUserbankStatus.info(
@@ -4696,12 +4714,12 @@ useGetWalletV1PrivateUserbankStatus.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateUserreferralprogramAll = (
-  options?: InternalUseQueryOptions<UserReferralProgramVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserReferralProgramVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetWalletV1PrivateUserreferralprogramAll.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateUserreferralprogramAll.info = (
   configOverride?: AxiosRequestConfig,
@@ -4713,7 +4731,7 @@ useGetWalletV1PrivateUserreferralprogramAll.info = (
 };
 useGetWalletV1PrivateUserreferralprogramAll.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserReferralProgramVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserReferralProgramVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -4724,12 +4742,12 @@ useGetWalletV1PrivateUserreferralprogramAll.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PrivateUserreferralprogramDefault = (
-  options?: InternalUseQueryOptions<UserReferralProgramVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserReferralProgramVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
     useGetWalletV1PrivateUserreferralprogramDefault.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PrivateUserreferralprogramDefault.info = (
   configOverride?: AxiosRequestConfig,
@@ -4741,7 +4759,7 @@ useGetWalletV1PrivateUserreferralprogramDefault.info = (
 };
 useGetWalletV1PrivateUserreferralprogramDefault.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<UserReferralProgramVM>,
+  options?: SwaggerTypescriptUseQueryOptions<UserReferralProgramVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -4752,11 +4770,11 @@ useGetWalletV1PrivateUserreferralprogramDefault.prefetch = (
     : client.prefetchQuery(key, () => fun(), options);
 };
 export const useGetWalletV1PublicCurrencyInfo = (
-  options?: InternalUseQueryOptions<DomainCurrencyResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PublicCurrencyInfo.info(configOverride);
-  return useQuery(key, () => fun(), options);
+  return useQuery(key, fun, options);
 };
 useGetWalletV1PublicCurrencyInfo.info = (
   configOverride?: AxiosRequestConfig,
@@ -4768,7 +4786,7 @@ useGetWalletV1PublicCurrencyInfo.info = (
 };
 useGetWalletV1PublicCurrencyInfo.prefetch = (
   client: QueryClient,
-  options?: InternalUseQueryOptions<DomainCurrencyResponseVM[]>,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyResponseVM[]>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PublicCurrencyInfo.info(configOverride);
@@ -4777,8 +4795,48 @@ useGetWalletV1PublicCurrencyInfo.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
+export const useGetWalletV1PublicFind = (
+  queryParams?: GetWalletV1PublicFindQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<FindUserWalletResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetWalletV1PublicFind.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetWalletV1PublicFind.info = (
+  queryParams?: GetWalletV1PublicFindQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getWalletV1PublicFind.key, queryParams] as QueryKey,
+    fun: () =>
+      getWalletV1PublicFind(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetWalletV1PublicFind.prefetch = (
+  client: QueryClient,
+  queryParams?: GetWalletV1PublicFindQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<FindUserWalletResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetWalletV1PublicFind.info(
+    queryParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const usePatchWalletV1Private = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UpdateUserWalletRequestVM },
     TExtra
@@ -4800,7 +4858,7 @@ export const usePatchWalletV1Private = <TExtra>(
 };
 
 export const usePostApiCspreportLog = <TExtra>(
-  options?: InternalUseMutationOptionsVoid<any, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
 ) => {
   return useMutation((_o) => {
     const { configOverride } = _o || {};
@@ -4810,7 +4868,7 @@ export const usePostApiCspreportLog = <TExtra>(
 };
 
 export const usePostAuthV1PrivateApikey = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     ApiKeyAddResponseVM,
     { requestBody: ApiKeyAddRequestVM },
     TExtra
@@ -4832,11 +4890,11 @@ export const usePostAuthV1PrivateApikey = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthDisabletwofactor = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     QrCodeResponseVM,
     {
       requestBody: ChangeTwoFactorRequestVM;
-      headerParams: { platformType: PlatformType };
+      headerParams?: { platformType: PlatformType };
     },
     TExtra
   >,
@@ -4859,7 +4917,7 @@ export const usePostAuthV1PrivateAuthDisabletwofactor = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthEmail = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: NewEmailRequestVM },
     TExtra
@@ -4881,11 +4939,11 @@ export const usePostAuthV1PrivateAuthEmail = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthEmailSendcode = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
     {
-      queryParams: PostAuthV1PrivateAuthEmailSendcodeQueryParams;
-      headerParams: { purpose: PurposeType };
+      queryParams?: PostAuthV1PrivateAuthEmailSendcodeQueryParams;
+      headerParams?: { purpose: PurposeType };
     },
     TExtra
   >,
@@ -4902,11 +4960,11 @@ export const usePostAuthV1PrivateAuthEmailSendcode = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthEnabletwofactor = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     QrCodeResponseVM,
     {
       requestBody: ChangeTwoFactorRequestVM;
-      headerParams: { platformType: PlatformType };
+      headerParams?: { platformType: PlatformType };
     },
     TExtra
   >,
@@ -4929,7 +4987,7 @@ export const usePostAuthV1PrivateAuthEnabletwofactor = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthGeneratewebsocketusertoken = <TExtra>(
-  options?: InternalUseMutationOptionsVoid<string, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptionsVoid<string, TExtra>,
 ) => {
   return useMutation((_o) => {
     const { configOverride } = _o || {};
@@ -4939,9 +4997,9 @@ export const usePostAuthV1PrivateAuthGeneratewebsocketusertoken = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthGetcode = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
-    { headerParams: { purpose: PurposeType } },
+    { headerParams?: { purpose: PurposeType } },
     TExtra
   >,
 ) => {
@@ -4953,11 +5011,11 @@ export const usePostAuthV1PrivateAuthGetcode = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthPhonecallSendcode = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
     {
-      queryParams: PostAuthV1PrivateAuthPhonecallSendcodeQueryParams;
-      headerParams: { purpose: PurposeType };
+      queryParams?: PostAuthV1PrivateAuthPhonecallSendcodeQueryParams;
+      headerParams?: { purpose: PurposeType };
     },
     TExtra
   >,
@@ -4974,7 +5032,7 @@ export const usePostAuthV1PrivateAuthPhonecallSendcode = <TExtra>(
 };
 
 export const usePostAuthV1PrivateAuthRevoketoken = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: RevokeTokenRequestVM },
     TExtra
@@ -4996,7 +5054,7 @@ export const usePostAuthV1PrivateAuthRevoketoken = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthAnonyverifysecure = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
     { requestBody: VerifySecureRequestVM },
     TExtra
@@ -5018,9 +5076,9 @@ export const usePostAuthV1PublicAuthAnonyverifysecure = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthChecktwofactorisenable = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     UserExistResponseVM,
-    { queryParams: PostAuthV1PublicAuthChecktwofactorisenableQueryParams },
+    { queryParams?: PostAuthV1PublicAuthChecktwofactorisenableQueryParams },
     TExtra
   >,
 ) => {
@@ -5035,11 +5093,11 @@ export const usePostAuthV1PublicAuthChecktwofactorisenable = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthConnectToken = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     TokenResponseVM,
     {
       requestBody: LoginModelRequestVM;
-      headerParams: { deviceId: string; platform: string };
+      headerParams?: { deviceId: string; platform: string };
     },
     TExtra
   >,
@@ -5062,7 +5120,10 @@ export const usePostAuthV1PublicAuthConnectToken = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthGetcaptcha = <TExtra>(
-  options?: InternalUseMutationOptionsVoid<PuzzleModelResponseVM, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptionsVoid<
+    PuzzleModelResponseVM,
+    TExtra
+  >,
 ) => {
   return useMutation((_o) => {
     const { configOverride } = _o || {};
@@ -5072,11 +5133,11 @@ export const usePostAuthV1PublicAuthGetcaptcha = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthGetcode = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
     {
-      queryParams: PostAuthV1PublicAuthGetcodeQueryParams;
-      headerParams: { purpose: PurposeType };
+      queryParams?: PostAuthV1PublicAuthGetcodeQueryParams;
+      headerParams?: { purpose: PurposeType };
     },
     TExtra
   >,
@@ -5093,7 +5154,7 @@ export const usePostAuthV1PublicAuthGetcode = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthRegister = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     RegisterResponseVM,
     { requestBody: RegisterRequestVM },
     TExtra
@@ -5115,7 +5176,7 @@ export const usePostAuthV1PublicAuthRegister = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthRegisterverify = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
     { requestBody: VerifyUserPhoneNumberRequestVM },
     TExtra
@@ -5137,7 +5198,7 @@ export const usePostAuthV1PublicAuthRegisterverify = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthSetuserbasicinfo = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UserBasicInfoRequestVM },
     TExtra
@@ -5159,7 +5220,7 @@ export const usePostAuthV1PublicAuthSetuserbasicinfo = <TExtra>(
 };
 
 export const usePostAuthV1PublicAuthValidatecaptcha = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     boolean,
     { requestBody: PuzzleSubmissionRequestVM },
     TExtra
@@ -5181,7 +5242,7 @@ export const usePostAuthV1PublicAuthValidatecaptcha = <TExtra>(
 };
 
 export const usePostCapitalV1PrivateDepositQueryuserdepositaddress = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     UserDepositAddressResponseVM,
     { requestBody: UserDepositAddressRequestVM },
     TExtra
@@ -5202,8 +5263,30 @@ export const usePostCapitalV1PrivateDepositQueryuserdepositaddress = <TExtra>(
   }, options);
 };
 
+export const usePostCapitalV1PrivateDepositQuerywalletdepositaddress = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    UserDepositAddressResponseVM,
+    { requestBody: WalletDepositAddressRequestVM },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return postCapitalV1PrivateDepositQuerywalletdepositaddress(
+      requestBody,
+
+      configOverride,
+    );
+  }, options);
+};
+
 export const usePostCapitalV1ProtectedWithdrawApply = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     CreateWithdrawRequestUserWalletResponseVM,
     { requestBody: WithdrawRequestUserWalletCreateRequestVM },
     TExtra
@@ -5225,7 +5308,7 @@ export const usePostCapitalV1ProtectedWithdrawApply = <TExtra>(
 };
 
 export const usePostExchangeV1PrivateOrder = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     OrderAckInfoResponseVM,
     { requestBody: PlaceOrderRequestVM },
     TExtra
@@ -5247,7 +5330,7 @@ export const usePostExchangeV1PrivateOrder = <TExtra>(
 };
 
 export const usePostExchangeV1PrivateOrderOco = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     OcoOrderResultInfoResponseVM,
     { requestBody: PlaceOcoOrderRequestVM },
     TExtra
@@ -5269,7 +5352,7 @@ export const usePostExchangeV1PrivateOrderOco = <TExtra>(
 };
 
 export const usePostPartyV1PrivateFavoritemarket = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UpdateFavoriteMarketRequestVM[] },
     TExtra
@@ -5291,7 +5374,7 @@ export const usePostPartyV1PrivateFavoritemarket = <TExtra>(
 };
 
 export const usePostPartyV1PrivateIdentificationlevelLevelthree = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UserIdentificationLevelThreeRequestVM },
     TExtra
@@ -5313,7 +5396,7 @@ export const usePostPartyV1PrivateIdentificationlevelLevelthree = <TExtra>(
 };
 
 export const usePostPartyV1PrivateIdentificationlevelLeveltwo = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UserIdentificationLevelTwoRequestVM },
     TExtra
@@ -5335,7 +5418,7 @@ export const usePostPartyV1PrivateIdentificationlevelLeveltwo = <TExtra>(
 };
 
 export const usePostPartyV1PrivateUserProfileimage = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
     {
       requestBody: {
@@ -5362,7 +5445,7 @@ export const usePostPartyV1PrivateUserProfileimage = <TExtra>(
 };
 
 export const usePostPaymentV1PrivateEpayrequestCharge = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestResponseVM,
     { requestBody: CreateChargeRequestRequestVM },
     TExtra
@@ -5384,7 +5467,7 @@ export const usePostPaymentV1PrivateEpayrequestCharge = <TExtra>(
 };
 
 export const usePostPaymentV1PrivateEpayrequestDivideipg = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestResponseVM,
     { requestBody: CreateDivideIpgRequestRequestVM },
     TExtra
@@ -5406,7 +5489,7 @@ export const usePostPaymentV1PrivateEpayrequestDivideipg = <TExtra>(
 };
 
 export const usePostPaymentV1PrivateEpayrequestDividelink = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestResponseVM,
     { requestBody: CreateDivideLinkRequestRequestVM },
     TExtra
@@ -5428,7 +5511,7 @@ export const usePostPaymentV1PrivateEpayrequestDividelink = <TExtra>(
 };
 
 export const usePostPaymentV1PrivateEpayrequestIpg = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestResponseVM,
     { requestBody: CreateIpgRequestRequestVM },
     TExtra
@@ -5450,7 +5533,7 @@ export const usePostPaymentV1PrivateEpayrequestIpg = <TExtra>(
 };
 
 export const usePostPaymentV1PrivateEpayrequestLink = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestResponseVM,
     { requestBody: CreateLinkRequestRequestVM },
     TExtra
@@ -5472,7 +5555,7 @@ export const usePostPaymentV1PrivateEpayrequestLink = <TExtra>(
 };
 
 export const usePostPaymentV1PrivateEpayrequestPaywithwallet = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: EpayPayWithWalletRequestVM },
     TExtra
@@ -5495,7 +5578,7 @@ export const usePostPaymentV1PrivateEpayrequestPaywithwallet = <TExtra>(
 
 export const usePostPaymentV1PrivateEpayrequestPostactioninternaldepositepayrequest =
   <TExtra>(
-    options?: InternalUseMutationOptions<
+    options?: SwaggerTypescriptUseMutationOptions<
       AddPostActionResponseVM,
       { requestBody: AddPostActionInternalDepositEPayRequestRequestVM },
       TExtra
@@ -5519,7 +5602,7 @@ export const usePostPaymentV1PrivateEpayrequestPostactioninternaldepositepayrequ
 export const usePostPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder = <
   TExtra,
 >(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     AddPostActionResponseVM,
     { requestBody: AddPostActionPlaceMarketBuyOrderRequestVM },
     TExtra
@@ -5541,7 +5624,7 @@ export const usePostPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder = <
 };
 
 export const usePostPaymentV1PrivateEpayrequestSetpayercurrenyinfo = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: PayerCurrencyRequestVM },
     TExtra
@@ -5563,9 +5646,9 @@ export const usePostPaymentV1PrivateEpayrequestSetpayercurrenyinfo = <TExtra>(
 };
 
 export const usePostPaymentV1PrivateEpayrequestUnblock = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { queryParams: PostPaymentV1PrivateEpayrequestUnblockQueryParams },
+    { queryParams?: PostPaymentV1PrivateEpayrequestUnblockQueryParams },
     TExtra
   >,
 ) => {
@@ -5577,7 +5660,7 @@ export const usePostPaymentV1PrivateEpayrequestUnblock = <TExtra>(
 };
 
 export const usePostPaymentV1PublicEpayrequestPos = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestResponseVM,
     { requestBody: CreatePosRequestRequestVM },
     TExtra
@@ -5599,7 +5682,7 @@ export const usePostPaymentV1PublicEpayrequestPos = <TExtra>(
 };
 
 export const usePostSettlementV1PrivateAddressbook = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: AddressBookAddRequestVM[] },
     TExtra
@@ -5621,9 +5704,9 @@ export const usePostSettlementV1PrivateAddressbook = <TExtra>(
 };
 
 export const usePostSettlementV1PrivateExcel = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     SettlementExcelResponseVM[],
-    { requestBody: SettlementSearchRequestVM },
+    { requestBody: SettlementFilterRequestVM },
     TExtra
   >,
 ) => {
@@ -5643,9 +5726,9 @@ export const usePostSettlementV1PrivateExcel = <TExtra>(
 };
 
 export const usePostSettlementV1PrivateUserWalletNumber = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     SettlementRequestInfoResponseVM,
-    { userWalletNumber: string; requestBody: NewSettlementRequestVM },
+    { userWalletNumber: string; requestBody: CreateSettlementRequestVM },
     TExtra
   >,
 ) => {
@@ -5667,7 +5750,7 @@ export const usePostSettlementV1PrivateUserWalletNumber = <TExtra>(
 };
 
 export const usePostStorageV1PrivateFileUploadfile = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     string,
     {
       requestBody: {
@@ -5694,7 +5777,7 @@ export const usePostStorageV1PrivateFileUploadfile = <TExtra>(
 };
 
 export const usePostWalletV1Private = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     UserWalletResponseVM,
     { requestBody: CreateUserWalletRequestVM },
     TExtra
@@ -5715,8 +5798,30 @@ export const usePostWalletV1Private = <TExtra>(
   }, options);
 };
 
+export const usePostWalletV1PrivateGrouptransfer = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    GroupTransferResponseVM,
+    { requestBody: GroupTransferMoneyRequestVM },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return postWalletV1PrivateGrouptransfer(
+      requestBody,
+
+      configOverride,
+    );
+  }, options);
+};
+
 export const usePostWalletV1PrivateTransfer = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     TransferMoneyResponseVM,
     { requestBody: TransferMoneyRequestVM },
     TExtra
@@ -5738,7 +5843,7 @@ export const usePostWalletV1PrivateTransfer = <TExtra>(
 };
 
 export const usePostWalletV1PrivateUserbank = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: CreateUserBankRequestVM },
     TExtra
@@ -5759,8 +5864,30 @@ export const usePostWalletV1PrivateUserbank = <TExtra>(
   }, options);
 };
 
+export const usePostWalletV1PrivateUserbankDetailed = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: CreateUserBankDetailRequestVM },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return postWalletV1PrivateUserbankDetailed(
+      requestBody,
+
+      configOverride,
+    );
+  }, options);
+};
+
 export const usePostWalletV1PrivateUserreferralprogram = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UserReferralProgramAddVM },
     TExtra
@@ -5782,7 +5909,7 @@ export const usePostWalletV1PrivateUserreferralprogram = <TExtra>(
 };
 
 export const usePostWalletV1PrivateWalletpermission = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: SubuserAccessRequestVM },
     TExtra
@@ -5804,7 +5931,7 @@ export const usePostWalletV1PrivateWalletpermission = <TExtra>(
 };
 
 export const usePutAuthV1PrivateApikey = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: ApiKeyUpdateRequestVM },
     TExtra
@@ -5826,7 +5953,7 @@ export const usePutAuthV1PrivateApikey = <TExtra>(
 };
 
 export const usePutAuthV1PrivateAuthEmail = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: ChangeEmailRequestVM },
     TExtra
@@ -5848,11 +5975,11 @@ export const usePutAuthV1PrivateAuthEmail = <TExtra>(
 };
 
 export const usePutAuthV1ProtectAuthChangepassword = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     {
       requestBody: ChangePasswordRequestVM;
-      headerParams: { platformType: PlatformType };
+      headerParams?: { platformType: PlatformType };
     },
     TExtra
   >,
@@ -5875,11 +6002,11 @@ export const usePutAuthV1ProtectAuthChangepassword = <TExtra>(
 };
 
 export const usePutAuthV1PublicAuthForgotpassword = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     {
       requestBody: ForgotPasswordRequestVM;
-      headerParams: { platformType: PlatformType };
+      headerParams?: { platformType: PlatformType };
     },
     TExtra
   >,
@@ -5901,8 +6028,51 @@ export const usePutAuthV1PublicAuthForgotpassword = <TExtra>(
   }, options);
 };
 
+export const usePutEngagementV1PrivateNotificationRead = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: number[] },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return putEngagementV1PrivateNotificationRead(
+      requestBody,
+
+      configOverride,
+    );
+  }, options);
+};
+
+export const usePutEngagementV1PrivateNotificationReadall = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { queryParams?: PutEngagementV1PrivateNotificationReadallQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const { queryParams, configOverride } = _o || {};
+
+    return putEngagementV1PrivateNotificationReadall(
+      queryParams,
+      configOverride,
+    );
+  }, options);
+};
+
 export const usePutPartyV1PrivateNotificationRead = <TExtra>(
-  options?: InternalUseMutationOptions<any, { requestBody: number[] }, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: number[] },
+    TExtra
+  >,
 ) => {
   return useMutation((_o) => {
     const {
@@ -5920,7 +6090,7 @@ export const usePutPartyV1PrivateNotificationRead = <TExtra>(
 };
 
 export const usePutPartyV1PrivateNotificationReadall = <TExtra>(
-  options?: InternalUseMutationOptionsVoid<any, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
 ) => {
   return useMutation((_o) => {
     const { configOverride } = _o || {};
@@ -5930,7 +6100,7 @@ export const usePutPartyV1PrivateNotificationReadall = <TExtra>(
 };
 
 export const usePutPartyV1PrivatePluginChangestatus = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: UserPluginTogggleRequestVM },
     TExtra
@@ -5952,7 +6122,7 @@ export const usePutPartyV1PrivatePluginChangestatus = <TExtra>(
 };
 
 export const usePutPartyV1PrivateUsersettingPreference = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: PreferenceUserSettingRequestVM },
     TExtra
@@ -5974,7 +6144,7 @@ export const usePutPartyV1PrivateUsersettingPreference = <TExtra>(
 };
 
 export const usePutPaymentV1PrivateEpayrequestAssigneduser = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EPayRequestInfoResponseVM,
     { requestBody: UpdateEpayRequestAssignedUserRequestVM },
     TExtra
@@ -5996,7 +6166,7 @@ export const usePutPaymentV1PrivateEpayrequestAssigneduser = <TExtra>(
 };
 
 export const usePutPaymentV1PrivateEpayrequestCustomdata = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     EPayRequestInfoResponseVM,
     { requestBody: UpdateEpayRequestCustomDataRequestVM },
     TExtra
@@ -6018,9 +6188,9 @@ export const usePutPaymentV1PrivateEpayrequestCustomdata = <TExtra>(
 };
 
 export const usePutPaymentV1PublicEpayrequestCancel = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { queryParams: PutPaymentV1PublicEpayrequestCancelQueryParams },
+    { queryParams?: PutPaymentV1PublicEpayrequestCancelQueryParams },
     TExtra
   >,
 ) => {
@@ -6032,7 +6202,11 @@ export const usePutPaymentV1PublicEpayrequestCancel = <TExtra>(
 };
 
 export const usePutSettlementV1PrivateAddressbookWhitelistDisable = <TExtra>(
-  options?: InternalUseMutationOptions<any, { requestBody: number[] }, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: number[] },
+    TExtra
+  >,
 ) => {
   return useMutation((_o) => {
     const {
@@ -6050,7 +6224,11 @@ export const usePutSettlementV1PrivateAddressbookWhitelistDisable = <TExtra>(
 };
 
 export const usePutSettlementV1PrivateAddressbookWhitelistEnable = <TExtra>(
-  options?: InternalUseMutationOptions<any, { requestBody: number[] }, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: number[] },
+    TExtra
+  >,
 ) => {
   return useMutation((_o) => {
     const {
@@ -6068,9 +6246,9 @@ export const usePutSettlementV1PrivateAddressbookWhitelistEnable = <TExtra>(
 };
 
 export const usePutWalletV1PrivateUserreferralprogramDefault = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { queryParams: PutWalletV1PrivateUserreferralprogramDefaultQueryParams },
+    { queryParams?: PutWalletV1PrivateUserreferralprogramDefaultQueryParams },
     TExtra
   >,
 ) => {
@@ -6085,7 +6263,7 @@ export const usePutWalletV1PrivateUserreferralprogramDefault = <TExtra>(
 };
 
 export const usePutWalletV1PrivateWalletpermission = <TExtra>(
-  options?: InternalUseMutationOptions<
+  options?: SwaggerTypescriptUseMutationOptions<
     any,
     { requestBody: PermissionRequestVM },
     TExtra

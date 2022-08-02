@@ -300,6 +300,23 @@ export interface CityResponseVM {
   title?: string;
 }
 
+export type ComissionType = "Percentage" | "Fixed";
+
+export interface CommissionPolicyResponseVM {
+  commissionType: ComissionType;
+  logicalActionType: LogicalActionType;
+  commissionTypeDisplay?: string;
+  currencySymbol?: string;
+  /** - Format: double */
+  fixedValue?: number;
+  logicalActionTypeDisplay?: string;
+  /** - Format: double */
+  maxValue?: number;
+  moneyNetworkSymbol?: string;
+  /** - Format: double */
+  percent?: number;
+}
+
 export interface CountryResponseVM {
   /** - Format: int32 */
   id: number;
@@ -408,10 +425,33 @@ export interface CreatePosRequestRequestVM {
   userWalletNumber?: string;
 }
 
+export interface CreateSettlementRequestVM {
+  /** - Format: double */
+  amount: number;
+  description?: string;
+  /** - Format: int64 */
+  userBankId?: number;
+}
+
+export interface CreateUserBankDetailRequestVM {
+  /** - Format: int32 */
+  bankId: number;
+  businessShareType: BusinessShareType;
+  accountNo?: string;
+  cardNumber?: string;
+  documents?: DocumentRequestVM[];
+  firstName?: string;
+  lastName?: string;
+  name?: string;
+  nationalCode?: string;
+  shebaNo?: string;
+}
+
 export interface CreateUserBankRequestVM {
   /** - Format: int32 */
   bankId: number;
   accountNo?: string;
+  cardNumber?: string;
   name?: string;
   shebaNo?: string;
 }
@@ -460,6 +500,10 @@ export interface DeleteAuthV1PrivateUsertrusteddeviceQueryParams {
   id?: number;
 }
 
+export interface DeleteEngagementV1PrivateNotificationClearallQueryParams {
+  type?: NotificationTypes;
+}
+
 export interface DepositTransactionHistoryListResponseVM {
   /** - Format: int64 */
   count: number;
@@ -495,8 +539,23 @@ export interface DivideEpayRequestShareInfoRequestVM {
   userShareNumber?: string;
 }
 
+export type DocumentContentType =
+  | "Other"
+  | "UserBankVerification"
+  | "IdentityCard"
+  | "BusinessStatute"
+  | "BusinessLatestChangesAnnouncement"
+  | "BusinessOwnersIdentityCards"
+  | "BusinessOwnersBirthCertificates";
+
 export interface DocumentFileRequestVM {
   fileType: DocumentType;
+  /** - Format: uuid */
+  fileUniqueId: string;
+}
+
+export interface DocumentRequestVM {
+  documentContentType: DocumentContentType;
   /** - Format: uuid */
   fileUniqueId: string;
 }
@@ -638,6 +697,7 @@ export interface EPayRequestSingleResponseVM {
   id: number;
   assignedUserDisplayName?: string;
   audiences?: EPayRequestAudienceResponseVM[];
+  currencySymbol?: string;
   customDatas?: EpayRequestCustomDataResponseVM[];
   description?: string;
   ownerDisplayName?: string;
@@ -939,6 +999,19 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   txId?: string;
 }
 
+export interface GetEngagementV1PrivateNotificationQueryParams {
+  /** - Format: date-time */
+  endDate?: string;
+  notificationType?: NotificationTypes;
+  /** - Format: int32 */
+  pageNo?: number;
+  /** - Format: int32 */
+  pageSize?: number;
+  read?: boolean;
+  /** - Format: date-time */
+  startDate?: string;
+}
+
 export interface GetExchangeV1PrivateAllorderlistQueryParams {
   /** - Format: date-time */
   endTime?: string;
@@ -1117,11 +1190,11 @@ export interface GetPaymentV1PrivateEpayrequestListFrommeQueryParams {
 }
 
 export interface GetPaymentV1PrivateEpayrequestListQueryParams {
-  OwnerType?: EpayRequestOwnerType;
   assignedToUserIds?: string[];
   /** - Format: date-time */
   endDate?: string;
   epayRequestActualStates?: EpayRequestActualState[];
+  ownerType?: EpayRequestOwnerType;
   /** - Format: int32 */
   pageNo?: number;
   /** - Format: int32 */
@@ -1170,9 +1243,14 @@ export interface GetSettlementV1PrivateAddressbookQueryParams {
   id?: number;
 }
 
+export interface GetSettlementV1PrivateCommissionQueryParams {
+  /** - Format: double */
+  amount?: number;
+  moneyNetworkSymbol?: string;
+  walletNumber?: string;
+}
+
 export interface GetSettlementV1PrivateCountQueryParams {
-  /** - Format: int64 */
-  UserWalletId?: number;
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -1193,6 +1271,7 @@ export interface GetSettlementV1PrivateCountQueryParams {
   toYear?: number;
   /** - Format: int64 */
   userBankId?: number;
+  walletNumber?: string;
   /** - Format: int32 */
   year?: number;
 }
@@ -1206,14 +1285,14 @@ export interface GetSettlementV1PrivateListQueryParams {
   /** - Format: double */
   MinimumAmount?: number;
   /** - Format: int32 */
-  Skip?: number;
+  PageNo?: number;
+  /** - Format: int32 */
+  PageSize?: number;
   /** - Format: date-time */
   StartDate?: string;
   States?: SettlementRequestStatus[];
-  /** - Format: int32 */
-  Take?: number;
   UserBankIds?: number[];
-  UserWalletIds?: number[];
+  WalletNumbers?: string[];
 }
 
 export interface GetSettlementV1PrivateQueryParams {
@@ -1222,8 +1301,6 @@ export interface GetSettlementV1PrivateQueryParams {
 }
 
 export interface GetSettlementV1PrivateReportQueryParams {
-  /** - Format: int64 */
-  UserWalletId?: number;
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -1244,6 +1321,7 @@ export interface GetSettlementV1PrivateReportQueryParams {
   toYear?: number;
   /** - Format: int64 */
   userBankId?: number;
+  walletNumber?: string;
   /** - Format: int32 */
   year?: number;
 }
@@ -1259,28 +1337,19 @@ export interface GetSettlementV1PrivateSubuserQueryParams {
   /** - Format: double */
   MinimumAmount?: number;
   /** - Format: int32 */
-  Skip?: number;
+  PageNo?: number;
+  /** - Format: int32 */
+  PageSize?: number;
   /** - Format: date-time */
   StartDate?: string;
   States?: SettlementRequestStatus[];
-  /** - Format: int32 */
-  Take?: number;
   UserBankIds?: number[];
-  UserWalletIds?: number[];
+  WalletNumbers?: string[];
 }
 
 export interface GetStorageV1PrivateFileDownloadQueryParams {
   /** - Format: uuid */
   fileUniqueId?: string;
-}
-
-export interface GetWalletV1PrivateFindQueryParams {
-  currencySymbol?: string;
-  /** - Format: int64 */
-  customerNumber?: number;
-  email?: string;
-  phoneNumber?: string;
-  walletNumber?: string;
 }
 
 export interface GetWalletV1PrivateGrouptransferCommissionQueryParams {
@@ -1293,6 +1362,10 @@ export interface GetWalletV1PrivateGrouptransferCommissionQueryParams {
 export interface GetWalletV1PrivateInternalwithdrawInfoQueryParams {
   /** - Format: int64 */
   internalWithdrawId?: number;
+}
+
+export interface GetWalletV1PrivateQueryParams {
+  walletNumber?: string;
 }
 
 export interface GetWalletV1PrivateSubuserAllQueryParams {
@@ -1318,6 +1391,15 @@ export interface GetWalletV1PrivateUserbankStatusQueryParams {
   accountNo?: string;
 }
 
+export interface GetWalletV1PublicFindQueryParams {
+  currencySymbol?: string;
+  /** - Format: int64 */
+  customerNumber?: number;
+  email?: string;
+  phoneNumber?: string;
+  walletNumber?: string;
+}
+
 export interface GlobalWalletProviderResponseVM {
   globalWalletProviderType: GlobalWalletProviderType;
   /** - Format: int32 */
@@ -1337,6 +1419,50 @@ export type GrantType =
   | "AuthorizationCode"
   | "ClientCredentials"
   | "DeviceFlow";
+
+export interface GroupTransferMoneyRequestVM {
+  description?: string;
+  targets?: GroupTransferMoneyTargetRequestVM[];
+  walletNumber?: string;
+}
+
+export interface GroupTransferMoneyTargetRequestVM {
+  /** - Format: double */
+  amount: number;
+  description?: string;
+  identifier?: string;
+}
+
+export interface GroupTransferResponseVM {
+  /** - Format: double */
+  amount: number;
+  /** - Format: date-time */
+  createDate: string;
+  /** - Format: int64 */
+  voucherId: number;
+  description?: string;
+  targets?: GroupTransferTargetInfoResponseVM[];
+  userDisplayName?: string;
+  walletName?: string;
+}
+
+export interface GroupTransferTargetInfoResponseVM {
+  /** - Format: int64 */
+  accountId: number;
+  /** - Format: double */
+  amount: number;
+  /** - Format: int32 */
+  currencyId: number;
+  /** - Format: int32 */
+  domainId: number;
+  /** - Format: uuid */
+  userId: string;
+  description?: string;
+  userDisplayName?: string;
+  userPhoneNumber?: string;
+  walletName?: string;
+  walletNumber?: string;
+}
 
 export type HitoBitNotificationType =
   | "Activities"
@@ -1458,6 +1584,28 @@ export interface KlineDataResponseVM {
   /** - Format: double */
   ignore?: number;
 }
+
+export type LogicalActionType =
+  | "EpayRequest"
+  | "TransferMoney"
+  | "WalletCharge"
+  | "ServiceBill"
+  | "ServiceMobileCharge"
+  | "POS"
+  | "ShareAndBlockRequest"
+  | "ShareRequest"
+  | "Settlement"
+  | "GroupTransferMoney"
+  | "UnblockMoney"
+  | "Gift"
+  | "TaxiFarePayment"
+  | "Withdraw"
+  | "IPG"
+  | "InternalTrade"
+  | "ResellerIncome"
+  | "PspTransaction"
+  | "ExternalTrade"
+  | "ExternalManualTrade";
 
 export interface LoginModelRequestVM {
   grantType: GrantType;
@@ -1589,12 +1737,32 @@ export interface NewEmailRequestVM {
   totpCode?: string;
 }
 
-export interface NewSettlementRequestVM {
-  /** - Format: double */
-  amount: number;
-  description?: string;
+export interface Notification2ListResponseVM {
   /** - Format: int64 */
-  userBankId?: number;
+  count: number;
+  notifications?: Notification2ResponseVM[];
+}
+
+export interface Notification2ResponseVM {
+  /** - Format: date-time */
+  createDate: string;
+  /** - Format: int64 */
+  id: number;
+  level: NotificationLevel;
+  read: boolean;
+  type: NotificationTypes;
+  /** - Format: uuid */
+  userId: string;
+  message?: string;
+  /** - Format: date-time */
+  readDate?: string;
+  subject?: string;
+}
+
+export interface NotificationCountByTypeResponseVM {
+  /** - Format: int64 */
+  count: number;
+  notificationType: NotificationTypes;
 }
 
 export type NotificationLevel =
@@ -1651,6 +1819,8 @@ export interface NotificationResponseVM {
   text?: string;
   title?: string;
 }
+
+export type NotificationTypes = "Activity" | "Trade" | "BinanceNews" | "System";
 
 export interface NotificationTypesReadCountResponseVM {
   /** - Format: int32 */
@@ -1956,6 +2126,10 @@ export type PurposeType =
   | "NewEmail"
   | "Email";
 
+export interface PutEngagementV1PrivateNotificationReadallQueryParams {
+  type?: NotificationTypes;
+}
+
 export interface PutPaymentV1PublicEpayrequestCancelQueryParams {
   token?: string;
 }
@@ -2123,6 +2297,25 @@ export interface SettlementExcelResponseVM {
   statusDisplay?: string;
 }
 
+export interface SettlementFilterRequestVM {
+  /** - Format: date-time */
+  endDate?: string;
+  isAuto?: boolean;
+  /** - Format: double */
+  maximumAmount?: number;
+  /** - Format: double */
+  minimumAmount?: number;
+  /** - Format: int32 */
+  pageNo?: number;
+  /** - Format: int32 */
+  pageSize?: number;
+  /** - Format: date-time */
+  startDate?: string;
+  states?: SettlementRequestStatus[];
+  userBankIds?: number[];
+  walletNumbers?: string[];
+}
+
 export interface SettlementRequestInfoListResponseVM {
   /** - Format: int64 */
   totalCount: number;
@@ -2150,13 +2343,12 @@ export interface SettlementRequestInfoResponseVM {
   userWalletId: number;
   /** - Format: int64 */
   voucherId: number;
-  accountName?: string;
-  accountNumber?: string;
   /** - Format: int32 */
   bankId?: number;
   bankLogoAddress?: string;
   bankName?: string;
   creatorUserDisplayName?: string;
+  currencySymbol?: string;
   description?: string;
   userBankFirstName?: string;
   userBankLastName?: string;
@@ -2164,31 +2356,14 @@ export interface SettlementRequestInfoResponseVM {
   userBankNumber?: string;
   userBankShebaNumber?: string;
   userDisplayName?: string;
+  walletName?: string;
+  walletNumber?: string;
 }
 
 export type SettlementRequestStatus =
   | "Pending"
   | "Paid"
   | "PayCommandCreatedPendingForPay";
-
-export interface SettlementSearchRequestVM {
-  /** - Format: date-time */
-  endDate?: string;
-  isAuto?: boolean;
-  /** - Format: double */
-  maximumAmount?: number;
-  /** - Format: double */
-  minimumAmount?: number;
-  /** - Format: int32 */
-  skip?: number;
-  /** - Format: date-time */
-  startDate?: string;
-  states?: SettlementRequestStatus[];
-  /** - Format: int32 */
-  take?: number;
-  userBankIds?: number[];
-  userWalletIds?: number[];
-}
 
 export interface SettlementTransactionHistoryListResponseVM {
   /** - Format: int64 */
@@ -2489,11 +2664,7 @@ export interface UserBankResponseVM {
   name?: string;
   nationalCode?: string;
   rejectCauseDescription?: string;
-  /** - Format: uuid */
-  rejecterAdminUserId?: string;
   shebaNo?: string;
-  /** - Format: uuid */
-  verifierAdminUserId?: string;
 }
 
 export interface UserBasicInfoRequestVM {
@@ -2769,6 +2940,20 @@ export interface UserTrustedDeviceResponseVM {
   userAgent?: string;
 }
 
+export interface UserWalletDisplayDetailResponseVM {
+  accountStatus: AccountStatus;
+  automaticSettlement: boolean;
+  getComissionFromPayer: boolean;
+  isActive: boolean;
+  notificationEnabled: boolean;
+  /** - Format: int32 */
+  permittedSubuserCount: number;
+  userWalletType: UserWalletType;
+  actionPolicies?: CommissionPolicyResponseVM[];
+  walletName?: string;
+  walletNumber?: string;
+}
+
 export interface UserWalletDisplayResponseVM {
   accountStatus: AccountStatus;
   automaticSettlement: boolean;
@@ -2834,6 +3019,11 @@ export interface VerifyUserPhoneNumberRequestVM {
   userId: string;
   token?: string;
   verifyCode?: string;
+}
+
+export interface WalletDepositAddressRequestVM {
+  moneyNetworkSymbol?: string;
+  walletNumber?: string;
 }
 
 export type WithdrawRequestStatus =

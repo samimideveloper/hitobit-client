@@ -38,12 +38,15 @@ import {
   CreateIpgRequestRequestVM,
   CreateLinkRequestRequestVM,
   CreatePosRequestRequestVM,
+  CreateSettlementRequestVM,
+  CreateUserBankDetailRequestVM,
   CreateUserBankRequestVM,
   CreateUserWalletRequestVM,
   CreateWithdrawRequestUserWalletResponseVM,
   CurrencyResponseVM,
   DeleteAuthV1PrivateApikeyQueryParams,
   DeleteAuthV1PrivateUsertrusteddeviceQueryParams,
+  DeleteEngagementV1PrivateNotificationClearallQueryParams,
   DepositTransactionHistoryListResponseVM,
   DomainCurrencyResponseVM,
   DomainSettingVM,
@@ -78,6 +81,7 @@ import {
   GetCapitalV1PrivateSettlementListQueryParams,
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
+  GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
   GetExchangeV1PrivateAlltradesQueryParams,
@@ -108,21 +112,25 @@ import {
   GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
   GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
   GetSettlementV1PrivateAddressbookQueryParams,
+  GetSettlementV1PrivateCommissionQueryParams,
   GetSettlementV1PrivateCountQueryParams,
   GetSettlementV1PrivateListQueryParams,
   GetSettlementV1PrivateQueryParams,
   GetSettlementV1PrivateReportQueryParams,
   GetSettlementV1PrivateSubuserQueryParams,
   GetStorageV1PrivateFileDownloadQueryParams,
-  GetWalletV1PrivateFindQueryParams,
   GetWalletV1PrivateGrouptransferCommissionQueryParams,
   GetWalletV1PrivateInternalwithdrawInfoQueryParams,
+  GetWalletV1PrivateQueryParams,
   GetWalletV1PrivateSubuserAllQueryParams,
   GetWalletV1PrivateSubuserAssignableQueryParams,
   GetWalletV1PrivateTransferCommissionQueryParams,
   GetWalletV1PrivateUserassetSpotDefaultQueryParams,
   GetWalletV1PrivateUserbankStatusQueryParams,
+  GetWalletV1PublicFindQueryParams,
   GlobalWalletProviderResponseVM,
+  GroupTransferMoneyRequestVM,
+  GroupTransferResponseVM,
   IdentificationLevel,
   IdentificationLevelGuideResponseVM,
   IdentityStatus,
@@ -133,7 +141,8 @@ import {
   MarketTickerPriceResponseVM,
   MoneyNetworkResponseVM,
   NewEmailRequestVM,
-  NewSettlementRequestVM,
+  Notification2ListResponseVM,
+  NotificationCountByTypeResponseVM,
   NotificationListResponseVM,
   NotificationTypesReadCountResponseVM,
   OcoOrderResultInfoResponseVM,
@@ -156,6 +165,7 @@ import {
   PreferenceUserSettingRequestVM,
   ProvinceResponseVM,
   PurposeType,
+  PutEngagementV1PrivateNotificationReadallQueryParams,
   PutPaymentV1PublicEpayrequestCancelQueryParams,
   PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
   PuzzleModelResponseVM,
@@ -170,9 +180,9 @@ import {
   RevokeTokenRequestVM,
   SecurityActivityListVM,
   SettlementExcelResponseVM,
+  SettlementFilterRequestVM,
   SettlementRequestInfoListResponseVM,
   SettlementRequestInfoResponseVM,
-  SettlementSearchRequestVM,
   SettlementTransactionHistoryListResponseVM,
   SubuserAccessRequestVM,
   TodayTotalWithdrawResponseVM,
@@ -211,10 +221,12 @@ import {
   UserTraderLevelResponseVM,
   UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
+  UserWalletDisplayDetailResponseVM,
   UserWalletDisplayResponseVM,
   UserWalletResponseVM,
   VerifySecureRequestVM,
   VerifyUserPhoneNumberRequestVM,
+  WalletDepositAddressRequestVM,
   WithdrawRequestUserWalletCreateRequestVM,
   WithdrawTransactionHistoryListResponseVM,
 } from "./types";
@@ -256,7 +268,7 @@ function objToForm(requestBody: object) {
 }
 
 export const deleteAuthV1PrivateApikey = (
-  queryParams: DeleteAuthV1PrivateApikeyQueryParams,
+  queryParams?: DeleteAuthV1PrivateApikeyQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.deleteRequest(
@@ -270,6 +282,21 @@ export const deleteAuthV1PrivateApikey = (
 
 /** Key is end point string without base url */
 deleteAuthV1PrivateApikey.key = "/auth/v1/private/apikey";
+
+export const deleteAuthV1PrivateApikeyAll = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    deleteAuthV1PrivateApikeyAll.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteAuthV1PrivateApikeyAll.key = "/auth/v1/private/apikey/all";
 
 export const deleteAuthV1PrivateAuthEmail = (
   requestBody: RemoveEmailRequestVM,
@@ -288,7 +315,7 @@ export const deleteAuthV1PrivateAuthEmail = (
 deleteAuthV1PrivateAuthEmail.key = "/auth/v1/private/auth/email";
 
 export const deleteAuthV1PrivateUsertrusteddevice = (
-  queryParams: DeleteAuthV1PrivateUsertrusteddeviceQueryParams,
+  queryParams?: DeleteAuthV1PrivateUsertrusteddeviceQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.deleteRequest(
@@ -302,6 +329,23 @@ export const deleteAuthV1PrivateUsertrusteddevice = (
 
 /** Key is end point string without base url */
 deleteAuthV1PrivateUsertrusteddevice.key = "/auth/v1/private/usertrusteddevice";
+
+export const deleteEngagementV1PrivateNotificationClearall = (
+  queryParams?: DeleteEngagementV1PrivateNotificationClearallQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    deleteEngagementV1PrivateNotificationClearall.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteEngagementV1PrivateNotificationClearall.key =
+  "/engagement/v1/private/notification/clearall";
 
 export const deleteExchangeV1PrivateOpenorders = (
   requestBody: CancelAllOrdersRequestVM,
@@ -432,7 +476,7 @@ deleteWalletV1PrivateWalletpermission.key =
   "/wallet/v1/private/walletpermission";
 
 export const getAnalyticsV1PrivateResellercommissionhistoryActiveusercount = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -449,7 +493,7 @@ getAnalyticsV1PrivateResellercommissionhistoryActiveusercount.key =
   "/analytics/v1/private/resellercommissionhistory/activeusercount";
 
 export const getAnalyticsV1PrivateResellercommissionhistoryNewusercount = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryNewusercountQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -466,7 +510,7 @@ getAnalyticsV1PrivateResellercommissionhistoryNewusercount.key =
   "/analytics/v1/private/resellercommissionhistory/newusercount";
 
 export const getAnalyticsV1PrivateResellercommissionhistoryTotalincome = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -483,7 +527,7 @@ getAnalyticsV1PrivateResellercommissionhistoryTotalincome.key =
   "/analytics/v1/private/resellercommissionhistory/totalincome";
 
 export const getAnalyticsV1PrivateResellercommissionhistoryTransactioncount = (
-  queryParams: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
+  queryParams?: GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -500,7 +544,7 @@ getAnalyticsV1PrivateResellercommissionhistoryTransactioncount.key =
   "/analytics/v1/private/resellercommissionhistory/transactioncount";
 
 export const getAnalyticsV1PrivateSecurityactivityList = (
-  queryParams: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateSecurityactivityListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SecurityActivityListVM>> => {
   return Http.getRequest(
@@ -518,7 +562,7 @@ getAnalyticsV1PrivateSecurityactivityList.key =
 
 export const getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
     configOverride?: AxiosRequestConfig,
   ): Promise<SwaggerResponse<TradeReferralCommissionHistoryListResponseVM>> => {
     return Http.getRequest(
@@ -553,7 +597,7 @@ getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.key =
 
 export const getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
     configOverride?: AxiosRequestConfig,
   ): Promise<SwaggerResponse<ReferralHistoryListVM>> => {
     return Http.getRequest(
@@ -571,7 +615,7 @@ getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.key =
 
 export const getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList =
   (
-    queryParams: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
+    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
     configOverride?: AxiosRequestConfig,
   ): Promise<SwaggerResponse<TradeReferralCommissionHistoryListResponseVM>> => {
     return Http.getRequest(
@@ -621,7 +665,7 @@ getAnalyticsV1PrivateUserloginhistoryLast.key =
   "/analytics/v1/private/userloginhistory/last";
 
 export const getAnalyticsV1PrivateUserloginhistoryList = (
-  queryParams: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
+  queryParams?: GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserLoginHistoryListVM>> => {
   return Http.getRequest(
@@ -654,7 +698,7 @@ getAnalyticsV1PublicTradereferralcommissionhistoryRank.key =
   "/analytics/v1/public/tradereferralcommissionhistory/rank";
 
 export const getAuthV1PrivateApikey = (
-  queryParams: GetAuthV1PrivateApikeyQueryParams,
+  queryParams?: GetAuthV1PrivateApikeyQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ApiKeyResponseVM>> => {
   return Http.getRequest(
@@ -670,7 +714,7 @@ export const getAuthV1PrivateApikey = (
 getAuthV1PrivateApikey.key = "/auth/v1/private/apikey";
 
 export const getAuthV1PrivateApikeyList = (
-  queryParams: GetAuthV1PrivateApikeyListQueryParams,
+  queryParams?: GetAuthV1PrivateApikeyListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ApiKeyListResponseVM>> => {
   return Http.getRequest(
@@ -748,7 +792,7 @@ getAuthV1PrivateIdentityresourceGetscopelist.key =
   "/auth/v1/private/identityresource/getscopelist";
 
 export const getAuthV1PrivateUsertrusteddeviceList = (
-  queryParams: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserTrustedDeviceListResponseVM>> => {
   return Http.getRequest(
@@ -765,7 +809,7 @@ getAuthV1PrivateUsertrusteddeviceList.key =
   "/auth/v1/private/usertrusteddevice/list";
 
 export const getAuthV1PrivateUsertrusteddeviceLoginhistoryList = (
-  queryParams: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
+  queryParams?: GetAuthV1PrivateUsertrusteddeviceLoginhistoryListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserLoginHistoryListVM>> => {
   return Http.getRequest(
@@ -782,7 +826,7 @@ getAuthV1PrivateUsertrusteddeviceLoginhistoryList.key =
   "/auth/v1/private/usertrusteddevice/loginhistory/list";
 
 export const getAuthV1PublicAuthIsphonenumberregistered = (
-  queryParams: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
+  queryParams?: GetAuthV1PublicAuthIsphonenumberregisteredQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<boolean>> => {
   return Http.getRequest(
@@ -799,7 +843,7 @@ getAuthV1PublicAuthIsphonenumberregistered.key =
   "/auth/v1/public/auth/isphonenumberregistered";
 
 export const getBaseinfoV1PublicCityList = (
-  queryParams: GetBaseinfoV1PublicCityListQueryParams,
+  queryParams?: GetBaseinfoV1PublicCityListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<CityResponseVM[]>> => {
   return Http.getRequest(
@@ -815,7 +859,7 @@ export const getBaseinfoV1PublicCityList = (
 getBaseinfoV1PublicCityList.key = "/baseinfo/v1/public/city/list";
 
 export const getBaseinfoV1PublicCountryAll = (
-  queryParams: GetBaseinfoV1PublicCountryAllQueryParams,
+  queryParams?: GetBaseinfoV1PublicCountryAllQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<CountryResponseVM[]>> => {
   return Http.getRequest(
@@ -831,7 +875,7 @@ export const getBaseinfoV1PublicCountryAll = (
 getBaseinfoV1PublicCountryAll.key = "/baseinfo/v1/public/country/all";
 
 export const getBaseinfoV1PublicProvinceList = (
-  queryParams: GetBaseinfoV1PublicProvinceListQueryParams,
+  queryParams?: GetBaseinfoV1PublicProvinceListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ProvinceResponseVM[]>> => {
   return Http.getRequest(
@@ -847,7 +891,7 @@ export const getBaseinfoV1PublicProvinceList = (
 getBaseinfoV1PublicProvinceList.key = "/baseinfo/v1/public/province/list";
 
 export const getCapitalV1PrivateDepositList = (
-  queryParams: GetCapitalV1PrivateDepositListQueryParams,
+  queryParams?: GetCapitalV1PrivateDepositListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<DepositTransactionHistoryListResponseVM>> => {
   return Http.getRequest(
@@ -878,7 +922,7 @@ export const getCapitalV1PrivateDepositRecent = (
 getCapitalV1PrivateDepositRecent.key = "/capital/v1/private/deposit/recent";
 
 export const getCapitalV1PrivatePosList = (
-  queryParams: GetCapitalV1PrivatePosListQueryParams,
+  queryParams?: GetCapitalV1PrivatePosListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<POSTransactionHistoryListResponseVM>> => {
   return Http.getRequest(
@@ -894,7 +938,7 @@ export const getCapitalV1PrivatePosList = (
 getCapitalV1PrivatePosList.key = "/capital/v1/private/pos/list";
 
 export const getCapitalV1PrivateSettlementList = (
-  queryParams: GetCapitalV1PrivateSettlementListQueryParams,
+  queryParams?: GetCapitalV1PrivateSettlementListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SettlementTransactionHistoryListResponseVM>> => {
   return Http.getRequest(
@@ -910,7 +954,7 @@ export const getCapitalV1PrivateSettlementList = (
 getCapitalV1PrivateSettlementList.key = "/capital/v1/private/settlement/list";
 
 export const getCapitalV1PrivateWithdrawDetail = (
-  queryParams: GetCapitalV1PrivateWithdrawDetailQueryParams,
+  queryParams?: GetCapitalV1PrivateWithdrawDetailQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TransactionHistoryDetailResponseVM>> => {
   return Http.getRequest(
@@ -926,7 +970,7 @@ export const getCapitalV1PrivateWithdrawDetail = (
 getCapitalV1PrivateWithdrawDetail.key = "/capital/v1/private/withdraw/detail";
 
 export const getCapitalV1PrivateWithdrawList = (
-  queryParams: GetCapitalV1PrivateWithdrawListQueryParams,
+  queryParams?: GetCapitalV1PrivateWithdrawListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<WithdrawTransactionHistoryListResponseVM>> => {
   return Http.getRequest(
@@ -1002,8 +1046,40 @@ export const getCapitalV1PublicMoneynetworkAll = (
 /** Key is end point string without base url */
 getCapitalV1PublicMoneynetworkAll.key = "/capital/v1/public/moneynetwork/all";
 
+export const getEngagementV1PrivateNotification = (
+  queryParams?: GetEngagementV1PrivateNotificationQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Notification2ListResponseVM>> => {
+  return Http.getRequest(
+    getEngagementV1PrivateNotification.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getEngagementV1PrivateNotification.key = "/engagement/v1/private/notification";
+
+export const getEngagementV1PrivateNotificationCount = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<NotificationCountByTypeResponseVM[]>> => {
+  return Http.getRequest(
+    getEngagementV1PrivateNotificationCount.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getEngagementV1PrivateNotificationCount.key =
+  "/engagement/v1/private/notification/count";
+
 export const getExchangeV1PrivateAllorderlist = (
-  queryParams: GetExchangeV1PrivateAllorderlistQueryParams,
+  queryParams?: GetExchangeV1PrivateAllorderlistQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<OcoOrderResultInfoResponseVM[]>> => {
   return Http.getRequest(
@@ -1019,7 +1095,7 @@ export const getExchangeV1PrivateAllorderlist = (
 getExchangeV1PrivateAllorderlist.key = "/exchange/v1/private/allorderlist";
 
 export const getExchangeV1PrivateAllorders = (
-  queryParams: GetExchangeV1PrivateAllordersQueryParams,
+  queryParams?: GetExchangeV1PrivateAllordersQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<OrderResultInfoListResponseVM>> => {
   return Http.getRequest(
@@ -1035,7 +1111,7 @@ export const getExchangeV1PrivateAllorders = (
 getExchangeV1PrivateAllorders.key = "/exchange/v1/private/allorders";
 
 export const getExchangeV1PrivateAlltrades = (
-  queryParams: GetExchangeV1PrivateAlltradesQueryParams,
+  queryParams?: GetExchangeV1PrivateAlltradesQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TradeResposneListVM>> => {
   return Http.getRequest(
@@ -1051,7 +1127,7 @@ export const getExchangeV1PrivateAlltrades = (
 getExchangeV1PrivateAlltrades.key = "/exchange/v1/private/alltrades";
 
 export const getExchangeV1PrivateOpenocoorderlist = (
-  queryParams: GetExchangeV1PrivateOpenocoorderlistQueryParams,
+  queryParams?: GetExchangeV1PrivateOpenocoorderlistQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<OcoOrderResultInfoResponseVM[]>> => {
   return Http.getRequest(
@@ -1068,7 +1144,7 @@ getExchangeV1PrivateOpenocoorderlist.key =
   "/exchange/v1/private/openocoorderlist";
 
 export const getExchangeV1PrivateOpenorders = (
-  queryParams: GetExchangeV1PrivateOpenordersQueryParams,
+  queryParams?: GetExchangeV1PrivateOpenordersQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<OrderResultInfoResponseVM[]>> => {
   return Http.getRequest(
@@ -1084,7 +1160,7 @@ export const getExchangeV1PrivateOpenorders = (
 getExchangeV1PrivateOpenorders.key = "/exchange/v1/private/openorders";
 
 export const getExchangeV1PrivateOrder = (
-  queryParams: GetExchangeV1PrivateOrderQueryParams,
+  queryParams?: GetExchangeV1PrivateOrderQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<OrderFullInfoResponseVM>> => {
   return Http.getRequest(
@@ -1100,7 +1176,7 @@ export const getExchangeV1PrivateOrder = (
 getExchangeV1PrivateOrder.key = "/exchange/v1/private/order";
 
 export const getExchangeV1PrivateOrderlist = (
-  queryParams: GetExchangeV1PrivateOrderlistQueryParams,
+  queryParams?: GetExchangeV1PrivateOrderlistQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<GetOcoOrderResponseVM>> => {
   return Http.getRequest(
@@ -1147,7 +1223,7 @@ export const getExchangeV1PublicAlltickers24hr = (
 getExchangeV1PublicAlltickers24hr.key = "/exchange/v1/public/alltickers/24hr";
 
 export const getExchangeV1PublicDepth = (
-  queryParams: GetExchangeV1PublicDepthQueryParams,
+  queryParams?: GetExchangeV1PublicDepthQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<OrderBookResponseVM>> => {
   return Http.getRequest(
@@ -1179,7 +1255,7 @@ getExchangeV1PublicDomaintraderlevels.key =
   "/exchange/v1/public/domaintraderlevels";
 
 export const getExchangeV1PublicKlines = (
-  queryParams: GetExchangeV1PublicKlinesQueryParams,
+  queryParams?: GetExchangeV1PublicKlinesQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<KlineDataResponseVM[]>> => {
   return Http.getRequest(
@@ -1195,7 +1271,7 @@ export const getExchangeV1PublicKlines = (
 getExchangeV1PublicKlines.key = "/exchange/v1/public/klines";
 
 export const getExchangeV1PublicMarkets = (
-  queryParams: GetExchangeV1PublicMarketsQueryParams,
+  queryParams?: GetExchangeV1PublicMarketsQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<MarketResponseVM>> => {
   return Http.getRequest(
@@ -1211,7 +1287,7 @@ export const getExchangeV1PublicMarkets = (
 getExchangeV1PublicMarkets.key = "/exchange/v1/public/markets";
 
 export const getExchangeV1PublicTicker24hr = (
-  queryParams: GetExchangeV1PublicTicker24hrQueryParams,
+  queryParams?: GetExchangeV1PublicTicker24hrQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<MarketTickerPriceResponseVM>> => {
   return Http.getRequest(
@@ -1227,7 +1303,7 @@ export const getExchangeV1PublicTicker24hr = (
 getExchangeV1PublicTicker24hr.key = "/exchange/v1/public/ticker/24hr";
 
 export const getExchangeV1PublicTrades = (
-  queryParams: GetExchangeV1PublicTradesQueryParams,
+  queryParams?: GetExchangeV1PublicTradesQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<RecentTradeResponseVM[]>> => {
   return Http.getRequest(
@@ -1272,6 +1348,21 @@ export const getPartyV1PrivateDomainForcetwofa = (
 /** Key is end point string without base url */
 getPartyV1PrivateDomainForcetwofa.key = "/party/v1/private/domain/forcetwofa";
 
+export const getPartyV1PrivateDomainMultiwallet = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<boolean>> => {
+  return Http.getRequest(
+    getPartyV1PrivateDomainMultiwallet.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPartyV1PrivateDomainMultiwallet.key = "/party/v1/private/domain/multiwallet";
+
 export const getPartyV1PrivateDomainSetting = (
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<DomainSettingVM>> => {
@@ -1288,7 +1379,7 @@ export const getPartyV1PrivateDomainSetting = (
 getPartyV1PrivateDomainSetting.key = "/party/v1/private/domain/setting";
 
 export const getPartyV1PrivateFavoritemarket = (
-  queryParams: GetPartyV1PrivateFavoritemarketQueryParams,
+  queryParams?: GetPartyV1PrivateFavoritemarketQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string[]>> => {
   return Http.getRequest(
@@ -1336,7 +1427,7 @@ getPartyV1PrivateIdentificationlevelUserInfo.key =
   "/party/v1/private/identificationlevel/user/info";
 
 export const getPartyV1PrivateNotificationAll = (
-  queryParams: GetPartyV1PrivateNotificationAllQueryParams,
+  queryParams?: GetPartyV1PrivateNotificationAllQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<NotificationListResponseVM>> => {
   return Http.getRequest(
@@ -1367,7 +1458,7 @@ export const getPartyV1PrivateNotificationTypes = (
 getPartyV1PrivateNotificationTypes.key = "/party/v1/private/notification/types";
 
 export const getPartyV1PrivatePluginList = (
-  queryParams: GetPartyV1PrivatePluginListQueryParams,
+  queryParams?: GetPartyV1PrivatePluginListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserPluginResponseVM[]>> => {
   return Http.getRequest(
@@ -1383,7 +1474,7 @@ export const getPartyV1PrivatePluginList = (
 getPartyV1PrivatePluginList.key = "/party/v1/private/plugin/list";
 
 export const getPartyV1PrivateUserByuserreferralprogramid = (
-  queryParams: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
+  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserReferralInfoVM[]>> => {
   return Http.getRequest(
@@ -1448,7 +1539,7 @@ getPartyV1PublicIdentificationlevelGuide.key =
   "/party/v1/public/identificationlevel/guide";
 
 export const getPaymentV1PrivateEpayrequestCommission = (
-  queryParams: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -1465,7 +1556,7 @@ getPaymentV1PrivateEpayrequestCommission.key =
   "/payment/v1/private/epayrequest/commission";
 
 export const getPaymentV1PrivateEpayrequestCount = (
-  queryParams: GetPaymentV1PrivateEpayrequestCountQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestCountResponseVM[]>> => {
   return Http.getRequest(
@@ -1482,7 +1573,7 @@ getPaymentV1PrivateEpayrequestCount.key =
   "/payment/v1/private/epayrequest/count";
 
 export const getPaymentV1PrivateEpayrequestCountFromme = (
-  queryParams: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestCountResponseVM[]>> => {
   return Http.getRequest(
@@ -1499,7 +1590,7 @@ getPaymentV1PrivateEpayrequestCountFromme.key =
   "/payment/v1/private/epayrequest/count/fromme";
 
 export const getPaymentV1PrivateEpayrequestInfoClientuniqueid = (
-  queryParams: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoClientuniqueidQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EPayRequestInfoResponseVM>> => {
   return Http.getRequest(
@@ -1516,7 +1607,7 @@ getPaymentV1PrivateEpayrequestInfoClientuniqueid.key =
   "/payment/v1/private/epayrequest/info/clientuniqueid";
 
 export const getPaymentV1PrivateEpayrequestInfoToken = (
-  queryParams: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestInfoTokenQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EPayRequestInfoResponseVM>> => {
   return Http.getRequest(
@@ -1533,7 +1624,7 @@ getPaymentV1PrivateEpayrequestInfoToken.key =
   "/payment/v1/private/epayrequest/info/token";
 
 export const getPaymentV1PrivateEpayrequestList = (
-  queryParams: GetPaymentV1PrivateEpayrequestListQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestListResponseVM>> => {
   return Http.getRequest(
@@ -1549,7 +1640,7 @@ export const getPaymentV1PrivateEpayrequestList = (
 getPaymentV1PrivateEpayrequestList.key = "/payment/v1/private/epayrequest/list";
 
 export const getPaymentV1PrivateEpayrequestListFromme = (
-  queryParams: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestListFrommeQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestListResponseVM>> => {
   return Http.getRequest(
@@ -1566,7 +1657,7 @@ getPaymentV1PrivateEpayrequestListFromme.key =
   "/payment/v1/private/epayrequest/list/fromme";
 
 export const getPaymentV1PrivateEpayrequestPluginCount = (
-  queryParams: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestPluginCountQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -1583,7 +1674,7 @@ getPaymentV1PrivateEpayrequestPluginCount.key =
   "/payment/v1/private/epayrequest/plugin/count";
 
 export const getPaymentV1PrivateEpayrequestSmsResend = (
-  queryParams: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
+  queryParams?: GetPaymentV1PrivateEpayrequestSmsResendQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.getRequest(
@@ -1600,7 +1691,7 @@ getPaymentV1PrivateEpayrequestSmsResend.key =
   "/payment/v1/private/epayrequest/sms/resend";
 
 export const getPaymentV1PublicEpayrequestGetblockchainaddress = (
-  queryParams: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
+  queryParams?: GetPaymentV1PublicEpayrequestGetblockchainaddressQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<BlockchainAddressResponseVM>> => {
   return Http.getRequest(
@@ -1617,7 +1708,7 @@ getPaymentV1PublicEpayrequestGetblockchainaddress.key =
   "/payment/v1/public/epayrequest/getblockchainaddress";
 
 export const getPaymentV1PublicEpayrequestReceiptinfoClientuniqueid = (
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EPayRequestReceiptInfoResponseVM>> => {
   return Http.getRequest(
@@ -1634,7 +1725,7 @@ getPaymentV1PublicEpayrequestReceiptinfoClientuniqueid.key =
   "/payment/v1/public/epayrequest/receiptinfo/clientuniqueid";
 
 export const getPaymentV1PublicEpayrequestReceiptinfoToken = (
-  queryParams: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
+  queryParams?: GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EPayRequestReceiptInfoResponseVM>> => {
   return Http.getRequest(
@@ -1651,7 +1742,7 @@ getPaymentV1PublicEpayrequestReceiptinfoToken.key =
   "/payment/v1/public/epayrequest/receiptinfo/token";
 
 export const getSettlementV1Private = (
-  queryParams: GetSettlementV1PrivateQueryParams,
+  queryParams?: GetSettlementV1PrivateQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SettlementRequestInfoResponseVM>> => {
   return Http.getRequest(
@@ -1667,7 +1758,7 @@ export const getSettlementV1Private = (
 getSettlementV1Private.key = "/settlement/v1/private";
 
 export const getSettlementV1PrivateAddressbook = (
-  queryParams: GetSettlementV1PrivateAddressbookQueryParams,
+  queryParams?: GetSettlementV1PrivateAddressbookQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AddressBookResponseVM>> => {
   return Http.getRequest(
@@ -1698,8 +1789,24 @@ export const getSettlementV1PrivateAddressbookAll = (
 getSettlementV1PrivateAddressbookAll.key =
   "/settlement/v1/private/addressbook/all";
 
+export const getSettlementV1PrivateCommission = (
+  queryParams?: GetSettlementV1PrivateCommissionQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<number>> => {
+  return Http.getRequest(
+    getSettlementV1PrivateCommission.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getSettlementV1PrivateCommission.key = "/settlement/v1/private/commission";
+
 export const getSettlementV1PrivateCount = (
-  queryParams: GetSettlementV1PrivateCountQueryParams,
+  queryParams?: GetSettlementV1PrivateCountQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AggregationResultResponseVM>> => {
   return Http.getRequest(
@@ -1731,7 +1838,7 @@ getSettlementV1PrivateGlobalwalletproviderAll.key =
   "/settlement/v1/private/globalwalletprovider/all";
 
 export const getSettlementV1PrivateList = (
-  queryParams: GetSettlementV1PrivateListQueryParams,
+  queryParams?: GetSettlementV1PrivateListQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SettlementRequestInfoListResponseVM>> => {
   return Http.getRequest(
@@ -1747,7 +1854,7 @@ export const getSettlementV1PrivateList = (
 getSettlementV1PrivateList.key = "/settlement/v1/private/list";
 
 export const getSettlementV1PrivateReport = (
-  queryParams: GetSettlementV1PrivateReportQueryParams,
+  queryParams?: GetSettlementV1PrivateReportQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ReportResultResponseVM[]>> => {
   return Http.getRequest(
@@ -1763,7 +1870,7 @@ export const getSettlementV1PrivateReport = (
 getSettlementV1PrivateReport.key = "/settlement/v1/private/report";
 
 export const getSettlementV1PrivateSubuser = (
-  queryParams: GetSettlementV1PrivateSubuserQueryParams,
+  queryParams?: GetSettlementV1PrivateSubuserQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SettlementRequestInfoListResponseVM>> => {
   return Http.getRequest(
@@ -1779,7 +1886,7 @@ export const getSettlementV1PrivateSubuser = (
 getSettlementV1PrivateSubuser.key = "/settlement/v1/private/subuser";
 
 export const getStorageV1PrivateFileDownload = (
-  queryParams: GetStorageV1PrivateFileDownloadQueryParams,
+  queryParams?: GetStorageV1PrivateFileDownloadQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.getRequest(
@@ -1793,6 +1900,22 @@ export const getStorageV1PrivateFileDownload = (
 
 /** Key is end point string without base url */
 getStorageV1PrivateFileDownload.key = "/storage/v1/private/file/download";
+
+export const getWalletV1Private = (
+  queryParams?: GetWalletV1PrivateQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserWalletDisplayDetailResponseVM>> => {
+  return Http.getRequest(
+    getWalletV1Private.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getWalletV1Private.key = "/wallet/v1/private";
 
 export const getWalletV1PrivateAll = (
   configOverride?: AxiosRequestConfig,
@@ -1824,24 +1947,8 @@ export const getWalletV1PrivateBankAll = (
 /** Key is end point string without base url */
 getWalletV1PrivateBankAll.key = "/wallet/v1/private/bank/all";
 
-export const getWalletV1PrivateFind = (
-  queryParams: GetWalletV1PrivateFindQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<FindUserWalletResponseVM>> => {
-  return Http.getRequest(
-    getWalletV1PrivateFind.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getWalletV1PrivateFind.key = "/wallet/v1/private/find";
-
 export const getWalletV1PrivateGrouptransferCommission = (
-  queryParams: GetWalletV1PrivateGrouptransferCommissionQueryParams,
+  queryParams?: GetWalletV1PrivateGrouptransferCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -1858,7 +1965,7 @@ getWalletV1PrivateGrouptransferCommission.key =
   "/wallet/v1/private/grouptransfer/commission";
 
 export const getWalletV1PrivateInternalwithdrawInfo = (
-  queryParams: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
+  queryParams?: GetWalletV1PrivateInternalwithdrawInfoQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<InternalWithdrawResponseVM>> => {
   return Http.getRequest(
@@ -1875,7 +1982,7 @@ getWalletV1PrivateInternalwithdrawInfo.key =
   "/wallet/v1/private/internalwithdraw/info";
 
 export const getWalletV1PrivateSubuserAll = (
-  queryParams: GetWalletV1PrivateSubuserAllQueryParams,
+  queryParams?: GetWalletV1PrivateSubuserAllQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserMinimalResponseVM[]>> => {
   return Http.getRequest(
@@ -1891,7 +1998,7 @@ export const getWalletV1PrivateSubuserAll = (
 getWalletV1PrivateSubuserAll.key = "/wallet/v1/private/subuser/all";
 
 export const getWalletV1PrivateSubuserAssignable = (
-  queryParams: GetWalletV1PrivateSubuserAssignableQueryParams,
+  queryParams?: GetWalletV1PrivateSubuserAssignableQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserMinimalResponseVM[]>> => {
   return Http.getRequest(
@@ -1908,7 +2015,7 @@ getWalletV1PrivateSubuserAssignable.key =
   "/wallet/v1/private/subuser/assignable";
 
 export const getWalletV1PrivateTransferCommission = (
-  queryParams: GetWalletV1PrivateTransferCommissionQueryParams,
+  queryParams?: GetWalletV1PrivateTransferCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<number>> => {
   return Http.getRequest(
@@ -1940,7 +2047,7 @@ export const getWalletV1PrivateUserassetAll = (
 getWalletV1PrivateUserassetAll.key = "/wallet/v1/private/userasset/all";
 
 export const getWalletV1PrivateUserassetSpotDefault = (
-  queryParams: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
+  queryParams?: GetWalletV1PrivateUserassetSpotDefaultQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserCurrencyResponseVM>> => {
   return Http.getRequest(
@@ -2003,7 +2110,7 @@ getWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank.key =
   "/wallet/v1/private/userbank/hascurrentuserapprovedorpenddinguserbank";
 
 export const getWalletV1PrivateUserbankStatus = (
-  queryParams: GetWalletV1PrivateUserbankStatusQueryParams,
+  queryParams?: GetWalletV1PrivateUserbankStatusQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<IdentityStatus>> => {
   return Http.getRequest(
@@ -2065,6 +2172,22 @@ export const getWalletV1PublicCurrencyInfo = (
 /** Key is end point string without base url */
 getWalletV1PublicCurrencyInfo.key = "/wallet/v1/public/currency/info";
 
+export const getWalletV1PublicFind = (
+  queryParams?: GetWalletV1PublicFindQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<FindUserWalletResponseVM>> => {
+  return Http.getRequest(
+    getWalletV1PublicFind.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getWalletV1PublicFind.key = "/wallet/v1/public/find";
+
 export const patchWalletV1Private = (
   requestBody: UpdateUserWalletRequestVM,
   configOverride?: AxiosRequestConfig,
@@ -2114,7 +2237,7 @@ postAuthV1PrivateApikey.key = "/auth/v1/private/apikey";
 
 export const postAuthV1PrivateAuthDisabletwofactor = (
   requestBody: ChangeTwoFactorRequestVM,
-  headerParams: { platformType: PlatformType },
+  headerParams?: { platformType: PlatformType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<QrCodeResponseVM>> => {
   return Http.postRequest(
@@ -2155,8 +2278,8 @@ export const postAuthV1PrivateAuthEmail = (
 postAuthV1PrivateAuthEmail.key = "/auth/v1/private/auth/email";
 
 export const postAuthV1PrivateAuthEmailSendcode = (
-  queryParams: PostAuthV1PrivateAuthEmailSendcodeQueryParams,
-  headerParams: { purpose: PurposeType },
+  queryParams?: PostAuthV1PrivateAuthEmailSendcodeQueryParams,
+  headerParams?: { purpose: PurposeType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
   return Http.postRequest(
@@ -2181,7 +2304,7 @@ postAuthV1PrivateAuthEmailSendcode.key = "/auth/v1/private/auth/email/sendcode";
 
 export const postAuthV1PrivateAuthEnabletwofactor = (
   requestBody: ChangeTwoFactorRequestVM,
-  headerParams: { platformType: PlatformType },
+  headerParams?: { platformType: PlatformType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<QrCodeResponseVM>> => {
   return Http.postRequest(
@@ -2222,7 +2345,7 @@ postAuthV1PrivateAuthGeneratewebsocketusertoken.key =
   "/auth/v1/private/auth/generatewebsocketusertoken";
 
 export const postAuthV1PrivateAuthGetcode = (
-  headerParams: { purpose: PurposeType },
+  headerParams?: { purpose: PurposeType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
   return Http.postRequest(
@@ -2246,8 +2369,8 @@ export const postAuthV1PrivateAuthGetcode = (
 postAuthV1PrivateAuthGetcode.key = "/auth/v1/private/auth/getcode";
 
 export const postAuthV1PrivateAuthPhonecallSendcode = (
-  queryParams: PostAuthV1PrivateAuthPhonecallSendcodeQueryParams,
-  headerParams: { purpose: PurposeType },
+  queryParams?: PostAuthV1PrivateAuthPhonecallSendcodeQueryParams,
+  headerParams?: { purpose: PurposeType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
   return Http.postRequest(
@@ -2305,7 +2428,7 @@ postAuthV1PublicAuthAnonyverifysecure.key =
   "/auth/v1/public/auth/anonyverifysecure";
 
 export const postAuthV1PublicAuthChecktwofactorisenable = (
-  queryParams: PostAuthV1PublicAuthChecktwofactorisenableQueryParams,
+  queryParams?: PostAuthV1PublicAuthChecktwofactorisenableQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserExistResponseVM>> => {
   return Http.postRequest(
@@ -2323,7 +2446,7 @@ postAuthV1PublicAuthChecktwofactorisenable.key =
 
 export const postAuthV1PublicAuthConnectToken = (
   requestBody: LoginModelRequestVM,
-  headerParams: { deviceId: string; platform: string },
+  headerParams?: { deviceId: string; platform: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TokenResponseVM>> => {
   return Http.postRequest(
@@ -2362,8 +2485,8 @@ export const postAuthV1PublicAuthGetcaptcha = (
 postAuthV1PublicAuthGetcaptcha.key = "/auth/v1/public/auth/getcaptcha";
 
 export const postAuthV1PublicAuthGetcode = (
-  queryParams: PostAuthV1PublicAuthGetcodeQueryParams,
-  headerParams: { purpose: PurposeType },
+  queryParams?: PostAuthV1PublicAuthGetcodeQueryParams,
+  headerParams?: { purpose: PurposeType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
   return Http.postRequest(
@@ -2468,6 +2591,23 @@ export const postCapitalV1PrivateDepositQueryuserdepositaddress = (
 /** Key is end point string without base url */
 postCapitalV1PrivateDepositQueryuserdepositaddress.key =
   "/capital/v1/private/deposit/queryuserdepositaddress";
+
+export const postCapitalV1PrivateDepositQuerywalletdepositaddress = (
+  requestBody: WalletDepositAddressRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserDepositAddressResponseVM>> => {
+  return Http.postRequest(
+    postCapitalV1PrivateDepositQuerywalletdepositaddress.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postCapitalV1PrivateDepositQuerywalletdepositaddress.key =
+  "/capital/v1/private/deposit/querywalletdepositaddress";
 
 export const postCapitalV1ProtectedWithdrawApply = (
   requestBody: WithdrawRequestUserWalletCreateRequestVM,
@@ -2741,7 +2881,7 @@ postPaymentV1PrivateEpayrequestSetpayercurrenyinfo.key =
   "/payment/v1/private/epayrequest/setpayercurrenyinfo";
 
 export const postPaymentV1PrivateEpayrequestUnblock = (
-  queryParams: PostPaymentV1PrivateEpayrequestUnblockQueryParams,
+  queryParams?: PostPaymentV1PrivateEpayrequestUnblockQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -2790,7 +2930,7 @@ export const postSettlementV1PrivateAddressbook = (
 postSettlementV1PrivateAddressbook.key = "/settlement/v1/private/addressbook";
 
 export const postSettlementV1PrivateExcel = (
-  requestBody: SettlementSearchRequestVM,
+  requestBody: SettlementFilterRequestVM,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SettlementExcelResponseVM[]>> => {
   return Http.postRequest(
@@ -2807,7 +2947,7 @@ postSettlementV1PrivateExcel.key = "/settlement/v1/private/excel";
 
 export const postSettlementV1PrivateUserWalletNumber = (
   userWalletNumber: string,
-  requestBody: NewSettlementRequestVM,
+  requestBody: CreateSettlementRequestVM,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SettlementRequestInfoResponseVM>> => {
   return Http.postRequest(
@@ -2858,6 +2998,22 @@ export const postWalletV1Private = (
 /** Key is end point string without base url */
 postWalletV1Private.key = "/wallet/v1/private";
 
+export const postWalletV1PrivateGrouptransfer = (
+  requestBody: GroupTransferMoneyRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<GroupTransferResponseVM>> => {
+  return Http.postRequest(
+    postWalletV1PrivateGrouptransfer.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postWalletV1PrivateGrouptransfer.key = "/wallet/v1/private/grouptransfer";
+
 export const postWalletV1PrivateTransfer = (
   requestBody: TransferMoneyRequestVM,
   configOverride?: AxiosRequestConfig,
@@ -2889,6 +3045,23 @@ export const postWalletV1PrivateUserbank = (
 
 /** Key is end point string without base url */
 postWalletV1PrivateUserbank.key = "/wallet/v1/private/userbank";
+
+export const postWalletV1PrivateUserbankDetailed = (
+  requestBody: CreateUserBankDetailRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    postWalletV1PrivateUserbankDetailed.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postWalletV1PrivateUserbankDetailed.key =
+  "/wallet/v1/private/userbank/detailed";
 
 export const postWalletV1PrivateUserreferralprogram = (
   requestBody: UserReferralProgramAddVM,
@@ -2957,7 +3130,7 @@ putAuthV1PrivateAuthEmail.key = "/auth/v1/private/auth/email";
 
 export const putAuthV1ProtectAuthChangepassword = (
   requestBody: ChangePasswordRequestVM,
-  headerParams: { platformType: PlatformType },
+  headerParams?: { platformType: PlatformType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
@@ -2982,7 +3155,7 @@ putAuthV1ProtectAuthChangepassword.key = "/auth/v1/protect/auth/changepassword";
 
 export const putAuthV1PublicAuthForgotpassword = (
   requestBody: ForgotPasswordRequestVM,
-  headerParams: { platformType: PlatformType },
+  headerParams?: { platformType: PlatformType },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
@@ -3004,6 +3177,40 @@ export const putAuthV1PublicAuthForgotpassword = (
 
 /** Key is end point string without base url */
 putAuthV1PublicAuthForgotpassword.key = "/auth/v1/public/auth/forgotpassword";
+
+export const putEngagementV1PrivateNotificationRead = (
+  requestBody: number[],
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    putEngagementV1PrivateNotificationRead.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putEngagementV1PrivateNotificationRead.key =
+  "/engagement/v1/private/notification/read";
+
+export const putEngagementV1PrivateNotificationReadall = (
+  queryParams?: PutEngagementV1PrivateNotificationReadallQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    putEngagementV1PrivateNotificationReadall.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putEngagementV1PrivateNotificationReadall.key =
+  "/engagement/v1/private/notification/readall";
 
 export const putPartyV1PrivateNotificationRead = (
   requestBody: number[],
@@ -3106,7 +3313,7 @@ putPaymentV1PrivateEpayrequestCustomdata.key =
   "/payment/v1/private/epayrequest/customdata";
 
 export const putPaymentV1PublicEpayrequestCancel = (
-  queryParams: PutPaymentV1PublicEpayrequestCancelQueryParams,
+  queryParams?: PutPaymentV1PublicEpayrequestCancelQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
@@ -3157,7 +3364,7 @@ putSettlementV1PrivateAddressbookWhitelistEnable.key =
   "/settlement/v1/private/addressbook/whitelist/enable";
 
 export const putWalletV1PrivateUserreferralprogramDefault = (
-  queryParams: PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
+  queryParams?: PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
