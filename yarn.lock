@@ -12136,10 +12136,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-swagger-typescript@^6.2.6:
-  version "6.2.6"
-  resolved "https://registry.yarnpkg.com/swagger-typescript/-/swagger-typescript-6.2.6.tgz#a48e899d381fbe770102f8177c9e387ebc27e28d"
-  integrity sha512-XpZLAyFNCRKasf5cHpKhKfgI7K1Fc1cTdzjkVtfG5vVSUzsXoQ9/XqXQvt0vL2SCKYLfwpyuQeXeS5QZPQ0o8g==
+swagger-typescript@^6.2.7:
+  version "6.2.7"
+  resolved "https://registry.yarnpkg.com/swagger-typescript/-/swagger-typescript-6.2.7.tgz#c60e7b494916581f28d482c7749511dfa70e00b9"
+  integrity sha512-qaL2yLt/2vgNLZZeQW01Z23wDhxj5UFzhEaUZOBPXP5evJr9CyZ5N4+6QpGJArE/P3zpMkzSAEDG5brqOLwsDA==
   dependencies:
     axios ">=0.27"
     chalk "^4.1.2"
