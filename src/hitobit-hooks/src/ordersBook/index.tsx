@@ -13,6 +13,7 @@ import {
   ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -27,11 +28,13 @@ if (__MOCK__) {
 type BitAskState = {
   bids: [number, number][];
   asks: [number, number][];
+  isLoading?: boolean;
 };
 
 const OrderBookContext = createContext<BitAskState>({
   bids: [],
   asks: [],
+  isLoading: false,
 });
 
 type DepthItem = {
@@ -55,7 +58,7 @@ const OrderBookProvider = memo<Props>(({ children }) => {
 
   const { selectedSymbol } = selectedSymbolStore.useState();
 
-  const { getSymbolMarketTicker } = useMarketTicker();
+  const { getSymbolMarketTicker, isMarketTickerLoading } = useMarketTicker();
   const marketTicker = getSymbolMarketTicker(selectedSymbol?.symbol);
 
   useEffect(() => {
@@ -64,7 +67,7 @@ const OrderBookProvider = memo<Props>(({ children }) => {
     ordersBufferRef.current = [];
   }, [selectedSymbol]);
 
-  const { refetch } = useGetExchangeV1PublicDepth(
+  const { refetch, isLoading: isDepthLoading } = useGetExchangeV1PublicDepth(
     { symbol: selectedSymbol?.symbol, limit: 1000 },
     {
       enabled: __MOCK__ || false,
@@ -177,8 +180,12 @@ const OrderBookProvider = memo<Props>(({ children }) => {
     marketTicker?.lastMarketInfoChangeDate,
   ]);
 
+  const isLoading = isMarketTickerLoading || isDepthLoading;
+
+  const value = useMemo(() => ({ ...state, isLoading }), [isLoading, state]);
+
   return (
-    <OrderBookContext.Provider value={state}>
+    <OrderBookContext.Provider value={value}>
       {children}
     </OrderBookContext.Provider>
   );

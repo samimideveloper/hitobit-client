@@ -1,9 +1,9 @@
 import {
-  GetExchangeV1PublicKlinesQueryParams,
   KlineDataResponseVM,
+  KLineInterval,
   useGetExchangeV1PublicKlines,
 } from "hitobit-services";
-import { selectedSymbolStore } from "hitobit-store";
+import { createContext, ReactNode, useContext } from "react";
 import { useQueryClient } from "react-query";
 import {
   HapiIntervalToSocket,
@@ -11,20 +11,22 @@ import {
   SocketIntervalToHapi,
 } from "../socketConnection";
 
-interface Props {
-  children: any;
+interface KlinesProviderProps {
+  children: ReactNode;
+  interval: KLineInterval;
+  symbol: string;
 }
 
-const KlinesProvider = ({ children }: Props) => {
-  const { selectedSymbol: { symbol } = {}, interval = "OneDay" } =
-    selectedSymbolStore.useState();
+const KlineContext = createContext<Omit<KlinesProviderProps, "children">>({
+  interval: "OneDay",
+  symbol: "",
+});
 
+const Provider = ({ children, symbol, interval }: KlinesProviderProps) => {
   const queryClient = useQueryClient();
 
   SocketConnection.useEvent(
-    `${symbol?.toLowerCase()}@kline_${[
-      HapiIntervalToSocket[interval] ?? "OneDay",
-    ]}`,
+    `${symbol?.toLowerCase()}@kline_${[HapiIntervalToSocket[interval]]}`,
     (data) => {
       if (!data) return;
 
@@ -73,22 +75,23 @@ const KlinesProvider = ({ children }: Props) => {
     },
   );
 
-  return <>{children}</>;
+  return (
+    <KlineContext.Provider value={{ interval, symbol }}>
+      {children}
+    </KlineContext.Provider>
+  );
 };
 
-function useKlines({
-  constantInterval,
-}:
-  | {
-      constantInterval?: GetExchangeV1PublicKlinesQueryParams["interval"];
-    }
-  | undefined = {}) {
-  const { selectedSymbol: { symbol } = {}, interval } =
-    selectedSymbolStore.useState();
+function useKlines() {
+  if (typeof KlineContext === "undefined") {
+    throw new Error("useKlines hook must be used under the KlinesProvider.");
+  }
+
+  const { interval, symbol } = useContext(KlineContext);
 
   const { data: klines, isLoading: isKlinesLoading } =
     useGetExchangeV1PublicKlines(
-      { symbol, interval: constantInterval || interval, limit: 200 },
+      { symbol, interval, limit: 200 },
       {
         cacheTime: 2 * 60 * 1000,
         staleTime: 2 * 60 * 1000,
@@ -104,4 +107,9 @@ function useKlines({
   };
 }
 
-export { useKlines, KlinesProvider };
+const kline = {
+  Provider,
+  useKlines,
+};
+
+export { kline };
