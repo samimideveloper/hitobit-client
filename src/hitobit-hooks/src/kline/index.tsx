@@ -12,6 +12,7 @@ import {
   useState,
 } from "react";
 import { useQueryClient } from "react-query";
+import { useEvent } from "reactjs-view-core";
 import {
   HapiIntervalToSocket,
   SocketConnection,
@@ -96,17 +97,15 @@ const Instance = ({ interval, symbol }: KlineInstance) => {
 const Provider = ({ children }: KlinesProviderProps) => {
   const [klineInstances, setKlineInstances] = useState<KlineInstance[]>([]);
 
-  const subscribe = (instance: KlineInstance) => {
+  const subscribe = useEvent((instance: KlineInstance) => {
     setKlineInstances((instances) => [...instances, instance]);
-  };
+  });
 
-  const unsubscribe = (instance: KlineInstance) => {
-    const filtered = klineInstances.filter(
-      (_instance) => !isEqual(_instance, instance),
+  const unsubscribe = useEvent((instance: KlineInstance) => {
+    setKlineInstances((instances) =>
+      instances.filter((_instance) => !isEqual(_instance, instance)),
     );
-
-    setKlineInstances(filtered);
-  };
+  });
 
   const nonDuplicateInstances = uniqWith(klineInstances, isEqual);
 
