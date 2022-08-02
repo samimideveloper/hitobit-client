@@ -9,6 +9,7 @@ import {
 } from "hitobit-store";
 import { Fragment, lazy } from "react";
 import { QueryClientProvider, useQuery } from "react-query";
+import { kline } from "../kline";
 import { queryClient } from "../queryClient";
 import { UserSignalRConnection } from "../userSignalRConnection";
 
@@ -37,7 +38,9 @@ const HitobitClientProvider = ({
           <BaseCurrencyStoreProvider>
             <SelectedSymbolStoreProvider>
               <UserSignalRConnection>
-                <Child {...{ initializer, language }}>{children}</Child>
+                <kline.Provider>
+                  <Child {...{ initializer, language }}>{children}</Child>
+                </kline.Provider>
               </UserSignalRConnection>
             </SelectedSymbolStoreProvider>
           </BaseCurrencyStoreProvider>
