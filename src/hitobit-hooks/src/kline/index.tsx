@@ -3,8 +3,16 @@ import {
   KLineInterval,
   useGetExchangeV1PublicKlines,
 } from "hitobit-services";
-import { createContext, ReactNode, useContext } from "react";
+import { isEqual, uniqWith } from "lodash-es";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useQueryClient } from "react-query";
+import { useEvent } from "reactjs-view-core";
 import {
   HapiIntervalToSocket,
   SocketConnection,
@@ -13,16 +21,24 @@ import {
 
 interface KlinesProviderProps {
   children: ReactNode;
-  interval: KLineInterval;
-  symbol: string;
 }
 
-const KlineContext = createContext<Omit<KlinesProviderProps, "children">>({
-  interval: "OneDay",
-  symbol: "",
+type KlineInstance = {
+  interval: KLineInterval;
+  symbol: string;
+};
+
+type KlineSubscribe = {
+  subscribe: (instance: KlineInstance) => void;
+  unsubscribe: (instance: KlineInstance) => void;
+};
+
+const KlineContext = createContext<KlineSubscribe>({
+  subscribe: () => null,
+  unsubscribe: () => null,
 });
 
-const Provider = ({ children, symbol, interval }: KlinesProviderProps) => {
+const Instance = ({ interval, symbol }: KlineInstance) => {
   const queryClient = useQueryClient();
 
   SocketConnection.useEvent(
@@ -75,19 +91,46 @@ const Provider = ({ children, symbol, interval }: KlinesProviderProps) => {
     },
   );
 
+  return null;
+};
+
+const Provider = ({ children }: KlinesProviderProps) => {
+  const [klineInstances, setKlineInstances] = useState<KlineInstance[]>([]);
+
+  const subscribe = useEvent((instance: KlineInstance) => {
+    setKlineInstances((instances) => [...instances, instance]);
+  });
+
+  const unsubscribe = useEvent((instance: KlineInstance) => {
+    setKlineInstances((instances) =>
+      instances.filter((_instance) => !isEqual(_instance, instance)),
+    );
+  });
+
+  const nonDuplicateInstances = uniqWith(klineInstances, isEqual);
+
   return (
-    <KlineContext.Provider value={{ interval, symbol }}>
+    <KlineContext.Provider value={{ subscribe, unsubscribe }}>
+      {nonDuplicateInstances?.map((instance) => (
+        <Instance key={instance.symbol} {...instance} />
+      ))}
       {children}
     </KlineContext.Provider>
   );
 };
 
-function useKlines() {
+function useKlines({ interval, symbol }: KlineInstance) {
   if (typeof KlineContext === "undefined") {
     throw new Error("useKlines hook must be used under the KlinesProvider.");
   }
 
-  const { interval, symbol } = useContext(KlineContext);
+  const { subscribe, unsubscribe } = useContext(KlineContext);
+
+  useEffect(() => {
+    subscribe({ interval, symbol });
+
+    return () => unsubscribe({ interval, symbol });
+  }, [interval, subscribe, symbol, unsubscribe]);
 
   const { data: klines, isLoading: isKlinesLoading } =
     useGetExchangeV1PublicKlines(
@@ -100,10 +143,10 @@ function useKlines() {
     );
 
   return {
-    symbol,
-    interval,
     klines,
     isKlinesLoading,
+    interval,
+    symbol,
   };
 }
 
