@@ -1,5 +1,5 @@
-import { useTranslation } from "hitobit-modules";
 import { AppOrderStatus } from "hitobit-services";
+import { useTranslation } from "react-i18next";
 
 const useOrderStatusDisplay = () => {
   const { t } = useTranslation();

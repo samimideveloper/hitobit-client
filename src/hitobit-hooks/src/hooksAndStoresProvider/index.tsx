@@ -21,12 +21,17 @@ export interface ProvidersProps {
   children: JSX.Element;
   initializer?: () => Promise<void>;
   language?: "fa" | "en";
+  i18nResources?: {
+    fa: Record<string, string>;
+    en: Record<string, string>;
+  };
 }
 
 const HitobitClientProvider = ({
   children,
   initializer,
   language,
+  i18nResources,
 }: ProvidersProps) => {
   const MaybeUserManagerProvider =
     typeof window === "undefined" ? Fragment : UserManagerProvider;
@@ -39,7 +44,9 @@ const HitobitClientProvider = ({
             <SelectedSymbolStoreProvider>
               <UserSignalRConnection>
                 <kline.Provider>
-                  <Child {...{ initializer, language }}>{children}</Child>
+                  <Child {...{ initializer, language, i18nResources }}>
+                    {children}
+                  </Child>
                 </kline.Provider>
               </UserSignalRConnection>
             </SelectedSymbolStoreProvider>
@@ -52,14 +59,19 @@ const HitobitClientProvider = ({
 
 const ChildInitialSymbol = Symbol();
 
-const Child = ({ children, initializer, language }: ProvidersProps) => {
+const Child = ({
+  children,
+  initializer,
+  language,
+  i18nResources,
+}: ProvidersProps) => {
   const { data } = useQuery(
     [ChildInitialSymbol],
     async () => {
       await setStoredAuthentication();
       await setStoredSeletedSymbol();
       await setStoredBaseCurrency();
-      initializeI18n(language);
+      initializeI18n(language, i18nResources);
       await initializer?.();
       return true;
     },

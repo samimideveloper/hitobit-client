@@ -1,7 +1,7 @@
-import { useTranslation } from "hitobit-modules";
 import { groupBy, map } from "lodash-es";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useMarketFilters } from "../useMarketFilters";
 import { useOrderPlacingError } from "../useOrderPlacingError";

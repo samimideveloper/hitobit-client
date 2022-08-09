@@ -1,7 +1,7 @@
 import Decimal from "decimal.js";
-import { useTranslation } from "hitobit-modules";
 import { selectedSymbolStore } from "hitobit-store";
 import { ControllerRenderProps } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
 import { OcoOrderValues, SellForm } from "../types";

@@ -1,6 +1,6 @@
-import { useTranslation } from "hitobit-modules";
 import { usePostExchangeV1PrivateOrder } from "hitobit-services";
 import { selectedSymbolStore } from "hitobit-store";
+import { useTranslation } from "react-i18next";
 import { MarketOrderValues, SellForm } from "../types";
 
 const useSubmit = () => {
