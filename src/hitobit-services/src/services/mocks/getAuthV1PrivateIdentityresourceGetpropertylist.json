@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/auth/v1/private/identityresource/getpropertylist",
+  "response": {
+    "200": [{}]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "method": "get",
+  "path": "/auth/v1/private/apikey",
+  "response": {
+    "200": {
+      "id": 0,
+      "key": "",
+      "label": "",
+      "apiScopes": [
+        {
+          "scope": ""
+        }
+      ],
+      "apiKeyTrustedAddresses": [
+        {
+          "trustedAddress": ""
+        }
+      ]
+    }
+  }
+}

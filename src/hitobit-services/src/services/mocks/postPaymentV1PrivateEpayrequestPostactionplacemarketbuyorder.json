@@ -1,0 +1,9 @@
+{
+  "method": "post",
+  "path": "/payment/v1/private/epayrequest/postactionplacemarketbuyorder",
+  "response": {
+    "200": {
+      "postActionUniqueId": "3ba89b92-8c02-4e5a-9843-0"
+    }
+  }
+}

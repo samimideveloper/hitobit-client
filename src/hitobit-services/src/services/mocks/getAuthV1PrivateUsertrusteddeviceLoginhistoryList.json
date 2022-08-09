@@ -1,0 +1,33 @@
+{
+  "method": "get",
+  "path": "/auth/v1/private/usertrusteddevice/loginhistory/list",
+  "response": {
+    "200": {
+      "count": 0,
+      "list": [
+        {
+          "id": 0,
+          "userName": "",
+          "deviceId": "",
+          "platform": "",
+          "status": {
+            "0": "C",
+            "1": "o",
+            "2": "m",
+            "3": "p",
+            "4": "l",
+            "5": "e",
+            "6": "t",
+            "7": "e",
+            "8": "d"
+          },
+          "ip": "",
+          "loginDateTime": "2017-07-21T17:32:28Z",
+          "location": "",
+          "browserName": "",
+          "failedDescription": ""
+        }
+      ]
+    }
+  }
+}

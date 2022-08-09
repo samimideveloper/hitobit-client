@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/analytics/v1/private/resellercommissionhistory/transactioncount",
+  "response": {
+    "200": 0
+  }
+}

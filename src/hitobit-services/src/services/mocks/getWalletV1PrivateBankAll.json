@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "path": "/wallet/v1/private/bank/all",
+  "response": {
+    "200": [
+      {
+        "id": 0,
+        "name": "",
+        "logoAddress": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "path": "/baseinfo/v1/public/city/list",
+  "response": {
+    "200": [
+      {
+        "id": 0,
+        "title": "",
+        "provinceId": 0
+      }
+    ]
+  }
+}

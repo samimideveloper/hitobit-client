@@ -1,0 +1,10 @@
+{
+  "method": "post",
+  "path": "/capital/v1/private/deposit/queryuserdepositaddress",
+  "response": {
+    "200": {
+      "address": "",
+      "tag": ""
+    }
+  }
+}

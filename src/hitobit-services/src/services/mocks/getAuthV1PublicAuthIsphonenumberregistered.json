@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/auth/v1/public/auth/isphonenumberregistered",
+  "response": {
+    "200": true
+  }
+}

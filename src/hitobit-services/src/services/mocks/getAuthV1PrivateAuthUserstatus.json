@@ -1,0 +1,12 @@
+{
+  "method": "get",
+  "path": "/auth/v1/private/auth/userstatus",
+  "response": {
+    "200": {
+      "twoFactorEnabled": true,
+      "emailConfirmed": true,
+      "email": "",
+      "phoneNumberConfirmed": true
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "method": "post",
+  "path": "/payment/v1/public/epayrequest/pos",
+  "response": {
+    "200": {
+      "token": "",
+      "paymentLink": ""
+    }
+  }
+}

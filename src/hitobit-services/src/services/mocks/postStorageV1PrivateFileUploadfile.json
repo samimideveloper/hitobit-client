@@ -1,0 +1,7 @@
+{
+  "method": "post",
+  "path": "/storage/v1/private/file/uploadfile",
+  "response": {
+    "200": "3ba89b92-8c02-4e5a-9843-52"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method": "get",
+  "path": "/wallet/v1/public/find",
+  "response": {
+    "200": {
+      "walletNumber": "",
+      "currencySymbol": "",
+      "userDisplayName": "",
+      "profileImageFileUniqueId": "3ba89b92-8c02-4e5a-9843-13"
+    }
+  }
+}

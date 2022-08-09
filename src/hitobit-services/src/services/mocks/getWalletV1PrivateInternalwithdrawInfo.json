@@ -1,0 +1,26 @@
+{
+  "method": "get",
+  "path": "/wallet/v1/private/internalwithdraw/info",
+  "response": {
+    "200": {
+      "createDate": "2017-07-21T17:32:28Z",
+      "domainId": 0,
+      "currencyId": 0,
+      "currencySymbol": "",
+      "userId": "3ba89b92-8c02-4e5a-9843-16",
+      "userWalletNumber": "",
+      "userWalletName": "",
+      "userWalletId": 0,
+      "amount": 0,
+      "comission": 0,
+      "paidToUserId": "3ba89b92-8c02-4e5a-9843-17",
+      "paidToUserWalletId": 0,
+      "paidToUserWalletNumber": "",
+      "paidToUserWalletName": "",
+      "voucherId": 0,
+      "epayRequestId": 0,
+      "withdrawRequestUserWalletId": 0,
+      "paidToUserDisplayName": ""
+    }
+  }
+}

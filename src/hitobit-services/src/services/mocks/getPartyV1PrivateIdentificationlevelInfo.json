@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/party/v1/private/identificationlevel/info",
+  "response": {
+    "200": "None"
+  }
+}

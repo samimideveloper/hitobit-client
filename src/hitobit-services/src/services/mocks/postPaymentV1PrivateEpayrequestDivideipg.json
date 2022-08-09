@@ -1,0 +1,10 @@
+{
+  "method": "post",
+  "path": "/payment/v1/private/epayrequest/divideipg",
+  "response": {
+    "200": {
+      "token": "",
+      "paymentLink": ""
+    }
+  }
+}

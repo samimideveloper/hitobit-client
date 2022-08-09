@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/party/v1/private/walletsetting/maxreferalprogrampercent",
+  "response": {
+    "200": 0
+  }
+}

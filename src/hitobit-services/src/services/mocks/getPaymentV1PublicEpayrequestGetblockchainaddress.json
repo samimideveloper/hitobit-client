@@ -1,0 +1,14 @@
+{
+  "method": "get",
+  "path": "/payment/v1/public/epayrequest/getblockchainaddress",
+  "response": {
+    "200": {
+      "blockchainAddress": "",
+      "symbol": "",
+      "amount": 0,
+      "paidAmount": 0,
+      "domainWalletMoneyNetworkId": 0,
+      "moneyNetworkId": 0
+    }
+  }
+}

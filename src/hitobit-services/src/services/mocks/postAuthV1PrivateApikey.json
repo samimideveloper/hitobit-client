@@ -1,0 +1,11 @@
+{
+  "method": "post",
+  "path": "/auth/v1/private/apikey",
+  "response": {
+    "200": {
+      "id": 0,
+      "key": "",
+      "secret": ""
+    }
+  }
+}

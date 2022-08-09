@@ -1,0 +1,78 @@
+{
+  "method": "delete",
+  "path": "/exchange/v1/private/orderlist",
+  "response": {
+    "200": {
+      "symbol": "",
+      "orderListId": 0,
+      "contingencyType": "",
+      "listStatusType": {
+        "0": "R",
+        "1": "E",
+        "2": "S",
+        "3": "P",
+        "4": "O",
+        "5": "N",
+        "6": "S",
+        "7": "E"
+      },
+      "listOrderStatus": {
+        "0": "E",
+        "1": "X",
+        "2": "E",
+        "3": "C",
+        "4": "U",
+        "5": "T",
+        "6": "I",
+        "7": "N",
+        "8": "G"
+      },
+      "listClientOrderId": "",
+      "transactionTime": "2017-07-21T17:32:28Z",
+      "orders": [
+        {
+          "symbol": "",
+          "orderId": 0,
+          "clientOrderId": ""
+        }
+      ],
+      "orderReports": [
+        {
+          "symbol": "",
+          "orderId": 0,
+          "clientOrderId": "",
+          "orderListId": 0,
+          "transactTime": "2017-07-21T17:32:28Z",
+          "price": 0,
+          "stopPrice": 0,
+          "origQty": 0,
+          "origQuoteOrderQty": 0,
+          "executedQty": 0,
+          "cummulativeQuoteQty": 0,
+          "side": {
+            "0": "B",
+            "1": "U",
+            "2": "Y"
+          },
+          "type": {
+            "0": "L",
+            "1": "I",
+            "2": "M",
+            "3": "I",
+            "4": "T"
+          },
+          "timeInForce": {
+            "0": "G",
+            "1": "T",
+            "2": "C"
+          },
+          "status": {
+            "0": "N",
+            "1": "E",
+            "2": "W"
+          }
+        }
+      ]
+    }
+  }
+}

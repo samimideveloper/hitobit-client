@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/payment/v1/private/epayrequest/plugin/count",
+  "response": {
+    "200": 0
+  }
+}

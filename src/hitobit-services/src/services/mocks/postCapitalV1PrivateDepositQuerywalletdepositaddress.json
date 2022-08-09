@@ -1,0 +1,10 @@
+{
+  "method": "post",
+  "path": "/capital/v1/private/deposit/querywalletdepositaddress",
+  "response": {
+    "200": {
+      "address": "",
+      "tag": ""
+    }
+  }
+}

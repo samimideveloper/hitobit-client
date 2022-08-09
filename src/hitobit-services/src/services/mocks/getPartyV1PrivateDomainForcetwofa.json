@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/party/v1/private/domain/forcetwofa",
+  "response": {
+    "200": true
+  }
+}

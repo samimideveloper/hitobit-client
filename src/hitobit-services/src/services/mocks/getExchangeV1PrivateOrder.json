@@ -1,0 +1,50 @@
+{
+  "method": "get",
+  "path": "/exchange/v1/private/order",
+  "response": {
+    "200": {
+      "symbol": "",
+      "orderId": 0,
+      "clientOrderId": "",
+      "orderListId": 0,
+      "transactTime": "2017-07-21T17:32:28Z",
+      "price": 0,
+      "stopPrice": 0,
+      "origQty": 0,
+      "origQuoteOrderQty": 0,
+      "executedQty": 0,
+      "cummulativeQuoteQty": 0,
+      "side": {
+        "0": "B",
+        "1": "U",
+        "2": "Y"
+      },
+      "type": {
+        "0": "L",
+        "1": "I",
+        "2": "M",
+        "3": "I",
+        "4": "T"
+      },
+      "timeInForce": {
+        "0": "G",
+        "1": "T",
+        "2": "C"
+      },
+      "status": {
+        "0": "N",
+        "1": "E",
+        "2": "W"
+      },
+      "fills": [
+        {
+          "tradeId": 0,
+          "price": 0,
+          "qty": 0,
+          "commission": 0,
+          "commissionAsset": ""
+        }
+      ]
+    }
+  }
+}
