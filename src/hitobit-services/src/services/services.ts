@@ -232,7 +232,6 @@ import {
 } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const __DEV__ = process.env.NODE_ENV !== "production";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function overrideConfig(
