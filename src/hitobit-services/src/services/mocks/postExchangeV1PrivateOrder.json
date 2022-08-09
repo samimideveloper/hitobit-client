@@ -1,0 +1,13 @@
+{
+  "method": "post",
+  "path": "/exchange/v1/private/order",
+  "response": {
+    "200": {
+      "symbol": "",
+      "orderId": 0,
+      "clientOrderId": "",
+      "orderListId": 0,
+      "transactTime": "2017-07-21T17:32:28Z"
+    }
+  }
+}

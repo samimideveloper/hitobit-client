@@ -1,6 +1,6 @@
 {
   "name": "hitobit-services",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,6 +15,6 @@
     "axios": "^0.27.2",
     "buffer": "^6.0.3",
     "hitobit-constants": "^0.1.0",
-    "hitobit-modules": "^0.1.0"
+    "hitobit-modules": "^0.1.2"
   }
 }

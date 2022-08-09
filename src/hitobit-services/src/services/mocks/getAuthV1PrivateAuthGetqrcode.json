@@ -1,0 +1,10 @@
+{
+  "method": "get",
+  "path": "/auth/v1/private/auth/getqrcode",
+  "response": {
+    "200": {
+      "authenticatorKey": "",
+      "qrCodeUrl": ""
+    }
+  }
+}

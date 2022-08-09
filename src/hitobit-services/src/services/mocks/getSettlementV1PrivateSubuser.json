@@ -1,0 +1,46 @@
+{
+  "method": "get",
+  "path": "/settlement/v1/private/subuser",
+  "response": {
+    "200": {
+      "settlementRequests": [
+        {
+          "id": 0,
+          "createDateUtc": "2017-07-21T17:32:28Z",
+          "description": "",
+          "ownerUserId": "3ba89b92-8c02-4e5a-9843-26",
+          "creatorUserId": "3ba89b92-8c02-4e5a-9843-27",
+          "creatorUserDisplayName": "",
+          "userDisplayName": "",
+          "userWalletId": 0,
+          "walletName": "",
+          "walletNumber": "",
+          "userBankId": 0,
+          "userBankName": "",
+          "userBankFirstName": "",
+          "userBankLastName": "",
+          "userBankNumber": "",
+          "userBankShebaNumber": "",
+          "bankId": 0,
+          "bankName": "",
+          "bankLogoAddress": "",
+          "amount": 0,
+          "commissionAmount": 0,
+          "voucherId": 0,
+          "status": {
+            "0": "P",
+            "1": "e",
+            "2": "n",
+            "3": "d",
+            "4": "i",
+            "5": "n",
+            "6": "g"
+          },
+          "isAuto": true,
+          "currencySymbol": ""
+        }
+      ],
+      "totalCount": 0
+    }
+  }
+}

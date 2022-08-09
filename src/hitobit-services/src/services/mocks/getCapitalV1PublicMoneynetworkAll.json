@@ -1,0 +1,18 @@
+{
+  "method": "get",
+  "path": "/capital/v1/public/moneynetwork/all",
+  "response": {
+    "200": [
+      {
+        "name": "",
+        "symbol": "",
+        "isTag": true,
+        "estimatedArrivalTime": 0,
+        "addressRegex": "",
+        "memoRegex": "",
+        "txUrl": "",
+        "addressUrl": ""
+      }
+    ]
+  }
+}

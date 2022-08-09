@@ -1,0 +1,22 @@
+{
+  "method": "get",
+  "path": "/exchange/v1/public/klines",
+  "response": {
+    "200": [
+      {
+        "openTime": "2017-07-21T17:32:28Z",
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "baseVolume": 0,
+        "closeTime": "2017-07-21T17:32:28Z",
+        "quoteVolume": 0,
+        "tradeCount": 0,
+        "takerBuyBaseVolume": 0,
+        "takerBuyQuoteVolume": 0,
+        "ignore": 0
+      }
+    ]
+  }
+}

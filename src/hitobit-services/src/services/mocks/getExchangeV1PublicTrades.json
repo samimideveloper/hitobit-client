@@ -1,0 +1,18 @@
+{
+  "method": "get",
+  "path": "/exchange/v1/public/trades",
+  "response": {
+    "200": [
+      {
+        "orderId": 0,
+        "price": 0,
+        "baseQuantity": 0,
+        "quoteQuantity": 0,
+        "tradeTime": "2017-07-21T17:32:28Z",
+        "buyerIsMaker": true,
+        "isBestMatch": true,
+        "smartTradeEngine": true
+      }
+    ]
+  }
+}

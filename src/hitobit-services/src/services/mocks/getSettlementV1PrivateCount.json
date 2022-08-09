@@ -1,0 +1,10 @@
+{
+  "method": "get",
+  "path": "/settlement/v1/private/count",
+  "response": {
+    "200": {
+      "count": 0,
+      "sum": 0
+    }
+  }
+}

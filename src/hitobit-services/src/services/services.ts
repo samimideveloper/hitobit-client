@@ -232,6 +232,8 @@ import {
 } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function overrideConfig(
   config?: AxiosRequestConfig,
   configOverride?: AxiosRequestConfig,

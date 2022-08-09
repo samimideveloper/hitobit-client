@@ -1,6 +1,6 @@
 {
   "name": "hitobit-utils",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,6 +14,6 @@
   "dependencies": {
     "axios-mock-adapter": "1.20.0",
     "hitobit-constants": "^0.1.0",
-    "hitobit-services": "^0.1.0"
+    "hitobit-services": "^0.1.2"
   }
 }

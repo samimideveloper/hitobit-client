@@ -1,0 +1,29 @@
+{
+  "method": "get",
+  "path": "/analytics/v1/private/tradereferralcommissionhistory/referralhistory",
+  "response": {
+    "200": {
+      "data": [
+        {
+          "account": "",
+          "status": {
+            "0": "S",
+            "1": "u",
+            "2": "c",
+            "3": "c",
+            "4": "e",
+            "5": "s",
+            "6": "s",
+            "7": "e",
+            "8": "d"
+          },
+          "traded": true,
+          "spotRewards": 0,
+          "futuresRewards": 0,
+          "signedUpAt": "2017-07-21T17:32:28Z"
+        }
+      ],
+      "totalCount": 0
+    }
+  }
+}

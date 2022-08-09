@@ -1,0 +1,7 @@
+{
+  "method": "post",
+  "path": "/auth/v1/private/auth/email/sendcode",
+  "response": {
+    "200": ""
+  }
+}

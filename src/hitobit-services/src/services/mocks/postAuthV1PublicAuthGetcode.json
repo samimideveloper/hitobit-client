@@ -1,0 +1,7 @@
+{
+  "method": "post",
+  "path": "/auth/v1/public/auth/getcode",
+  "response": {
+    "200": ""
+  }
+}

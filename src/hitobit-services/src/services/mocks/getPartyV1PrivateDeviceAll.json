@@ -1,0 +1,19 @@
+{
+  "method": "get",
+  "path": "/party/v1/private/device/all",
+  "response": {
+    "200": [
+      {
+        "createDate": "2017-07-21T17:32:28Z",
+        "deviceBrand": "",
+        "deviceId": "",
+        "deviceName": "",
+        "ipAddress": "",
+        "osName": "",
+        "osVersion": "",
+        "softwareName": "",
+        "userId": "3ba89b92-8c02-4e5a-9843-46"
+      }
+    ]
+  }
+}

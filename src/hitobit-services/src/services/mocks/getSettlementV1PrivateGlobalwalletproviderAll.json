@@ -1,0 +1,22 @@
+{
+  "method": "get",
+  "path": "/settlement/v1/private/globalwalletprovider/all",
+  "response": {
+    "200": [
+      {
+        "id": 0,
+        "name": "",
+        "globalWalletProviderType": {
+          "0": "E",
+          "1": "x",
+          "2": "c",
+          "3": "h",
+          "4": "a",
+          "5": "n",
+          "6": "g",
+          "7": "e"
+        }
+      }
+    ]
+  }
+}

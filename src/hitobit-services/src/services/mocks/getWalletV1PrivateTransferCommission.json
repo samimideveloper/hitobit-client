@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "path": "/wallet/v1/private/transfer/commission",
+  "response": {
+    "200": 0
+  }
+}

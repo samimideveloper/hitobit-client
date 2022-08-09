@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "path": "/auth/v1/private/identityresource/getscopelist",
+  "response": {
+    "200": [
+      {
+        "id": "3ba89b92-8c02-4e5a-9843-1",
+        "name": "",
+        "displayName": ""
+      }
+    ]
+  }
+}

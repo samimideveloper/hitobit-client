@@ -1,6 +1,7 @@
 {
   "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json",
   "reactHooks": true,
+  "mock": true,
   "dir": "./src/hitobit-services/src/services",
   "useInfiniteQuery": [
     "useGetAuthV1PrivateApikeyList",
