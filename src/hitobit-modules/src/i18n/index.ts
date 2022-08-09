@@ -2,16 +2,8 @@
 
 // init i18next
 // for all options read: https://www.i18next.com/overview/configuration-options
-import i18next from "i18next";
-import {
-  DefaultNamespace,
-  initReactI18next,
-  KeyPrefix,
-  Namespace,
-  useTranslation as useI18nTranslation,
-  UseTranslationOptions,
-  UseTranslationResponse,
-} from "react-i18next";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
 import en from "./messages/en";
 import fa from "./messages/fa";
 
@@ -21,8 +13,6 @@ const languageNames = {
 };
 
 type Language = keyof typeof languageNames;
-
-const i18n = i18next.createInstance();
 
 i18n.use(initReactI18next);
 
@@ -34,24 +24,19 @@ function getValidLanguage(lang: Language) {
   return "fa";
 }
 
-function useTranslation<
-  N extends Namespace = DefaultNamespace,
-  TKPrefix extends KeyPrefix<N> = undefined,
->(
-  ns?: N | Readonly<N>,
-  options?: UseTranslationOptions<TKPrefix>,
-): UseTranslationResponse<N, TKPrefix> {
-  return useI18nTranslation(ns, { ...options, i18n });
-}
+type Resources = {
+  fa: Record<string, string>;
+  en: Record<string, string>;
+};
 
-const initializeI18n = (lang = "fa") => {
+const initializeI18n = (lang = "fa", resources?: Resources) => {
   i18n.init({
     resources: {
       fa: {
-        translation: fa,
+        translation: { ...fa, ...resources?.fa },
       },
       en: {
-        translation: en,
+        translation: { ...en, ...resources?.en },
       },
     },
     lng: getValidLanguage(lang as Language),
@@ -64,4 +49,4 @@ const getLanguageName = () => {
   return languageNames[(i18n.language as keyof typeof languageNames) || "fa"];
 };
 
-export { i18n, useTranslation, initializeI18n, getLanguageName };
+export { i18n, initializeI18n, getLanguageName };

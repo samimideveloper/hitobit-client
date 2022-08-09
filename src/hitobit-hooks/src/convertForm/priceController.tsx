@@ -1,6 +1,6 @@
-import { useTranslation } from "hitobit-modules";
 import { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { ConvertContext, ConvertFormProps } from "./context";
 

@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules";
+import { useTranslation } from "react-i18next";
 import starkString from "starkstring";
 
 type Abbreviation = "kilo" | "million" | "billion" | "trillion";

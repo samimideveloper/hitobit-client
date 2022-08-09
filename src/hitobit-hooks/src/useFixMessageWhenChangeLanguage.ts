@@ -1,4 +1,3 @@
-import { useTranslation } from "hitobit-modules";
 import { Context, useContext, useEffect } from "react";
 import {
   FieldErrors,
@@ -7,6 +6,7 @@ import {
   UseFormReturn,
   UseFormTrigger,
 } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 export const useFixMessageWhenChangeLanguage = <T extends FieldValues>(
   context: Context<UseFormReturn<T, object>>,

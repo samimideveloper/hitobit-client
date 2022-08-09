@@ -1,9 +1,9 @@
-import { useTranslation } from "hitobit-modules";
 import {
   useGetPartyV1PrivateUsersettingPreference,
   usePostExchangeV1PrivateOrder,
 } from "hitobit-services";
 import { selectedSymbolStore } from "hitobit-store";
+import { useTranslation } from "react-i18next";
 import { useMarketTicker } from "../../..";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { BuyForm, StopLimitOrderValues } from "../types";

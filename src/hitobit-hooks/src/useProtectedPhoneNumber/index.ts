@@ -1,4 +1,4 @@
-import { useTranslation } from "hitobit-modules";
+import { useTranslation } from "react-i18next";
 
 const useProtectedPhoneNumber = (
   phoneNumber: string | undefined,

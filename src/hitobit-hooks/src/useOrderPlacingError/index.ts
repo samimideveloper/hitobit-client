@@ -1,5 +1,4 @@
 import Decimal from "decimal.js";
-import { useTranslation } from "hitobit-modules";
 import {
   applyMarketMock,
   MarketFilterLotSize,
@@ -7,6 +6,7 @@ import {
   MarketFilterMinNotional,
   MarketFilterPriceFilter,
 } from "hitobit-utils";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "react-oidc-js";
 import starkstring from "starkstring";
 import { useMarketTicker } from "../marketTicker";

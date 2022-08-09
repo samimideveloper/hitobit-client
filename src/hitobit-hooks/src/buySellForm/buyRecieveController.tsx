@@ -1,6 +1,6 @@
-import { useTranslation } from "hitobit-modules";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 import { useMarketFilters } from "../useMarketFilters";

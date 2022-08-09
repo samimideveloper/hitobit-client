@@ -1,8 +1,8 @@
 import Decimal from "decimal.js";
-import { useTranslation } from "hitobit-modules";
 import { postExchangeV1PrivateOrder } from "hitobit-services";
 import { ReactNode, useMemo, useTransition } from "react";
 import { ControllerRenderProps } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useQueryClient } from "react-query";
 import { Asset, useAssets } from "../useAssets";
 import { useMarketFilters } from "../useMarketFilters";

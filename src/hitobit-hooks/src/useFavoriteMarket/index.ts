@@ -1,9 +1,9 @@
-import { useTranslation } from "hitobit-modules";
 import {
   useDeletePartyV1PrivateFavoritemarket,
   useGetPartyV1PrivateFavoritemarket,
   usePostPartyV1PrivateFavoritemarket,
 } from "hitobit-services";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "react-oidc-js";
 import { useNotification } from "../notification";
 
