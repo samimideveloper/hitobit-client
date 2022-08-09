@@ -7,7 +7,7 @@ import {
   setStoredBaseCurrency,
   setStoredSeletedSymbol,
 } from "hitobit-store";
-import { Fragment, lazy } from "react";
+import { Fragment, lazy, ReactNode } from "react";
 import { QueryClientProvider, useQuery } from "react-query";
 import { kline } from "../kline";
 import { queryClient } from "../queryClient";
@@ -17,13 +17,15 @@ const UserManagerProvider = lazy(
   () => import("hitobit-services/dist/context/userManager"),
 );
 
+type Resource = Record<string, string>;
 export interface ProvidersProps {
-  children: JSX.Element;
+  children: ReactNode;
+  fallback?: ReactNode;
   initializer?: () => Promise<void>;
   language?: "fa" | "en";
   i18nResources?: {
-    fa: Record<string, string>;
-    en: Record<string, string>;
+    fa: Resource;
+    en: Resource;
   };
 }
 
@@ -32,6 +34,7 @@ const HitobitClientProvider = ({
   initializer,
   language,
   i18nResources,
+  fallback,
 }: ProvidersProps) => {
   const MaybeUserManagerProvider =
     typeof window === "undefined" ? Fragment : UserManagerProvider;
@@ -44,7 +47,9 @@ const HitobitClientProvider = ({
             <SelectedSymbolStoreProvider>
               <UserSignalRConnection>
                 <kline.Provider>
-                  <Child {...{ initializer, language, i18nResources }}>
+                  <Child
+                    {...{ initializer, language, i18nResources, fallback }}
+                  >
                     {children}
                   </Child>
                 </kline.Provider>
@@ -64,6 +69,7 @@ const Child = ({
   initializer,
   language,
   i18nResources,
+  fallback = null,
 }: ProvidersProps) => {
   const { data } = useQuery(
     [ChildInitialSymbol],
@@ -80,7 +86,7 @@ const Child = ({
     },
   );
 
-  return data || typeof window === "undefined" ? children : null;
+  return <>{data || typeof window === "undefined" ? children : fallback}</>;
 };
 
 export { HitobitClientProvider };
