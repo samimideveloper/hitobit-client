@@ -13,7 +13,7 @@ import { useRef } from "react";
 import { useQueryClient } from "react-query";
 import { NotificationArgsProps, useNotification } from "../notification";
 import { useDebounceAnimationFrameCallback } from "../useDebounceAnimationFrameCallback";
-import { useUserSignalREvent } from "./event";
+import { useUserSignalREvent } from "./useUserSignalREvent";
 
 interface UserAssetSignal {
   eventType: "executionReport"; // Event type

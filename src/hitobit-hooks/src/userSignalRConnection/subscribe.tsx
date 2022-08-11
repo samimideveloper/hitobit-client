@@ -5,7 +5,7 @@ import { setSignalRToken, StoreAuthentication } from "hitobit-store";
 import { useEffect } from "react";
 import { useAuth } from "react-oidc-js";
 import { SignalREvents, UserSignalRContext } from "./signalRContext";
-import { REFRESH_SIGNAL_MS } from "./type";
+import { REFRESH_SIGNAL_MS } from "./utils";
 
 const useSubscribe = () => {
   const { userData } = useAuth();
