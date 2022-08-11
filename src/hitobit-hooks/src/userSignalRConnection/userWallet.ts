@@ -1,11 +1,10 @@
 import {
-  getWalletV1PrivateUserassetSpotDefaultAll,
-  useGetWalletV1PrivateUserassetSpotDefault,
-  UserAssetResponseVM,
+  getWalletV1PrivateAll,
+  UserWalletDisplayResponseVM,
 } from "hitobit-services";
 import { useRef } from "react";
 import { useQueryClient } from "react-query";
-import { useDebounceAnimationFrameCallback } from "../useDebounceAnimationFrameCallback";
+import { useDebounceAnimationFrameCallback } from "reactjs-view-core";
 import { useUserSignalREvent } from "./useUserSignalREvent";
 import {
   BalanceUpdate,
@@ -14,7 +13,7 @@ import {
   OutboundAccountPosition,
 } from "./utils";
 
-const useUpdateUserAssetWithSignalr = () => {
+const useUpdateUserWalletWithSignalr = () => {
   const queryClient = useQueryClient();
 
   const newOutboundRef = useRef<OutboundAccountPosition[]>([]);
@@ -23,20 +22,23 @@ const useUpdateUserAssetWithSignalr = () => {
     const stackedOutbound = [...newOutboundRef.current];
     newOutboundRef.current = [];
 
-    queryClient.setQueryData<UserAssetResponseVM[]>(
-      [getWalletV1PrivateUserassetSpotDefaultAll.key],
+    queryClient.setQueryData<UserWalletDisplayResponseVM[]>(
+      [getWalletV1PrivateAll.key],
       (prev) => {
         const newAssets = [...(prev || [])];
 
         stackedOutbound.forEach((outbound) => {
           outbound.balances.forEach((item) => {
             const index = prev?.findIndex(
-              (x) => x.walletNumber === item.walletNumber,
+              (x) => x.number === item.walletNumber,
             );
 
             if (index !== undefined && index !== -1) {
               newAssets[index] = {
                 ...newAssets[index],
+                inUseRemain: Number(
+                  item.locked ?? newAssets[index].inUseRemain,
+                ),
                 availableRemain: Number(item.free),
                 totalRemain: Number(item.free) + Number(item.locked),
               };
@@ -45,26 +47,26 @@ const useUpdateUserAssetWithSignalr = () => {
             }
 
             newAssets.push({
-              walletName: item.walletNumber,
-              walletNumber: item.walletNumber,
+              name: item.walletNumber,
+              number: item.walletNumber,
               inUseRemain: Number(item.locked),
               symbol: item.asset,
               availableRemain: Number(item.free),
               totalRemain: Number(item.free) + Number(item.locked),
+              getComissionFromPayer: false,
+              automaticSettlement: false,
+              accountStatus: "OK",
+              isActive: true,
+              relatedUserWalletIndex: 0,
+              userWalletType: "Spot",
             });
-
-            queryClient.invalidateQueries<UserAssetResponseVM>(
-              useGetWalletV1PrivateUserassetSpotDefault.info({
-                symbol: item.asset,
-              }).key,
-            );
           });
         });
 
         return newAssets;
       },
     );
-  }, []);
+  });
 
   useUserSignalREvent("outboundAccountPosition", (data) => {
     const updated = convertOutboundAccountPositionSocketToHumanize(data);
@@ -80,10 +82,10 @@ const useUpdateUserAssetWithSignalr = () => {
     const stackedBalance = [...newBalanceRef.current];
     newBalanceRef.current = [];
 
-    queryClient.setQueryData<UserAssetResponseVM[]>(
-      [getWalletV1PrivateUserassetSpotDefaultAll.key],
+    queryClient.setQueryData<UserWalletDisplayResponseVM[]>(
+      [getWalletV1PrivateAll.key],
       (prev) => {
-        const newAssets: UserAssetResponseVM[] = [...(prev || [])];
+        const newAssets: UserWalletDisplayResponseVM[] = [...(prev || [])];
 
         stackedBalance.forEach((balance) => {
           const index = prev?.findIndex((x) => x.symbol === balance.asset);
@@ -100,26 +102,26 @@ const useUpdateUserAssetWithSignalr = () => {
             };
           } else {
             newAssets.push({
-              walletName: balance.walletNumber,
+              name: balance.walletNumber,
               inUseRemain: 0,
-              walletNumber: balance.walletNumber,
+              number: balance.walletNumber,
               symbol: balance.asset,
               availableRemain: Number(balance.balanceDelta),
               totalRemain: Number(balance.balanceDelta),
+              getComissionFromPayer: false,
+              automaticSettlement: false,
+              accountStatus: "OK",
+              isActive: true,
+              relatedUserWalletIndex: 0,
+              userWalletType: "Spot",
             });
           }
-
-          queryClient.invalidateQueries<UserAssetResponseVM>(
-            useGetWalletV1PrivateUserassetSpotDefault.info({
-              symbol: balance.asset,
-            }).key,
-          );
         });
 
         return newAssets;
       },
     );
-  }, []);
+  });
 
   useUserSignalREvent("balanceUpdate", (data) => {
     const updated = convertBalanceUpdateToHumanize(data);
@@ -130,4 +132,4 @@ const useUpdateUserAssetWithSignalr = () => {
   });
 };
 
-export { useUpdateUserAssetWithSignalr };
+export { useUpdateUserWalletWithSignalr };

@@ -6,8 +6,14 @@ import { UserSignalRContext } from "./signalRContext";
 import { useSubscribe } from "./subscribe";
 import { useUpdateUserAssetWithSignalr } from "./userAsset";
 import { useUpdateOrderWithSignalr } from "./userOrder";
+import { useUpdateUserWalletWithSignalr } from "./userWallet";
+import { useUserSignalREvent } from "./useUserSignalREvent";
 
-const UserSignalRConnection = ({ children }: { children: ReactNode }): any => {
+const UserSignalRConnectionProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}): any => {
   const { userData } = useAuth();
 
   return (
@@ -36,9 +42,11 @@ const ConnectToSignalRListeners = () => {
 
   useUpdateUserAssetWithSignalr();
 
+  useUpdateUserWalletWithSignalr();
+
   useUpdateOrderWithSignalr();
 
   return null;
 };
 
-export { UserSignalRConnection };
+export { UserSignalRConnectionProvider, useUserSignalREvent };

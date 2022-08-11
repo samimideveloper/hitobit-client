@@ -11,7 +11,7 @@ import { Fragment, lazy, ReactNode } from "react";
 import { QueryClientProvider, useQuery } from "react-query";
 import { kline } from "../kline";
 import { queryClient } from "../queryClient";
-import { UserSignalRConnection } from "../userSignalRConnection";
+import { UserSignalRConnectionProvider } from "../userSignalRConnection";
 
 const UserManagerProvider = lazy(
   () => import("hitobit-services/dist/context/userManager"),
@@ -45,7 +45,7 @@ const HitobitClientProvider = ({
         <AuthenticationProvider>
           <BaseCurrencyStoreProvider>
             <SelectedSymbolStoreProvider>
-              <UserSignalRConnection>
+              <UserSignalRConnectionProvider>
                 <kline.Provider>
                   <Child
                     {...{ initializer, language, i18nResources, fallback }}
@@ -53,7 +53,7 @@ const HitobitClientProvider = ({
                     {children}
                   </Child>
                 </kline.Provider>
-              </UserSignalRConnection>
+              </UserSignalRConnectionProvider>
             </SelectedSymbolStoreProvider>
           </BaseCurrencyStoreProvider>
         </AuthenticationProvider>
