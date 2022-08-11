@@ -1,3 +1,4 @@
+import { MessageHeaders } from "@microsoft/signalr";
 import { URLManager } from "hitobit-modules";
 import { handleAccessTokenExpired, RequestError } from "hitobit-services";
 import { ReactNode } from "react";
@@ -11,8 +12,12 @@ import { useUserSignalREvent } from "./useUserSignalREvent";
 
 const UserSignalRConnectionProvider = ({
   children,
+  dependencies,
+  headers,
 }: {
   children: ReactNode;
+  dependencies?: any[];
+  headers?: MessageHeaders;
 }): any => {
   const { userData } = useAuth();
 
@@ -26,7 +31,12 @@ const UserSignalRConnectionProvider = ({
           }
         }
       }}
-      dependencies={[!!userData?.access_token, URLManager.signalRBaseUrl]}
+      headers={headers}
+      dependencies={[
+        !!userData?.access_token,
+        URLManager.signalRBaseUrl,
+        ...(dependencies || []),
+      ]}
       url={URLManager.signalRBaseUrl}
     >
       <>

@@ -1,3 +1,4 @@
+import { MessageHeaders } from "@microsoft/signalr";
 import { initializeI18n } from "hitobit-modules";
 import {
   AuthenticationProvider,
@@ -27,6 +28,8 @@ export interface ProvidersProps {
     fa: Resource;
     en: Resource;
   };
+  userSignalRDependencies?: any[];
+  userSignalRHeaders?: MessageHeaders;
 }
 
 const HitobitClientProvider = ({
@@ -35,6 +38,8 @@ const HitobitClientProvider = ({
   language,
   i18nResources,
   fallback,
+  userSignalRDependencies,
+  userSignalRHeaders,
 }: ProvidersProps) => {
   const MaybeUserManagerProvider =
     typeof window === "undefined" ? Fragment : UserManagerProvider;
@@ -45,7 +50,10 @@ const HitobitClientProvider = ({
         <AuthenticationProvider>
           <BaseCurrencyStoreProvider>
             <SelectedSymbolStoreProvider>
-              <UserSignalRConnectionProvider>
+              <UserSignalRConnectionProvider
+                dependencies={userSignalRDependencies}
+                headers={userSignalRHeaders}
+              >
                 <kline.Provider>
                   <Child
                     {...{ initializer, language, i18nResources, fallback }}
