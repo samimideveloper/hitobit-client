@@ -1,6 +1,6 @@
 {
   "name": "hitobit-store",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
     "dist"
   ],
   "dependencies": {
-    "hitobit-services": "^0.2.2",
+    "hitobit-services": "^0.2.4",
     "react-principal": "^2.0.7"
   }
 }
