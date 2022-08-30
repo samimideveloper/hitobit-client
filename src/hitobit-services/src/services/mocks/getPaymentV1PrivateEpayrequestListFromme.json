@@ -55,7 +55,8 @@
               "value": ""
             }
           ],
-          "currencySymbol": ""
+          "currencySymbol": "",
+          "requestedAmount": 0
         }
       ]
     }

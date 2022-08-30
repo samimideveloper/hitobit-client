@@ -660,6 +660,8 @@ export interface EPayRequestSingleResponseVM {
   expireDate: string;
   /** - Format: int64 */
   id: number;
+  /** - Format: double */
+  requestedAmount: number;
   assignedUserDisplayName?: string;
   audiences?: EPayRequestAudienceResponseVM[];
   currencySymbol?: string;
@@ -727,7 +729,10 @@ export interface EpayRequestInfoResponseVM {
   payViaOtherCurrency: boolean;
   /** - Format: double */
   payerAmount: number;
+  /** - Format: double */
+  requestedAmount: number;
   status: EpayRequestActualState;
+  assignedToAnonymous?: string;
   assignedUserDisplayName?: string;
   audiences?: EPayRequestAudienceResponseVM[];
   cardNumber?: string;
@@ -1236,10 +1241,6 @@ export interface GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryPara
 }
 
 export interface GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams {
-  token?: string;
-}
-
-export interface GetPaymentV1PublicEpayrequestSmsResendQueryParams {
   token?: string;
 }
 
@@ -2102,6 +2103,10 @@ export interface PostPaymentV1PrivateEpayrequestUnblockQueryParams {
   ePayRequestId?: number;
 }
 
+export interface PostPaymentV1PublicEpayrequestSmsResendQueryParams {
+  token?: string;
+}
+
 export interface PreferenceUserSettingRequestVM {
   activities?: boolean;
   autoBorrowRepayForMargin?: boolean;
@@ -2799,6 +2804,7 @@ export interface UserMinimalResponseVM {
   /** - Format: uuid */
   userId: string;
   displayName?: string;
+  phoneNumber?: string;
   positionTitle?: string;
   /** - Format: uuid */
   profileImageFileUniqueId?: string;
@@ -2965,6 +2971,11 @@ export interface UserWalletDisplayDetailResponseVM {
   permittedSubuserCount: number;
   userWalletType: UserWalletType;
   actionPolicies?: CommissionPolicyResponseVM[];
+  intermediatePayUserBankAccountNumber?: string;
+  /** - Format: int64 */
+  intermediatePayUserBankId?: number;
+  intermediatePayUserBankName?: string;
+  intermediatePayUserBankShebaNumber?: string;
   walletName?: string;
   walletNumber?: string;
 }

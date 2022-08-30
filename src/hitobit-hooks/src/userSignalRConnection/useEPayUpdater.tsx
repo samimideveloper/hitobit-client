@@ -17,6 +17,7 @@ const useEPayUpdater = () => {
       (prev) => ({
         ...prev,
         amount: data.amount ?? prev?.amount,
+        requestedAmount: data.requestedAmount,
         description: data.description ?? prev?.description,
         expireDate: data.expireDate ?? prev?.expireDate,
         payDate: data.payDate ?? prev?.payDate,
@@ -65,6 +66,7 @@ const useEPayUpdater = () => {
         if (index >= 0) {
           list[index] = {
             amount: data.amount,
+            requestedAmount: data.requestedAmount,
             description: data.description,
             expireDate: data.expireDate,
             payDate: data.payDate,
@@ -93,6 +95,7 @@ const useEPayUpdater = () => {
           list: [
             {
               amount: data.amount,
+              requestedAmount: data.requestedAmount,
               description: data.description,
               expireDate: data.expireDate,
               payDate: data.payDate,

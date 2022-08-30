@@ -117,7 +117,9 @@
         }
       ],
       "pluginKey": "",
-      "payerDisplayName": ""
+      "payerDisplayName": "",
+      "assignedToAnonymous": "",
+      "requestedAmount": 0
     }
   }
 }

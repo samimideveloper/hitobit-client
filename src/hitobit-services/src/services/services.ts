@@ -110,7 +110,6 @@ import {
   GetPaymentV1PublicEpayrequestInfoTokenQueryParams,
   GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
   GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
-  GetPaymentV1PublicEpayrequestSmsResendQueryParams,
   GetSettlementV1PrivateAddressbookQueryParams,
   GetSettlementV1PrivateCommissionQueryParams,
   GetSettlementV1PrivateCountQueryParams,
@@ -161,6 +160,7 @@ import {
   PostAuthV1PublicAuthChecktwofactorisenableQueryParams,
   PostAuthV1PublicAuthGetcodeQueryParams,
   PostPaymentV1PrivateEpayrequestUnblockQueryParams,
+  PostPaymentV1PublicEpayrequestSmsResendQueryParams,
   POSTransactionHistoryListResponseVM,
   PreferenceUserSettingRequestVM,
   ProvinceResponseVM,
@@ -1724,23 +1724,6 @@ export const getPaymentV1PublicEpayrequestReceiptinfoToken = (
 getPaymentV1PublicEpayrequestReceiptinfoToken.key =
   "/payment/v1/public/epayrequest/receiptinfo/token";
 
-export const getPaymentV1PublicEpayrequestSmsResend = (
-  queryParams?: GetPaymentV1PublicEpayrequestSmsResendQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<any>> => {
-  return Http.getRequest(
-    getPaymentV1PublicEpayrequestSmsResend.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT0, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getPaymentV1PublicEpayrequestSmsResend.key =
-  "/payment/v1/public/epayrequest/sms/resend";
-
 export const getSettlementV1Private = (
   queryParams?: GetSettlementV1PrivateQueryParams,
   configOverride?: AxiosRequestConfig,
@@ -2912,6 +2895,23 @@ export const postPaymentV1PublicEpayrequestPos = (
 
 /** Key is end point string without base url */
 postPaymentV1PublicEpayrequestPos.key = "/payment/v1/public/epayrequest/pos";
+
+export const postPaymentV1PublicEpayrequestSmsResend = (
+  queryParams?: PostPaymentV1PublicEpayrequestSmsResendQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    postPaymentV1PublicEpayrequestSmsResend.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postPaymentV1PublicEpayrequestSmsResend.key =
+  "/payment/v1/public/epayrequest/sms/resend";
 
 export const postSettlementV1PrivateAddressbook = (
   requestBody: AddressBookAddRequestVM[],

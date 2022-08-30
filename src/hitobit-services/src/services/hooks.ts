@@ -109,7 +109,6 @@ import {
   getPaymentV1PublicEpayrequestInfoToken,
   getPaymentV1PublicEpayrequestReceiptinfoClientuniqueid,
   getPaymentV1PublicEpayrequestReceiptinfoToken,
-  getPaymentV1PublicEpayrequestSmsResend,
   getSettlementV1Private,
   getSettlementV1PrivateAddressbook,
   getSettlementV1PrivateAddressbookAll,
@@ -178,6 +177,7 @@ import {
   postPaymentV1PrivateEpayrequestSetpayercurrenyinfo,
   postPaymentV1PrivateEpayrequestUnblock,
   postPaymentV1PublicEpayrequestPos,
+  postPaymentV1PublicEpayrequestSmsResend,
   postSettlementV1PrivateAddressbook,
   postSettlementV1PrivateExcel,
   postSettlementV1PrivateUserWalletNumber,
@@ -310,7 +310,6 @@ import {
   GetPaymentV1PublicEpayrequestInfoTokenQueryParams,
   GetPaymentV1PublicEpayrequestReceiptinfoClientuniqueidQueryParams,
   GetPaymentV1PublicEpayrequestReceiptinfoTokenQueryParams,
-  GetPaymentV1PublicEpayrequestSmsResendQueryParams,
   GetSettlementV1PrivateAddressbookQueryParams,
   GetSettlementV1PrivateCommissionQueryParams,
   GetSettlementV1PrivateCountQueryParams,
@@ -361,6 +360,7 @@ import {
   PostAuthV1PublicAuthChecktwofactorisenableQueryParams,
   PostAuthV1PublicAuthGetcodeQueryParams,
   PostPaymentV1PrivateEpayrequestUnblockQueryParams,
+  PostPaymentV1PublicEpayrequestSmsResendQueryParams,
   POSTransactionHistoryListResponseVM,
   PreferenceUserSettingRequestVM,
   ProvinceResponseVM,
@@ -4001,46 +4001,6 @@ useGetPaymentV1PublicEpayrequestReceiptinfoToken.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetPaymentV1PublicEpayrequestSmsResend = (
-  queryParams?: GetPaymentV1PublicEpayrequestSmsResendQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<any>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPaymentV1PublicEpayrequestSmsResend.info(
-    queryParams,
-    configOverride,
-  );
-  return useQuery(key, fun, options);
-};
-useGetPaymentV1PublicEpayrequestSmsResend.info = (
-  queryParams?: GetPaymentV1PublicEpayrequestSmsResendQueryParams,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getPaymentV1PublicEpayrequestSmsResend.key, queryParams] as QueryKey,
-    fun: () =>
-      getPaymentV1PublicEpayrequestSmsResend(
-        queryParams,
-
-        configOverride,
-      ),
-  };
-};
-useGetPaymentV1PublicEpayrequestSmsResend.prefetch = (
-  client: QueryClient,
-  queryParams?: GetPaymentV1PublicEpayrequestSmsResendQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<any>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPaymentV1PublicEpayrequestSmsResend.info(
-    queryParams,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
 export const useGetSettlementV1Private = (
   queryParams?: GetSettlementV1PrivateQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<SettlementRequestInfoResponseVM>,
@@ -5867,6 +5827,20 @@ export const usePostPaymentV1PublicEpayrequestPos = <TExtra>(
 
       configOverride,
     );
+  }, options);
+};
+
+export const usePostPaymentV1PublicEpayrequestSmsResend = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { queryParams?: PostPaymentV1PublicEpayrequestSmsResendQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const { queryParams, configOverride } = _o || {};
+
+    return postPaymentV1PublicEpayrequestSmsResend(queryParams, configOverride);
   }, options);
 };
 

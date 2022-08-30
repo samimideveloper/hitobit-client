@@ -43,6 +43,7 @@ type EpayEventModel = {
   PayerCurrencySymbol?: string;
   e: "epayRequestChangeStatus";
   E: number;
+  requestedAmount: number;
 };
 
 export interface OutboundAccountPositionModel {

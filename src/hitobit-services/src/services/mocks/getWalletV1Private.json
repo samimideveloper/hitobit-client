@@ -23,6 +23,10 @@
       "automaticSettlement": true,
       "notificationEnabled": true,
       "permittedSubuserCount": 0,
+      "intermediatePayUserBankId": 0,
+      "intermediatePayUserBankName": "",
+      "intermediatePayUserBankAccountNumber": "",
+      "intermediatePayUserBankShebaNumber": "",
       "actionPolicies": [
         {
           "currencySymbol": "",
