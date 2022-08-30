@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/hosseinmd/hitobit-client/compare/v0.2.4...v0.2.5) (2022-08-30)
+
+
+### Bug Fixes
+
+* epay update ([a3b04a3](https://github.com/hosseinmd/hitobit-client/commit/a3b04a36a31c23f81e2e0c569d302d2f5d6a8bf8))
+
+
+
+
+
 ## [0.2.4](https://github.com/hosseinmd/hitobit-client/compare/v0.2.3...v0.2.4) (2022-08-21)
 
 **Note:** Version bump only for package demo1
