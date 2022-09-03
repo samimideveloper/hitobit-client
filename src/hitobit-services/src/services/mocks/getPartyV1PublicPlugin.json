@@ -1,0 +1,33 @@
+{
+  "method": "get",
+  "path": "/party/v1/public/plugin",
+  "response": {
+    "200": {
+      "id": 0,
+      "name": "",
+      "amountCalculationExpression": "",
+      "logoFileUniqueId": "3ba89b92-8c02-4e5a-9843-22",
+      "pluginProperties": [
+        {
+          "name": "",
+          "title": "",
+          "fieldType": {
+            "0": "S",
+            "1": "t",
+            "2": "r",
+            "3": "i",
+            "4": "n",
+            "5": "g"
+          },
+          "isRequired": true,
+          "listValues": "",
+          "isSearchable": true,
+          "description": "",
+          "isListable": true,
+          "isCreatable": true,
+          "order": 0
+        }
+      ]
+    }
+  }
+}

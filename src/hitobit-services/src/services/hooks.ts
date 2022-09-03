@@ -98,6 +98,7 @@ import {
   getPartyV1PrivateUsersettingPreference,
   getPartyV1PrivateWalletsettingMaxreferalprogrampercent,
   getPartyV1PublicIdentificationlevelGuide,
+  getPartyV1PublicPlugin,
   getPaymentV1PrivateEpayrequestCommission,
   getPaymentV1PrivateEpayrequestCount,
   getPaymentV1PrivateEpayrequestCountFromme,
@@ -299,6 +300,7 @@ import {
   GetPartyV1PrivateNotificationAllQueryParams,
   GetPartyV1PrivatePluginListQueryParams,
   GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
+  GetPartyV1PublicPluginQueryParams,
   GetPaymentV1PrivateEpayrequestCommissionQueryParams,
   GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
   GetPaymentV1PrivateEpayrequestCountQueryParams,
@@ -355,6 +357,7 @@ import {
   PlaceOcoOrderRequestVM,
   PlaceOrderRequestVM,
   PlatformType,
+  PluginInfoResponseVM,
   PostAuthV1PrivateAuthEmailSendcodeQueryParams,
   PostAuthV1PrivateAuthPhonecallSendcodeQueryParams,
   PostAuthV1PublicAuthChecktwofactorisenableQueryParams,
@@ -3520,6 +3523,46 @@ useGetPartyV1PublicIdentificationlevelGuide.prefetch = (
 ) => {
   const { key, fun } =
     useGetPartyV1PublicIdentificationlevelGuide.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetPartyV1PublicPlugin = (
+  queryParams?: GetPartyV1PublicPluginQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<PluginInfoResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPartyV1PublicPlugin.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetPartyV1PublicPlugin.info = (
+  queryParams?: GetPartyV1PublicPluginQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getPartyV1PublicPlugin.key, queryParams] as QueryKey,
+    fun: () =>
+      getPartyV1PublicPlugin(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetPartyV1PublicPlugin.prefetch = (
+  client: QueryClient,
+  queryParams?: GetPartyV1PublicPluginQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<PluginInfoResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPartyV1PublicPlugin.info(
+    queryParams,
+    configOverride,
+  );
 
   return client.getQueryData(key)
     ? Promise.resolve()

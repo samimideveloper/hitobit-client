@@ -99,6 +99,7 @@ import {
   GetPartyV1PrivateNotificationAllQueryParams,
   GetPartyV1PrivatePluginListQueryParams,
   GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
+  GetPartyV1PublicPluginQueryParams,
   GetPaymentV1PrivateEpayrequestCommissionQueryParams,
   GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
   GetPaymentV1PrivateEpayrequestCountQueryParams,
@@ -155,6 +156,7 @@ import {
   PlaceOcoOrderRequestVM,
   PlaceOrderRequestVM,
   PlatformType,
+  PluginInfoResponseVM,
   PostAuthV1PrivateAuthEmailSendcodeQueryParams,
   PostAuthV1PrivateAuthPhonecallSendcodeQueryParams,
   PostAuthV1PublicAuthChecktwofactorisenableQueryParams,
@@ -1537,6 +1539,22 @@ export const getPartyV1PublicIdentificationlevelGuide = (
 /** Key is end point string without base url */
 getPartyV1PublicIdentificationlevelGuide.key =
   "/party/v1/public/identificationlevel/guide";
+
+export const getPartyV1PublicPlugin = (
+  queryParams?: GetPartyV1PublicPluginQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<PluginInfoResponseVM>> => {
+  return Http.getRequest(
+    getPartyV1PublicPlugin.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPartyV1PublicPlugin.key = "/party/v1/public/plugin";
 
 export const getPaymentV1PrivateEpayrequestCommission = (
   queryParams?: GetPaymentV1PrivateEpayrequestCommissionQueryParams,

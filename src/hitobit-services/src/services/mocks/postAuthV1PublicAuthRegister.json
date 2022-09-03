@@ -3,7 +3,7 @@
   "path": "/auth/v1/public/auth/register",
   "response": {
     "200": {
-      "userId": "3ba89b92-8c02-4e5a-9843-22",
+      "userId": "3ba89b92-8c02-4e5a-9843-23",
       "token": ""
     }
   }

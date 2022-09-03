@@ -1155,6 +1155,10 @@ export interface GetPartyV1PrivateUserByuserreferralprogramidQueryParams {
   userReferralProgramId?: number;
 }
 
+export interface GetPartyV1PublicPluginQueryParams {
+  pluginKey?: string;
+}
+
 export interface GetPaymentV1PrivateEpayrequestCommissionQueryParams {
   /** - Format: double */
   amount?: number;
@@ -2055,6 +2059,16 @@ export type PlatformType =
   | "Linux"
   | "macOS"
   | "Desktop";
+
+export interface PluginInfoResponseVM {
+  /** - Format: int32 */
+  id: number;
+  amountCalculationExpression?: string;
+  /** - Format: uuid */
+  logoFileUniqueId?: string;
+  name?: string;
+  pluginProperties?: PluginPropertyResponseVM[];
+}
 
 export interface PluginPropertyRequestVM {
   key?: string;
