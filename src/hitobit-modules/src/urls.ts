@@ -2,57 +2,88 @@ import { cookieStorage } from "./cookieStore";
 
 class URLManager {
   private static domainName: string;
-
-  static setDomainName(domainName: string) {
-    URLManager.domainName = domainName;
-  }
+  private static PREFIX_DEV = "dev";
+  private static PREFIX_STAGE = "stage";
+  private static PREFIX_TEST_STAGE = "test";
+  private static PREFIX_TESTNET = "testnet";
 
   private static get API_DEV() {
-    return `http://dev.${URLManager.domainName}.com/hapi/`;
+    return `http://${URLManager.PREFIX_DEV}.${URLManager.domainName}.com/hapi/`;
   }
   private static get API_STAGE() {
-    return `http://stage.${URLManager.domainName}.com/hapi/`;
+    return `http://${URLManager.PREFIX_STAGE}.${URLManager.domainName}.com/hapi/`;
   }
   private static get API_STAGE_TEST() {
-    return `http://test.${URLManager.domainName}.com/hapi/`;
+    return `http://${URLManager.PREFIX_TEST_STAGE}.${URLManager.domainName}.com/hapi/`;
   }
   private static get API_TESTNET() {
-    return `https://testnet.${URLManager.domainName}.com/hapi/`;
+    return `https://${URLManager.PREFIX_TESTNET}.${URLManager.domainName}.com/hapi/`;
   }
   private static get API_PRODUCTION() {
     return `https://${URLManager.domainName}.com/hapi/`;
   }
 
   private static get CDN_DEV() {
-    return `http://cdn.dev.${URLManager.domainName}.com`;
+    return `http://cdn.${URLManager.PREFIX_DEV}.${URLManager.domainName}.com`;
   }
   private static get CDN_STAGE() {
-    return `http://cdn.stage.${URLManager.domainName}.com`;
+    return `http://cdn.${URLManager.PREFIX_STAGE}.${URLManager.domainName}.com`;
   }
   private static get CDN_STAGE_TEST() {
-    return `http://cdn.stage.${URLManager.domainName}.com`;
+    return `http://cdn.${URLManager.PREFIX_STAGE}.${URLManager.domainName}.com`;
   }
   private static get CDN_TESTNET() {
-    return `http://cdn.testnet.${URLManager.domainName}.com`;
+    return `http://cdn.${URLManager.PREFIX_TESTNET}.${URLManager.domainName}.com`;
   }
   private static get CDN_PRODUCTION() {
     return `http://cdn.${URLManager.domainName}.com`;
   }
 
   private static get SIGNALR_DEV() {
-    return `http://stream.dev.${URLManager.domainName}.com/stream`;
+    return `http://stream.${URLManager.PREFIX_DEV}.${URLManager.domainName}.com/stream`;
   }
   private static get SIGNALR_STAGE() {
-    return `http://stream.stage.${URLManager.domainName}.com/stream`;
+    return `http://stream.${URLManager.PREFIX_STAGE}.${URLManager.domainName}.com/stream`;
   }
   private static get SIGNALR_STAGE_TEST() {
-    return `http://stream.test.${URLManager.domainName}.com/stream`;
+    return `http://stream.${URLManager.PREFIX_TEST_STAGE}.${URLManager.domainName}.com/stream`;
   }
   private static get SIGNALR_TESTNET() {
-    return `https://stream.testnet.${URLManager.domainName}.com/stream`;
+    return `https://stream.${URLManager.PREFIX_TESTNET}.${URLManager.domainName}.com/stream`;
   }
   private static get SIGNALR_PRODUCTION() {
     return `https://stream.${URLManager.domainName}.com/stream`;
+  }
+
+  private static checkDomainName() {
+    if (!URLManager.domainName) {
+      throw new Error(
+        `hitobit-cliient: domainName is not initialized run 'URLManager.setDomainName' in top level of your app`,
+      );
+    }
+  }
+
+  // Publics
+  static setCustomPrefixes({
+    dev,
+    stage,
+    testStage,
+    testnet,
+  }: {
+    dev: string;
+    stage: string;
+    testnet: string;
+    // testDev: string;
+    testStage: string;
+  }) {
+    URLManager.PREFIX_DEV = dev;
+    URLManager.PREFIX_STAGE = stage;
+    URLManager.PREFIX_TEST_STAGE = testStage;
+    URLManager.PREFIX_TESTNET = testnet;
+  }
+
+  static setDomainName(domainName: string) {
+    URLManager.domainName = domainName;
   }
 
   static get baseUrl() {
@@ -129,14 +160,6 @@ class URLManager {
     }
 
     return URLManager.CDN_DEV;
-  }
-
-  private static checkDomainName() {
-    if (!URLManager.domainName) {
-      throw new Error(
-        `hitobit-cliient: domainName is not initialized run 'URLManager.setDomainName' in top level of your app`,
-      );
-    }
   }
 }
 
