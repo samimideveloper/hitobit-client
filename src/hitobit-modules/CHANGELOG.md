@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/hosseinmd/hitobit-client/compare/v0.2.6...v0.3.0) (2022-09-04)
+
+
+### Features
+
+* add urls prefix customization ([b491027](https://github.com/hosseinmd/hitobit-client/commit/b491027495e0237bbcbcf1e3d28dfeedb45bfd28))
+
+
+
+
+
 ## [0.2.2](https://github.com/hosseinmd/hitobit-client/compare/v0.1.4...v0.2.2) (2022-08-11)
 
 **Note:** Version bump only for package hitobit-modules
