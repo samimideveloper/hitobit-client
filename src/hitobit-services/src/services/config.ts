@@ -30,7 +30,8 @@ function getAxiosInstance(security: any): AxiosInstance {
         deviceId: getDeviceId(),
       },
       timeout: 200 * 1000,
-      paramsSerializer: (param) => qs.stringify(param, { indices: true }),
+      paramsSerializer: (param) =>
+        qs.stringify(param, { indices: true, allowDots: true }),
     };
 
     axiosInstance = Axios.create(baseConfig);
