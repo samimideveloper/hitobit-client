@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/hosseinmd/hitobit-client/compare/v0.3.0...v0.3.1) (2022-09-05)
+
+
+### Bug Fixes
+
+* indices in query params ([2e99dd0](https://github.com/hosseinmd/hitobit-client/commit/2e99dd0fe9399eb1cb36228bd3bba9301f1fc541))
+
+
+
+
+
 # [0.3.0](https://github.com/hosseinmd/hitobit-client/compare/v0.2.6...v0.3.0) (2022-09-04)
 
 **Note:** Version bump only for package hitobit-services

@@ -1,6 +1,6 @@
 {
   "name": "hitobit-services",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
