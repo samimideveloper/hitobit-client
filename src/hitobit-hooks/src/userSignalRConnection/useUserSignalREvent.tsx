@@ -120,9 +120,9 @@ const useUserSignalREvent = <T extends keyof EventsData>(
   const perCallback = useEvent(callback);
 
   useEffect(() => {
-    hermes.on(event, perCallback);
+    hermes.on("userEvent_" + event, perCallback);
 
-    return () => hermes.off(event, perCallback);
+    return () => hermes.off("userEvent_" + event, perCallback);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perCallback]);
 };
