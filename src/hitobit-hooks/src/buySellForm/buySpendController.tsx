@@ -14,8 +14,8 @@ type BuySpendRenderProps = {
       assets: MarketTicker[];
       asset?: MarketTicker;
       minQuantity: number;
-      maxQuantity: number;
       hasError?: boolean;
+      maxQuantity: number;
       availableRemain: number;
       onSelect?: (value?: MarketTicker | undefined) => void;
       onFocus?: () => void;
