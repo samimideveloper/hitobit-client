@@ -1,7 +1,0 @@
-{
-  "method": "post",
-  "path": "/auth/v1/private/auth/getcode",
-  "response": {
-    "200": ""
-  }
-}

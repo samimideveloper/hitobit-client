@@ -1,7 +1,0 @@
-{
-  "method": "get",
-  "path": "/party/v1/private/domain/multiwallet",
-  "response": {
-    "200": true
-  }
-}

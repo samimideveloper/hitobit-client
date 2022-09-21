@@ -1,7 +1,0 @@
-{
-  "method": "post",
-  "path": "/party/v1/private/user/profileimage",
-  "response": {
-    "200": "3ba89b92-8c02-4e5a-9843-54"
-  }
-}

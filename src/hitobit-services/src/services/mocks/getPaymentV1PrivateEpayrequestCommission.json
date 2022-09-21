@@ -1,7 +1,0 @@
-{
-  "method": "get",
-  "path": "/payment/v1/private/epayrequest/commission",
-  "response": {
-    "200": 0
-  }
-}

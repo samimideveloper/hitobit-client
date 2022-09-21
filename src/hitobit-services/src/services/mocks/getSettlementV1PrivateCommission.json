@@ -1,7 +1,0 @@
-{
-  "method": "get",
-  "path": "/settlement/v1/private/commission",
-  "response": {
-    "200": 0
-  }
-}

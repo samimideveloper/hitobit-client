@@ -1,7 +1,0 @@
-{
-  "method": "delete",
-  "path": "/exchange/v1/private/openorders",
-  "response": {
-    "200": [{}]
-  }
-}
