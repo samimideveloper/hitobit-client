@@ -64,7 +64,7 @@ function recursiveChecker(
 
 function checkKeyUsage(dirname: string) {
   const resolver = (...dirs: string[]) =>
-    resolve(dirname, `../../../../../`, ...dirs);
+    resolve(dirname, `../../../../`, ...dirs);
 
   describe("", () => {
     const res = new Set(
