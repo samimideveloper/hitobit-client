@@ -7,7 +7,7 @@ import { ConvertContext, ConvertFormProps } from "./context";
 type ConvertPriceRenderProps = {
   render: (state: {
     field: ControllerRenderProps<ConvertFormProps, "price"> & {
-      fromAsset?: string;
+      toMarket?: string;
       hasError?: boolean;
     };
   }) => React.ReactElement;
@@ -19,7 +19,7 @@ export const ConvertPriceController = ({
   render,
   renderErrorComponent,
 }: ConvertPriceRenderProps) => {
-  const { toMarket, fromAmount, fromAsset } = ConvertContext.useWatch();
+  const { toMarket, fromAmount } = ConvertContext.useWatch();
 
   const { t } = useTranslation();
 
@@ -51,7 +51,7 @@ export const ConvertPriceController = ({
           return render({
             field: {
               value: value,
-              fromAsset: fromAsset,
+              toMarket: toMarket,
               hasError: value ? !!errors.price : false,
               onChange: (value) => {
                 onChange(value ? value : "");
