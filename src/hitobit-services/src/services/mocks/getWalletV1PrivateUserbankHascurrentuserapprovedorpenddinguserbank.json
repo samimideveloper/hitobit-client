@@ -1,7 +1,0 @@
-{
-  "method": "get",
-  "path": "/wallet/v1/private/userbank/hascurrentuserapprovedorpenddinguserbank",
-  "response": {
-    "200": true
-  }
-}

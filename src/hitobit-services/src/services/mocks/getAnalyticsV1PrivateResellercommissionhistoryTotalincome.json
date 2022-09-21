@@ -1,7 +1,0 @@
-{
-  "method": "get",
-  "path": "/analytics/v1/private/resellercommissionhistory/totalincome",
-  "response": {
-    "200": 0
-  }
-}

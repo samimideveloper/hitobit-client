@@ -1,7 +1,0 @@
-{
-  "method": "get",
-  "path": "/wallet/v1/public/currency/info",
-  "response": {
-    "200": [{}]
-  }
-}
