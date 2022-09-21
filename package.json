@@ -42,7 +42,7 @@
   "scripts": {
     "build": "rimraf dist && tsc -b",
     "test": "yarn build && cross-env TZ=UTC react-app-rewired test --silent --detectOpenHandles",
-    "release": " yarn test -- --watchAll=false && yarn lint && npx lerna publish",
+    "release": " yarn test -- --watchAll=false && yarn lint && yarn publish",
     "lint": "eslint . --ext tsx,ts --quiet",
     "format": "prettier --write .",
     "compile": "tsc -b"
