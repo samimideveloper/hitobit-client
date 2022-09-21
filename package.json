@@ -11,6 +11,10 @@
     "!.husky",
     "__mocks__"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "@microsoft/signalr": "^6.0.1",
     "@types/faker": "^5.5.9",
