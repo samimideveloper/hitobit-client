@@ -12,5 +12,6 @@ export {
   getDeviceId,
   URLManager,
 } from "hitobit-modules";
+export * from "hitobit-services";
 export * from "hitobit-store";
 export * from "hitobit-utils";
