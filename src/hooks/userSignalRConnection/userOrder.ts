@@ -155,7 +155,9 @@ const updateOrders = (
     stopPrice: order.stopPrice ? Number(order.stopPrice) : undefined,
     clientOrderId: order.clientOrderID,
     executedQty: Number(order.cumulativeFilledQuantity),
-    origQuoteOrderQty: order.quoteOrderQty ? Number(order.quoteOrderQty) : 0,
+    origQuoteOrderQty: order.quoteOrderQty
+      ? Number(order.quoteOrderQty) * Number(order.orderPrice || 0)
+      : 0,
     transactTime: moment(order.transactionTime).local().toISOString(),
     cummulativeQuoteQty: Number(order.cumulativeQuoteAssetTransactedQuantity),
   };
