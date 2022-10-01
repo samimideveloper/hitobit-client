@@ -89,7 +89,6 @@ import {
   getPartyV1PrivateDomainMultiwallet,
   getPartyV1PrivateDomainSetting,
   getPartyV1PrivateFavoritemarket,
-  getPartyV1PrivateIdentificationlevelInfo,
   getPartyV1PrivateIdentificationlevelUserInfo,
   getPartyV1PrivateNotificationAll,
   getPartyV1PrivateNotificationTypes,
@@ -332,7 +331,6 @@ import {
   GlobalWalletProviderResponseVM,
   GroupTransferMoneyRequestVM,
   GroupTransferResponseVM,
-  IdentificationLevel,
   IdentificationLevelGuideResponseVM,
   IdentityStatus,
   InternalWithdrawResponseVM,
@@ -3216,34 +3214,6 @@ useGetPartyV1PrivateFavoritemarket.prefetch = (
     queryParams,
     configOverride,
   );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
-export const useGetPartyV1PrivateIdentificationlevelInfo = (
-  options?: SwaggerTypescriptUseQueryOptions<IdentificationLevel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetPartyV1PrivateIdentificationlevelInfo.info(configOverride);
-  return useQuery(key, fun, options);
-};
-useGetPartyV1PrivateIdentificationlevelInfo.info = (
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getPartyV1PrivateIdentificationlevelInfo.key] as QueryKey,
-    fun: () => getPartyV1PrivateIdentificationlevelInfo(configOverride),
-  };
-};
-useGetPartyV1PrivateIdentificationlevelInfo.prefetch = (
-  client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<IdentificationLevel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetPartyV1PrivateIdentificationlevelInfo.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
