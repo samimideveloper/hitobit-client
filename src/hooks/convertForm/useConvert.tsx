@@ -4,7 +4,7 @@ import { useQuantity } from "../useQuantity";
 import { ConvertContext, ConvertProps } from "./context";
 
 type OrderProps = {
-  triggerBeforeOrder?: () => void;
+  triggerBeforeOrder?: () => Promise<void> | void;
   type: AppOrderType;
 };
 
@@ -13,9 +13,9 @@ export const useConvert = (callbacks?: ConvertProps) => {
     throw new Error("You must use this hook under the ConvertProvider.");
   }
 
-  const { setValue, handleSubmit } = ConvertContext.useFormContext();
+  const { setValue, handleSubmit, getValues } = ConvertContext.useFormContext();
 
-  const { fromAsset, toMarket, fromAmount, toAmount, price } =
+  const { fromAsset, toMarket, fromAmount, toAmount } =
     ConvertContext.useWatch();
 
   const { selectedMarket, isBuy } = useMatchedMarketsList({
@@ -42,6 +42,7 @@ export const useConvert = (callbacks?: ConvertProps) => {
   });
 
   const createQuantity = (type: AppOrderType) => {
+    const { price } = getValues();
     const { quantity: _quantity, quoteOrderQty } = getQuantity();
 
     if (type === "LIMIT") {
@@ -51,7 +52,7 @@ export const useConvert = (callbacks?: ConvertProps) => {
         quantity = quoteOrderQty / Number(price);
       }
 
-      return { quantity };
+      return { quantity, price: Number(price) };
     }
 
     return {
@@ -61,8 +62,8 @@ export const useConvert = (callbacks?: ConvertProps) => {
   };
 
   const onSubmit = async ({ triggerBeforeOrder, type }: OrderProps) => {
-    await new Promise((resolve) => resolve(triggerBeforeOrder?.()));
-    const order = () => {
+    await triggerBeforeOrder?.();
+    const order = handleSubmit(() => {
       if ((toAmount || fromAmount) && fromAsset) {
         if (selectedMarket && isBuy) {
           mutate({
@@ -86,9 +87,9 @@ export const useConvert = (callbacks?: ConvertProps) => {
           });
         }
       }
-    };
+    });
 
-    handleSubmit(order)();
+    order();
   };
 
   return {
