@@ -2740,8 +2740,6 @@ export interface UserInfoVM {
   userType: UserType;
   displayName?: string;
   email?: string;
-  /** - Format: date-time */
-  limitAccessEnd?: string;
   nextLevel?: IdentificationLevel;
   nextLevelStatus?: IdentificationLevelRequestStatus;
   phoneNumber?: string;
