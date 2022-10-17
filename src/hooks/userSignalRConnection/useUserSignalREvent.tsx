@@ -9,6 +9,8 @@ import {
   EpayRequestActualState,
   EpayRequestGatewayType,
   EpayRequestType,
+  NotificationLevel,
+  NotificationTypes,
 } from "../../services";
 
 type EpayEventModel = {
@@ -106,11 +108,38 @@ export interface ExecutionReportUpdateModel {
   Q: string; // Quote Order Qty
 }
 
+export interface NotificationModel {
+  event: "notification";
+  notificationEventTime: string;
+  id: number;
+  userId: string;
+  createDate: string;
+  level: NotificationLevel;
+  message: string;
+  read: boolean;
+  readDate: string;
+  type: NotificationTypes;
+}
+
+export enum Status {
+  clear = 1,
+  read = 2,
+}
+export interface NotificationStatusChangeModel {
+  event: "notificationStatusChange";
+  eventTime: string;
+  ids: number[];
+  userId: string;
+  status: Status;
+}
+
 type EventsData = {
   epayRequestChangeStatus: EpayEventModel;
   outboundAccountPosition: OutboundAccountPositionModel;
   balanceUpdate: BalanceUpdateModel;
   executionReport: ExecutionReportUpdateModel;
+  notification: NotificationModel;
+  notificationStatusChange: NotificationStatusChangeModel;
 };
 
 const useUserSignalREvent = <T extends keyof EventsData>(

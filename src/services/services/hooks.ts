@@ -89,7 +89,6 @@ import {
   getPartyV1PrivateDomainMultiwallet,
   getPartyV1PrivateDomainSetting,
   getPartyV1PrivateFavoritemarket,
-  getPartyV1PrivateIdentificationlevelInfo,
   getPartyV1PrivateIdentificationlevelUserInfo,
   getPartyV1PrivateNotificationAll,
   getPartyV1PrivateNotificationTypes,
@@ -164,6 +163,7 @@ import {
   postExchangeV1PrivateOrder,
   postExchangeV1PrivateOrderOco,
   postPartyV1PrivateFavoritemarket,
+  postPartyV1PrivateIdentificationlevelLevelone,
   postPartyV1PrivateIdentificationlevelLevelthree,
   postPartyV1PrivateIdentificationlevelLeveltwo,
   postPartyV1PrivateUserProfileimage,
@@ -332,7 +332,6 @@ import {
   GlobalWalletProviderResponseVM,
   GroupTransferMoneyRequestVM,
   GroupTransferResponseVM,
-  IdentificationLevel,
   IdentificationLevelGuideResponseVM,
   IdentityStatus,
   InternalWithdrawResponseVM,
@@ -408,6 +407,7 @@ import {
   UserDepositAddressRequestVM,
   UserDepositAddressResponseVM,
   UserExistResponseVM,
+  UserIdentificationLevelOneRequestVM,
   UserIdentificationLevelThreeRequestVM,
   UserIdentificationLevelTwoRequestVM,
   UserInfoVM,
@@ -3221,34 +3221,6 @@ useGetPartyV1PrivateFavoritemarket.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetPartyV1PrivateIdentificationlevelInfo = (
-  options?: SwaggerTypescriptUseQueryOptions<IdentificationLevel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetPartyV1PrivateIdentificationlevelInfo.info(configOverride);
-  return useQuery(key, fun, options);
-};
-useGetPartyV1PrivateIdentificationlevelInfo.info = (
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getPartyV1PrivateIdentificationlevelInfo.key] as QueryKey,
-    fun: () => getPartyV1PrivateIdentificationlevelInfo(configOverride),
-  };
-};
-useGetPartyV1PrivateIdentificationlevelInfo.prefetch = (
-  client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<IdentificationLevel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetPartyV1PrivateIdentificationlevelInfo.info(configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
 export const useGetPartyV1PrivateIdentificationlevelUserInfo = (
   options?: SwaggerTypescriptUseQueryOptions<UserInfoVM>,
   configOverride?: AxiosRequestConfig,
@@ -5083,7 +5055,7 @@ export const usePostAuthV1PrivateApikey = <TExtra>(
 
 export const usePostAuthV1PrivateAuthDisabletwofactor = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
-    QrCodeResponseVM,
+    any,
     {
       requestBody: ChangeTwoFactorRequestVM;
       headerParams?: { platformType: PlatformType };
@@ -5153,7 +5125,7 @@ export const usePostAuthV1PrivateAuthEmailSendcode = <TExtra>(
 
 export const usePostAuthV1PrivateAuthEnabletwofactor = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
-    QrCodeResponseVM,
+    any,
     {
       requestBody: ChangeTwoFactorRequestVM;
       headerParams?: { platformType: PlatformType };
@@ -5558,6 +5530,28 @@ export const usePostPartyV1PrivateFavoritemarket = <TExtra>(
     } = _o || {};
 
     return postPartyV1PrivateFavoritemarket(
+      requestBody,
+
+      configOverride,
+    );
+  }, options);
+};
+
+export const usePostPartyV1PrivateIdentificationlevelLevelone = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: UserIdentificationLevelOneRequestVM },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return postPartyV1PrivateIdentificationlevelLevelone(
       requestBody,
 
       configOverride,

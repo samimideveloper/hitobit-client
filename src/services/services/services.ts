@@ -131,7 +131,6 @@ import {
   GlobalWalletProviderResponseVM,
   GroupTransferMoneyRequestVM,
   GroupTransferResponseVM,
-  IdentificationLevel,
   IdentificationLevelGuideResponseVM,
   IdentityStatus,
   InternalWithdrawResponseVM,
@@ -207,6 +206,7 @@ import {
   UserDepositAddressRequestVM,
   UserDepositAddressResponseVM,
   UserExistResponseVM,
+  UserIdentificationLevelOneRequestVM,
   UserIdentificationLevelThreeRequestVM,
   UserIdentificationLevelTwoRequestVM,
   UserInfoVM,
@@ -232,6 +232,9 @@ import {
   WithdrawRequestUserWalletCreateRequestVM,
   WithdrawTransactionHistoryListResponseVM,
 } from "./types";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const __DEV__ = process.env.NODE_ENV !== "production";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function overrideConfig(
@@ -1396,22 +1399,6 @@ export const getPartyV1PrivateFavoritemarket = (
 /** Key is end point string without base url */
 getPartyV1PrivateFavoritemarket.key = "/party/v1/private/favoritemarket";
 
-export const getPartyV1PrivateIdentificationlevelInfo = (
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<IdentificationLevel>> => {
-  return Http.getRequest(
-    getPartyV1PrivateIdentificationlevelInfo.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getPartyV1PrivateIdentificationlevelInfo.key =
-  "/party/v1/private/identificationlevel/info";
-
 export const getPartyV1PrivateIdentificationlevelUserInfo = (
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<UserInfoVM>> => {
@@ -2240,7 +2227,7 @@ export const postAuthV1PrivateAuthDisabletwofactor = (
   requestBody: ChangeTwoFactorRequestVM,
   headerParams?: { platformType: PlatformType },
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<QrCodeResponseVM>> => {
+): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
     postAuthV1PrivateAuthDisabletwofactor.key,
     undefined,
@@ -2249,7 +2236,7 @@ export const postAuthV1PrivateAuthDisabletwofactor = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT2,
+          ..._CONSTANT3,
           ...headerParams,
         },
       },
@@ -2307,7 +2294,7 @@ export const postAuthV1PrivateAuthEnabletwofactor = (
   requestBody: ChangeTwoFactorRequestVM,
   headerParams?: { platformType: PlatformType },
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<QrCodeResponseVM>> => {
+): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
     postAuthV1PrivateAuthEnabletwofactor.key,
     undefined,
@@ -2316,7 +2303,7 @@ export const postAuthV1PrivateAuthEnabletwofactor = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT2,
+          ..._CONSTANT3,
           ...headerParams,
         },
       },
@@ -2674,6 +2661,23 @@ export const postPartyV1PrivateFavoritemarket = (
 
 /** Key is end point string without base url */
 postPartyV1PrivateFavoritemarket.key = "/party/v1/private/favoritemarket";
+
+export const postPartyV1PrivateIdentificationlevelLevelone = (
+  requestBody: UserIdentificationLevelOneRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    postPartyV1PrivateIdentificationlevelLevelone.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postPartyV1PrivateIdentificationlevelLevelone.key =
+  "/party/v1/private/identificationlevel/levelone";
 
 export const postPartyV1PrivateIdentificationlevelLevelthree = (
   requestBody: UserIdentificationLevelThreeRequestVM,

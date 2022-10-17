@@ -6,6 +6,7 @@ import { handleAccessTokenExpired, RequestError } from "../../services";
 import { UserSignalRContext } from "./signalRContext";
 import { useSubscribe } from "./subscribe";
 import { useUpdateUserAssetWithSignalr } from "./userAsset";
+import { useUpdateUserNotificationWithSignalr } from "./userNotifications";
 import { useUpdateOrderWithSignalr } from "./userOrder";
 import { useUpdateUserWalletWithSignalr } from "./userWallet";
 import { useUserSignalREvent } from "./useUserSignalREvent";
@@ -55,6 +56,8 @@ const ConnectToSignalRListeners = () => {
   useUpdateUserWalletWithSignalr();
 
   useUpdateOrderWithSignalr();
+
+  useUpdateUserNotificationWithSignalr();
 
   return null;
 };

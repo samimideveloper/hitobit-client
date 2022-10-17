@@ -209,8 +209,6 @@ export type BusinessShareType =
   | "Institute"
   | "Cooperative";
 
-export type CallbackType = "None" | "Redirect" | "RedirectWithPost" | "Hook";
-
 export interface CancelAllOrdersRequestVM {
   symbol?: string;
 }
@@ -342,13 +340,13 @@ export interface CreateDivideIpgRequestRequestVM {
   amount: number;
   blockMoney: boolean;
   canPayViaWallet: boolean;
-  callbackUrl?: string;
   clientUniqueId?: string;
   customData?: EpayRequestCustomDataRequestVM[];
   description?: string;
   divideShareInfo?: DivideEpayRequestShareInfoRequestVM[];
   getCommissionFromPayer?: boolean;
   pluginName?: string;
+  redirectUrl?: string;
   userWalletCurrencySymbol?: string;
   userWalletNumber?: string;
 }
@@ -357,21 +355,21 @@ export interface CreateDivideLinkRequestRequestVM {
   /** - Format: double */
   amount: number;
   blockMoney: boolean;
-  callbackType: CallbackType;
   /** - Format: int32 */
   expireDays: number;
   isAutoConfirm: boolean;
   notifyAudience: boolean;
+  redirectType: RedirectType;
   /** - Format: uuid */
   assignedToUserId?: string;
   audiences?: EPayRequestAudienceRequestVM[];
-  callbackUrl?: string;
   clientUniqueId?: string;
   customData?: EpayRequestCustomDataRequestVM[];
   description?: string;
   divideShareInfo?: DivideEpayRequestShareInfoRequestVM[];
   getCommissionFromPayer?: boolean;
   pluginName?: string;
+  redirectUrl?: string;
   userWalletCurrencySymbol?: string;
   userWalletNumber?: string;
 }
@@ -381,12 +379,12 @@ export interface CreateIpgRequestRequestVM {
   amount: number;
   canPayViaWallet: boolean;
   payViaOtherCurrency: boolean;
-  callbackUrl?: string;
   clientUniqueId?: string;
   customData?: EpayRequestCustomDataRequestVM[];
   description?: string;
   getCommissionFromPayer?: boolean;
   pluginName?: string;
+  redirectUrl?: string;
   userWalletCurrencySymbol?: string;
   userWalletNumber?: string;
 }
@@ -394,22 +392,22 @@ export interface CreateIpgRequestRequestVM {
 export interface CreateLinkRequestRequestVM {
   /** - Format: double */
   amount: number;
-  callbackType: CallbackType;
   /** - Format: int32 */
   expireDays: number;
   isAutoConfirm: boolean;
   notifyAudience: boolean;
   payViaOtherCurrency: boolean;
+  redirectType: RedirectType;
   assignedToAnonymous?: string;
   /** - Format: uuid */
   assignedToUserId?: string;
   audiences?: EPayRequestAudienceRequestVM[];
-  callbackUrl?: string;
   clientUniqueId?: string;
   customData?: EpayRequestCustomDataRequestVM[];
   description?: string;
   getCommissionFromPayer?: boolean;
   pluginKey?: string;
+  redirectUrl?: string;
   userWalletCurrencySymbol?: string;
   userWalletNumber?: string;
 }
@@ -417,13 +415,13 @@ export interface CreateLinkRequestRequestVM {
 export interface CreatePosRequestRequestVM {
   /** - Format: double */
   amount: number;
-  callbackType: CallbackType;
-  callbackUrl?: string;
+  redirectType: RedirectType;
   clientUniqueId?: string;
   customData?: EpayRequestCustomDataRequestVM[];
   description?: string;
   getCommissionFromPayer?: boolean;
   pluginKey?: string;
+  redirectUrl?: string;
   userWalletCurrencySymbol?: string;
   userWalletNumber?: string;
 }
@@ -816,8 +814,6 @@ export interface ForgotPasswordRequestVM {
   secureToken?: string;
   totpCode?: string;
 }
-
-export type Gender = "Unknown" | "Male" | "Female";
 
 export interface GetAnalyticsV1PrivateResellercommissionhistoryActiveusercountQueryParams {
   /** - Format: date-time */
@@ -1484,7 +1480,13 @@ export interface HitoBitSymbolFilter {
   filterType: SymbolFilterType;
 }
 
-export type IdentificationLevel = "None" | "One" | "Two" | "Three" | "Four";
+export type IdentificationLevel =
+  | "None"
+  | "Zero"
+  | "One"
+  | "Two"
+  | "Three"
+  | "Four";
 
 export interface IdentificationLevelGuideResponseVM {
   cryptoDepositAbility: boolean;
@@ -1505,10 +1507,7 @@ export interface IdentificationLevelGuideResponseVM {
   userBasedFiatWithdrawAbility: boolean;
 }
 
-export type IdentificationLevelRequestStatus =
-  | "Pendding"
-  | "Confirm"
-  | "Reject";
+export type IdentificationLevelRequestStatus = "Pending" | "Confirm" | "Reject";
 
 export type IdentityStatus =
   | "None"
@@ -2209,7 +2208,7 @@ export interface RecentTradeResponseVM {
   tradeTime: string;
 }
 
-export type RedirectType = "Redirect" | "RedirectWithPost";
+export type RedirectType = "None" | "Redirect" | "RedirectWithPost";
 
 export interface ReferralHistoryListVM {
   /** - Format: int64 */
@@ -2491,80 +2490,28 @@ export interface TradeReferralCommissionHistoryListResponseVM {
 }
 
 export interface TradeReferralCommissionHistoryResponseVM {
-  buyer: boolean;
+  /** - Format: double */
+  commissionAmount: number;
   /** - Format: int32 */
   commissionCurrencyId: number;
-  /** - Format: int32 */
-  defaultCryptoCommissionCurrencyId: number;
-  /** - Format: double */
-  defaultCryptoTradeCommission: number;
-  /** - Format: int32 */
-  defaultFiatCommissionCurrencyId: number;
-  /** - Format: double */
-  defaultFiatTradeCommission: number;
+  /** - Format: date-time */
+  createDate: string;
   /** - Format: int32 */
   domainId: number;
-  /** - Format: double */
-  extraFreezTokenAmount: number;
   /** - Format: int64 */
   id: number;
-  maker: boolean;
-  /** - Format: int32 */
-  marketId: number;
-  marketType: MarketType;
   /** - Format: int64 */
   orderId: number;
-  /** - Format: double */
-  price: number;
-  /** - Format: int32 */
-  priceCurrencyId: number;
-  /** - Format: double */
-  quantity: number;
-  /** - Format: int32 */
-  quantityCurrencyId: number;
-  /** - Format: double */
-  quantityInDefaultCryptoCurrency: number;
-  /** - Format: double */
-  quantityInDefaultFiatCurrency: number;
-  /** - Format: double */
-  quoteQuantity: number;
-  smartTradeEngine: boolean;
-  /** - Format: double */
-  tradeCommission: number;
+  /** - Format: uuid */
+  orderUserId: string;
   /** - Format: int64 */
-  tradeId: number;
+  referralProgramId: number;
   /** - Format: date-time */
-  tradeTime: string;
-  /** - Format: int64 */
-  tradeVoucherId: number;
+  transactionDate: string;
+  type: TradeReferralCommissionType;
   /** - Format: uuid */
   userId: string;
   commissionCurrencySymbol?: string;
-  defaultCryptoCommissionCurrencySymbol?: string;
-  /** - Format: double */
-  defaultCryptoIncomeCommission?: number;
-  /** - Format: double */
-  defaultCryptoIncomeKickBack?: number;
-  defaultFiatCommissionCurrencySymbol?: string;
-  /** - Format: double */
-  defaultFiatIncomeCommission?: number;
-  /** - Format: double */
-  defaultFiatIncomeKickBack?: number;
-  /** - Format: int64 */
-  externalExchangeEngineTradeId?: number;
-  /** - Format: double */
-  incomeCommission?: number;
-  /** - Format: double */
-  incomeKickBack?: number;
-  /** - Format: int64 */
-  otherSideOrderId?: number;
-  priceCurrencySymbol?: string;
-  quantityCurrencySymbol?: string;
-  /** - Format: int64 */
-  referralProgramId?: number;
-  /** - Format: uuid */
-  referralUserId?: string;
-  symbol?: string;
 }
 
 export interface TradeReferralCommissionRankingResponseVM {
@@ -2573,6 +2520,10 @@ export interface TradeReferralCommissionRankingResponseVM {
   currencySymbol?: string;
   userName?: string;
 }
+
+export type TradeReferralCommissionType =
+  | "CommissionRebate"
+  | "ReferralKickback";
 
 export interface TradeResponseVM {
   /** - Format: double */
@@ -2706,7 +2657,6 @@ export interface UserBasicInfoRequestVM {
   basicInfoToken?: string;
   firstName?: string;
   lastName?: string;
-  nationalCode?: string;
   password?: string;
 }
 
@@ -2748,25 +2698,25 @@ export interface UserExistResponseVM {
   twoFactorEnabled: boolean;
 }
 
+export interface UserIdentificationLevelOneRequestVM {
+  /** - Format: date-time */
+  birthDate: string;
+  nationalCardFile?: DocumentFileRequestVM;
+  nationalCode?: string;
+  userBankAdd?: CreateUserBankRequestVM;
+}
+
 export interface UserIdentificationLevelThreeRequestVM {
-  /** - Format: int32 */
-  cityId: number;
-  /** - Format: int32 */
-  countryId: number;
-  /** - Format: int32 */
-  provinceId: number;
-  address?: string;
   file?: DocumentFileRequestVM;
-  phoneNumber?: string;
-  postalCode?: string;
 }
 
 export interface UserIdentificationLevelTwoRequestVM {
-  /** - Format: date-time */
-  birthDate: string;
-  gender: Gender;
-  file?: DocumentFileRequestVM;
-  userBankAdd?: CreateUserBankRequestVM;
+  address?: string;
+  authenticationSelfieFile?: DocumentFileRequestVM;
+  phoneNumber?: string;
+  phoneOtpCode?: string;
+  phoneOtpToken?: string;
+  postalCode?: string;
 }
 
 export type UserIdentifierType =
@@ -2778,7 +2728,26 @@ export type UserIdentifierType =
 
 export interface UserInfoVM {
   currentLevel: IdentificationLevel;
+  /** - Format: int64 */
+  customerNumber: number;
+  /** - Format: int32 */
+  domainId: number;
+  /** - Format: uuid */
+  id: string;
+  identityStatus: IdentityStatus;
+  isBusinessUser: boolean;
+  userStatus: UserStatus;
+  userType: UserType;
+  displayName?: string;
+  email?: string;
+  /** - Format: date-time */
+  limitAccessEnd?: string;
+  nextLevel?: IdentificationLevel;
   nextLevelStatus?: IdentificationLevelRequestStatus;
+  phoneNumber?: string;
+  /** - Format: uuid */
+  profileImageFileUniqueId?: string;
+  userName?: string;
 }
 
 export interface UserLoginHistoryDetailsVM {
@@ -2918,6 +2887,14 @@ export interface UserSettingPreferenseResponseVM {
   tradeNotification: boolean;
 }
 
+export type UserStatus =
+  | "None"
+  | "NotVerified"
+  | "VerifiedButNotCompleted"
+  | "Active"
+  | "TemporaryBlocked"
+  | "AutoPasswordGenerated";
+
 export interface UserStatusResponseVM {
   emailConfirmed: boolean;
   phoneNumberConfirmed: boolean;
@@ -2974,6 +2951,8 @@ export interface UserTrustedDeviceResponseVM {
   softwareName?: string;
   userAgent?: string;
 }
+
+export type UserType = "Person" | "Organization";
 
 export interface UserWalletDisplayDetailResponseVM {
   accountStatus: AccountStatus;
