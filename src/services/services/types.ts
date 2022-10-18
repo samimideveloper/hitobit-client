@@ -1749,7 +1749,7 @@ export interface NewEmailRequestVM {
 export interface Notification2ListResponseVM {
   /** - Format: int64 */
   count: number;
-  notifications?: Notification2ResponseVM[];
+  list?: Notification2ResponseVM[];
 }
 
 export interface Notification2ResponseVM {
@@ -1829,7 +1829,7 @@ export interface NotificationResponseVM {
   title?: string;
 }
 
-export type NotificationTypes = "Activity" | "Trade" | "BinanceNews" | "System";
+export type NotificationTypes = "Activity" | "Trade" | "News" | "System";
 
 export interface NotificationTypesReadCountResponseVM {
   /** - Format: int32 */
@@ -2740,6 +2740,8 @@ export interface UserInfoVM {
   userType: UserType;
   displayName?: string;
   email?: string;
+  /** - Format: date-time */
+  limitAccessEnd?: string;
   nextLevel?: IdentificationLevel;
   nextLevelStatus?: IdentificationLevelRequestStatus;
   phoneNumber?: string;
