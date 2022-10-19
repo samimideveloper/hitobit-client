@@ -1003,6 +1003,11 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   txId?: string;
 }
 
+export interface GetCapitalV1ProtectedWithdrawInfoQueryParams {
+  /** - Format: int64 */
+  id?: number;
+}
+
 export interface GetEngagementV1PrivateNotificationQueryParams {
   /** - Format: date-time */
   endDate?: string;
@@ -1404,6 +1409,18 @@ export interface GetWalletV1PublicFindQueryParams {
   email?: string;
   phoneNumber?: string;
   walletNumber?: string;
+}
+
+export interface GetWithdrawRequestUserWalletItemResponseVM {
+  /** - Format: date-time */
+  createDate: string;
+  /** - Format: double */
+  requestAmount: number;
+  /** - Format: uuid */
+  submitUniqueId: string;
+  withdrawRequestStatus: WithdrawRequestStatus;
+  currencySymbol?: string;
+  moneyNetworkSymbol?: string;
 }
 
 export interface GlobalWalletProviderResponseVM {
@@ -2711,6 +2728,12 @@ export interface UserIdentificationLevelThreeRequestVM {
 }
 
 export interface UserIdentificationLevelTwoRequestVM {
+  /** - Format: int32 */
+  cityId: number;
+  /** - Format: int32 */
+  countryId: number;
+  /** - Format: int32 */
+  provinceId: number;
   address?: string;
   authenticationSelfieFile?: DocumentFileRequestVM;
   phoneNumber?: string;

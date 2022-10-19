@@ -81,6 +81,7 @@ import {
   GetCapitalV1PrivateSettlementListQueryParams,
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
+  GetCapitalV1ProtectedWithdrawInfoQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -128,6 +129,7 @@ import {
   GetWalletV1PrivateUserassetSpotDefaultQueryParams,
   GetWalletV1PrivateUserbankStatusQueryParams,
   GetWalletV1PublicFindQueryParams,
+  GetWithdrawRequestUserWalletItemResponseVM,
   GlobalWalletProviderResponseVM,
   GroupTransferMoneyRequestVM,
   GroupTransferResponseVM,
@@ -1021,6 +1023,22 @@ export const getCapitalV1PrivateWithdrawTodaytotal = (
 getCapitalV1PrivateWithdrawTodaytotal.key =
   "/capital/v1/private/withdraw/todaytotal";
 
+export const getCapitalV1ProtectedWithdrawInfo = (
+  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<GetWithdrawRequestUserWalletItemResponseVM>> => {
+  return Http.getRequest(
+    getCapitalV1ProtectedWithdrawInfo.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getCapitalV1ProtectedWithdrawInfo.key = "/capital/v1/protected/withdraw/info";
+
 export const getCapitalV1PublicCurrencyAll = (
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<CurrencyResponseVM[]>> => {
@@ -1067,11 +1085,11 @@ export const getEngagementV1PrivateNotification = (
 /** Key is end point string without base url */
 getEngagementV1PrivateNotification.key = "/engagement/v1/private/notification";
 
-export const getEngagementV1PrivateNotificationCount = (
+export const getEngagementV1PrivateNotificationType = (
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<NotificationCountByTypeResponseVM[]>> => {
   return Http.getRequest(
-    getEngagementV1PrivateNotificationCount.key,
+    getEngagementV1PrivateNotificationType.key,
     undefined,
     undefined,
     undefined,
@@ -1080,8 +1098,8 @@ export const getEngagementV1PrivateNotificationCount = (
 };
 
 /** Key is end point string without base url */
-getEngagementV1PrivateNotificationCount.key =
-  "/engagement/v1/private/notification/count";
+getEngagementV1PrivateNotificationType.key =
+  "/engagement/v1/private/notification/type";
 
 export const getExchangeV1PrivateAllorderlist = (
   queryParams?: GetExchangeV1PrivateAllorderlistQueryParams,

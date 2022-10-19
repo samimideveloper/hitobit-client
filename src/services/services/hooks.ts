@@ -65,10 +65,11 @@ import {
   getCapitalV1PrivateWithdrawList,
   getCapitalV1PrivateWithdrawRecent,
   getCapitalV1PrivateWithdrawTodaytotal,
+  getCapitalV1ProtectedWithdrawInfo,
   getCapitalV1PublicCurrencyAll,
   getCapitalV1PublicMoneynetworkAll,
   getEngagementV1PrivateNotification,
-  getEngagementV1PrivateNotificationCount,
+  getEngagementV1PrivateNotificationType,
   getExchangeV1PrivateAllorderlist,
   getExchangeV1PrivateAllorders,
   getExchangeV1PrivateAlltrades,
@@ -282,6 +283,7 @@ import {
   GetCapitalV1PrivateSettlementListQueryParams,
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
+  GetCapitalV1ProtectedWithdrawInfoQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -329,6 +331,7 @@ import {
   GetWalletV1PrivateUserassetSpotDefaultQueryParams,
   GetWalletV1PrivateUserbankStatusQueryParams,
   GetWalletV1PublicFindQueryParams,
+  GetWithdrawRequestUserWalletItemResponseVM,
   GlobalWalletProviderResponseVM,
   GroupTransferMoneyRequestVM,
   GroupTransferResponseVM,
@@ -2325,6 +2328,46 @@ useGetCapitalV1PrivateWithdrawTodaytotal.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
+export const useGetCapitalV1ProtectedWithdrawInfo = (
+  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<GetWithdrawRequestUserWalletItemResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetCapitalV1ProtectedWithdrawInfo.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetCapitalV1ProtectedWithdrawInfo.info = (
+  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getCapitalV1ProtectedWithdrawInfo.key, queryParams] as QueryKey,
+    fun: () =>
+      getCapitalV1ProtectedWithdrawInfo(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetCapitalV1ProtectedWithdrawInfo.prefetch = (
+  client: QueryClient,
+  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<GetWithdrawRequestUserWalletItemResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetCapitalV1ProtectedWithdrawInfo.info(
+    queryParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const useGetCapitalV1PublicCurrencyAll = (
   options?: SwaggerTypescriptUseQueryOptions<CurrencyResponseVM[]>,
   configOverride?: AxiosRequestConfig,
@@ -2449,25 +2492,25 @@ useGetEngagementV1PrivateNotification.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetEngagementV1PrivateNotificationCount = (
+export const useGetEngagementV1PrivateNotificationType = (
   options?: SwaggerTypescriptUseQueryOptions<
     NotificationCountByTypeResponseVM[]
   >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
-    useGetEngagementV1PrivateNotificationCount.info(configOverride);
+    useGetEngagementV1PrivateNotificationType.info(configOverride);
   return useQuery(key, fun, options);
 };
-useGetEngagementV1PrivateNotificationCount.info = (
+useGetEngagementV1PrivateNotificationType.info = (
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
-    key: [getEngagementV1PrivateNotificationCount.key] as QueryKey,
-    fun: () => getEngagementV1PrivateNotificationCount(configOverride),
+    key: [getEngagementV1PrivateNotificationType.key] as QueryKey,
+    fun: () => getEngagementV1PrivateNotificationType(configOverride),
   };
 };
-useGetEngagementV1PrivateNotificationCount.prefetch = (
+useGetEngagementV1PrivateNotificationType.prefetch = (
   client: QueryClient,
   options?: SwaggerTypescriptUseQueryOptions<
     NotificationCountByTypeResponseVM[]
@@ -2475,7 +2518,7 @@ useGetEngagementV1PrivateNotificationCount.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
-    useGetEngagementV1PrivateNotificationCount.info(configOverride);
+    useGetEngagementV1PrivateNotificationType.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
