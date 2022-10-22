@@ -45,7 +45,14 @@ const ControllerSlider = ({
                     : "",
                 ),
               );
-              setValue("amount", toStepSize(result) || "");
+              setValue("amount", toStepSize(result));
+
+              setValue(
+                "amount",
+                currentTicker?.lastPrice
+                  ? toStepSize(result?.div(currentTicker?.lastPrice))
+                  : "",
+              );
               setValue("selectedOption", { value: "amount" });
               trigger(["amount", "total"]);
             },
