@@ -377,7 +377,6 @@ import {
   PuzzleSubmissionRequestVM,
   QrCodeResponseVM,
   RecentTradeResponseVM,
-  ReferralHistoryListVM,
   RegisterRequestVM,
   RegisterResponseVM,
   RemoveEmailRequestVM,
@@ -395,6 +394,7 @@ import {
   TradeReferralCommissionHistoryListResponseVM,
   TradeReferralCommissionHistoryResponseVM,
   TradeReferralCommissionRankingResponseVM,
+  TradeReferralHistoryListResponseVM,
   TradeResposneListVM,
   TransactionHistoryDetailResponseVM,
   TransferMoneyRequestVM,
@@ -1086,7 +1086,7 @@ export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhisto
   (
     queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
     options?: UseInfiniteQueryOptions<
-      SwaggerResponse<ReferralHistoryListVM>,
+      SwaggerResponse<TradeReferralHistoryListResponseVM>,
       RequestError | Error
     >,
     configOverride?: AxiosRequestConfig,
@@ -1147,7 +1147,7 @@ useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.prefetch =
     client: QueryClient,
     queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
     options?: UseInfiniteQueryOptions<
-      SwaggerResponse<ReferralHistoryListVM>,
+      SwaggerResponse<TradeReferralHistoryListResponseVM>,
       RequestError | Error
     >,
     configOverride?: AxiosRequestConfig,

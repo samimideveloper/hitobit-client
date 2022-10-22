@@ -25,12 +25,18 @@ export const useFavoriteMarket = (onFail?: () => void) => {
     onSuccess: () => {
       successNotification({
         message: t("addFavoriteSuccessMessage"),
+        style: {
+          zIndex: 999999,
+        },
       });
       refetch();
     },
     onError: () => {
       errorNotification({
         message: t("errorWhileAddingToFavoriteMessage"),
+        style: {
+          zIndex: 999999,
+        },
       });
     },
   });
@@ -38,12 +44,18 @@ export const useFavoriteMarket = (onFail?: () => void) => {
     onSuccess: () => {
       successNotification({
         message: t("removeFromFavoriteSuccessMessage"),
+        style: {
+          zIndex: 999999,
+        },
       });
       refetch();
     },
     onError: () => {
       errorNotification({
         message: t("errorWhileRemovingFromFavoriteMessage"),
+        style: {
+          zIndex: 999999,
+        },
       });
     },
   });

@@ -175,7 +175,6 @@ import {
   PuzzleSubmissionRequestVM,
   QrCodeResponseVM,
   RecentTradeResponseVM,
-  ReferralHistoryListVM,
   RegisterRequestVM,
   RegisterResponseVM,
   RemoveEmailRequestVM,
@@ -193,6 +192,7 @@ import {
   TradeReferralCommissionHistoryListResponseVM,
   TradeReferralCommissionHistoryResponseVM,
   TradeReferralCommissionRankingResponseVM,
+  TradeReferralHistoryListResponseVM,
   TradeResposneListVM,
   TransactionHistoryDetailResponseVM,
   TransferMoneyRequestVM,
@@ -606,7 +606,7 @@ export const getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory 
   (
     queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
     configOverride?: AxiosRequestConfig,
-  ): Promise<SwaggerResponse<ReferralHistoryListVM>> => {
+  ): Promise<SwaggerResponse<TradeReferralHistoryListResponseVM>> => {
     return Http.getRequest(
       getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.key,
       queryParams,

@@ -867,13 +867,12 @@ export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionre
 }
 
 export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams {
-  /** - Format: int64 */
-  accountId?: number;
   /** - Format: int32 */
   pageNo?: number;
   /** - Format: int32 */
   pageSize?: number;
-  referralCode?: string;
+  /** - Format: int64 */
+  referralProgramId?: number;
 }
 
 export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams {
@@ -2227,26 +2226,6 @@ export interface RecentTradeResponseVM {
 
 export type RedirectType = "None" | "Redirect" | "RedirectWithPost";
 
-export interface ReferralHistoryListVM {
-  /** - Format: int64 */
-  totalCount: number;
-  data?: ReferralHistoryVM[];
-}
-
-export interface ReferralHistoryVM {
-  /** - Format: double */
-  futuresRewards: number;
-  /** - Format: date-time */
-  signedUpAt: string;
-  /** - Format: double */
-  spotRewards: number;
-  status: ReferralStatus;
-  traded: boolean;
-  account?: string;
-}
-
-export type ReferralStatus = "Successed";
-
 export interface RegisterRequestVM {
   password?: string;
   phoneNumber?: string;
@@ -2541,6 +2520,24 @@ export interface TradeReferralCommissionRankingResponseVM {
 export type TradeReferralCommissionType =
   | "CommissionRebate"
   | "ReferralKickback";
+
+export interface TradeReferralHistoryListResponseVM {
+  /** - Format: int64 */
+  count: number;
+  list?: TradeReferralHistoryResponseVM[];
+}
+
+export interface TradeReferralHistoryResponseVM {
+  /** - Format: double */
+  cryptoTradeComission: number;
+  /** - Format: double */
+  fiatTradeComission: number;
+  /** - Format: date-time */
+  signedUpAt: string;
+  traded: boolean;
+  account?: string;
+  symbol?: string;
+}
 
 export interface TradeResponseVM {
   /** - Format: double */

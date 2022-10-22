@@ -19,7 +19,7 @@ export const ConvertPriceController = ({
   render,
   renderErrorComponent,
 }: ConvertPriceRenderProps) => {
-  const { toMarket, fromAmount } = ConvertContext.useWatch();
+  const { toMarket, fromAmount, fromAsset } = ConvertContext.useWatch();
 
   const { t } = useTranslation();
 
@@ -51,7 +51,12 @@ export const ConvertPriceController = ({
           return render({
             field: {
               value: value,
-              toMarket: toMarket,
+              toMarket: fromAsset
+                ? toMarket
+                    ?.toLowerCase()
+                    ?.replace(fromAsset.toLowerCase(), "")
+                    .toUpperCase()
+                : "",
               hasError: value ? !!errors.price : false,
               onChange: (value) => {
                 onChange(value ? value : "");
