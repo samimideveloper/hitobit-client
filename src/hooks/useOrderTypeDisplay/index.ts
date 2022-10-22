@@ -10,10 +10,10 @@ const useOrderTypeDisplay = () => {
     LIMIT: t("limit"),
     LIMIT_MAKER: t("limitMaker"),
     MARKET: t("market"),
-    STOP_LOSS_LIMIT: t("stopLimit"),
-    STOP_LOSS: t("stopLimit"),
-    TAKE_PROFIT: "Take profit",
-    TAKE_PROFIT_LIMIT: "Take Profit Limit",
+    STOP_LOSS_LIMIT: t("stopLoss"),
+    STOP_LOSS: t("stopLoss"),
+    TAKE_PROFIT: t("takeProfit"),
+    TAKE_PROFIT_LIMIT: t("takeProfit"),
   };
 
   return {

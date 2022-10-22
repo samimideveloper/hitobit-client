@@ -7,6 +7,8 @@ const en = {
     "An error occured while removing from favorites",
   million: "M",
   billion: "B",
+  takeProfit: "Take Profit",
+  stopLoss: "ُStop Loss",
   kilo: "K",
   amount: "Amount",
   anUnexpectedErrorOccurred: "An unexpected error occurred.",

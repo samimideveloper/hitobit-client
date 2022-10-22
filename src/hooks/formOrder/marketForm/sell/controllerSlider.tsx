@@ -31,7 +31,7 @@ const ControllerSlider = ({
           field: {
             onChange: (_value) => {
               onChange(_value);
-              let result: Decimal | string = new Decimal("");
+              let result: Decimal = new Decimal(0);
 
               if (_value && baseAvailableRemain) {
                 result = new Decimal(baseAvailableRemain).mul(_value).div(100);
@@ -42,7 +42,7 @@ const ControllerSlider = ({
                 toTickSize(
                   currentTicker?.lastPrice
                     ? result.mul(currentTicker.lastPrice)
-                    : "",
+                    : 0,
                 ),
               );
               setValue("amount", toStepSize(result));
