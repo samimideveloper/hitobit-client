@@ -45,7 +45,6 @@ const ControllerSlider = ({
                     : 0,
                 ),
               );
-              setValue("amount", toStepSize(result));
 
               setValue(
                 "amount",

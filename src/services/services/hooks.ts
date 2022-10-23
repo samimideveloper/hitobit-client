@@ -19,10 +19,10 @@ import {
 import { RequestError, SwaggerResponse } from "./config";
 import { getPageSize, getTotal, paginationFlattenData } from "./hooksConfig";
 import {
-  deleteAuthV1PrivateApikey,
-  deleteAuthV1PrivateApikeyAll,
   deleteAuthV1PrivateAuthEmail,
   deleteAuthV1PrivateUsertrusteddevice,
+  deleteAuthV1ProtectApikey,
+  deleteAuthV1ProtectApikeyAll,
   deleteEngagementV1PrivateNotificationClearall,
   deleteExchangeV1PrivateOpenorders,
   deleteExchangeV1PrivateOrder,
@@ -62,10 +62,10 @@ import {
   getCapitalV1PrivatePosList,
   getCapitalV1PrivateSettlementList,
   getCapitalV1PrivateWithdrawDetail,
+  getCapitalV1PrivateWithdrawInfo,
   getCapitalV1PrivateWithdrawList,
   getCapitalV1PrivateWithdrawRecent,
   getCapitalV1PrivateWithdrawTodaytotal,
-  getCapitalV1ProtectedWithdrawInfo,
   getCapitalV1PublicCurrencyAll,
   getCapitalV1PublicMoneynetworkAll,
   getEngagementV1PrivateNotification,
@@ -140,7 +140,6 @@ import {
   getWalletV1PublicFind,
   patchWalletV1Private,
   postApiCspreportLog,
-  postAuthV1PrivateApikey,
   postAuthV1PrivateAuthDisabletwofactor,
   postAuthV1PrivateAuthEmail,
   postAuthV1PrivateAuthEmailSendcode,
@@ -149,6 +148,7 @@ import {
   postAuthV1PrivateAuthGetcode,
   postAuthV1PrivateAuthPhonecallSendcode,
   postAuthV1PrivateAuthRevoketoken,
+  postAuthV1ProtectApikey,
   postAuthV1PublicAuthAnonyverifysecure,
   postAuthV1PublicAuthChecktwofactorisenable,
   postAuthV1PublicAuthConnectToken,
@@ -191,8 +191,8 @@ import {
   postWalletV1PrivateUserbankDetailed,
   postWalletV1PrivateUserreferralprogram,
   postWalletV1PrivateWalletpermission,
-  putAuthV1PrivateApikey,
   putAuthV1PrivateAuthEmail,
+  putAuthV1ProtectApikey,
   putAuthV1ProtectAuthChangepassword,
   putAuthV1PublicAuthForgotpassword,
   putEngagementV1PrivateNotificationRead,
@@ -246,8 +246,8 @@ import {
   CreateUserWalletRequestVM,
   CreateWithdrawRequestUserWalletResponseVM,
   CurrencyResponseVM,
-  DeleteAuthV1PrivateApikeyQueryParams,
   DeleteAuthV1PrivateUsertrusteddeviceQueryParams,
+  DeleteAuthV1ProtectApikeyQueryParams,
   DeleteEngagementV1PrivateNotificationClearallQueryParams,
   DepositTransactionHistoryListResponseVM,
   DomainCurrencyResponseVM,
@@ -282,8 +282,8 @@ import {
   GetCapitalV1PrivatePosListQueryParams,
   GetCapitalV1PrivateSettlementListQueryParams,
   GetCapitalV1PrivateWithdrawDetailQueryParams,
+  GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
-  GetCapitalV1ProtectedWithdrawInfoQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -488,30 +488,6 @@ type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
     SwaggerTypescriptMutationDefaultParams<TExtra> | void
   >;
 
-export const useDeleteAuthV1PrivateApikey = <TExtra>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    any,
-    { queryParams?: DeleteAuthV1PrivateApikeyQueryParams },
-    TExtra
-  >,
-) => {
-  return useMutation((_o) => {
-    const { queryParams, configOverride } = _o || {};
-
-    return deleteAuthV1PrivateApikey(queryParams, configOverride);
-  }, options);
-};
-
-export const useDeleteAuthV1PrivateApikeyAll = <TExtra>(
-  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
-) => {
-  return useMutation((_o) => {
-    const { configOverride } = _o || {};
-
-    return deleteAuthV1PrivateApikeyAll(configOverride);
-  }, options);
-};
-
 export const useDeleteAuthV1PrivateAuthEmail = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
@@ -545,6 +521,30 @@ export const useDeleteAuthV1PrivateUsertrusteddevice = <TExtra>(
     const { queryParams, configOverride } = _o || {};
 
     return deleteAuthV1PrivateUsertrusteddevice(queryParams, configOverride);
+  }, options);
+};
+
+export const useDeleteAuthV1ProtectApikey = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { queryParams?: DeleteAuthV1ProtectApikeyQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const { queryParams, configOverride } = _o || {};
+
+    return deleteAuthV1ProtectApikey(queryParams, configOverride);
+  }, options);
+};
+
+export const useDeleteAuthV1ProtectApikeyAll = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
+) => {
+  return useMutation((_o) => {
+    const { configOverride } = _o || {};
+
+    return deleteAuthV1ProtectApikeyAll(configOverride);
   }, options);
 };
 
@@ -1456,7 +1456,7 @@ export const useGetAuthV1PrivateApikeyList = (
     key,
     ({ pageParam = 1 }) =>
       fun({
-        Page: pageParam,
+        page: pageParam,
       }),
     {
       getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
@@ -2202,6 +2202,46 @@ useGetCapitalV1PrivateWithdrawDetail.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
+export const useGetCapitalV1PrivateWithdrawInfo = (
+  queryParams?: GetCapitalV1PrivateWithdrawInfoQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<GetWithdrawRequestUserWalletItemResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetCapitalV1PrivateWithdrawInfo.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetCapitalV1PrivateWithdrawInfo.info = (
+  queryParams?: GetCapitalV1PrivateWithdrawInfoQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getCapitalV1PrivateWithdrawInfo.key, queryParams] as QueryKey,
+    fun: () =>
+      getCapitalV1PrivateWithdrawInfo(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetCapitalV1PrivateWithdrawInfo.prefetch = (
+  client: QueryClient,
+  queryParams?: GetCapitalV1PrivateWithdrawInfoQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<GetWithdrawRequestUserWalletItemResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetCapitalV1PrivateWithdrawInfo.info(
+    queryParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const useGetCapitalV1PrivateWithdrawList = (
   queryParams?: GetCapitalV1PrivateWithdrawListQueryParams,
   options?: UseInfiniteQueryOptions<
@@ -2323,46 +2363,6 @@ useGetCapitalV1PrivateWithdrawTodaytotal.prefetch = (
 ) => {
   const { key, fun } =
     useGetCapitalV1PrivateWithdrawTodaytotal.info(configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
-export const useGetCapitalV1ProtectedWithdrawInfo = (
-  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<GetWithdrawRequestUserWalletItemResponseVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetCapitalV1ProtectedWithdrawInfo.info(
-    queryParams,
-    configOverride,
-  );
-  return useQuery(key, fun, options);
-};
-useGetCapitalV1ProtectedWithdrawInfo.info = (
-  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getCapitalV1ProtectedWithdrawInfo.key, queryParams] as QueryKey,
-    fun: () =>
-      getCapitalV1ProtectedWithdrawInfo(
-        queryParams,
-
-        configOverride,
-      ),
-  };
-};
-useGetCapitalV1ProtectedWithdrawInfo.prefetch = (
-  client: QueryClient,
-  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<GetWithdrawRequestUserWalletItemResponseVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetCapitalV1ProtectedWithdrawInfo.info(
-    queryParams,
-    configOverride,
-  );
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -5104,28 +5104,6 @@ export const usePostApiCspreportLog = <TExtra>(
   }, options);
 };
 
-export const usePostAuthV1PrivateApikey = <TExtra>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    ApiKeyAddResponseVM,
-    { requestBody: ApiKeyAddRequestVM },
-    TExtra
-  >,
-) => {
-  return useMutation((_o) => {
-    const {
-      requestBody,
-
-      configOverride,
-    } = _o || {};
-
-    return postAuthV1PrivateApikey(
-      requestBody,
-
-      configOverride,
-    );
-  }, options);
-};
-
 export const usePostAuthV1PrivateAuthDisabletwofactor = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
@@ -5283,6 +5261,28 @@ export const usePostAuthV1PrivateAuthRevoketoken = <TExtra>(
     } = _o || {};
 
     return postAuthV1PrivateAuthRevoketoken(
+      requestBody,
+
+      configOverride,
+    );
+  }, options);
+};
+
+export const usePostAuthV1ProtectApikey = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    ApiKeyAddResponseVM,
+    { requestBody: ApiKeyAddRequestVM },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return postAuthV1ProtectApikey(
       requestBody,
 
       configOverride,
@@ -6203,28 +6203,6 @@ export const usePostWalletV1PrivateWalletpermission = <TExtra>(
   }, options);
 };
 
-export const usePutAuthV1PrivateApikey = <TExtra>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    any,
-    { requestBody: ApiKeyUpdateRequestVM },
-    TExtra
-  >,
-) => {
-  return useMutation((_o) => {
-    const {
-      requestBody,
-
-      configOverride,
-    } = _o || {};
-
-    return putAuthV1PrivateApikey(
-      requestBody,
-
-      configOverride,
-    );
-  }, options);
-};
-
 export const usePutAuthV1PrivateAuthEmail = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
@@ -6240,6 +6218,28 @@ export const usePutAuthV1PrivateAuthEmail = <TExtra>(
     } = _o || {};
 
     return putAuthV1PrivateAuthEmail(
+      requestBody,
+
+      configOverride,
+    );
+  }, options);
+};
+
+export const usePutAuthV1ProtectApikey = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: ApiKeyUpdateRequestVM },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return putAuthV1ProtectApikey(
       requestBody,
 
       configOverride,

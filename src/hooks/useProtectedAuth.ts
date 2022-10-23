@@ -34,8 +34,9 @@ export const useProtectedAuth = () => {
     onResolve: (userData: UserData) => void,
     onReject?: (error: RequestError | Error | null) => void,
   ) => {
-    if (!triggerRef.current) {
-      triggerRef.current = { onResolve, onReject };
+    if (triggerRef.current) {
+      triggerRef.current.onResolve = onResolve;
+      triggerRef.current.onReject = onReject;
     }
     setOpen(true);
   };
@@ -45,6 +46,8 @@ export const useProtectedAuth = () => {
     onClose();
 
     triggerRef.current?.onReject?.(error);
+
+    triggerRef.current = null;
   };
 
   const getCode = (purpose: PurposeType) => {

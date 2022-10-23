@@ -491,12 +491,12 @@ export interface CurrencyResponseVM {
 
 export type CurrencyType = "Fiat" | "Crypto";
 
-export interface DeleteAuthV1PrivateApikeyQueryParams {
+export interface DeleteAuthV1PrivateUsertrusteddeviceQueryParams {
   /** - Format: int64 */
   id?: number;
 }
 
-export interface DeleteAuthV1PrivateUsertrusteddeviceQueryParams {
+export interface DeleteAuthV1ProtectApikeyQueryParams {
   /** - Format: int64 */
   id?: number;
 }
@@ -899,12 +899,10 @@ export interface GetAnalyticsV1PrivateUserloginhistoryListQueryParams {
 }
 
 export interface GetAuthV1PrivateApikeyListQueryParams {
-  DescOrder?: boolean;
-  OrderColumn?: string;
   /** - Format: int32 */
-  Page?: number;
+  page?: number;
   /** - Format: int32 */
-  PageSize?: number;
+  pageSize?: number;
 }
 
 export interface GetAuthV1PrivateApikeyQueryParams {
@@ -989,6 +987,11 @@ export interface GetCapitalV1PrivateWithdrawDetailQueryParams {
   id?: number;
 }
 
+export interface GetCapitalV1PrivateWithdrawInfoQueryParams {
+  /** - Format: int64 */
+  id?: number;
+}
+
 export interface GetCapitalV1PrivateWithdrawListQueryParams {
   currencySymbol?: string;
   /** - Format: date-time */
@@ -1000,11 +1003,6 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   /** - Format: date-time */
   startTime?: string;
   txId?: string;
-}
-
-export interface GetCapitalV1ProtectedWithdrawInfoQueryParams {
-  /** - Format: int64 */
-  id?: number;
 }
 
 export interface GetEngagementV1PrivateNotificationQueryParams {
@@ -1056,6 +1054,7 @@ export interface GetExchangeV1PrivateAlltradesQueryParams {
   endTime?: string;
   /** - Format: int64 */
   orderId?: number;
+  orderSourceType?: AppOrderSourceType;
   /** - Format: int32 */
   pageNo?: number;
   /** - Format: int32 */
@@ -1072,6 +1071,7 @@ export interface GetExchangeV1PrivateOpenocoorderlistQueryParams {
 }
 
 export interface GetExchangeV1PrivateOpenordersQueryParams {
+  orderSourceType?: AppOrderSourceType;
   symbol?: string;
 }
 

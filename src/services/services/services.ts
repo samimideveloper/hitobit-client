@@ -44,8 +44,8 @@ import {
   CreateUserWalletRequestVM,
   CreateWithdrawRequestUserWalletResponseVM,
   CurrencyResponseVM,
-  DeleteAuthV1PrivateApikeyQueryParams,
   DeleteAuthV1PrivateUsertrusteddeviceQueryParams,
+  DeleteAuthV1ProtectApikeyQueryParams,
   DeleteEngagementV1PrivateNotificationClearallQueryParams,
   DepositTransactionHistoryListResponseVM,
   DomainCurrencyResponseVM,
@@ -80,8 +80,8 @@ import {
   GetCapitalV1PrivatePosListQueryParams,
   GetCapitalV1PrivateSettlementListQueryParams,
   GetCapitalV1PrivateWithdrawDetailQueryParams,
+  GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
-  GetCapitalV1ProtectedWithdrawInfoQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -274,37 +274,6 @@ function objToForm(requestBody: object) {
   return formData;
 }
 
-export const deleteAuthV1PrivateApikey = (
-  queryParams?: DeleteAuthV1PrivateApikeyQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<any>> => {
-  return Http.deleteRequest(
-    deleteAuthV1PrivateApikey.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT0, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteAuthV1PrivateApikey.key = "/auth/v1/private/apikey";
-
-export const deleteAuthV1PrivateApikeyAll = (
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<any>> => {
-  return Http.deleteRequest(
-    deleteAuthV1PrivateApikeyAll.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT0, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteAuthV1PrivateApikeyAll.key = "/auth/v1/private/apikey/all";
-
 export const deleteAuthV1PrivateAuthEmail = (
   requestBody: RemoveEmailRequestVM,
   configOverride?: AxiosRequestConfig,
@@ -336,6 +305,37 @@ export const deleteAuthV1PrivateUsertrusteddevice = (
 
 /** Key is end point string without base url */
 deleteAuthV1PrivateUsertrusteddevice.key = "/auth/v1/private/usertrusteddevice";
+
+export const deleteAuthV1ProtectApikey = (
+  queryParams?: DeleteAuthV1ProtectApikeyQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    deleteAuthV1ProtectApikey.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteAuthV1ProtectApikey.key = "/auth/v1/protect/apikey";
+
+export const deleteAuthV1ProtectApikeyAll = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    deleteAuthV1ProtectApikeyAll.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteAuthV1ProtectApikeyAll.key = "/auth/v1/protect/apikey/all";
 
 export const deleteEngagementV1PrivateNotificationClearall = (
   queryParams?: DeleteEngagementV1PrivateNotificationClearallQueryParams,
@@ -976,6 +976,22 @@ export const getCapitalV1PrivateWithdrawDetail = (
 /** Key is end point string without base url */
 getCapitalV1PrivateWithdrawDetail.key = "/capital/v1/private/withdraw/detail";
 
+export const getCapitalV1PrivateWithdrawInfo = (
+  queryParams?: GetCapitalV1PrivateWithdrawInfoQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<GetWithdrawRequestUserWalletItemResponseVM>> => {
+  return Http.getRequest(
+    getCapitalV1PrivateWithdrawInfo.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getCapitalV1PrivateWithdrawInfo.key = "/capital/v1/private/withdraw/info";
+
 export const getCapitalV1PrivateWithdrawList = (
   queryParams?: GetCapitalV1PrivateWithdrawListQueryParams,
   configOverride?: AxiosRequestConfig,
@@ -1022,22 +1038,6 @@ export const getCapitalV1PrivateWithdrawTodaytotal = (
 /** Key is end point string without base url */
 getCapitalV1PrivateWithdrawTodaytotal.key =
   "/capital/v1/private/withdraw/todaytotal";
-
-export const getCapitalV1ProtectedWithdrawInfo = (
-  queryParams?: GetCapitalV1ProtectedWithdrawInfoQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<GetWithdrawRequestUserWalletItemResponseVM>> => {
-  return Http.getRequest(
-    getCapitalV1ProtectedWithdrawInfo.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getCapitalV1ProtectedWithdrawInfo.key = "/capital/v1/protected/withdraw/info";
 
 export const getCapitalV1PublicCurrencyAll = (
   configOverride?: AxiosRequestConfig,
@@ -2225,22 +2225,6 @@ export const postApiCspreportLog = (
 /** Key is end point string without base url */
 postApiCspreportLog.key = "/api/cspreport/log";
 
-export const postAuthV1PrivateApikey = (
-  requestBody: ApiKeyAddRequestVM,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ApiKeyAddResponseVM>> => {
-  return Http.postRequest(
-    postAuthV1PrivateApikey.key,
-    undefined,
-    requestBody,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-postAuthV1PrivateApikey.key = "/auth/v1/private/apikey";
-
 export const postAuthV1PrivateAuthDisabletwofactor = (
   requestBody: ChangeTwoFactorRequestVM,
   headerParams?: { platformType: PlatformType },
@@ -2415,6 +2399,22 @@ export const postAuthV1PrivateAuthRevoketoken = (
 
 /** Key is end point string without base url */
 postAuthV1PrivateAuthRevoketoken.key = "/auth/v1/private/auth/revoketoken";
+
+export const postAuthV1ProtectApikey = (
+  requestBody: ApiKeyAddRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ApiKeyAddResponseVM>> => {
+  return Http.postRequest(
+    postAuthV1ProtectApikey.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAuthV1ProtectApikey.key = "/auth/v1/protect/apikey";
 
 export const postAuthV1PublicAuthAnonyverifysecure = (
   requestBody: VerifySecureRequestVM,
@@ -3136,22 +3136,6 @@ export const postWalletV1PrivateWalletpermission = (
 /** Key is end point string without base url */
 postWalletV1PrivateWalletpermission.key = "/wallet/v1/private/walletpermission";
 
-export const putAuthV1PrivateApikey = (
-  requestBody: ApiKeyUpdateRequestVM,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<any>> => {
-  return Http.putRequest(
-    putAuthV1PrivateApikey.key,
-    undefined,
-    requestBody,
-    undefined,
-    overrideConfig(_CONSTANT0, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putAuthV1PrivateApikey.key = "/auth/v1/private/apikey";
-
 export const putAuthV1PrivateAuthEmail = (
   requestBody: ChangeEmailRequestVM,
   configOverride?: AxiosRequestConfig,
@@ -3167,6 +3151,22 @@ export const putAuthV1PrivateAuthEmail = (
 
 /** Key is end point string without base url */
 putAuthV1PrivateAuthEmail.key = "/auth/v1/private/auth/email";
+
+export const putAuthV1ProtectApikey = (
+  requestBody: ApiKeyUpdateRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    putAuthV1ProtectApikey.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putAuthV1ProtectApikey.key = "/auth/v1/protect/apikey";
 
 export const putAuthV1ProtectAuthChangepassword = (
   requestBody: ChangePasswordRequestVM,

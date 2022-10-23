@@ -7,7 +7,15 @@ import {
 } from "../../services";
 import { useNotification } from "../notification";
 
-export const useFavoriteMarket = (onFail?: () => void) => {
+type UseFavoriteArguments = {
+  onSuccess?: () => void;
+  onFail?: () => void;
+};
+
+export const useFavoriteMarket = ({
+  onFail,
+  onSuccess,
+}: UseFavoriteArguments) => {
   const { userData } = useAuth();
 
   const { t } = useTranslation();
@@ -26,6 +34,7 @@ export const useFavoriteMarket = (onFail?: () => void) => {
       successNotification({
         message: t("addFavoriteSuccessMessage"),
       });
+      onSuccess?.();
       refetch();
     },
     onError: () => {
@@ -39,6 +48,8 @@ export const useFavoriteMarket = (onFail?: () => void) => {
       successNotification({
         message: t("removeFromFavoriteSuccessMessage"),
       });
+      onSuccess?.();
+
       refetch();
     },
     onError: () => {
