@@ -20,7 +20,6 @@ const fa = {
   enterPrice: "مبلغ را وارد کنید.",
   enterStop: "توقف را وارد کنید.",
   takeProfit: "حد سود",
-  takeProfitLimit: "حد سود",
   stopLoss: "حد ضرر",
   limit: "محدود",
   market: "بازار",

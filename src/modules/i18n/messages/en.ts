@@ -24,7 +24,6 @@ const en = {
   enterStop: "Enter a stop",
 
   market: "Market",
-  stopLimit: "Stop Limit",
   limitMaker: "Limit Maker",
 
   valueShouldBeMoreThanMinPrice: "Value Should Be More Than {{minPrice}}",
