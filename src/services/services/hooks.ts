@@ -68,6 +68,8 @@ import {
   getCapitalV1PrivateWithdrawTodaytotal,
   getCapitalV1PublicCurrencyAll,
   getCapitalV1PublicMoneynetworkAll,
+  getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid,
+  getDomaincurrencyfeerateV1PublicBydomainid,
   getEngagementV1PrivateNotification,
   getEngagementV1PrivateNotificationType,
   getExchangeV1PrivateAllorderlist,
@@ -136,6 +138,7 @@ import {
   getWalletV1PrivateUserbankStatus,
   getWalletV1PrivateUserreferralprogramAll,
   getWalletV1PrivateUserreferralprogramDefault,
+  getWalletV1PrivateUserreferralprogramTotal,
   getWalletV1PublicCurrencyInfo,
   getWalletV1PublicFind,
   patchWalletV1Private,
@@ -250,6 +253,7 @@ import {
   DeleteAuthV1ProtectApikeyQueryParams,
   DeleteEngagementV1PrivateNotificationClearallQueryParams,
   DepositTransactionHistoryListResponseVM,
+  DomainCurrencyClassResponseVM,
   DomainCurrencyResponseVM,
   DomainSettingVM,
   DomainTraderLevelResponseVM,
@@ -284,6 +288,8 @@ import {
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
+  GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
+  GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -424,6 +430,7 @@ import {
   UserReferralProgramVM,
   UserSettingPreferenseResponseVM,
   UserStatusResponseVM,
+  UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
   UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
@@ -2417,6 +2424,96 @@ useGetCapitalV1PublicMoneynetworkAll.prefetch = (
 ) => {
   const { key, fun } =
     useGetCapitalV1PublicMoneynetworkAll.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid = (
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.info(
+      queryParams,
+      configOverride,
+    );
+  return useQuery(key, fun, options);
+};
+useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.info = (
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.key,
+
+      queryParams,
+    ] as QueryKey,
+    fun: () =>
+      getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.prefetch = (
+  client: QueryClient,
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.info(
+      queryParams,
+      configOverride,
+    );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetDomaincurrencyfeerateV1PublicBydomainid = (
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetDomaincurrencyfeerateV1PublicBydomainid.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetDomaincurrencyfeerateV1PublicBydomainid.info = (
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      getDomaincurrencyfeerateV1PublicBydomainid.key,
+
+      queryParams,
+    ] as QueryKey,
+    fun: () =>
+      getDomaincurrencyfeerateV1PublicBydomainid(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetDomaincurrencyfeerateV1PublicBydomainid.prefetch = (
+  client: QueryClient,
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetDomaincurrencyfeerateV1PublicBydomainid.info(
+    queryParams,
+    configOverride,
+  );
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -5001,6 +5098,34 @@ useGetWalletV1PrivateUserreferralprogramDefault.prefetch = (
 ) => {
   const { key, fun } =
     useGetWalletV1PrivateUserreferralprogramDefault.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetWalletV1PrivateUserreferralprogramTotal = (
+  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetWalletV1PrivateUserreferralprogramTotal.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetWalletV1PrivateUserreferralprogramTotal.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getWalletV1PrivateUserreferralprogramTotal.key] as QueryKey,
+    fun: () => getWalletV1PrivateUserreferralprogramTotal(configOverride),
+  };
+};
+useGetWalletV1PrivateUserreferralprogramTotal.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetWalletV1PrivateUserreferralprogramTotal.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()

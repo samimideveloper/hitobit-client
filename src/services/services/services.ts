@@ -48,6 +48,7 @@ import {
   DeleteAuthV1ProtectApikeyQueryParams,
   DeleteEngagementV1PrivateNotificationClearallQueryParams,
   DepositTransactionHistoryListResponseVM,
+  DomainCurrencyClassResponseVM,
   DomainCurrencyResponseVM,
   DomainSettingVM,
   DomainTraderLevelResponseVM,
@@ -82,6 +83,8 @@ import {
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
+  GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
+  GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -222,6 +225,7 @@ import {
   UserReferralProgramVM,
   UserSettingPreferenseResponseVM,
   UserStatusResponseVM,
+  UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
   UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
@@ -1068,6 +1072,40 @@ export const getCapitalV1PublicMoneynetworkAll = (
 
 /** Key is end point string without base url */
 getCapitalV1PublicMoneynetworkAll.key = "/capital/v1/public/moneynetwork/all";
+
+export const getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid = (
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DomainCurrencyClassResponseVM>> => {
+  return Http.getRequest(
+    getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.key =
+  "/domaincurrencyfeerate/v1/public/bydomaincurrencyclassid";
+
+export const getDomaincurrencyfeerateV1PublicBydomainid = (
+  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DomainCurrencyClassResponseVM[]>> => {
+  return Http.getRequest(
+    getDomaincurrencyfeerateV1PublicBydomainid.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getDomaincurrencyfeerateV1PublicBydomainid.key =
+  "/domaincurrencyfeerate/v1/public/bydomainid";
 
 export const getEngagementV1PrivateNotification = (
   queryParams?: GetEngagementV1PrivateNotificationQueryParams,
@@ -2162,6 +2200,22 @@ export const getWalletV1PrivateUserreferralprogramDefault = (
 /** Key is end point string without base url */
 getWalletV1PrivateUserreferralprogramDefault.key =
   "/wallet/v1/private/userreferralprogram/default";
+
+export const getWalletV1PrivateUserreferralprogramTotal = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserTotalReferralProgramVM>> => {
+  return Http.getRequest(
+    getWalletV1PrivateUserreferralprogramTotal.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getWalletV1PrivateUserreferralprogramTotal.key =
+  "/wallet/v1/private/userreferralprogram/total";
 
 export const getWalletV1PublicCurrencyInfo = (
   configOverride?: AxiosRequestConfig,

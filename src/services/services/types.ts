@@ -568,6 +568,16 @@ export type DocumentType =
   | "Passport"
   | "VerificationLetter";
 
+export interface DomainCurrencyClassResponseVM {
+  /** - Format: int32 */
+  domainId: number;
+  /** - Format: double */
+  feeRate: number;
+  /** - Format: int32 */
+  id: number;
+  name?: string;
+}
+
 export interface DomainCurrencyResponseVM {
   type: CurrencyType;
   domainMoneyNetworks?: DomainMoneyNetworkResponseVM[];
@@ -1005,6 +1015,16 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   txId?: string;
 }
 
+export interface GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams {
+  /** - Format: int32 */
+  domainCurrencyClassId?: number;
+}
+
+export interface GetDomaincurrencyfeerateV1PublicBydomainidQueryParams {
+  /** - Format: int32 */
+  domainId?: number;
+}
+
 export interface GetEngagementV1PrivateNotificationQueryParams {
   /** - Format: date-time */
   endDate?: string;
@@ -1419,6 +1439,7 @@ export interface GetWithdrawRequestUserWalletItemResponseVM {
   submitUniqueId: string;
   withdrawRequestStatus: WithdrawRequestStatus;
   currencySymbol?: string;
+  destinationBlockchainAddress?: string;
   moneyNetworkSymbol?: string;
 }
 
@@ -2752,18 +2773,20 @@ export interface UserInfoVM {
   customerNumber: number;
   /** - Format: int32 */
   domainId: number;
+  hasPendingRequest: boolean;
   /** - Format: uuid */
   id: string;
   identityStatus: IdentityStatus;
   isBusinessUser: boolean;
+  nextLevel: IdentificationLevel;
   userStatus: UserStatus;
   userType: UserType;
   displayName?: string;
   email?: string;
   /** - Format: date-time */
   limitAccessEnd?: string;
-  nextLevel?: IdentificationLevel;
   nextLevelStatus?: IdentificationLevelRequestStatus;
+  pendingRequestDescription?: string;
   phoneNumber?: string;
   /** - Format: uuid */
   profileImageFileUniqueId?: string;
@@ -2882,8 +2905,6 @@ export interface UserReferralProgramAddVM {
 }
 
 export interface UserReferralProgramVM {
-  /** - Format: int32 */
-  friendsCount: number;
   /** - Format: int64 */
   id: number;
   /** - Format: double */
@@ -2920,6 +2941,15 @@ export interface UserStatusResponseVM {
   phoneNumberConfirmed: boolean;
   twoFactorEnabled: boolean;
   email?: string;
+}
+
+export interface UserTotalReferralProgramVM {
+  /** - Format: double */
+  defaultCryptoAmount: number;
+  /** - Format: double */
+  defaultFiatAmount: number;
+  /** - Format: int32 */
+  friendsCount: number;
 }
 
 export interface UserTraderLevelResponseVM {
