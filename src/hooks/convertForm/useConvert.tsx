@@ -15,7 +15,7 @@ export const useConvert = (callbacks?: ConvertProps) => {
 
   const { setValue, handleSubmit, getValues } = ConvertContext.useFormContext();
 
-  const { fromAsset, toMarket, fromAmount, toAmount } =
+  const { fromAsset, toMarket, fromAmount, toAmount, lastChangedField } =
     ConvertContext.useWatch();
 
   const { selectedMarket, isBuy } = useMatchedMarketsList({
@@ -101,5 +101,7 @@ export const useConvert = (callbacks?: ConvertProps) => {
     toAmount,
     fromAsset,
     toMarket,
+    isBuy,
+    lastChangedField,
   };
 };
