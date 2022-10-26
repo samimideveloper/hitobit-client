@@ -32,27 +32,22 @@ const ControllerSlider = ({
             onChange: (_value) => {
               onChange(_value);
               let result: Decimal = new Decimal(0);
-
               if (_value && baseAvailableRemain) {
                 result = new Decimal(baseAvailableRemain).mul(_value).div(100);
               }
-
-              setValue(
-                "total",
-                toTickSize(
-                  currentTicker?.lastPrice
-                    ? result.mul(currentTicker.lastPrice)
-                    : 0,
-                ),
-              );
-
-              setValue(
-                "amount",
+              const total = toTickSize(
                 currentTicker?.lastPrice
-                  ? toStepSize(result?.div(currentTicker?.lastPrice))
-                  : "",
+                  ? result.mul(currentTicker.lastPrice)
+                  : 0,
               );
-              setValue("selectedOption", { value: "amount" });
+
+              const amount = currentTicker?.lastPrice
+                ? toStepSize(result.toNumber())
+                : "";
+
+              setValue("total", total);
+              setValue("amount", amount);
+              setValue("selectedOption", { value: "total" });
               trigger(["amount", "total"]);
             },
             ...rest,
