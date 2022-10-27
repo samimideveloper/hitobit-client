@@ -202,7 +202,7 @@ const mergeOrders = (
     return [Number(idxPrice), sumBy(o, ([, amount]) => amount)];
   }) as [number, number][];
 
-  return group.filter(([, amount]) => amount !== 0);
+  return group.filter(([, amount]) => amount !== 0).sort(([a], [b]) => b - a);
 };
 
 const useOrdersBook = () => {
