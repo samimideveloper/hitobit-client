@@ -2313,7 +2313,17 @@ export interface SecurityActivityListVM {
   list?: SecurityActivityVM[];
 }
 
+export type SecurityActivityType =
+  | "Login"
+  | "ChangePassword"
+  | "EnableToFA"
+  | "DisableToFA"
+  | "NewDevice"
+  | "EnabledGoogleAuthentication"
+  | "DisbaledGoogleAuthentication";
+
 export interface SecurityActivityVM {
+  activity: SecurityActivityType;
   /** - Format: date-time */
   createDate: string;
   /** - Format: int64 */
@@ -2321,7 +2331,6 @@ export interface SecurityActivityVM {
   status: SecurityStatus;
   /** - Format: uuid */
   userId: string;
-  activity?: string;
   ipAddress?: string;
   platform?: string;
 }
@@ -2922,7 +2931,7 @@ export interface UserReferralProgramVM {
 
 export interface UserSettingPreferenseResponseVM {
   activities: boolean;
-  autoBorrowRepayForMragin: boolean;
+  autoBorrowRepayForMargin: boolean;
   limitOrder: boolean;
   marketOrder: boolean;
   stopLimitOrder: boolean;
