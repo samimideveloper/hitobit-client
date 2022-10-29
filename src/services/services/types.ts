@@ -2550,9 +2550,9 @@ export interface TradeReferralHistoryListResponseVM {
 
 export interface TradeReferralHistoryResponseVM {
   /** - Format: double */
-  cryptoTradeComission: number;
+  defaultCryptoAmount: number;
   /** - Format: double */
-  fiatTradeComission: number;
+  defaultFiatAmount: number;
   /** - Format: date-time */
   signedUpAt: string;
   traded: boolean;
@@ -2905,6 +2905,8 @@ export interface UserReferralProgramAddVM {
 }
 
 export interface UserReferralProgramVM {
+  /** - Format: int32 */
+  friendsCount: number;
   /** - Format: int64 */
   id: number;
   /** - Format: double */
