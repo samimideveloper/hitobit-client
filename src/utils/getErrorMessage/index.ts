@@ -7,9 +7,7 @@ import { RequestError } from "../../services";
 const commonErrors = {
   [StatusCodes.BadRequest]: i18n.t("BadRequest"),
   [StatusCodes.UntrustedDevice]: i18n.t("UntrustedDevice"),
-  [StatusCodes.UserRegistrationNotCompleted]: i18n.t(
-    "UserRegistrationNotCompleted",
-  ),
+  [StatusCodes.UserRegistrationNotCompleted]: i18n.t("regNotComp"),
   [StatusCodes.UserIsNotActive]: i18n.t("UserIsNotActive"),
   [StatusCodes.IsLockedOut]: i18n.t("IsLockedOut"),
   [StatusCodes.IsNotAllowed]: i18n.t("IsNotAllowed"),

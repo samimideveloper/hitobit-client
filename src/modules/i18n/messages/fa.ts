@@ -39,7 +39,7 @@ const fa = {
   trillion: "تریلیون",
   BadRequest: "اطلاعات ارسالی نامعتبر است.",
   UntrustedDevice: "دستگاه شما معتبر نیست.",
-  UserRegistrationNotCompleted: "ثبت نام کاربر کامل نشده است.",
+  regNotComp: "ثبت نام کاربر کامل نشده است.",
   UserIsNotActive: "کاربر فعال نیست",
   IsLockedOut: "حساب کاربری شما مسدود شده است.",
   IsNotAllowed: "دسترسی معتبر ندارید.",

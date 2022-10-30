@@ -43,7 +43,7 @@ const en = {
   trillion: "T",
   BadRequest: "The information sent is invalid.",
   UntrustedDevice: "Your device is not valid.",
-  UserRegistrationNotCompleted: "User registration is not complete.",
+  regNotComp: "User registration is not complete.",
   UserIsNotActive: "The user is not active",
   IsLockedOut: "Your account has been locked.",
   IsNotAllowed: "You do not have valid access.",
