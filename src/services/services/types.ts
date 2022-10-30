@@ -2977,20 +2977,6 @@ export interface UserTraderLevelResponseVM {
   name?: string;
 }
 
-export interface UserTrustDeviceResponseVM {
-  /** - Format: uuid */
-  userId: string;
-  /** - Format: date-time */
-  createDate?: string;
-  deviceBrand?: string;
-  deviceId?: string;
-  deviceName?: string;
-  ipAddress?: string;
-  osName?: string;
-  osVersion?: string;
-  softwareName?: string;
-}
-
 export interface UserTrustedDeviceListResponseVM {
   /** - Format: int64 */
   count: number;

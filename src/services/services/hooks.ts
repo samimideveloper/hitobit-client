@@ -87,7 +87,6 @@ import {
   getExchangeV1PublicMarkets,
   getExchangeV1PublicTicker24hr,
   getExchangeV1PublicTrades,
-  getPartyV1PrivateDeviceAll,
   getPartyV1PrivateDomainForcetwofa,
   getPartyV1PrivateDomainMultiwallet,
   getPartyV1PrivateDomainSetting,
@@ -432,7 +431,6 @@ import {
   UserStatusResponseVM,
   UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
-  UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
   UserWalletDisplayDetailResponseVM,
   UserWalletDisplayResponseVM,
@@ -3240,30 +3238,6 @@ useGetExchangeV1PublicTrades.prefetch = (
     queryParams,
     configOverride,
   );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
-export const useGetPartyV1PrivateDeviceAll = (
-  options?: SwaggerTypescriptUseQueryOptions<UserTrustDeviceResponseVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateDeviceAll.info(configOverride);
-  return useQuery(key, fun, options);
-};
-useGetPartyV1PrivateDeviceAll.info = (configOverride?: AxiosRequestConfig) => {
-  return {
-    key: [getPartyV1PrivateDeviceAll.key] as QueryKey,
-    fun: () => getPartyV1PrivateDeviceAll(configOverride),
-  };
-};
-useGetPartyV1PrivateDeviceAll.prefetch = (
-  client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserTrustDeviceResponseVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateDeviceAll.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()

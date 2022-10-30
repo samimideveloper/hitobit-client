@@ -227,7 +227,6 @@ import {
   UserStatusResponseVM,
   UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
-  UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
   UserWalletDisplayDetailResponseVM,
   UserWalletDisplayResponseVM,
@@ -1378,21 +1377,6 @@ export const getExchangeV1PublicTrades = (
 
 /** Key is end point string without base url */
 getExchangeV1PublicTrades.key = "/exchange/v1/public/trades";
-
-export const getPartyV1PrivateDeviceAll = (
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserTrustDeviceResponseVM[]>> => {
-  return Http.getRequest(
-    getPartyV1PrivateDeviceAll.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getPartyV1PrivateDeviceAll.key = "/party/v1/private/device/all";
 
 export const getPartyV1PrivateDomainForcetwofa = (
   configOverride?: AxiosRequestConfig,
