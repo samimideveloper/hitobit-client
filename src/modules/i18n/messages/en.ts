@@ -41,6 +41,14 @@ const en = {
   Insurance: "Insurance",
   Adl: "Adl",
   trillion: "T",
+  BadRequest: "The information sent is invalid.",
+  UntrustedDevice: "Your device is not valid.",
+  regNotComp: "User registration is not complete.",
+  UserIsNotActive: "The user is not active",
+  IsLockedOut: "Your account has been locked.",
+  IsNotAllowed: "You do not have valid access.",
+  InvalidUserNameOrPassword: "Username or password is not correct.",
+  UserIsSuspended: "Your account has been suspended.",
 };
 
 export default en;
