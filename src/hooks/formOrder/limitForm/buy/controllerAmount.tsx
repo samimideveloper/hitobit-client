@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
+import { useStepValues } from "../../../useStepValues";
 import { BuyForm, LimitOrderValues } from "../types";
 
 const ControllerAmount = ({
@@ -24,6 +25,10 @@ const ControllerAmount = ({
   } = BuyForm.useFormContext();
 
   const { toTickSize } = useStepSize(selectedSymbol?.symbol);
+
+  const { expectedValue, onChangeValue } = useStepValues(
+    selectedSymbol?.symbol,
+  );
 
   const { getAmountError } = useOrderPlacingError();
 
@@ -53,9 +58,10 @@ const ControllerAmount = ({
           },
         },
       }}
-      render={({ field: { onChange, ...rest } }) =>
-        render({
+      render={({ field: { onChange, value, ...rest } }) => {
+        return render({
           field: {
+            value: expectedValue(value),
             onChange: (_value) => {
               const { price } = getValues();
 
@@ -66,13 +72,13 @@ const ControllerAmount = ({
                   : "",
               );
 
-              onChange(_value);
+              onChange(onChangeValue(_value));
               trigger(["amount"]);
             },
             ...rest,
           },
-        })
-      }
+        });
+      }}
     />
   );
 };

@@ -10,6 +10,7 @@ import { useMarkets } from "../useMarkets";
 import { useMatchedMarketsList } from "../useMatchedMarketsList";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
+import { useStepValues } from "../useStepValues";
 import { ConvertContext, ConvertFormProps } from "./context";
 
 type ConvertFromRenderProps = {
@@ -100,6 +101,8 @@ export const ConvertFromController = ({
   const canThrowError =
     errors["fromAmount"] && fromAmount !== null && fromAmount !== undefined;
 
+  const { expectedValue, onChangeValue } = useStepValues(selectedMarket?.name);
+
   return (
     <>
       <ConvertContext.Controller
@@ -132,7 +135,7 @@ export const ConvertFromController = ({
         render={({ field: { onChange, value, ...rest } }) => {
           return render({
             field: {
-              value: value,
+              value: expectedValue(value),
               minQuantity,
               maxQuantity,
               assets: allAssets?.filter(({ canTrade }) => canTrade) || [],
@@ -159,7 +162,7 @@ export const ConvertFromController = ({
               onChange: (value) => {
                 setValue("lastChangedField", "from");
                 clearErrors("toAmount");
-                onChange(value);
+                onChange(onChangeValue(value));
                 setValue("toAmount", value ? null : "");
                 queryClient.resetQueries(postExchangeV1PrivateOrder.key);
               },

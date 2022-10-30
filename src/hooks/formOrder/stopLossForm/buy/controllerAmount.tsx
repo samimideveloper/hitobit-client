@@ -4,6 +4,7 @@ import { selectedSymbolStore } from "../../../../store";
 import { useMarketTicker } from "../../../marketTicker";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
+import { useStepValues } from "../../../useStepValues";
 import { BuyForm, MarketOrderValues } from "../types";
 
 const ControllerAmount = ({
@@ -22,6 +23,10 @@ const ControllerAmount = ({
   const { getSymbolMarketTicker } = useMarketTicker();
   const { toTickSize } = useStepSize(selectedSymbol?.symbol);
   const currentTicker = getSymbolMarketTicker(selectedSymbol?.symbol);
+
+  const { expectedValue, onChangeValue } = useStepValues(
+    selectedSymbol?.symbol,
+  );
 
   return (
     <BuyForm.Controller
@@ -45,9 +50,10 @@ const ControllerAmount = ({
           },
         },
       }}
-      render={({ field: { onChange, ...rest } }) =>
+      render={({ field: { onChange, value, ...rest } }) =>
         render({
           field: {
+            value: expectedValue(value),
             onChange: (_value) => {
               if (selectedOption.value !== "amount") {
                 return;
@@ -59,7 +65,7 @@ const ControllerAmount = ({
                   ? toTickSize(new Decimal(_value).mul(currentTicker.lastPrice))
                   : "",
               );
-              onChange(_value);
+              onChange(onChangeValue(_value));
               trigger(["amount", "total"]);
             },
             ...rest,

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
+import { useStepValues } from "../../../useStepValues";
 import { OcoOrderValues, SellForm } from "../types";
 
 const ControllerAmount = ({
@@ -26,6 +27,10 @@ const ControllerAmount = ({
   const { toTickSize } = useStepSize(selectedSymbol?.symbol);
 
   const { getAmountError } = useOrderPlacingError();
+
+  const { expectedValue, onChangeValue } = useStepValues(
+    selectedSymbol?.symbol,
+  );
 
   return (
     <SellForm.Controller
@@ -57,9 +62,10 @@ const ControllerAmount = ({
           },
         },
       }}
-      render={({ field: { onChange, ...rest } }) =>
+      render={({ field: { onChange, value, ...rest } }) =>
         render({
           field: {
+            value: expectedValue(value),
             onChange: (_value) => {
               const { price } = getValues();
 
@@ -69,7 +75,7 @@ const ControllerAmount = ({
                   ? toTickSize(new Decimal(_value).mul(Number(price)))
                   : "",
               );
-              onChange(_value);
+              onChange(onChangeValue(_value));
 
               trigger(["total"]);
             },

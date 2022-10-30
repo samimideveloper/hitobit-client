@@ -33,5 +33,6 @@ export * from "./useProtectedPhoneNumber";
 export * from "./useQuantity";
 export * from "./userSignalRConnection";
 export * from "./useStepSize";
+export * from "./useStepValues";
 export * from "./useSymbolPrice";
 export * from "./useUserSelectedUserAssets";

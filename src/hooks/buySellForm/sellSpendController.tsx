@@ -6,6 +6,7 @@ import { MarketTicker, useMarketTicker } from "../marketTicker";
 import { useMarketFilters } from "../useMarketFilters";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
+import { useStepValues } from "../useStepValues";
 import { BuySellContext, BuySellFormProps } from "./context";
 
 type SellSpendRenderProps = {
@@ -59,6 +60,8 @@ export const SellSpendController = ({
 
   const { toStepSize } = useStepSize(selected);
 
+  const { expectedValue, onChangeValue } = useStepValues(selected);
+
   const minQuantity = _minQuantity || 0;
 
   const maxQuantity =
@@ -75,7 +78,6 @@ export const SellSpendController = ({
           validate: {
             check: (value) => {
               if (!lastChangeInput || !value) {
-                //   return t("enterAmount");
               }
 
               if (lastChangeInput !== "spend") {
@@ -92,7 +94,7 @@ export const SellSpendController = ({
         render={({ field: { onChange, value, ...rest } }) => {
           return render({
             field: {
-              value: value,
+              value: expectedValue(value),
               assets: marketsTickerGrouped || [],
               availableRemain,
               minQuantity,
@@ -104,7 +106,7 @@ export const SellSpendController = ({
                 setValue("selected", asset?.symbol);
               },
               onChange(value) {
-                onChange(value === "" ? null : value);
+                onChange(onChangeValue(value));
                 clearErrors("recieve");
                 setValue("recieve", "");
                 setValue("lastChangeInput", "spend");

@@ -6,6 +6,7 @@ import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 import { useMarketFilters } from "../useMarketFilters";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
+import { useStepValues } from "../useStepValues";
 import { BuySellContext, BuySellFormProps } from "./context";
 
 type BuyRecieveRenderProps = {
@@ -49,6 +50,8 @@ export const BuyRecieveController = ({
   const selectedMarket = getSymbolMarketTicker(selected);
 
   const { toTickSize } = useStepSize(selected);
+
+  const { expectedValue, onChangeValue } = useStepValues(selected);
 
   const isChargeable = selectedMarket?.quoteCurrency?.canCharge;
 
@@ -104,7 +107,7 @@ export const BuyRecieveController = ({
         render={({ field: { onChange, value, ...rest } }) => {
           return render({
             field: {
-              value: value,
+              value: expectedValue(value),
               assets,
               availableRemain,
               minQuantity: minQuantity || 0,
@@ -123,7 +126,7 @@ export const BuyRecieveController = ({
                 await trigger("recieve");
               },
               onChange(value) {
-                onChange(value === "" ? null : value);
+                onChange(onChangeValue(value));
                 setValue("spend", "");
                 clearErrors("spend");
                 lastChangeInput !== "recieve" &&
