@@ -10,6 +10,7 @@ import { Market, useMarkets } from "../useMarkets";
 import { useMatchedMarketsList } from "../useMatchedMarketsList";
 import { useOrderPlacingError } from "../useOrderPlacingError";
 import { useStepSize } from "../useStepSize";
+import { useStepValues } from "../useStepValues";
 import { ConvertContext, ConvertFormProps } from "./context";
 
 type ConvertToRenderProps = {
@@ -73,6 +74,8 @@ export const ConvertToController = ({
   });
 
   const { toTickSize, toStepSize } = useStepSize(selectedMarket?.name);
+
+  const { expectedValue, onChangeValue } = useStepValues(selectedMarket?.name);
 
   const {
     maxNotional,
@@ -141,7 +144,7 @@ export const ConvertToController = ({
         render={({ field: { onChange, value, ...rest } }) => {
           return render({
             field: {
-              value: value,
+              value: expectedValue(value),
               minQuantity,
               maxQuantity,
               assets: availableToMarkets || [],
@@ -160,7 +163,7 @@ export const ConvertToController = ({
               onChange: (value) => {
                 setValue("lastChangedField", "to");
                 clearErrors("fromAmount");
-                onChange(value);
+                onChange(onChangeValue(value));
                 setValue("fromAmount", value ? null : "");
                 queryClient.resetQueries(postExchangeV1PrivateOrder.key);
               },

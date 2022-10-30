@@ -87,11 +87,11 @@ export function useOrderPlacingError() {
         minPrice: starkstring(minQty).toCurrency().toString(),
       });
     }
-    if (maxQty !== undefined && baseQuantity.greaterThan(maxQty)) {
-      return t("valueShouldBeLessThanMaxPrice", {
-        maxPrice: starkstring(maxQty).toCurrency().toString(),
-      });
-    }
+    // if (maxQty !== undefined && baseQuantity.greaterThan(maxQty)) {
+    //   return t("valueShouldBeLessThanMaxPrice", {
+    //     maxPrice: starkstring(maxQty).toCurrency().toString(),
+    //   });
+    // }
 
     const validQty = new Decimal(baseQuantity)
       .toNearest(Number(stepSize), Decimal.ROUND_DOWN)

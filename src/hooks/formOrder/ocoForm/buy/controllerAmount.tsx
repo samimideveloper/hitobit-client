@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
+import { useStepValues } from "../../../useStepValues";
 import { BuyForm, OcoOrderValues } from "../types";
 
 const ControllerAmount = ({
@@ -26,6 +27,10 @@ const ControllerAmount = ({
   const { toTickSize } = useStepSize(selectedSymbol?.symbol);
 
   const { getAmountError } = useOrderPlacingError();
+
+  const { expectedValue, onChangeValue } = useStepValues(
+    selectedSymbol?.symbol,
+  );
 
   return (
     <BuyForm.Controller
@@ -53,9 +58,10 @@ const ControllerAmount = ({
           },
         },
       }}
-      render={({ field: { onChange, ...rest } }) =>
+      render={({ field: { onChange, value, ...rest } }) =>
         render({
           field: {
+            value: expectedValue(value),
             onChange: (amount) => {
               if (amount) {
                 const { price, limit } = getValues();
@@ -68,7 +74,7 @@ const ControllerAmount = ({
               } else {
                 buySetValue("total", "");
               }
-              onChange(amount);
+              onChange(onChangeValue(amount));
               trigger(["total"]);
             },
             ...rest,
