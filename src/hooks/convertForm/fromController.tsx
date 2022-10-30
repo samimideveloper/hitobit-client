@@ -26,6 +26,7 @@ type ConvertFromRenderProps = {
       minQuantity: number;
       maxQuantity: number;
       hasError?: boolean;
+      onFocus?: () => void;
     };
   }) => React.ReactElement;
 
@@ -165,6 +166,9 @@ export const ConvertFromController = ({
                 onChange(onChangeValue(value));
                 setValue("toAmount", value ? null : "");
                 queryClient.resetQueries(postExchangeV1PrivateOrder.key);
+              },
+              onFocus: () => {
+                setValue("lastChangedField", "from");
               },
               ...rest,
             },

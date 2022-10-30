@@ -27,6 +27,7 @@ type ConvertToRenderProps = {
         value: string | number | Decimal,
         passedSymbol?: string | undefined,
       ) => string;
+      onFocus?: () => void;
     };
   }) => React.ReactElement;
 
@@ -165,6 +166,9 @@ export const ConvertToController = ({
                 onChange(onChangeValue(value));
                 setValue("fromAmount", value ? null : "");
                 queryClient.resetQueries(postExchangeV1PrivateOrder.key);
+              },
+              onFocus: () => {
+                setValue("lastChangedField", "to");
               },
               ...rest,
             },
