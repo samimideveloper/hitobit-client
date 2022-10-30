@@ -37,6 +37,14 @@ const fa = {
   Insurance: "بیمه",
   Adl: "ADL",
   trillion: "تریلیون",
+  BadRequest: "اطلاعات ارسالی نامعتبر است.",
+  UntrustedDevice: "دستگاه شما معتبر نیست.",
+  UserRegistrationNotCompleted: "ثبت نام کاربر کامل نشده است.",
+  UserIsNotActive: "کاربر فعال نیست",
+  IsLockedOut: "حساب کاربری شما مسدود شده است.",
+  IsNotAllowed: "دسترسی معتبر ندارید.",
+  InvalidUserNameOrPassword: "نام کاربری یا رمزعبور صحیح نمی باشد.",
+  UserIsSuspended: "حساب کاربری شما به حالت تعلیق درآمده است.",
 };
 
 export type Fa = typeof fa;
