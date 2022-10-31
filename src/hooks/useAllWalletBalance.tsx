@@ -95,7 +95,6 @@ const useAllWalletBalance = () => {
     fiatsInBaseCurrency,
     totalBTC,
     totalBaseCurrency,
-    totalBalanceBTC: totalBTC,
     userAssets,
     isLoading,
     error: _error || errorUserAsset,

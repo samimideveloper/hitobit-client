@@ -52,11 +52,10 @@ export function useConvertNumToAbbr() {
     }
 
     if (input > 0 && input < 1) {
-      if (input < 1e-7) {
-        return "<0.0000001";
-      }
-      if (input >= 1e-7 && input < 1e-6) {
-        return input.toExponential(0);
+      if (input < 1e-6) {
+        return "< 0.0000001";
+      } else {
+        return Number(input);
       }
     }
 
