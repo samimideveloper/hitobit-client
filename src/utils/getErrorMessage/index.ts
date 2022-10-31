@@ -4,21 +4,20 @@ import { FieldErrors } from "react-hook-form";
 import { StatusCodes } from "../../constants";
 import { RequestError } from "../../services";
 
-const commonErrors = {
-  [StatusCodes.BadRequest]: i18n.t("BadRequest"),
-  [StatusCodes.UntrustedDevice]: i18n.t("UntrustedDevice"),
-  [StatusCodes.UserRegistrationNotCompleted]: i18n.t("regNotComp"),
-  [StatusCodes.UserIsNotActive]: i18n.t("UserIsNotActive"),
-  [StatusCodes.IsLockedOut]: i18n.t("IsLockedOut"),
-  [StatusCodes.IsNotAllowed]: i18n.t("IsNotAllowed"),
-  [StatusCodes.InvalidUserNameOrPassword]: i18n.t("InvalidUserNameOrPassword"),
-  [StatusCodes.UserIsSuspended]: i18n.t("UserIsSuspended"),
-};
-
 export function getErrorMessage<T extends FieldErrors<any> | object | unknown>(
   error?: Error | false | null | AxiosError | RequestError | Error | T,
   field?: keyof Required<T>,
 ): string {
+  const commonErrors = {
+    [StatusCodes.BadRequest]: i18n.t("BadRequest"),
+    [StatusCodes.UntrustedDevice]: i18n.t("UntrustedDevice"),
+    [StatusCodes.UserRegistrationNotCompleted]: i18n.t("regNotComp"),
+    [StatusCodes.UserIsNotActive]: i18n.t("UserIsNotActive"),
+    [StatusCodes.IsLockedOut]: i18n.t("IsLockedOut"),
+    [StatusCodes.IsNotAllowed]: i18n.t("IsNotAllowed"),
+    [StatusCodes.InvalidUserNameOrPassword]: i18n.t("invalidUserPass"),
+    [StatusCodes.UserIsSuspended]: i18n.t("UserIsSuspended"),
+  };
   if (!error) {
     return "";
   }

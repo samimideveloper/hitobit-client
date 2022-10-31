@@ -47,7 +47,7 @@ const en = {
   UserIsNotActive: "The user is not active",
   IsLockedOut: "Your account has been locked.",
   IsNotAllowed: "You do not have valid access.",
-  InvalidUserNameOrPassword: "Username or password is not correct.",
+  invalidUserPass: "Username or password is not correct.",
   UserIsSuspended: "Your account has been suspended.",
 };
 
