@@ -43,7 +43,7 @@ const fa = {
   UserIsNotActive: "کاربر فعال نیست",
   IsLockedOut: "حساب کاربری شما مسدود شده است.",
   IsNotAllowed: "دسترسی معتبر ندارید.",
-  InvalidUserNameOrPassword: "نام کاربری یا رمزعبور صحیح نمی باشد.",
+  invalidUserPass: "نام کاربری یا رمزعبور صحیح نمی باشد.",
   UserIsSuspended: "حساب کاربری شما به حالت تعلیق درآمده است.",
 };
 
