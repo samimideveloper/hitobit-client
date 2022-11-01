@@ -1,11 +1,10 @@
+//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
- * @version 5
+ * @version 6
  */
 
-import { AxiosRequestConfig } from "axios";
-import { useMemo } from "react";
 import {
   QueryClient,
   QueryKey,
@@ -15,7 +14,9 @@ import {
   UseMutationOptions,
   useQuery,
   UseQueryOptions,
-} from "react-query";
+} from "@tanstack/react-query";
+import { AxiosRequestConfig } from "axios";
+import { useMemo } from "react";
 import { RequestError, SwaggerResponse } from "./config";
 import { getPageSize, getTotal, paginationFlattenData } from "./hooksConfig";
 import {
@@ -5781,7 +5782,7 @@ export const usePostPartyV1PrivateUserProfileimage = <TExtra>(
     {
       requestBody: {
         /** - Format: binary */
-        file: string;
+        file?: string;
       };
     },
     TExtra
@@ -6127,7 +6128,7 @@ export const usePostStorageV1PrivateFileUploadfile = <TExtra>(
     {
       requestBody: {
         /** - Format: binary */
-        file: string;
+        file?: string;
       };
     },
     TExtra
