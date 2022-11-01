@@ -72,11 +72,8 @@ const Instance = ({ interval, symbol }: KlineInstance) => {
         }).key,
         (_prev) => {
           const prev = _prev || [];
-          if (
-            prev?.[prev?.length - 1]?.openTime &&
-            Number(kline.openTime) ===
-              new Date(prev[prev?.length - 1].openTime).getTime()
-          ) {
+          const time = prev[prev.length - 1].openTime;
+          if (time && Number(kline.openTime) === new Date(time).getTime()) {
             const copy = [...prev];
             copy[copy.length - 1] = kline;
             return copy;

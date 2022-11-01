@@ -78,10 +78,14 @@ const MarketTickerProvider = memo<Props>(({ children }: any) => {
         });
 
         if (updateNeeded) {
-          queryClient.invalidateQueries(getExchangeV1PublicMarkets.key, {
+          queryClient.invalidateQueries({
+            queryKey: [getExchangeV1PublicMarkets.key],
+            refetchType: "all",
             exact: true,
           });
-          queryClient.invalidateQueries(getExchangeV1PublicTrades.key, {
+          queryClient.invalidateQueries({
+            queryKey: [getExchangeV1PublicTrades.key],
+            refetchType: "all",
             exact: true,
           });
         }

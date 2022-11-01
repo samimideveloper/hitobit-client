@@ -62,7 +62,7 @@ const useEpayPay = ({
   const onPay = useCallback(() => {
     if (selectedWallet) {
       if (isInSufficientBalance) {
-        if (selectedWallet && data) {
+        if (selectedWallet && data && data.amount !== undefined) {
           chargeAndPay({
             chargeAmount: data?.amount,
             clientUniqueId: data?.clientUniqueId as string,

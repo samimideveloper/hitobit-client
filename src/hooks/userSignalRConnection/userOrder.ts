@@ -99,7 +99,7 @@ const useUpdateOrderWithSignalr = () => {
     newOrdersRef.current = [];
 
     queryClient.setQueryData<OrderResultInfoResponseVM[]>(
-      getExchangeV1PrivateOpenorders.key,
+      [getExchangeV1PrivateOpenorders.key],
       (queryData) => {
         let prev = queryData || [];
 

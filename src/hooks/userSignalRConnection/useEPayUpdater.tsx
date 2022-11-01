@@ -57,7 +57,7 @@ const useEPayUpdater = () => {
     );
 
     client.setQueryData<EpayRequestListResponseVM>(
-      getPaymentV1PrivateEpayrequestList.key,
+      [getPaymentV1PrivateEpayrequestList.key],
       (prev) => {
         const list = prev?.list ?? [];
 

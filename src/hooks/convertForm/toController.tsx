@@ -165,7 +165,10 @@ export const ConvertToController = ({
                 clearErrors("fromAmount");
                 onChange(onChangeValue(value));
                 setValue("fromAmount", value ? null : "");
-                queryClient.resetQueries(postExchangeV1PrivateOrder.key);
+                queryClient.resetQueries({
+                  queryKey: [postExchangeV1PrivateOrder.key],
+                  type: "all",
+                });
               },
               onFocus: () => {
                 setValue("lastChangedField", "to");
