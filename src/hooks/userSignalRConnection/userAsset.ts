@@ -1,5 +1,5 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useRef } from "react";
-import { useQueryClient } from "react-query";
 import {
   getWalletV1PrivateUserassetSpotDefaultAll,
   useGetWalletV1PrivateUserassetSpotDefault,

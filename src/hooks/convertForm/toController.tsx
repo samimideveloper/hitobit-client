@@ -1,8 +1,8 @@
+import { useQueryClient } from "@tanstack/react-query";
 import Decimal from "decimal.js";
 import { ReactNode, useEffect, useMemo, useTransition } from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useQueryClient } from "react-query";
 import { postExchangeV1PrivateOrder } from "../../services";
 import { useAssets } from "../useAssets";
 import { useMarketFilters } from "../useMarketFilters";

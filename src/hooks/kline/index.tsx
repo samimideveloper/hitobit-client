@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { isEqual, uniqWith } from "lodash-es";
 import {
   createContext,
@@ -6,7 +7,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useQueryClient } from "react-query";
 import { useEvent } from "reactjs-view-core";
 import {
   KlineDataResponseVM,

@@ -1,6 +1,6 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { groupBy, map } from "lodash-es";
 import { createContext, memo, useContext, useMemo } from "react";
-import { useQueryClient } from "react-query";
 import {
   getExchangeV1PublicAlltickers24hr,
   getExchangeV1PublicMarkets,

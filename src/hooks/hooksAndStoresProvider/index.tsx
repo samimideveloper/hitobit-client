@@ -1,6 +1,6 @@
 import { MessageHeaders } from "@microsoft/signalr";
+import { QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { Fragment, lazy, ReactNode } from "react";
-import { QueryClientProvider, useQuery } from "react-query";
 import { initializeI18n } from "../../modules";
 import {
   AuthenticationProvider,

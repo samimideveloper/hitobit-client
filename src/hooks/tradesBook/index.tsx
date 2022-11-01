@@ -1,5 +1,5 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { createContext, memo, useContext, useMemo, useRef } from "react";
-import { useQueryClient } from "react-query";
 import {
   RecentTradeResponseVM,
   useGetExchangeV1PublicTrades,

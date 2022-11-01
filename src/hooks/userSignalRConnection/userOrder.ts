@@ -1,6 +1,6 @@
+import { useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 import { useRef } from "react";
-import { useQueryClient } from "react-query";
 import { i18n } from "../../modules";
 import {
   AppOrderSide,
