@@ -35,9 +35,11 @@ export const ConvertPriceController = ({
       <ConvertContext.Controller
         name="price"
         rules={{
-          required: t("enterPrice"),
           validate: {
             amount: (value) => {
+              if (!value) {
+                return t("enterPrice");
+              }
               return getPriceError({
                 price: Number(value),
                 symbol: toMarket,
