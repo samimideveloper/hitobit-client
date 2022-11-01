@@ -64,7 +64,7 @@ const Instance = ({ interval, symbol }: KlineInstance) => {
         ignore: data.k.B, // Ignore
       };
 
-      queryClient.setQueryData<KlineDataResponseVM[] | undefined>(
+      queryClient.setQueriesData<KlineDataResponseVM[] | undefined>(
         useGetExchangeV1PublicKlines.info({
           symbol: newSymbol,
           interval: newInterval,

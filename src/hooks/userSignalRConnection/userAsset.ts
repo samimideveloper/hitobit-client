@@ -24,7 +24,7 @@ const useUpdateUserAssetWithSignalr = () => {
     const stackedOutbound = [...newOutboundRef.current];
     newOutboundRef.current = [];
 
-    queryClient.setQueryData<UserAssetResponseVM[]>(
+    queryClient.setQueriesData<UserAssetResponseVM[]>(
       [getWalletV1PrivateUserassetSpotDefaultAll.key],
       (prev) => {
         const newAssets = [...(prev || [])];
@@ -81,7 +81,7 @@ const useUpdateUserAssetWithSignalr = () => {
     const stackedBalance = [...newBalanceRef.current];
     newBalanceRef.current = [];
 
-    queryClient.setQueryData<UserAssetResponseVM[]>(
+    queryClient.setQueriesData<UserAssetResponseVM[]>(
       [getWalletV1PrivateUserassetSpotDefaultAll.key],
       (prev) => {
         const newAssets: UserAssetResponseVM[] = [...(prev || [])];

@@ -9,7 +9,7 @@ const useUpdateUserNotificationWithSignalr = () => {
   const queryClient = useQueryClient();
 
   useUserSignalREvent("notification", (data) => {
-    queryClient.setQueryData<Notification2ResponseVM[]>(
+    queryClient.setQueriesData<Notification2ResponseVM[]>(
       [getEngagementV1PrivateNotification.key],
       (prev) => {
         const newNotifications = [...(prev || [])];
@@ -31,7 +31,7 @@ const useUpdateUserNotificationWithSignalr = () => {
   });
 
   useUserSignalREvent("notificationStatusChange", (data) => {
-    queryClient.setQueryData<Notification2ResponseVM[]>(
+    queryClient.setQueriesData<Notification2ResponseVM[]>(
       [getEngagementV1PrivateNotification.key],
       (prev) => {
         let newStatusChangeNotifications = [...(prev || [])];

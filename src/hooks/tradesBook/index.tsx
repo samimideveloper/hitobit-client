@@ -65,7 +65,7 @@ const TradesBookProvider = memo(({ children }: any) => {
   const newTradesRef = useRef<Record<string, RecentTradeResponseVM[]>>({});
 
   const assignToQueryClient = useDebounceAnimationFrameCallback(() => {
-    queryClient.setQueryData<RecentTradeResponseVM[]>(
+    queryClient.setQueriesData<RecentTradeResponseVM[]>(
       useGetExchangeV1PublicTrades.info(tradeQueryParams).key,
       (prev: RecentTradeResponseVM[] | undefined) => {
         const assignableTrades = newTradesRef.current[

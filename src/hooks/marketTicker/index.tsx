@@ -48,7 +48,7 @@ const MarketTickerProvider = memo<Props>(({ children }: any) => {
     const socketData = mapMiniTicker(data || []);
     const grouped = groupBy(socketData, (item) => item.symbol);
 
-    queryClient.setQueryData<MarketTickerPriceResponseVM[] | undefined>(
+    queryClient.setQueriesData<MarketTickerPriceResponseVM[] | undefined>(
       [getExchangeV1PublicAlltickers24hr.key],
       (prev) => {
         let updateNeeded = false;
