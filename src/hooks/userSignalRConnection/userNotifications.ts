@@ -1,4 +1,4 @@
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   getEngagementV1PrivateNotification,
   Notification2ResponseVM,
@@ -10,7 +10,7 @@ const useUpdateUserNotificationWithSignalr = () => {
 
   useUserSignalREvent("notification", (data) => {
     queryClient.setQueryData<Notification2ResponseVM[]>(
-      getEngagementV1PrivateNotification.key,
+      [getEngagementV1PrivateNotification.key],
       (prev) => {
         const newNotifications = [...(prev || [])];
 
@@ -32,7 +32,7 @@ const useUpdateUserNotificationWithSignalr = () => {
 
   useUserSignalREvent("notificationStatusChange", (data) => {
     queryClient.setQueryData<Notification2ResponseVM[]>(
-      getEngagementV1PrivateNotification.key,
+      [getEngagementV1PrivateNotification.key],
       (prev) => {
         let newStatusChangeNotifications = [...(prev || [])];
         if ((data.status = Status.read)) {
@@ -46,7 +46,7 @@ const useUpdateUserNotificationWithSignalr = () => {
           });
         } else {
           newStatusChangeNotifications = newStatusChangeNotifications.filter(
-            ({ id }) => !data.ids.includes(id),
+            ({ id }) => id !== undefined && !data.ids.includes(id),
           );
         }
 

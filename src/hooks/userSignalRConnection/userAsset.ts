@@ -1,6 +1,7 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useRef } from "react";
-import { useQueryClient } from "react-query";
 import {
+  getWalletV1PrivateUserassetSpotDefault,
   getWalletV1PrivateUserassetSpotDefaultAll,
   useGetWalletV1PrivateUserassetSpotDefault,
   UserAssetResponseVM,
@@ -53,11 +54,11 @@ const useUpdateUserAssetWithSignalr = () => {
               totalRemain: Number(item.free) + Number(item.locked),
             });
 
-            queryClient.invalidateQueries<UserAssetResponseVM>(
-              useGetWalletV1PrivateUserassetSpotDefault.info({
-                symbol: item.asset,
-              }).key,
-            );
+            queryClient.invalidateQueries({
+              queryKey: [getWalletV1PrivateUserassetSpotDefault.key],
+              refetchType: "all",
+              exact: true,
+            });
           });
         });
 

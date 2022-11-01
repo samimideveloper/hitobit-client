@@ -1,12 +1,15 @@
+//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
- * @version 5
+ * @version 6
  */
 
-import { AxiosRequestConfig } from "axios";
-import { SwaggerResponse } from "./config";
+import type { AxiosRequestConfig } from "axios";
+import type { SwaggerResponse } from "./config";
 import { Http } from "./httpRequest";
+//@ts-ignore
+import qs from "qs";
 import {
   AddPostActionInternalDepositEPayRequestRequestVM,
   AddPostActionPlaceMarketBuyOrderRequestVM,
@@ -275,6 +278,11 @@ function objToForm(requestBody: object) {
   });
 
   return formData;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function objToUrlencoded(requestBody: object) {
+  return qs.stringify(requestBody);
 }
 
 export const deleteAuthV1PrivateAuthEmail = (
@@ -2772,7 +2780,7 @@ postPartyV1PrivateIdentificationlevelLeveltwo.key =
 export const postPartyV1PrivateUserProfileimage = (
   requestBody: {
     /** - Format: binary */
-    file: string;
+    file?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
@@ -3044,7 +3052,7 @@ postSettlementV1PrivateUserWalletNumber.key =
 export const postStorageV1PrivateFileUploadfile = (
   requestBody: {
     /** - Format: binary */
-    file: string;
+    file?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {

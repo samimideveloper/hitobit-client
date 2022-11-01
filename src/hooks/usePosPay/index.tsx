@@ -88,7 +88,8 @@ export function usePosPay({
           if (data) {
             chargeAndPay({
               chargeAmount:
-                variables.requestBody.amount - selectedWallet.availableRemain,
+                (variables.requestBody.amount || 0) -
+                (selectedWallet.availableRemain || 0),
               clientUniqueId: variables.requestBody.clientUniqueId as string,
               walletNumber: selectedWallet.number!,
             });

@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { postPaymentV1PrivateEpayrequestPostactioninternaldepositepayrequest } from "../../services";
 import { useCharge } from "../useCharge";
 

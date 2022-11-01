@@ -1,4 +1,4 @@
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   EpayRequestActualState,
   EpayRequestInfoResponseVM,
@@ -57,7 +57,7 @@ const useEPayUpdater = () => {
     );
 
     client.setQueryData<EpayRequestListResponseVM>(
-      getPaymentV1PrivateEpayrequestList.key,
+      [getPaymentV1PrivateEpayrequestList.key],
       (prev) => {
         const list = prev?.list ?? [];
 

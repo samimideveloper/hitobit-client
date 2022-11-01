@@ -1,6 +1,6 @@
+import { useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 import { useRef } from "react";
-import { useQueryClient } from "react-query";
 import { i18n } from "../../modules";
 import {
   AppOrderSide,
@@ -99,7 +99,7 @@ const useUpdateOrderWithSignalr = () => {
     newOrdersRef.current = [];
 
     queryClient.setQueryData<OrderResultInfoResponseVM[]>(
-      getExchangeV1PrivateOpenorders.key,
+      [getExchangeV1PrivateOpenorders.key],
       (queryData) => {
         let prev = queryData || [];
 

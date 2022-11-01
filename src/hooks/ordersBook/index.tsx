@@ -77,7 +77,7 @@ const OrderBookProvider = memo<Props>(({ children }) => {
         isDataFetched.current = true;
 
         ordersBufferRef.current = ordersBufferRef.current.filter(
-          (item) => !(item.lastUpdateId <= data.lastUpdateId),
+          (item) => !(item.lastUpdateId! <= data.lastUpdateId!),
         );
 
         const asks = (data?.asks || []) as [number, number][];
