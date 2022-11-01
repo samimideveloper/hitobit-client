@@ -7,8 +7,8 @@ import {
   AppOrderStatus,
   AppOrderType,
   AppTimeInForce,
+  getExchangeV1PrivateOpenorders,
   OrderResultInfoResponseVM,
-  useGetExchangeV1PrivateOpenorders,
 } from "../../services";
 import { selectedSymbolStore } from "../../store";
 import { NotificationArgsProps, useNotification } from "../notification";
@@ -99,7 +99,7 @@ const useUpdateOrderWithSignalr = () => {
     newOrdersRef.current = [];
 
     queryClient.setQueryData<OrderResultInfoResponseVM[]>(
-      useGetExchangeV1PrivateOpenorders.info({}).key,
+      getExchangeV1PrivateOpenorders.key,
       (queryData) => {
         let prev = queryData || [];
 
