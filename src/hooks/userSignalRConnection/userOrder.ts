@@ -156,7 +156,7 @@ const updateOrders = (
     origQuoteOrderQty: order.quoteOrderQty
       ? Number(order.quoteOrderQty) * Number(order.orderPrice || 0)
       : 0,
-    transactTime: moment(order.transactionTime).local().toISOString(),
+    transactTime: moment(order.transactionTime).local().toDate().getTime(),
     cummulativeQuoteQty: Number(order.cumulativeQuoteAssetTransactedQuantity),
   };
 

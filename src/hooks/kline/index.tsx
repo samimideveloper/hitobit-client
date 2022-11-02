@@ -50,8 +50,8 @@ const Instance = ({ interval, symbol }: KlineInstance) => {
       const newInterval = SocketIntervalToHapi[data.k.i];
 
       const kline: KlineDataResponseVM = {
-        openTime: new Date(data.k.t).getTime() as unknown as string, // Kline start time
-        closeTime: new Date(data.k.T).getTime() as unknown as string, // Kline close time
+        openTime: new Date(data.k.t).getTime(), // Kline start time
+        closeTime: new Date(data.k.T).getTime(), // Kline close time
         open: data.k.o, // Open price
         close: data.k.c, // Close price
         high: data.k.h, // High price

@@ -134,7 +134,7 @@ const OrderBookProvider = memo<Props>(({ children }) => {
         bids: b.map(([price, quantity]) => [Number(price), Number(quantity)]),
         asks: a.map(([price, quantity]) => [Number(price), Number(quantity)]),
         lastUpdateIdStream: u,
-        transactionTime: moment(E).local().toISOString(),
+        transactionTime: moment(E).local().toDate().getTime(),
         firstUpdateId: U,
         symbol: s,
       };
