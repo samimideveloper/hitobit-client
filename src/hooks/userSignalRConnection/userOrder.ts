@@ -7,7 +7,6 @@ import {
   AppOrderStatus,
   AppOrderType,
   AppTimeInForce,
-  getExchangeV1PrivateOpenorders,
   OrderResultInfoResponseVM,
   useGetExchangeV1PrivateOpenorders,
 } from "../../services";
@@ -109,22 +108,6 @@ const useUpdateOrderWithSignalr = () => {
         return [...prev];
       },
     );
-    queryClient.setQueriesData<OrderResultInfoResponseVM[]>(
-      useGetExchangeV1PrivateOpenorders.info({ orderSourceType: "Trade" }).key,
-      (queryData) => {
-        let prev = queryData || [];
-        stackedOrders.forEach((order) => {
-          prev = updateOrders(prev, order, successNotification) || prev;
-        });
-
-        return [...prev];
-      },
-    );
-
-    queryClient.invalidateQueries({
-      queryKey: [getExchangeV1PrivateOpenorders.key],
-      refetchType: "all",
-    });
   }, [queryClient, selectedSymbol]);
 
   useUserSignalREvent("executionReport", (data) => {
@@ -173,7 +156,7 @@ const updateOrders = (
     origQuoteOrderQty: order.quoteOrderQty
       ? Number(order.quoteOrderQty) * Number(order.orderPrice || 0)
       : 0,
-    transactTime: moment(order.transactionTime).local().toISOString(),
+    transactTime: moment(order.transactionTime).local().toDate().getTime(),
     cummulativeQuoteQty: Number(order.cumulativeQuoteAssetTransactedQuantity),
   };
 

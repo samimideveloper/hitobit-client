@@ -4,7 +4,7 @@ import { getMockAdapter } from "./mockAdapter";
 const depthBTCUSDT: OrderBookResponseVM = {
   lastUpdateId: 17809611696,
   lastUpdateIdStream: 17809611696,
-  transactionTime: "2020-06-24T15:00:00.000Z",
+  transactionTime: 1593010800000,
   bids: [
     [38987.0, 1.02619],
     [38986.55, 0.18319],

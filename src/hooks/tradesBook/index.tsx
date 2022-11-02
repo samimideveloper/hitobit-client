@@ -94,7 +94,7 @@ const TradesBookProvider = memo(({ children }: any) => {
         price: Number(item.p),
         baseQuantity: Number(item.q),
         quoteQuantity: Number(item.p) * Number(item.q),
-        tradeTime: item.T as unknown as string,
+        tradeTime: item.T,
         smartTradeEngine: item.S,
       };
 
