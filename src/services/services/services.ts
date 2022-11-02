@@ -1,12 +1,11 @@
-//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
  * @version 6
  */
 
-import type { AxiosRequestConfig } from "axios";
-import type { SwaggerResponse } from "./config";
+import { AxiosRequestConfig } from "axios";
+import { SwaggerResponse } from "./config";
 import { Http } from "./httpRequest";
 //@ts-ignore
 import qs from "qs";
@@ -2780,7 +2779,7 @@ postPartyV1PrivateIdentificationlevelLeveltwo.key =
 export const postPartyV1PrivateUserProfileimage = (
   requestBody: {
     /** - Format: binary */
-    file?: string;
+    file: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
@@ -3052,7 +3051,7 @@ postSettlementV1PrivateUserWalletNumber.key =
 export const postStorageV1PrivateFileUploadfile = (
   requestBody: {
     /** - Format: binary */
-    file?: string;
+    file: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
