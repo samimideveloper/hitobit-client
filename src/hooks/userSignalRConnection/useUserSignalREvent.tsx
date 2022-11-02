@@ -109,8 +109,8 @@ export interface ExecutionReportUpdateModel {
 }
 
 export interface NotificationModel {
-  event: "notification";
-  notificationEventTime: string;
+  e: "notification";
+  E: number;
   id: number;
   userId: string;
   createDate: string;
@@ -126,8 +126,8 @@ export enum Status {
   read = 2,
 }
 export interface NotificationStatusChangeModel {
-  event: "notificationStatusChange";
-  eventTime: string;
+  e: "notificationStatusChange";
+  E: number;
   ids: number[];
   userId: string;
   status: Status;
