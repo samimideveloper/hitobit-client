@@ -12127,10 +12127,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-swagger-typescript@^6.3.5:
-  version "6.3.5"
-  resolved "https://registry.yarnpkg.com/swagger-typescript/-/swagger-typescript-6.3.5.tgz#2d4dd8ec871edabbf627951723bf159e9848438e"
-  integrity sha512-Uy2FPI9CnGXmns7zCsxlTXgYWlb/5C5B7fd1D0UsNnPfibUvv2I4IJQSwjM0x/9R26QgshzDsj7ancEz/ISk9Q==
+swagger-typescript@6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/swagger-typescript/-/swagger-typescript-6.3.2.tgz#38ec6d3f6a308509ff890cf652017a738928fda2"
+  integrity sha512-JLkNRPOX9DUGxQfzMQLP00mrhzHwNHHs8siSFOIW7kDpV9gJajj79AVojvODG6sxl5ADBBlZojxAlKFlyNVJQg==
   dependencies:
     chalk "^5.0.1"
     js-yaml "^4.1.0"

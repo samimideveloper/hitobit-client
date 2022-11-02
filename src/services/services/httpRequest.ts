@@ -1,13 +1,10 @@
-//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
  * @version 6
  */
-
 import axios, { AxiosRequestConfig, CancelToken } from "axios";
-import type { Security, SwaggerResponse } from "./config";
-import { getAxiosInstance } from "./config";
+import { getAxiosInstance, Security, SwaggerResponse } from "./config";
 
 /**
  * Cancellation handled here, you can cancel request by call promise.cancel()

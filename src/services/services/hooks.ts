@@ -1,4 +1,3 @@
-//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
@@ -5782,7 +5781,7 @@ export const usePostPartyV1PrivateUserProfileimage = <TExtra>(
     {
       requestBody: {
         /** - Format: binary */
-        file?: string;
+        file: string;
       };
     },
     TExtra
@@ -6128,7 +6127,7 @@ export const usePostStorageV1PrivateFileUploadfile = <TExtra>(
     {
       requestBody: {
         /** - Format: binary */
-        file?: string;
+        file: string;
       };
     },
     TExtra
