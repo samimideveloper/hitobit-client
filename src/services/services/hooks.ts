@@ -44,7 +44,8 @@ import {
   getAnalyticsV1PrivateTradehistoryReferralhistory,
   getAnalyticsV1PrivateUserloginhistoryLast,
   getAnalyticsV1PrivateUserloginhistoryList,
-  getAnalyticsV1PublicTradereferralcommissionhistoryRank,
+  getAnalyticsV1PrivateUserreferralprogramTotal,
+  getAnalyticsV1PublicTradehistoryRank,
   getAuthV1PrivateApikey,
   getAuthV1PrivateApikeyList,
   getAuthV1PrivateAuthGetqrcode,
@@ -136,7 +137,6 @@ import {
   getWalletV1PrivateUserbankStatus,
   getWalletV1PrivateUserreferralprogramAll,
   getWalletV1PrivateUserreferralprogramDefault,
-  getWalletV1PrivateUserreferralprogramTotal,
   getWalletV1PublicCurrencyInfo,
   getWalletV1PublicFind,
   patchWalletV1Private,
@@ -1301,30 +1301,53 @@ useGetAnalyticsV1PrivateUserloginhistoryList.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetAnalyticsV1PublicTradereferralcommissionhistoryRank = (
+export const useGetAnalyticsV1PrivateUserreferralprogramTotal = (
+  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateUserreferralprogramTotal.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PrivateUserreferralprogramTotal.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getAnalyticsV1PrivateUserreferralprogramTotal.key] as QueryKey,
+    fun: () => getAnalyticsV1PrivateUserreferralprogramTotal(configOverride),
+  };
+};
+useGetAnalyticsV1PrivateUserreferralprogramTotal.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateUserreferralprogramTotal.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetAnalyticsV1PublicTradehistoryRank = (
   options?: SwaggerTypescriptUseQueryOptions<
     TradeIncomeInviteeRankingResponseVM[]
   >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
-    useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info(
-      configOverride,
-    );
+    useGetAnalyticsV1PublicTradehistoryRank.info(configOverride);
   return useQuery(key, fun, options);
 };
-useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info = (
+useGetAnalyticsV1PublicTradehistoryRank.info = (
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
-    key: [
-      getAnalyticsV1PublicTradereferralcommissionhistoryRank.key,
-    ] as QueryKey,
-    fun: () =>
-      getAnalyticsV1PublicTradereferralcommissionhistoryRank(configOverride),
+    key: [getAnalyticsV1PublicTradehistoryRank.key] as QueryKey,
+    fun: () => getAnalyticsV1PublicTradehistoryRank(configOverride),
   };
 };
-useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.prefetch = (
+useGetAnalyticsV1PublicTradehistoryRank.prefetch = (
   client: QueryClient,
   options?: SwaggerTypescriptUseQueryOptions<
     TradeIncomeInviteeRankingResponseVM[]
@@ -1332,9 +1355,7 @@ useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
-    useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info(
-      configOverride,
-    );
+    useGetAnalyticsV1PublicTradehistoryRank.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -4967,34 +4988,6 @@ useGetWalletV1PrivateUserreferralprogramDefault.prefetch = (
 ) => {
   const { key, fun } =
     useGetWalletV1PrivateUserreferralprogramDefault.info(configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
-export const useGetWalletV1PrivateUserreferralprogramTotal = (
-  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetWalletV1PrivateUserreferralprogramTotal.info(configOverride);
-  return useQuery(key, fun, options);
-};
-useGetWalletV1PrivateUserreferralprogramTotal.info = (
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getWalletV1PrivateUserreferralprogramTotal.key] as QueryKey,
-    fun: () => getWalletV1PrivateUserreferralprogramTotal(configOverride),
-  };
-};
-useGetWalletV1PrivateUserreferralprogramTotal.prefetch = (
-  client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetWalletV1PrivateUserreferralprogramTotal.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
