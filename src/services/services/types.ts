@@ -90,6 +90,7 @@ export interface ApiKeyListResponseVM {
 export interface ApiKeyResponseVM {
   /** - Format: int64 */
   id: number;
+  isActive: boolean;
   apiKeyTrustedAddresses?: ApiKeyTrustedAddressResponseVM[];
   apiScopes?: ApiKeyScopeResponseVM[];
   key?: string;

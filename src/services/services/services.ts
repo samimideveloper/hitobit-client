@@ -691,11 +691,11 @@ export const getAnalyticsV1PrivateUserloginhistoryList = (
 getAnalyticsV1PrivateUserloginhistoryList.key =
   "/analytics/v1/private/userloginhistory/list";
 
-export const getAnalyticsV1PublicTradereferralcommissionhistoryRank = (
+export const getAnalyticsV1PrivateUserreferralprogramTotal = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<TradeIncomeInviteeRankingResponseVM[]>> => {
+): Promise<SwaggerResponse<UserTotalReferralProgramVM>> => {
   return Http.getRequest(
-    getAnalyticsV1PublicTradereferralcommissionhistoryRank.key,
+    getAnalyticsV1PrivateUserreferralprogramTotal.key,
     undefined,
     undefined,
     undefined,
@@ -704,8 +704,24 @@ export const getAnalyticsV1PublicTradereferralcommissionhistoryRank = (
 };
 
 /** Key is end point string without base url */
-getAnalyticsV1PublicTradereferralcommissionhistoryRank.key =
-  "/analytics/v1/public/tradereferralcommissionhistory/rank";
+getAnalyticsV1PrivateUserreferralprogramTotal.key =
+  "/analytics/v1/private/userreferralprogram/total";
+
+export const getAnalyticsV1PublicTradehistoryRank = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TradeIncomeInviteeRankingResponseVM[]>> => {
+  return Http.getRequest(
+    getAnalyticsV1PublicTradehistoryRank.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAnalyticsV1PublicTradehistoryRank.key =
+  "/analytics/v1/public/tradehistory/rank";
 
 export const getAuthV1PrivateApikey = (
   queryParams?: GetAuthV1PrivateApikeyQueryParams,
@@ -2167,22 +2183,6 @@ export const getWalletV1PrivateUserreferralprogramDefault = (
 /** Key is end point string without base url */
 getWalletV1PrivateUserreferralprogramDefault.key =
   "/wallet/v1/private/userreferralprogram/default";
-
-export const getWalletV1PrivateUserreferralprogramTotal = (
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserTotalReferralProgramVM>> => {
-  return Http.getRequest(
-    getWalletV1PrivateUserreferralprogramTotal.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getWalletV1PrivateUserreferralprogramTotal.key =
-  "/wallet/v1/private/userreferralprogram/total";
 
 export const getWalletV1PublicCurrencyInfo = (
   configOverride?: AxiosRequestConfig,
