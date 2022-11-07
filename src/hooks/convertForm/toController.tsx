@@ -67,6 +67,7 @@ export const ConvertToController = ({
     selectedMarket,
     isBuy,
     isFromSelectedQuoteAsset,
+    isFromSelectedBaseAsset,
     availableToMarkets,
   } = useMatchedMarketsList({
     fromAsset,
@@ -163,7 +164,7 @@ export const ConvertToController = ({
               onChange: (value) => {
                 setValue("lastChangedField", "to");
                 clearErrors("fromAmount");
-                onChange(onChangeValue(value));
+                onChange(onChangeValue(value, isFromSelectedBaseAsset));
                 setValue("fromAmount", value ? null : "");
                 queryClient.resetQueries({
                   queryKey: [postExchangeV1PrivateOrder.key],

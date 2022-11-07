@@ -67,10 +67,11 @@ export const ConvertFromController = ({
     return allAssets?.find(({ symbol }) => symbol === fromAsset);
   }, [allAssets, fromAsset]);
 
-  const { selectedMarket, isBuy } = useMatchedMarketsList({
-    fromAsset,
-    toMarket,
-  });
+  const { selectedMarket, isBuy, isFromSelectedQuoteAsset } =
+    useMatchedMarketsList({
+      fromAsset,
+      toMarket,
+    });
 
   const { toTickSize, toStepSize } = useStepSize(selectedMarket?.name);
 
@@ -163,7 +164,7 @@ export const ConvertFromController = ({
               onChange: (value) => {
                 setValue("lastChangedField", "from");
                 clearErrors("toAmount");
-                onChange(onChangeValue(value));
+                onChange(onChangeValue(value, isFromSelectedQuoteAsset));
                 setValue("toAmount", value ? null : "");
                 queryClient.resetQueries({
                   queryKey: [postExchangeV1PrivateOrder.key],
