@@ -8,7 +8,7 @@ export const useStepValues = (symbol?: string) => {
   const { toStepSize } = useStepSize(symbol);
   const { getSymbolMarketTicker } = useMarketTicker();
   const selectedMarket = getSymbolMarketTicker(symbol);
-  const { maxQuantity } = useMarketFilters({
+  const { maxQuantity, maxNotional } = useMarketFilters({
     selectedMarket,
   });
 
@@ -17,12 +17,15 @@ export const useStepValues = (symbol?: string) => {
       .parseNumber({ decimal: true })
       .toString();
 
-  const onChangeValue = (_value?: string) => {
+  const onChangeValue = (_value?: string, isBuy?: boolean) => {
     const _numberedValue = starkString(_value || "")
       .parseNumber({ decimal: true })
       .toNumber();
 
-    if (new Decimal(_numberedValue).greaterThan(maxQuantity)) {
+    if (isBuy && new Decimal(_numberedValue).greaterThan(maxNotional)) {
+      return maxNotional;
+    }
+    if (!isBuy && new Decimal(_numberedValue).greaterThan(maxQuantity)) {
       return maxQuantity;
     }
 
