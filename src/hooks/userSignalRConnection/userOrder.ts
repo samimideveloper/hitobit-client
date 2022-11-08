@@ -162,7 +162,10 @@ const updateOrders = (
 
   switch (order.currentOrderStatus) {
     case "NEW": {
-      return [newOrder, ...prev];
+      return [
+        newOrder,
+        ...prev.filter((item) => item.orderId !== newOrder.orderId),
+      ];
     }
 
     case "CANCELED":
