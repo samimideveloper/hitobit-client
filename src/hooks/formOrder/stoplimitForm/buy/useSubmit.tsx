@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useAuth } from "react-oidc-js";
 import {
   useGetPartyV1PrivateUsersettingPreference,
   usePostExchangeV1PrivateOrder,
@@ -31,8 +32,10 @@ const useSubmit = ({
       reset();
     },
   });
-  const { data: userPreferences } = useGetPartyV1PrivateUsersettingPreference();
-
+  const { userData } = useAuth();
+  const { data: userPreferences } = useGetPartyV1PrivateUsersettingPreference({
+    enabled: !!userData,
+  });
   const onBuySubmit = ({
     price,
     amount,
