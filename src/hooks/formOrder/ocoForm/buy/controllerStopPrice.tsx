@@ -1,6 +1,7 @@
 import { ControllerRenderProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
+import { useMarketTicker } from "../../../marketTicker";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { BuyForm, OcoOrderValues } from "../types";
 
@@ -17,6 +18,10 @@ const ControllerStopPrice = ({
 
   const { getPriceError } = useOrderPlacingError();
 
+  const { getSymbolMarketTicker } = useMarketTicker();
+
+  const market = getSymbolMarketTicker(selectedSymbol?.symbol);
+
   return (
     <BuyForm.Controller
       name="stopPrice"
@@ -25,6 +30,10 @@ const ControllerStopPrice = ({
           check: (value) => {
             if (!value) {
               return t("enterStop");
+            }
+
+            if (Number(value) <= (market?.lastPrice || 0)) {
+              return t("stopPriceShouldBeMoreThanLastPrice");
             }
 
             return getPriceError({
