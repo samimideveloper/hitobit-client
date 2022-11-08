@@ -37,7 +37,9 @@ const ControllerPrice = ({
               return t("enterPrice");
             }
 
-            if (Number(value) >= (market?.lastPrice || 0)) {
+            if (
+              new Decimal(value).greaterThanOrEqualTo(market?.lastPrice || 0)
+            ) {
               return t("priceShouldBeLessThanLastPrice");
             }
 

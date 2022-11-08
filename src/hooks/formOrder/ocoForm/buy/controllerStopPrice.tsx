@@ -1,3 +1,4 @@
+import Decimal from "decimal.js";
 import { ControllerRenderProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
@@ -32,7 +33,7 @@ const ControllerStopPrice = ({
               return t("enterStop");
             }
 
-            if (Number(value) <= (market?.lastPrice || 0)) {
+            if (new Decimal(value).lessThanOrEqualTo(market?.lastPrice || 0)) {
               return t("stopPriceShouldBeMoreThanLastPrice");
             }
 
