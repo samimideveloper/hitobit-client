@@ -27,6 +27,12 @@ const fa = {
   valueShouldBeLessThanMaxPrice: "مبلغ بایستی کمتر از {{maxPrice}} باشد",
   priceShouldBeMoreThanMinPrice: "مبلغ بایستی بیشتر از {{minPrice}} باشد",
   priceShouldBeLessThanMaxPrice: "مبلغ بایستی کمتر از {{maxPrice}} باشد",
+  stopPriceShouldBeMoreThanLastPrice:
+    "قیمت توقف بایستی بیشتر از قیمت لحظه ای باشد",
+  stopPriceShouldBeLessThanLastPrice:
+    "قیمت توقف بایستی کمتر از قیمت لحظه ای باشد",
+  priceShouldBeLessThanLastPrice: "قیمت بایستی کمتر از قیمت لحظه ای باشد",
+  priceShouldBeMoreThanLostPrice: "قیمت بایستی بیشتر از قیمت لحظه ای باشد",
   invalidValue: "مبلغ نامعتبر است.",
   orderSuccessfullyFilled: "سفارش با موفقیت انجام شد.",
   new: "جدید",

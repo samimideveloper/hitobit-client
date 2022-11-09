@@ -30,6 +30,12 @@ const en = {
   valueShouldBeLessThanMaxPrice: "Value Should Be Less Than {{maxPrice}}",
   priceShouldBeMoreThanMinPrice: "Price Should Be More Than {{minPrice}}",
   priceShouldBeLessThanMaxPrice: "Price Should Be Less Than {{maxPrice}}",
+  stopPriceShouldBeMoreThanLastPrice:
+    "Stop Price Should Be More Than Last Price",
+  stopPriceShouldBeLessThanLastPrice:
+    "Stop Price Should Be Less Than Last Price",
+  priceShouldBeLessThanLastPrice: "Price Should Be Less Than Last Price",
+  priceShouldBeMoreThanLostPrice: "Price Should Be More Than Last Price",
   invalidValue: "Invalid Value",
   orderSuccessfullyFilled: "Order Successfully Filled",
   new: "New",

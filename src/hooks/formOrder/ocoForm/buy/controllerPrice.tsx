@@ -2,6 +2,7 @@ import Decimal from "decimal.js";
 import { ControllerRenderProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
+import { useMarketTicker } from "../../../marketTicker";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
 import { BuyForm, OcoOrderValues } from "../types";
@@ -22,6 +23,10 @@ const ControllerPrice = ({
 
   const { getPriceError } = useOrderPlacingError();
 
+  const { getSymbolMarketTicker } = useMarketTicker();
+
+  const market = getSymbolMarketTicker(selectedSymbol?.symbol);
+
   return (
     <BuyForm.Controller
       name="price"
@@ -31,6 +36,13 @@ const ControllerPrice = ({
             if (!value) {
               return t("enterPrice");
             }
+
+            if (
+              new Decimal(value).greaterThanOrEqualTo(market?.lastPrice || 0)
+            ) {
+              return t("priceShouldBeLessThanLastPrice");
+            }
+
             return getPriceError({
               symbol: selectedSymbol?.symbol,
               price: Number(value),
