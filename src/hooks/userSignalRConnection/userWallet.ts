@@ -1,5 +1,5 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useRef } from "react";
-import { useQueryClient } from "react-query";
 import { useDebounceAnimationFrameCallback } from "reactjs-view-core";
 import {
   getWalletV1PrivateAll,
@@ -22,7 +22,7 @@ const useUpdateUserWalletWithSignalr = () => {
     const stackedOutbound = [...newOutboundRef.current];
     newOutboundRef.current = [];
 
-    queryClient.setQueryData<UserWalletDisplayResponseVM[]>(
+    queryClient.setQueriesData<UserWalletDisplayResponseVM[]>(
       [getWalletV1PrivateAll.key],
       (prev) => {
         const newAssets = [...(prev || [])];
@@ -82,7 +82,7 @@ const useUpdateUserWalletWithSignalr = () => {
     const stackedBalance = [...newBalanceRef.current];
     newBalanceRef.current = [];
 
-    queryClient.setQueryData<UserWalletDisplayResponseVM[]>(
+    queryClient.setQueriesData<UserWalletDisplayResponseVM[]>(
       [getWalletV1PrivateAll.key],
       (prev) => {
         const newAssets: UserWalletDisplayResponseVM[] = [...(prev || [])];

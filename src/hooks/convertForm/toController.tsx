@@ -1,8 +1,8 @@
+import { useQueryClient } from "@tanstack/react-query";
 import Decimal from "decimal.js";
 import { ReactNode, useEffect, useMemo, useTransition } from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useQueryClient } from "react-query";
 import { postExchangeV1PrivateOrder } from "../../services";
 import { useAssets } from "../useAssets";
 import { useMarketFilters } from "../useMarketFilters";
@@ -67,6 +67,7 @@ export const ConvertToController = ({
     selectedMarket,
     isBuy,
     isFromSelectedQuoteAsset,
+    isFromSelectedBaseAsset,
     availableToMarkets,
   } = useMatchedMarketsList({
     fromAsset,
@@ -163,9 +164,12 @@ export const ConvertToController = ({
               onChange: (value) => {
                 setValue("lastChangedField", "to");
                 clearErrors("fromAmount");
-                onChange(onChangeValue(value));
+                onChange(onChangeValue(value, isFromSelectedBaseAsset));
                 setValue("fromAmount", value ? null : "");
-                queryClient.resetQueries(postExchangeV1PrivateOrder.key);
+                queryClient.resetQueries({
+                  queryKey: [postExchangeV1PrivateOrder.key],
+                  type: "all",
+                });
               },
               onFocus: () => {
                 setValue("lastChangedField", "to");

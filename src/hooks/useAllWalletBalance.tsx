@@ -27,7 +27,7 @@ const useAllWalletBalance = () => {
         ?.filter(({ currencyType }) => currencyType === "Crypto")
         .reduce((prev, cur) => {
           const toBTCValue = convertBaseToQuote(
-            cur.totalRemain,
+            cur.totalRemain!,
             cur.symbol!,
             domainSetting?.defaultCryptoCurrencySymbol || "BTC",
           );
@@ -42,7 +42,7 @@ const useAllWalletBalance = () => {
         ?.filter(({ currencyType }) => currencyType === "Fiat")
         .reduce((prev, cur) => {
           const toBTCValue = convertBaseToQuote(
-            cur.totalRemain,
+            cur.totalRemain!,
             cur.symbol!,
             "IRR",
           );
@@ -95,7 +95,6 @@ const useAllWalletBalance = () => {
     fiatsInBaseCurrency,
     totalBTC,
     totalBaseCurrency,
-    totalBalanceBTC: totalBTC,
     userAssets,
     isLoading,
     error: _error || errorUserAsset,

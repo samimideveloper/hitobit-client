@@ -38,7 +38,7 @@ export const ConvertPriceController = ({
           validate: {
             amount: (value) => {
               if (!value) {
-                t("enterPrice");
+                return t("enterPrice");
               }
               return getPriceError({
                 price: Number(value),

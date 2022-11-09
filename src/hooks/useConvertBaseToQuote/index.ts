@@ -22,7 +22,7 @@ export function useConvertBaseToQuote() {
       const directMatch = marketsTicker?.find(
         (item) => item.symbol?.toLowerCase() === baseCurrency + quoteCurrency,
       );
-      if (directMatch) {
+      if (directMatch && directMatch.lastPrice !== undefined) {
         return Number(
           new Decimal(directMatch.lastPrice)
             .mul(assetCount)
@@ -74,7 +74,11 @@ export function useConvertBaseToQuote() {
             quoteCurrency + item?.baseAsset?.toLowerCase(),
         );
 
-        if (baseMatchedQuote && quoteMatchedBase) {
+        if (
+          baseMatchedQuote &&
+          quoteMatchedBase &&
+          item.lastPrice !== undefined
+        ) {
           indirectBaseLastPrice = 1 / item.lastPrice;
           indirectQuoteLastPrice = quoteMatchedBase.lastPrice;
           numberOfDecimalDigits = quoteMatchedBase.baseCurrency?.decimalDigits;

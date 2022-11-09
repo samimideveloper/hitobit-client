@@ -1,6 +1,6 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { groupBy, map } from "lodash-es";
 import { createContext, memo, useContext, useMemo } from "react";
-import { useQueryClient } from "react-query";
 import {
   getExchangeV1PublicAlltickers24hr,
   getExchangeV1PublicMarkets,
@@ -48,7 +48,7 @@ const MarketTickerProvider = memo<Props>(({ children }: any) => {
     const socketData = mapMiniTicker(data || []);
     const grouped = groupBy(socketData, (item) => item.symbol);
 
-    queryClient.setQueryData<MarketTickerPriceResponseVM[] | undefined>(
+    queryClient.setQueriesData<MarketTickerPriceResponseVM[] | undefined>(
       [getExchangeV1PublicAlltickers24hr.key],
       (prev) => {
         let updateNeeded = false;
@@ -78,10 +78,14 @@ const MarketTickerProvider = memo<Props>(({ children }: any) => {
         });
 
         if (updateNeeded) {
-          queryClient.invalidateQueries(getExchangeV1PublicMarkets.key, {
+          queryClient.invalidateQueries({
+            queryKey: [getExchangeV1PublicMarkets.key],
+            refetchType: "all",
             exact: true,
           });
-          queryClient.invalidateQueries(getExchangeV1PublicTrades.key, {
+          queryClient.invalidateQueries({
+            queryKey: [getExchangeV1PublicTrades.key],
+            refetchType: "all",
             exact: true,
           });
         }

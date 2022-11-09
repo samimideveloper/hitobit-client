@@ -1,5 +1,5 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { createContext, memo, useContext, useMemo, useRef } from "react";
-import { useQueryClient } from "react-query";
 import {
   RecentTradeResponseVM,
   useGetExchangeV1PublicTrades,
@@ -65,12 +65,12 @@ const TradesBookProvider = memo(({ children }: any) => {
   const newTradesRef = useRef<Record<string, RecentTradeResponseVM[]>>({});
 
   const assignToQueryClient = useDebounceAnimationFrameCallback(() => {
-    queryClient.setQueryData<RecentTradeResponseVM[]>(
+    queryClient.setQueriesData<RecentTradeResponseVM[]>(
       useGetExchangeV1PublicTrades.info(tradeQueryParams).key,
       (prev: RecentTradeResponseVM[] | undefined) => {
         const assignableTrades = newTradesRef.current[
           tradeQueryParams.Symbol!
-        ]?.filter((trade) => (prev?.[0]?.tradeTime || 0) <= trade.tradeTime);
+        ]?.filter((trade) => (prev?.[0]?.tradeTime || 0) <= trade.tradeTime!);
 
         const result = [...(assignableTrades || []), ...(prev || [])].slice(
           0,
@@ -94,7 +94,7 @@ const TradesBookProvider = memo(({ children }: any) => {
         price: Number(item.p),
         baseQuantity: Number(item.q),
         quoteQuantity: Number(item.p) * Number(item.q),
-        tradeTime: item.T as unknown as string,
+        tradeTime: item.T,
         smartTradeEngine: item.S,
       };
 

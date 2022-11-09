@@ -1,11 +1,9 @@
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
- * @version 5
+ * @version 6
  */
 
-import { AxiosRequestConfig } from "axios";
-import { useMemo } from "react";
 import {
   QueryClient,
   QueryKey,
@@ -15,7 +13,9 @@ import {
   UseMutationOptions,
   useQuery,
   UseQueryOptions,
-} from "react-query";
+} from "@tanstack/react-query";
+import { AxiosRequestConfig } from "axios";
+import { useMemo } from "react";
 import { RequestError, SwaggerResponse } from "./config";
 import { getPageSize, getTotal, paginationFlattenData } from "./hooksConfig";
 import {
@@ -37,14 +37,15 @@ import {
   getAnalyticsV1PrivateResellercommissionhistoryTotalincome,
   getAnalyticsV1PrivateResellercommissionhistoryTransactioncount,
   getAnalyticsV1PrivateSecurityactivityList,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList,
-  getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent,
+  getAnalyticsV1PrivateTradehistoryIncomeinviteeList,
+  getAnalyticsV1PrivateTradehistoryIncomeinviteeRecent,
+  getAnalyticsV1PrivateTradehistoryIncomereferralList,
+  getAnalyticsV1PrivateTradehistoryIncomereferralRecent,
+  getAnalyticsV1PrivateTradehistoryReferralhistory,
   getAnalyticsV1PrivateUserloginhistoryLast,
   getAnalyticsV1PrivateUserloginhistoryList,
-  getAnalyticsV1PublicTradereferralcommissionhistoryRank,
+  getAnalyticsV1PrivateUserreferralprogramTotal,
+  getAnalyticsV1PublicTradehistoryRank,
   getAuthV1PrivateApikey,
   getAuthV1PrivateApikeyList,
   getAuthV1PrivateAuthGetqrcode,
@@ -87,7 +88,6 @@ import {
   getExchangeV1PublicMarkets,
   getExchangeV1PublicTicker24hr,
   getExchangeV1PublicTrades,
-  getPartyV1PrivateDeviceAll,
   getPartyV1PrivateDomainForcetwofa,
   getPartyV1PrivateDomainMultiwallet,
   getPartyV1PrivateDomainSetting,
@@ -96,7 +96,6 @@ import {
   getPartyV1PrivateNotificationAll,
   getPartyV1PrivateNotificationTypes,
   getPartyV1PrivatePluginList,
-  getPartyV1PrivateUserByuserreferralprogramid,
   getPartyV1PrivateUsersettingPreference,
   getPartyV1PrivateWalletsettingMaxreferalprogrampercent,
   getPartyV1PublicIdentificationlevelGuide,
@@ -138,7 +137,6 @@ import {
   getWalletV1PrivateUserbankStatus,
   getWalletV1PrivateUserreferralprogramAll,
   getWalletV1PrivateUserreferralprogramDefault,
-  getWalletV1PrivateUserreferralprogramTotal,
   getWalletV1PublicCurrencyInfo,
   getWalletV1PublicFind,
   patchWalletV1Private,
@@ -270,9 +268,9 @@ import {
   GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
   GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
   GetAnalyticsV1PrivateSecurityactivityListQueryParams,
-  GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-  GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
-  GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
+  GetAnalyticsV1PrivateTradehistoryIncomeinviteeListQueryParams,
+  GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams,
+  GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams,
   GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
   GetAuthV1PrivateApikeyListQueryParams,
   GetAuthV1PrivateApikeyQueryParams,
@@ -307,7 +305,6 @@ import {
   GetPartyV1PrivateFavoritemarketQueryParams,
   GetPartyV1PrivateNotificationAllQueryParams,
   GetPartyV1PrivatePluginListQueryParams,
-  GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
   GetPartyV1PublicPluginQueryParams,
   GetPaymentV1PrivateEpayrequestCommissionQueryParams,
   GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
@@ -397,9 +394,9 @@ import {
   SubuserAccessRequestVM,
   TodayTotalWithdrawResponseVM,
   TokenResponseVM,
-  TradeReferralCommissionHistoryListResponseVM,
-  TradeReferralCommissionHistoryResponseVM,
-  TradeReferralCommissionRankingResponseVM,
+  TradeIncomeHistoryListResponseVM,
+  TradeIncomeHistoryResponseVM,
+  TradeIncomeInviteeRankingResponseVM,
   TradeReferralHistoryListResponseVM,
   TradeResposneListVM,
   TransactionHistoryDetailResponseVM,
@@ -425,14 +422,12 @@ import {
   UserMinimalResponseVM,
   UserPluginResponseVM,
   UserPluginTogggleRequestVM,
-  UserReferralInfoVM,
   UserReferralProgramAddVM,
   UserReferralProgramVM,
   UserSettingPreferenseResponseVM,
   UserStatusResponseVM,
   UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
-  UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
   UserWalletDisplayDetailResponseVM,
   UserWalletDisplayResponseVM,
@@ -998,268 +993,210 @@ useGetAnalyticsV1PrivateSecurityactivityList.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.info(
-        queryParams,
-        configOverride,
-      );
-    return useQuery(key, fun, options);
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.info =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    return {
-      key: [
-        getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.key,
-
-        queryParams,
-      ] as QueryKey,
-      fun: () =>
-        getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList(
-          queryParams,
-
-          configOverride,
-        ),
-    };
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.prefetch =
-  (
-    client: QueryClient,
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.info(
-        queryParams,
-        configOverride,
-      );
-
-    return client.getQueryData(key)
-      ? Promise.resolve()
-      : client.prefetchQuery(key, () => fun(), options);
-  };
-export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent =
-  (
-    options?: SwaggerTypescriptUseQueryOptions<
-      TradeReferralCommissionHistoryResponseVM[]
-    >,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.info(
-        configOverride,
-      );
-    return useQuery(key, fun, options);
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.info =
-  (configOverride?: AxiosRequestConfig) => {
-    return {
-      key: [
-        getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.key,
-      ] as QueryKey,
-      fun: () =>
-        getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent(
-          configOverride,
-        ),
-    };
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.prefetch =
-  (
-    client: QueryClient,
-    options?: SwaggerTypescriptUseQueryOptions<
-      TradeReferralCommissionHistoryResponseVM[]
-    >,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.info(
-        configOverride,
-      );
-
-    return client.getQueryData(key)
-      ? Promise.resolve()
-      : client.prefetchQuery(key, () => fun(), options);
-  };
-export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
-    options?: UseInfiniteQueryOptions<
-      SwaggerResponse<TradeReferralHistoryListResponseVM>,
-      RequestError | Error
-    >,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.info(
-        queryParams,
-        configOverride,
-      );
-    const {
-      data: { pages } = {},
-      data,
-      ...rest
-    } = useInfiniteQuery(
-      key,
-      ({ pageParam = 1 }) =>
-        fun({
-          pageNo: pageParam,
-        }),
-      {
-        getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
-        ...(options as any),
-      },
+export const useGetAnalyticsV1PrivateTradehistoryIncomeinviteeList = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomeinviteeListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomeinviteeList.info(
+      queryParams,
+      configOverride,
     );
-
-    const list = useMemo(() => paginationFlattenData(pages), [pages]);
-    const total = getTotal(pages);
-
-    const hasMore = useHasMore(pages, list, queryParams);
-
-    return { ...rest, data, list, hasMore, total };
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.info = (
-  queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PrivateTradehistoryIncomeinviteeList.info = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomeinviteeListQueryParams,
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
     key: [
-      getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.key,
+      getAnalyticsV1PrivateTradehistoryIncomeinviteeList.key,
 
       queryParams,
     ] as QueryKey,
-    fun: (
-      _param?: Partial<GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams>,
-    ) =>
-      getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory(
-        {
-          ..._param,
-          ...queryParams,
-        },
+    fun: () =>
+      getAnalyticsV1PrivateTradehistoryIncomeinviteeList(
+        queryParams,
 
         configOverride,
       ),
   };
 };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.prefetch =
-  (
-    client: QueryClient,
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
-    options?: UseInfiniteQueryOptions<
-      SwaggerResponse<TradeReferralHistoryListResponseVM>,
-      RequestError | Error
-    >,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.info(
+useGetAnalyticsV1PrivateTradehistoryIncomeinviteeList.prefetch = (
+  client: QueryClient,
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomeinviteeListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomeinviteeList.info(
+      queryParams,
+      configOverride,
+    );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetAnalyticsV1PrivateTradehistoryIncomeinviteeRecent = (
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomeinviteeRecent.info(
+      configOverride,
+    );
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PrivateTradehistoryIncomeinviteeRecent.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getAnalyticsV1PrivateTradehistoryIncomeinviteeRecent.key] as QueryKey,
+    fun: () =>
+      getAnalyticsV1PrivateTradehistoryIncomeinviteeRecent(configOverride),
+  };
+};
+useGetAnalyticsV1PrivateTradehistoryIncomeinviteeRecent.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomeinviteeRecent.info(
+      configOverride,
+    );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetAnalyticsV1PrivateTradehistoryIncomereferralList = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomereferralList.info(
+      queryParams,
+      configOverride,
+    );
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PrivateTradehistoryIncomereferralList.info = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      getAnalyticsV1PrivateTradehistoryIncomereferralList.key,
+
+      queryParams,
+    ] as QueryKey,
+    fun: () =>
+      getAnalyticsV1PrivateTradehistoryIncomereferralList(
         queryParams,
-        configOverride,
-      );
 
-    return client.getQueryData(key)
-      ? Promise.resolve()
-      : client.prefetchQuery(key, () => fun(), options);
+        configOverride,
+      ),
   };
-export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
-    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.info(
+};
+useGetAnalyticsV1PrivateTradehistoryIncomereferralList.prefetch = (
+  client: QueryClient,
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomereferralList.info(
+      queryParams,
+      configOverride,
+    );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetAnalyticsV1PrivateTradehistoryIncomereferralRecent = (
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomereferralRecent.info(
+      configOverride,
+    );
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PrivateTradehistoryIncomereferralRecent.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      getAnalyticsV1PrivateTradehistoryIncomereferralRecent.key,
+    ] as QueryKey,
+    fun: () =>
+      getAnalyticsV1PrivateTradehistoryIncomereferralRecent(configOverride),
+  };
+};
+useGetAnalyticsV1PrivateTradehistoryIncomereferralRecent.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<TradeIncomeHistoryResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateTradehistoryIncomereferralRecent.info(
+      configOverride,
+    );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetAnalyticsV1PrivateTradehistoryReferralhistory = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TradeReferralHistoryListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAnalyticsV1PrivateTradehistoryReferralhistory.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PrivateTradehistoryReferralhistory.info = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      getAnalyticsV1PrivateTradehistoryReferralhistory.key,
+
+      queryParams,
+    ] as QueryKey,
+    fun: () =>
+      getAnalyticsV1PrivateTradehistoryReferralhistory(
         queryParams,
-        configOverride,
-      );
-    return useQuery(key, fun, options);
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.info =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    return {
-      key: [
-        getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.key,
 
-        queryParams,
-      ] as QueryKey,
-      fun: () =>
-        getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList(
-          queryParams,
-
-          configOverride,
-        ),
-    };
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.prefetch =
-  (
-    client: QueryClient,
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
-    options?: SwaggerTypescriptUseQueryOptions<TradeReferralCommissionHistoryListResponseVM>,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.info(
-        queryParams,
         configOverride,
-      );
+      ),
+  };
+};
+useGetAnalyticsV1PrivateTradehistoryReferralhistory.prefetch = (
+  client: QueryClient,
+  queryParams?: GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TradeReferralHistoryListResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAnalyticsV1PrivateTradehistoryReferralhistory.info(
+    queryParams,
+    configOverride,
+  );
 
-    return client.getQueryData(key)
-      ? Promise.resolve()
-      : client.prefetchQuery(key, () => fun(), options);
-  };
-export const useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent =
-  (
-    options?: SwaggerTypescriptUseQueryOptions<
-      TradeReferralCommissionHistoryResponseVM[]
-    >,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.info(
-        configOverride,
-      );
-    return useQuery(key, fun, options);
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.info =
-  (configOverride?: AxiosRequestConfig) => {
-    return {
-      key: [
-        getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.key,
-      ] as QueryKey,
-      fun: () =>
-        getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent(
-          configOverride,
-        ),
-    };
-  };
-useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.prefetch =
-  (
-    client: QueryClient,
-    options?: SwaggerTypescriptUseQueryOptions<
-      TradeReferralCommissionHistoryResponseVM[]
-    >,
-    configOverride?: AxiosRequestConfig,
-  ) => {
-    const { key, fun } =
-      useGetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.info(
-        configOverride,
-      );
-
-    return client.getQueryData(key)
-      ? Promise.resolve()
-      : client.prefetchQuery(key, () => fun(), options);
-  };
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
 export const useGetAnalyticsV1PrivateUserloginhistoryLast = (
   options?: SwaggerTypescriptUseQueryOptions<UserLoginHistoryDetailsVM>,
   configOverride?: AxiosRequestConfig,
@@ -1364,40 +1301,61 @@ useGetAnalyticsV1PrivateUserloginhistoryList.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetAnalyticsV1PublicTradereferralcommissionhistoryRank = (
-  options?: SwaggerTypescriptUseQueryOptions<
-    TradeReferralCommissionRankingResponseVM[]
-  >,
+export const useGetAnalyticsV1PrivateUserreferralprogramTotal = (
+  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
-    useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info(
-      configOverride,
-    );
+    useGetAnalyticsV1PrivateUserreferralprogramTotal.info(configOverride);
   return useQuery(key, fun, options);
 };
-useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info = (
+useGetAnalyticsV1PrivateUserreferralprogramTotal.info = (
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
-    key: [
-      getAnalyticsV1PublicTradereferralcommissionhistoryRank.key,
-    ] as QueryKey,
-    fun: () =>
-      getAnalyticsV1PublicTradereferralcommissionhistoryRank(configOverride),
+    key: [getAnalyticsV1PrivateUserreferralprogramTotal.key] as QueryKey,
+    fun: () => getAnalyticsV1PrivateUserreferralprogramTotal(configOverride),
   };
 };
-useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.prefetch = (
+useGetAnalyticsV1PrivateUserreferralprogramTotal.prefetch = (
   client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PrivateUserreferralprogramTotal.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetAnalyticsV1PublicTradehistoryRank = (
   options?: SwaggerTypescriptUseQueryOptions<
-    TradeReferralCommissionRankingResponseVM[]
+    TradeIncomeInviteeRankingResponseVM[]
   >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
-    useGetAnalyticsV1PublicTradereferralcommissionhistoryRank.info(
-      configOverride,
-    );
+    useGetAnalyticsV1PublicTradehistoryRank.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PublicTradehistoryRank.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getAnalyticsV1PublicTradehistoryRank.key] as QueryKey,
+    fun: () => getAnalyticsV1PublicTradehistoryRank(configOverride),
+  };
+};
+useGetAnalyticsV1PublicTradehistoryRank.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<
+    TradeIncomeInviteeRankingResponseVM[]
+  >,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PublicTradehistoryRank.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -3245,30 +3203,6 @@ useGetExchangeV1PublicTrades.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetPartyV1PrivateDeviceAll = (
-  options?: SwaggerTypescriptUseQueryOptions<UserTrustDeviceResponseVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateDeviceAll.info(configOverride);
-  return useQuery(key, fun, options);
-};
-useGetPartyV1PrivateDeviceAll.info = (configOverride?: AxiosRequestConfig) => {
-  return {
-    key: [getPartyV1PrivateDeviceAll.key] as QueryKey,
-    fun: () => getPartyV1PrivateDeviceAll(configOverride),
-  };
-};
-useGetPartyV1PrivateDeviceAll.prefetch = (
-  client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserTrustDeviceResponseVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateDeviceAll.info(configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
 export const useGetPartyV1PrivateDomainForcetwofa = (
   options?: SwaggerTypescriptUseQueryOptions<boolean>,
   configOverride?: AxiosRequestConfig,
@@ -3523,50 +3457,6 @@ useGetPartyV1PrivatePluginList.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPartyV1PrivatePluginList.info(
-    queryParams,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
-export const useGetPartyV1PrivateUserByuserreferralprogramid = (
-  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<UserReferralInfoVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateUserByuserreferralprogramid.info(
-    queryParams,
-    configOverride,
-  );
-  return useQuery(key, fun, options);
-};
-useGetPartyV1PrivateUserByuserreferralprogramid.info = (
-  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [
-      getPartyV1PrivateUserByuserreferralprogramid.key,
-
-      queryParams,
-    ] as QueryKey,
-    fun: () =>
-      getPartyV1PrivateUserByuserreferralprogramid(
-        queryParams,
-
-        configOverride,
-      ),
-  };
-};
-useGetPartyV1PrivateUserByuserreferralprogramid.prefetch = (
-  client: QueryClient,
-  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<UserReferralInfoVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateUserByuserreferralprogramid.info(
     queryParams,
     configOverride,
   );
@@ -5098,34 +4988,6 @@ useGetWalletV1PrivateUserreferralprogramDefault.prefetch = (
 ) => {
   const { key, fun } =
     useGetWalletV1PrivateUserreferralprogramDefault.info(configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
-export const useGetWalletV1PrivateUserreferralprogramTotal = (
-  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetWalletV1PrivateUserreferralprogramTotal.info(configOverride);
-  return useQuery(key, fun, options);
-};
-useGetWalletV1PrivateUserreferralprogramTotal.info = (
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getWalletV1PrivateUserreferralprogramTotal.key] as QueryKey,
-    fun: () => getWalletV1PrivateUserreferralprogramTotal(configOverride),
-  };
-};
-useGetWalletV1PrivateUserreferralprogramTotal.prefetch = (
-  client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserTotalReferralProgramVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetWalletV1PrivateUserreferralprogramTotal.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()

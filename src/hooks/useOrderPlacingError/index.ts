@@ -104,7 +104,7 @@ export function useOrderPlacingError() {
     if (!__MOCK__ && !userData?.access_token) return undefined;
 
     if (side === "Buy") {
-      const total = new Decimal(price).mul(baseQuantity);
+      const total = new Decimal(price || 0).mul(baseQuantity);
       if (total.greaterThan(targetMarket.quoteCurrency?.availableRemain || 0)) {
         return t("insufficientBalance");
       }

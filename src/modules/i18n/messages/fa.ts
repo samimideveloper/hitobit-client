@@ -27,6 +27,12 @@ const fa = {
   valueShouldBeLessThanMaxPrice: "مبلغ بایستی کمتر از {{maxPrice}} باشد",
   priceShouldBeMoreThanMinPrice: "مبلغ بایستی بیشتر از {{minPrice}} باشد",
   priceShouldBeLessThanMaxPrice: "مبلغ بایستی کمتر از {{maxPrice}} باشد",
+  stopPriceShouldBeMoreThanLastPrice:
+    "قیمت توقف بایستی بیشتر از قیمت لحظه ای باشد",
+  stopPriceShouldBeLessThanLastPrice:
+    "قیمت توقف بایستی کمتر از قیمت لحظه ای باشد",
+  priceShouldBeLessThanLastPrice: "قیمت بایستی کمتر از قیمت لحظه ای باشد",
+  priceShouldBeMoreThanLostPrice: "قیمت بایستی بیشتر از قیمت لحظه ای باشد",
   invalidValue: "مبلغ نامعتبر است.",
   orderSuccessfullyFilled: "سفارش با موفقیت انجام شد.",
   new: "جدید",
@@ -37,6 +43,14 @@ const fa = {
   Insurance: "بیمه",
   Adl: "ADL",
   trillion: "تریلیون",
+  BadRequest: "اطلاعات ارسالی نامعتبر است.",
+  UntrustedDevice: "دستگاه شما معتبر نیست.",
+  regNotComp: "ثبت نام کاربر کامل نشده است.",
+  UserIsNotActive: "کاربر فعال نیست",
+  IsLockedOut: "حساب کاربری شما مسدود شده است.",
+  IsNotAllowed: "دسترسی معتبر ندارید.",
+  invalidUserPass: "نام کاربری یا رمزعبور صحیح نمی باشد.",
+  UserIsSuspended: "حساب کاربری شما به حالت تعلیق درآمده است.",
 };
 
 export type Fa = typeof fa;

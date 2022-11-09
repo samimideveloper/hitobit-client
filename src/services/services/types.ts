@@ -1,7 +1,7 @@
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
- * @version 5
+ * @version 6
  */
 
 export type AccountStatus = "Block" | "OK";
@@ -90,6 +90,7 @@ export interface ApiKeyListResponseVM {
 export interface ApiKeyResponseVM {
   /** - Format: int64 */
   id: number;
+  isActive: boolean;
   apiKeyTrustedAddresses?: ApiKeyTrustedAddressResponseVM[];
   apiScopes?: ApiKeyScopeResponseVM[];
   key?: string;
@@ -226,8 +227,8 @@ export interface CancelOcoOrderResponseVM {
   listStatusType: AppListStatusType;
   /** - Format: int64 */
   orderListId: number;
-  /** - Format: date-time */
-  transactionTime: string;
+  /** - Format: int64 */
+  transactionTime: number;
   contingencyType?: string;
   listClientOrderId?: string;
   orderReports?: OrderResultInfoResponseVM[];
@@ -255,8 +256,8 @@ export interface CancelOrderResponseVM {
   side: AppOrderSide;
   status: AppOrderStatus;
   timeInForce: AppTimeInForce;
-  /** - Format: date-time */
-  transactTime: string;
+  /** - Format: int64 */
+  transactTime: number;
   type: AppOrderType;
   baseCurrencySymbol?: string;
   clientOrderId?: string;
@@ -863,7 +864,7 @@ export interface GetAnalyticsV1PrivateSecurityactivityListQueryParams {
   status?: SecurityStatus;
 }
 
-export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams {
+export interface GetAnalyticsV1PrivateTradehistoryIncomeinviteeListQueryParams {
   /** - Format: date-time */
   endDate?: string;
   /** - Format: int32 */
@@ -876,16 +877,7 @@ export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionre
   startDate?: string;
 }
 
-export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams {
-  /** - Format: int32 */
-  pageNo?: number;
-  /** - Format: int32 */
-  pageSize?: number;
-  /** - Format: int64 */
-  referralProgramId?: number;
-}
-
-export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams {
+export interface GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams {
   /** - Format: date-time */
   endDate?: string;
   /** - Format: int32 */
@@ -896,6 +888,15 @@ export interface GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkick
   referralProgramId?: number;
   /** - Format: date-time */
   startDate?: string;
+}
+
+export interface GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams {
+  /** - Format: int32 */
+  pageNo?: number;
+  /** - Format: int32 */
+  pageSize?: number;
+  /** - Format: int64 */
+  referralProgramId?: number;
 }
 
 export interface GetAnalyticsV1PrivateUserloginhistoryListQueryParams {
@@ -1145,8 +1146,8 @@ export interface GetOcoOrderResponseVM {
   listStatusType: AppListStatusType;
   /** - Format: int64 */
   orderListId: number;
-  /** - Format: date-time */
-  transactionTime: string;
+  /** - Format: int64 */
+  transactionTime: number;
   contingencyType?: string;
   listClientOrderId?: string;
   orders?: OrderMinimalInfoResponseVM[];
@@ -1168,11 +1169,6 @@ export interface GetPartyV1PrivateNotificationAllQueryParams {
 
 export interface GetPartyV1PrivatePluginListQueryParams {
   scenarioKey?: string;
-}
-
-export interface GetPartyV1PrivateUserByuserreferralprogramidQueryParams {
-  /** - Format: int64 */
-  userReferralProgramId?: number;
 }
 
 export interface GetPartyV1PublicPluginQueryParams {
@@ -1546,6 +1542,21 @@ export interface IdentificationLevelGuideResponseVM {
 
 export type IdentificationLevelRequestStatus = "Pending" | "Confirm" | "Reject";
 
+export type IdentityFailedStatusCodes =
+  | "BadRequest"
+  | "TwoFactor"
+  | "UntrustedDevice"
+  | "TwoFactorAndUntrustedDevice"
+  | "UserRegistrationNotCompleted"
+  | "UserIsNotActive"
+  | "IsLockedOut"
+  | "IsNotAllowed"
+  | "InvalidUserNameOrPassword"
+  | "FailedTwoFa"
+  | "UserTrustedDevice"
+  | "UserTrusted"
+  | "UserIsSuspended";
+
 export type IdentityStatus =
   | "None"
   | "WatingForCheck"
@@ -1609,16 +1620,16 @@ export interface KlineDataResponseVM {
   baseVolume: number;
   /** - Format: double */
   close: number;
-  /** - Format: date-time */
-  closeTime: string;
+  /** - Format: int64 */
+  closeTime: number;
   /** - Format: double */
   high: number;
   /** - Format: double */
   low: number;
   /** - Format: double */
   open: number;
-  /** - Format: date-time */
-  openTime: string;
+  /** - Format: int64 */
+  openTime: number;
   /** - Format: double */
   quoteVolume: number;
   /** - Format: double */
@@ -1677,8 +1688,8 @@ export interface MarketRateLimitRsponseVM {
 }
 
 export interface MarketResponseVM {
-  /** - Format: date-time */
-  serverTime: string;
+  /** - Format: int64 */
+  serverTime: number;
   exchangeFilters?: any[];
   rateLimits?: MarketRateLimitRsponseVM[];
   symbols?: MarketSymbolResponseVM[];
@@ -1719,15 +1730,15 @@ export interface MarketTickerPriceResponseVM {
   bidPrice: number;
   /** - Format: double */
   bidQuantity: number;
-  /** - Format: date-time */
-  closeTime: string;
+  /** - Format: int64 */
+  closeTime: number;
   /** - Format: int64 */
   firstTradeId: number;
   /** - Format: double */
   highPrice: number;
   isHighlight: boolean;
-  /** - Format: date-time */
-  lastMarketInfoChangeDate: string;
+  /** - Format: int64 */
+  lastMarketInfoChangeDate: number;
   /** - Format: double */
   lastPrice: number;
   /** - Format: double */
@@ -1738,8 +1749,8 @@ export interface MarketTickerPriceResponseVM {
   lowPrice: number;
   /** - Format: double */
   openPrice: number;
-  /** - Format: date-time */
-  openTime: string;
+  /** - Format: int64 */
+  openTime: number;
   /** - Format: double */
   prevDayClosePrice: number;
   /** - Format: double */
@@ -1749,8 +1760,8 @@ export interface MarketTickerPriceResponseVM {
   /** - Format: double */
   quoteVolume: number;
   smartTradeEngine: boolean;
-  /** - Format: date-time */
-  symbolPublicOfferingDate: string;
+  /** - Format: int64 */
+  symbolPublicOfferingDate: number;
   /** - Format: double */
   totalTrades: number;
   /** - Format: double */
@@ -1879,8 +1890,8 @@ export interface OcoOrderResultInfoResponseVM {
   listStatusType: AppListStatusType;
   /** - Format: int64 */
   orderListId: number;
-  /** - Format: date-time */
-  transactionTime: string;
+  /** - Format: int64 */
+  transactionTime: number;
   contingencyType?: string;
   listClientOrderId?: string;
   orders?: OrderMinimalInfoResponseVM[];
@@ -1894,8 +1905,8 @@ export interface OrderAckInfoResponseVM {
   orderId: number;
   /** - Format: int64 */
   orderListId: number;
-  /** - Format: date-time */
-  transactTime: string;
+  /** - Format: int64 */
+  transactTime: number;
   clientOrderId?: string;
   symbol?: string;
 }
@@ -1905,8 +1916,8 @@ export interface OrderBookResponseVM {
   lastUpdateId: number;
   /** - Format: int64 */
   lastUpdateIdStream: number;
-  /** - Format: date-time */
-  transactionTime: string;
+  /** - Format: int64 */
+  transactionTime: number;
   asks?: number[][];
   bids?: number[][];
   /** - Format: int64 */
@@ -1926,8 +1937,8 @@ export interface OrderFullInfoResponseVM {
   side: AppOrderSide;
   status: AppOrderStatus;
   timeInForce: AppTimeInForce;
-  /** - Format: date-time */
-  transactTime: string;
+  /** - Format: int64 */
+  transactTime: number;
   type: AppOrderType;
   baseCurrencySymbol?: string;
   clientOrderId?: string;
@@ -1971,8 +1982,8 @@ export interface OrderResultInfoResponseVM {
   side: AppOrderSide;
   status: AppOrderStatus;
   timeInForce: AppTimeInForce;
-  /** - Format: date-time */
-  transactTime: string;
+  /** - Format: int64 */
+  transactTime: number;
   type: AppOrderType;
   baseCurrencySymbol?: string;
   clientOrderId?: string;
@@ -2241,8 +2252,8 @@ export interface RecentTradeResponseVM {
   /** - Format: double */
   quoteQuantity: number;
   smartTradeEngine: boolean;
-  /** - Format: date-time */
-  tradeTime: string;
+  /** - Format: int64 */
+  tradeTime: number;
 }
 
 export type RedirectType = "None" | "Redirect" | "RedirectWithPost";
@@ -2509,15 +2520,13 @@ export interface TokenResponseVM {
   tokenType?: string;
 }
 
-export interface TradeReferralCommissionHistoryListResponseVM {
+export interface TradeIncomeHistoryListResponseVM {
   /** - Format: int64 */
   count: number;
-  list?: TradeReferralCommissionHistoryResponseVM[];
+  list?: TradeIncomeHistoryResponseVM[];
 }
 
-export interface TradeReferralCommissionHistoryResponseVM {
-  /** - Format: double */
-  commissionAmount: number;
+export interface TradeIncomeHistoryResponseVM {
   /** - Format: int32 */
   commissionCurrencyId: number;
   /** - Format: date-time */
@@ -2526,6 +2535,8 @@ export interface TradeReferralCommissionHistoryResponseVM {
   domainId: number;
   /** - Format: int64 */
   id: number;
+  /** - Format: double */
+  income: number;
   /** - Format: int64 */
   orderId: number;
   /** - Format: uuid */
@@ -2534,22 +2545,17 @@ export interface TradeReferralCommissionHistoryResponseVM {
   referralProgramId: number;
   /** - Format: date-time */
   transactionDate: string;
-  type: TradeReferralCommissionType;
   /** - Format: uuid */
   userId: string;
   commissionCurrencySymbol?: string;
 }
 
-export interface TradeReferralCommissionRankingResponseVM {
+export interface TradeIncomeInviteeRankingResponseVM {
   /** - Format: double */
   amount: number;
   currencySymbol?: string;
   userName?: string;
 }
-
-export type TradeReferralCommissionType =
-  | "CommissionRebate"
-  | "ReferralKickback";
 
 export interface TradeReferralHistoryListResponseVM {
   /** - Format: int64 */
@@ -2826,7 +2832,7 @@ export interface UserLoginHistoryVM {
   status: LoginStatus;
   browserName?: string;
   deviceId?: string;
-  failedDescription?: string;
+  failedDescription?: IdentityFailedStatusCodes;
   ip?: string;
   location?: string;
   platform?: string;
@@ -2893,14 +2899,6 @@ export interface UserPluginTogggleRequestVM {
   isActive: boolean;
   config?: string;
   pluginKey?: string;
-}
-
-export interface UserReferralInfoVM {
-  /** - Format: uuid */
-  id: string;
-  email?: string;
-  phoneNumber?: string;
-  userName?: string;
 }
 
 export interface UserReferralProgramAddVM {
@@ -2975,20 +2973,6 @@ export interface UserTraderLevelResponseVM {
   /** - Format: int32 */
   levelIndex: number;
   name?: string;
-}
-
-export interface UserTrustDeviceResponseVM {
-  /** - Format: uuid */
-  userId: string;
-  /** - Format: date-time */
-  createDate?: string;
-  deviceBrand?: string;
-  deviceId?: string;
-  deviceName?: string;
-  ipAddress?: string;
-  osName?: string;
-  osVersion?: string;
-  softwareName?: string;
 }
 
 export interface UserTrustedDeviceListResponseVM {

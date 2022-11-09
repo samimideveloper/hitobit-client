@@ -9,7 +9,7 @@ type MarketMiniTicker = {
   symbol: string;
   volume: string;
   smartTradeEngine: boolean;
-  lastMarketInfoChangeDate: string;
+  lastMarketInfoChangeDate: number;
 };
 
 enum MarketMiniTickerKey {

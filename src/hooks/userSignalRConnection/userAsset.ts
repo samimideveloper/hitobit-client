@@ -1,6 +1,7 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useRef } from "react";
-import { useQueryClient } from "react-query";
 import {
+  getWalletV1PrivateUserassetSpotDefault,
   getWalletV1PrivateUserassetSpotDefaultAll,
   useGetWalletV1PrivateUserassetSpotDefault,
   UserAssetResponseVM,
@@ -23,7 +24,7 @@ const useUpdateUserAssetWithSignalr = () => {
     const stackedOutbound = [...newOutboundRef.current];
     newOutboundRef.current = [];
 
-    queryClient.setQueryData<UserAssetResponseVM[]>(
+    queryClient.setQueriesData<UserAssetResponseVM[]>(
       [getWalletV1PrivateUserassetSpotDefaultAll.key],
       (prev) => {
         const newAssets = [...(prev || [])];
@@ -53,11 +54,11 @@ const useUpdateUserAssetWithSignalr = () => {
               totalRemain: Number(item.free) + Number(item.locked),
             });
 
-            queryClient.invalidateQueries<UserAssetResponseVM>(
-              useGetWalletV1PrivateUserassetSpotDefault.info({
-                symbol: item.asset,
-              }).key,
-            );
+            queryClient.invalidateQueries({
+              queryKey: [getWalletV1PrivateUserassetSpotDefault.key],
+              refetchType: "all",
+              exact: true,
+            });
           });
         });
 
@@ -80,7 +81,7 @@ const useUpdateUserAssetWithSignalr = () => {
     const stackedBalance = [...newBalanceRef.current];
     newBalanceRef.current = [];
 
-    queryClient.setQueryData<UserAssetResponseVM[]>(
+    queryClient.setQueriesData<UserAssetResponseVM[]>(
       [getWalletV1PrivateUserassetSpotDefaultAll.key],
       (prev) => {
         const newAssets: UserAssetResponseVM[] = [...(prev || [])];

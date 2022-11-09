@@ -148,9 +148,6 @@ describe("Home", () => {
     expect(data.getAttribute("data-amount-error-4")).toBe(
       i18n.t("valueShouldBeMoreThanMinPrice", { minPrice: "0.00001" }),
     );
-    expect(data.getAttribute("data-amount-error-5")).toBe(
-      i18n.t("valueShouldBeLessThanMaxPrice", { maxPrice: "9,000" }),
-    );
   });
 });
 const sleep = (time: number) =>

@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { isEqual, uniqWith } from "lodash-es";
 import {
   createContext,
@@ -6,7 +7,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useQueryClient } from "react-query";
 import { useEvent } from "reactjs-view-core";
 import {
   KlineDataResponseVM,
@@ -50,8 +50,8 @@ const Instance = ({ interval, symbol }: KlineInstance) => {
       const newInterval = SocketIntervalToHapi[data.k.i];
 
       const kline: KlineDataResponseVM = {
-        openTime: new Date(data.k.t).getTime() as unknown as string, // Kline start time
-        closeTime: new Date(data.k.T).getTime() as unknown as string, // Kline close time
+        openTime: new Date(data.k.t).getTime(), // Kline start time
+        closeTime: new Date(data.k.T).getTime(), // Kline close time
         open: data.k.o, // Open price
         close: data.k.c, // Close price
         high: data.k.h, // High price
@@ -64,7 +64,7 @@ const Instance = ({ interval, symbol }: KlineInstance) => {
         ignore: data.k.B, // Ignore
       };
 
-      queryClient.setQueryData<KlineDataResponseVM[] | undefined>(
+      queryClient.setQueriesData<KlineDataResponseVM[] | undefined>(
         useGetExchangeV1PublicKlines.info({
           symbol: newSymbol,
           interval: newInterval,
@@ -72,11 +72,8 @@ const Instance = ({ interval, symbol }: KlineInstance) => {
         }).key,
         (_prev) => {
           const prev = _prev || [];
-          if (
-            prev?.[prev?.length - 1]?.openTime &&
-            Number(kline.openTime) ===
-              new Date(prev[prev?.length - 1].openTime).getTime()
-          ) {
+          const time = prev[prev.length - 1].openTime;
+          if (time && Number(kline.openTime) === new Date(time).getTime()) {
             const copy = [...prev];
             copy[copy.length - 1] = kline;
             return copy;

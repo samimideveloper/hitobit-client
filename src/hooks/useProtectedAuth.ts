@@ -19,7 +19,10 @@ export type PurposeFunction = (purpose: PurposeType) => void;
 
 export const useProtectedAuth = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const triggerRef = useRef<Trigger | null>(null);
+  const triggerRef = useRef<Trigger>({
+    onResolve: () => null,
+    onReject: () => null,
+  });
 
   const onClose = () => setOpen(false);
 
@@ -34,20 +37,24 @@ export const useProtectedAuth = () => {
     onResolve: (userData: UserData) => void,
     onReject?: (error: RequestError | Error | null) => void,
   ) => {
-    if (triggerRef.current) {
-      triggerRef.current.onResolve = onResolve;
-      triggerRef.current.onReject = onReject;
-    }
+    triggerRef.current.onResolve = onResolve;
+    triggerRef.current.onReject = onReject;
     setOpen(true);
   };
 
   const onSubmit = (purpose: PurposeType, otpCode: string, totp?: string) => {
+    console.log("1");
     triggerRef.current?.onResolve({ otpCode, totp, otpToken, purpose });
+    console.log("2");
     onClose();
+    console.log("3");
 
     triggerRef.current?.onReject?.(error);
 
-    triggerRef.current = null;
+    triggerRef.current = {
+      onResolve: () => null,
+      onReject: () => null,
+    };
   };
 
   const getCode = (purpose: PurposeType) => {

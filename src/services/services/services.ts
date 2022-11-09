@@ -1,12 +1,14 @@
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
- * @version 5
+ * @version 6
  */
 
 import { AxiosRequestConfig } from "axios";
 import { SwaggerResponse } from "./config";
 import { Http } from "./httpRequest";
+//@ts-ignore
+import qs from "qs";
 import {
   AddPostActionInternalDepositEPayRequestRequestVM,
   AddPostActionPlaceMarketBuyOrderRequestVM,
@@ -65,9 +67,9 @@ import {
   GetAnalyticsV1PrivateResellercommissionhistoryTotalincomeQueryParams,
   GetAnalyticsV1PrivateResellercommissionhistoryTransactioncountQueryParams,
   GetAnalyticsV1PrivateSecurityactivityListQueryParams,
-  GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-  GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
-  GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
+  GetAnalyticsV1PrivateTradehistoryIncomeinviteeListQueryParams,
+  GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams,
+  GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams,
   GetAnalyticsV1PrivateUserloginhistoryListQueryParams,
   GetAuthV1PrivateApikeyListQueryParams,
   GetAuthV1PrivateApikeyQueryParams,
@@ -102,7 +104,6 @@ import {
   GetPartyV1PrivateFavoritemarketQueryParams,
   GetPartyV1PrivateNotificationAllQueryParams,
   GetPartyV1PrivatePluginListQueryParams,
-  GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
   GetPartyV1PublicPluginQueryParams,
   GetPaymentV1PrivateEpayrequestCommissionQueryParams,
   GetPaymentV1PrivateEpayrequestCountFrommeQueryParams,
@@ -192,9 +193,9 @@ import {
   SubuserAccessRequestVM,
   TodayTotalWithdrawResponseVM,
   TokenResponseVM,
-  TradeReferralCommissionHistoryListResponseVM,
-  TradeReferralCommissionHistoryResponseVM,
-  TradeReferralCommissionRankingResponseVM,
+  TradeIncomeHistoryListResponseVM,
+  TradeIncomeHistoryResponseVM,
+  TradeIncomeInviteeRankingResponseVM,
   TradeReferralHistoryListResponseVM,
   TradeResposneListVM,
   TransactionHistoryDetailResponseVM,
@@ -220,14 +221,12 @@ import {
   UserMinimalResponseVM,
   UserPluginResponseVM,
   UserPluginTogggleRequestVM,
-  UserReferralInfoVM,
   UserReferralProgramAddVM,
   UserReferralProgramVM,
   UserSettingPreferenseResponseVM,
   UserStatusResponseVM,
   UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
-  UserTrustDeviceResponseVM,
   UserTrustedDeviceListResponseVM,
   UserWalletDisplayDetailResponseVM,
   UserWalletDisplayResponseVM,
@@ -276,6 +275,11 @@ function objToForm(requestBody: object) {
   });
 
   return formData;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function objToUrlencoded(requestBody: object) {
+  return qs.stringify(requestBody);
 }
 
 export const deleteAuthV1PrivateAuthEmail = (
@@ -571,93 +575,88 @@ export const getAnalyticsV1PrivateSecurityactivityList = (
 getAnalyticsV1PrivateSecurityactivityList.key =
   "/analytics/v1/private/securityactivity/list";
 
-export const getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateListQueryParams,
-    configOverride?: AxiosRequestConfig,
-  ): Promise<SwaggerResponse<TradeReferralCommissionHistoryListResponseVM>> => {
-    return Http.getRequest(
-      getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.key,
-      queryParams,
-      undefined,
-      undefined,
-      overrideConfig(_CONSTANT1, configOverride),
-    );
-  };
+export const getAnalyticsV1PrivateTradehistoryIncomeinviteeList = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomeinviteeListQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TradeIncomeHistoryListResponseVM>> => {
+  return Http.getRequest(
+    getAnalyticsV1PrivateTradehistoryIncomeinviteeList.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
 
 /** Key is end point string without base url */
-getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateList.key =
-  "/analytics/v1/private/tradereferralcommissionhistory/commissionrebate/list";
+getAnalyticsV1PrivateTradehistoryIncomeinviteeList.key =
+  "/analytics/v1/private/tradehistory/incomeinvitee/list";
 
-export const getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent =
-  (
-    configOverride?: AxiosRequestConfig,
-  ): Promise<SwaggerResponse<TradeReferralCommissionHistoryResponseVM[]>> => {
-    return Http.getRequest(
-      getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.key,
-      undefined,
-      undefined,
-      undefined,
-      overrideConfig(_CONSTANT1, configOverride),
-    );
-  };
-
-/** Key is end point string without base url */
-getAnalyticsV1PrivateTradereferralcommissionhistoryCommissionrebateRecent.key =
-  "/analytics/v1/private/tradereferralcommissionhistory/commissionrebate/recent";
-
-export const getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistoryQueryParams,
-    configOverride?: AxiosRequestConfig,
-  ): Promise<SwaggerResponse<TradeReferralHistoryListResponseVM>> => {
-    return Http.getRequest(
-      getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.key,
-      queryParams,
-      undefined,
-      undefined,
-      overrideConfig(_CONSTANT1, configOverride),
-    );
-  };
+export const getAnalyticsV1PrivateTradehistoryIncomeinviteeRecent = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TradeIncomeHistoryResponseVM[]>> => {
+  return Http.getRequest(
+    getAnalyticsV1PrivateTradehistoryIncomeinviteeRecent.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
 
 /** Key is end point string without base url */
-getAnalyticsV1PrivateTradereferralcommissionhistoryReferralhistory.key =
-  "/analytics/v1/private/tradereferralcommissionhistory/referralhistory";
+getAnalyticsV1PrivateTradehistoryIncomeinviteeRecent.key =
+  "/analytics/v1/private/tradehistory/incomeinvitee/recent";
 
-export const getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList =
-  (
-    queryParams?: GetAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackListQueryParams,
-    configOverride?: AxiosRequestConfig,
-  ): Promise<SwaggerResponse<TradeReferralCommissionHistoryListResponseVM>> => {
-    return Http.getRequest(
-      getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.key,
-      queryParams,
-      undefined,
-      undefined,
-      overrideConfig(_CONSTANT1, configOverride),
-    );
-  };
-
-/** Key is end point string without base url */
-getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackList.key =
-  "/analytics/v1/private/tradereferralcommissionhistory/referralkickback/list";
-
-export const getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent =
-  (
-    configOverride?: AxiosRequestConfig,
-  ): Promise<SwaggerResponse<TradeReferralCommissionHistoryResponseVM[]>> => {
-    return Http.getRequest(
-      getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.key,
-      undefined,
-      undefined,
-      undefined,
-      overrideConfig(_CONSTANT1, configOverride),
-    );
-  };
+export const getAnalyticsV1PrivateTradehistoryIncomereferralList = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TradeIncomeHistoryListResponseVM>> => {
+  return Http.getRequest(
+    getAnalyticsV1PrivateTradehistoryIncomereferralList.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
 
 /** Key is end point string without base url */
-getAnalyticsV1PrivateTradereferralcommissionhistoryReferralkickbackRecent.key =
-  "/analytics/v1/private/tradereferralcommissionhistory/referralkickback/recent";
+getAnalyticsV1PrivateTradehistoryIncomereferralList.key =
+  "/analytics/v1/private/tradehistory/incomereferral/list";
+
+export const getAnalyticsV1PrivateTradehistoryIncomereferralRecent = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TradeIncomeHistoryResponseVM[]>> => {
+  return Http.getRequest(
+    getAnalyticsV1PrivateTradehistoryIncomereferralRecent.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAnalyticsV1PrivateTradehistoryIncomereferralRecent.key =
+  "/analytics/v1/private/tradehistory/incomereferral/recent";
+
+export const getAnalyticsV1PrivateTradehistoryReferralhistory = (
+  queryParams?: GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TradeReferralHistoryListResponseVM>> => {
+  return Http.getRequest(
+    getAnalyticsV1PrivateTradehistoryReferralhistory.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAnalyticsV1PrivateTradehistoryReferralhistory.key =
+  "/analytics/v1/private/tradehistory/referralhistory";
 
 export const getAnalyticsV1PrivateUserloginhistoryLast = (
   configOverride?: AxiosRequestConfig,
@@ -692,11 +691,11 @@ export const getAnalyticsV1PrivateUserloginhistoryList = (
 getAnalyticsV1PrivateUserloginhistoryList.key =
   "/analytics/v1/private/userloginhistory/list";
 
-export const getAnalyticsV1PublicTradereferralcommissionhistoryRank = (
+export const getAnalyticsV1PrivateUserreferralprogramTotal = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<TradeReferralCommissionRankingResponseVM[]>> => {
+): Promise<SwaggerResponse<UserTotalReferralProgramVM>> => {
   return Http.getRequest(
-    getAnalyticsV1PublicTradereferralcommissionhistoryRank.key,
+    getAnalyticsV1PrivateUserreferralprogramTotal.key,
     undefined,
     undefined,
     undefined,
@@ -705,8 +704,24 @@ export const getAnalyticsV1PublicTradereferralcommissionhistoryRank = (
 };
 
 /** Key is end point string without base url */
-getAnalyticsV1PublicTradereferralcommissionhistoryRank.key =
-  "/analytics/v1/public/tradereferralcommissionhistory/rank";
+getAnalyticsV1PrivateUserreferralprogramTotal.key =
+  "/analytics/v1/private/userreferralprogram/total";
+
+export const getAnalyticsV1PublicTradehistoryRank = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TradeIncomeInviteeRankingResponseVM[]>> => {
+  return Http.getRequest(
+    getAnalyticsV1PublicTradehistoryRank.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAnalyticsV1PublicTradehistoryRank.key =
+  "/analytics/v1/public/tradehistory/rank";
 
 export const getAuthV1PrivateApikey = (
   queryParams?: GetAuthV1PrivateApikeyQueryParams,
@@ -1379,21 +1394,6 @@ export const getExchangeV1PublicTrades = (
 /** Key is end point string without base url */
 getExchangeV1PublicTrades.key = "/exchange/v1/public/trades";
 
-export const getPartyV1PrivateDeviceAll = (
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserTrustDeviceResponseVM[]>> => {
-  return Http.getRequest(
-    getPartyV1PrivateDeviceAll.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getPartyV1PrivateDeviceAll.key = "/party/v1/private/device/all";
-
 export const getPartyV1PrivateDomainForcetwofa = (
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<boolean>> => {
@@ -1517,23 +1517,6 @@ export const getPartyV1PrivatePluginList = (
 
 /** Key is end point string without base url */
 getPartyV1PrivatePluginList.key = "/party/v1/private/plugin/list";
-
-export const getPartyV1PrivateUserByuserreferralprogramid = (
-  queryParams?: GetPartyV1PrivateUserByuserreferralprogramidQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserReferralInfoVM[]>> => {
-  return Http.getRequest(
-    getPartyV1PrivateUserByuserreferralprogramid.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getPartyV1PrivateUserByuserreferralprogramid.key =
-  "/party/v1/private/user/byuserreferralprogramid";
 
 export const getPartyV1PrivateUsersettingPreference = (
   configOverride?: AxiosRequestConfig,
@@ -2200,22 +2183,6 @@ export const getWalletV1PrivateUserreferralprogramDefault = (
 /** Key is end point string without base url */
 getWalletV1PrivateUserreferralprogramDefault.key =
   "/wallet/v1/private/userreferralprogram/default";
-
-export const getWalletV1PrivateUserreferralprogramTotal = (
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserTotalReferralProgramVM>> => {
-  return Http.getRequest(
-    getWalletV1PrivateUserreferralprogramTotal.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getWalletV1PrivateUserreferralprogramTotal.key =
-  "/wallet/v1/private/userreferralprogram/total";
 
 export const getWalletV1PublicCurrencyInfo = (
   configOverride?: AxiosRequestConfig,

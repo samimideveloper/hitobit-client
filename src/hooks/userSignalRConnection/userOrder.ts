@@ -1,6 +1,6 @@
+import { useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 import { useRef } from "react";
-import { useQueryClient } from "react-query";
 import { i18n } from "../../modules";
 import {
   AppOrderSide,
@@ -97,17 +97,15 @@ const useUpdateOrderWithSignalr = () => {
   const assignToQueryClient = useDebounceAnimationFrameCallback(() => {
     const stackedOrders = [...newOrdersRef.current];
     newOrdersRef.current = [];
-
-    queryClient.setQueryData<OrderResultInfoResponseVM[]>(
+    queryClient.setQueriesData<OrderResultInfoResponseVM[]>(
       useGetExchangeV1PrivateOpenorders.info({}).key,
       (queryData) => {
         let prev = queryData || [];
-
         stackedOrders.forEach((order) => {
           prev = updateOrders(prev, order, successNotification) || prev;
         });
 
-        return prev;
+        return [...prev];
       },
     );
   }, [queryClient, selectedSymbol]);
@@ -158,13 +156,16 @@ const updateOrders = (
     origQuoteOrderQty: order.quoteOrderQty
       ? Number(order.quoteOrderQty) * Number(order.orderPrice || 0)
       : 0,
-    transactTime: moment(order.transactionTime).local().toISOString(),
+    transactTime: moment(order.transactionTime).local().toDate().getTime(),
     cummulativeQuoteQty: Number(order.cumulativeQuoteAssetTransactedQuantity),
   };
 
   switch (order.currentOrderStatus) {
     case "NEW": {
-      return [newOrder, ...prev];
+      return [
+        newOrder,
+        ...prev.filter((item) => item.orderId !== newOrder.orderId),
+      ];
     }
 
     case "CANCELED":

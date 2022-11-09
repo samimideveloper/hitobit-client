@@ -52,4 +52,5 @@ export enum StatusCodes {
   InvalidUserNameOrPassword = 664,
   FaildTwoFa = 665,
   UserTrustedDevice = 670,
+  UserIsSuspended = 709,
 }

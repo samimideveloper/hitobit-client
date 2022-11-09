@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useAuth } from "react-oidc-js";
 import {
   useGetPartyV1PrivateUsersettingPreference,
   usePostExchangeV1PrivateOrder,
@@ -14,8 +15,10 @@ const useSubmit = ({
 }) => {
   const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
-
-  const { data: userPreferences } = useGetPartyV1PrivateUsersettingPreference();
+  const { userData } = useAuth();
+  const { data: userPreferences } = useGetPartyV1PrivateUsersettingPreference({
+    enabled: !!userData,
+  });
 
   const {
     handleSubmit: buyHandleSubmit,
