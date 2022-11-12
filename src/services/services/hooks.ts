@@ -2479,38 +2479,14 @@ useGetDomaincurrencyfeerateV1PublicBydomainid.prefetch = (
 };
 export const useGetEngagementV1PrivateNotification = (
   queryParams?: GetEngagementV1PrivateNotificationQueryParams,
-  options?: UseInfiniteQueryOptions<
-    SwaggerResponse<Notification2ListResponseVM>,
-    RequestError | Error
-  >,
+  options?: SwaggerTypescriptUseQueryOptions<Notification2ListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEngagementV1PrivateNotification.info(
     queryParams,
     configOverride,
   );
-  const {
-    data: { pages } = {},
-    data,
-    ...rest
-  } = useInfiniteQuery(
-    key,
-    ({ pageParam = 1 }) =>
-      fun({
-        pageNo: pageParam,
-      }),
-    {
-      getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
-      ...(options as any),
-    },
-  );
-
-  const list = useMemo(() => paginationFlattenData(pages), [pages]);
-  const total = getTotal(pages);
-
-  const hasMore = useHasMore(pages, list, queryParams);
-
-  return { ...rest, data, list, hasMore, total };
+  return useQuery(key, fun, options);
 };
 useGetEngagementV1PrivateNotification.info = (
   queryParams?: GetEngagementV1PrivateNotificationQueryParams,
@@ -2518,12 +2494,9 @@ useGetEngagementV1PrivateNotification.info = (
 ) => {
   return {
     key: [getEngagementV1PrivateNotification.key, queryParams] as QueryKey,
-    fun: (_param?: Partial<GetEngagementV1PrivateNotificationQueryParams>) =>
+    fun: () =>
       getEngagementV1PrivateNotification(
-        {
-          ..._param,
-          ...queryParams,
-        },
+        queryParams,
 
         configOverride,
       ),
@@ -2532,10 +2505,7 @@ useGetEngagementV1PrivateNotification.info = (
 useGetEngagementV1PrivateNotification.prefetch = (
   client: QueryClient,
   queryParams?: GetEngagementV1PrivateNotificationQueryParams,
-  options?: UseInfiniteQueryOptions<
-    SwaggerResponse<Notification2ListResponseVM>,
-    RequestError | Error
-  >,
+  options?: SwaggerTypescriptUseQueryOptions<Notification2ListResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEngagementV1PrivateNotification.info(
