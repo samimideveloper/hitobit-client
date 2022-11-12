@@ -25,6 +25,7 @@ module.exports = {
       __CLIENT_ID__: `"${clientId}"`,
       __STAGE__,
       __STAGE_TEST__: false,
+      __TEST_DEV__: false,
       __TESTNET__: false,
       __PLATFORM__: "web",
       __PRODUCTION__: false,

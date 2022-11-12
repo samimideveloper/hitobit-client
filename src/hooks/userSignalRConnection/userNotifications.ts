@@ -1,20 +1,21 @@
 import { useQueryClient } from "@tanstack/react-query";
 import {
-  getEngagementV1PrivateNotification,
-  Notification2ResponseVM,
+  Notification2ListResponseVM,
+  useGetEngagementV1PrivateNotification,
 } from "../../services";
 import { Status, useUserSignalREvent } from "./useUserSignalREvent";
 
 const useUpdateUserNotificationWithSignalr = () => {
   const queryClient = useQueryClient();
 
+  /** NOTIFICATION INFINITE QUERY */
   useUserSignalREvent("notification", (data) => {
-    queryClient.setQueriesData<Notification2ResponseVM[]>(
-      [getEngagementV1PrivateNotification.key],
+    queryClient.setQueriesData<Notification2ListResponseVM>(
+      useGetEngagementV1PrivateNotification.info({}).key,
       (prev) => {
-        const newNotifications = [...(prev || [])];
+        const list = [...(prev?.list || [])];
 
-        newNotifications.unshift({
+        list.unshift({
           createDate: data.createDate,
           id: data.id,
           level: data.level,
@@ -25,32 +26,38 @@ const useUpdateUserNotificationWithSignalr = () => {
           readDate: data.readDate,
         });
 
-        return newNotifications;
+        const prevCount = prev?.count || 0;
+
+        return { count: prevCount + 1, list };
       },
     );
   });
 
+  /** NOTIFICATION INFINITE QUERY */
   useUserSignalREvent("notificationStatusChange", (data) => {
-    queryClient.setQueriesData<Notification2ResponseVM[]>(
-      [getEngagementV1PrivateNotification.key],
+    queryClient.setQueriesData<Notification2ListResponseVM>(
+      useGetEngagementV1PrivateNotification.info({}).key,
       (prev) => {
-        let newStatusChangeNotifications = [...(prev || [])];
-        if ((data.status = Status.read)) {
+        let list = [...(prev?.list || [])];
+        let prevCount = prev?.count || 0;
+
+        if (data.status === Status.read) {
           data.ids.forEach((notificationId) => {
-            const notification = newStatusChangeNotifications.find(
-              ({ id }) => id === notificationId,
-            );
+            const notification = list.find(({ id }) => id === notificationId);
             if (notification) {
               notification.read = true;
             }
           });
         } else {
-          newStatusChangeNotifications = newStatusChangeNotifications.filter(
+          list = list.filter(
             ({ id }) => id !== undefined && !data.ids.includes(id),
           );
+          const r = Math.abs((prev?.list?.length || 0) - list?.length);
+
+          prevCount = prevCount - r;
         }
 
-        return newStatusChangeNotifications;
+        return { list, count: prevCount };
       },
     );
   });

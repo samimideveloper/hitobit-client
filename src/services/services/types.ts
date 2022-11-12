@@ -891,6 +891,7 @@ export interface GetAnalyticsV1PrivateTradehistoryIncomereferralListQueryParams 
 }
 
 export interface GetAnalyticsV1PrivateTradehistoryReferralhistoryQueryParams {
+  account?: string;
   /** - Format: int32 */
   pageNo?: number;
   /** - Format: int32 */
@@ -1088,7 +1089,7 @@ export interface GetExchangeV1PrivateAlltradesQueryParams {
 }
 
 export interface GetExchangeV1PrivateOpenocoorderlistQueryParams {
-  request?: OpenOcoOrdersRequestVM;
+  symbol?: string;
 }
 
 export interface GetExchangeV1PrivateOpenordersQueryParams {
@@ -1152,6 +1153,43 @@ export interface GetOcoOrderResponseVM {
   listClientOrderId?: string;
   orders?: OrderMinimalInfoResponseVM[];
   symbol?: string;
+}
+
+export interface GetOrderResponseVM {
+  /** - Format: double */
+  cummulativeQuoteQty: number;
+  /** - Format: double */
+  executedQty: number;
+  /** - Format: int64 */
+  orderId: number;
+  /** - Format: int64 */
+  orderListId: number;
+  side: AppOrderSide;
+  status: AppOrderStatus;
+  /** - Format: int64 */
+  time: number;
+  timeInForce: AppTimeInForce;
+  /** - Format: int64 */
+  transactTime: number;
+  type: AppOrderType;
+  baseCurrencySymbol?: string;
+  clientOrderId?: string;
+  /** - Format: double */
+  icebergQty?: number;
+  isWorking?: boolean;
+  origClientOrderId?: string;
+  /** - Format: double */
+  origQty?: number;
+  /** - Format: double */
+  origQuoteOrderQty?: number;
+  /** - Format: double */
+  price?: number;
+  quoteCurrencySymbol?: string;
+  /** - Format: double */
+  stopPrice?: number;
+  symbol?: string;
+  /** - Format: int64 */
+  updateTime?: number;
 }
 
 export interface GetPartyV1PrivateFavoritemarketQueryParams {
@@ -1898,8 +1936,6 @@ export interface OcoOrderResultInfoResponseVM {
   symbol?: string;
 }
 
-export type OpenOcoOrdersRequestVM = { [x in string | number]: any };
-
 export interface OrderAckInfoResponseVM {
   /** - Format: int64 */
   orderId: number;
@@ -1922,36 +1958,6 @@ export interface OrderBookResponseVM {
   bids?: number[][];
   /** - Format: int64 */
   firstUpdateId?: number;
-  symbol?: string;
-}
-
-export interface OrderFullInfoResponseVM {
-  /** - Format: double */
-  cummulativeQuoteQty: number;
-  /** - Format: double */
-  executedQty: number;
-  /** - Format: int64 */
-  orderId: number;
-  /** - Format: int64 */
-  orderListId: number;
-  side: AppOrderSide;
-  status: AppOrderStatus;
-  timeInForce: AppTimeInForce;
-  /** - Format: int64 */
-  transactTime: number;
-  type: AppOrderType;
-  baseCurrencySymbol?: string;
-  clientOrderId?: string;
-  fills?: OrderTradeResponseVM[];
-  /** - Format: double */
-  origQty?: number;
-  /** - Format: double */
-  origQuoteOrderQty?: number;
-  /** - Format: double */
-  price?: number;
-  quoteCurrencySymbol?: string;
-  /** - Format: double */
-  stopPrice?: number;
   symbol?: string;
 }
 
@@ -1997,18 +2003,6 @@ export interface OrderResultInfoResponseVM {
   /** - Format: double */
   stopPrice?: number;
   symbol?: string;
-}
-
-export interface OrderTradeResponseVM {
-  /** - Format: double */
-  commission: number;
-  /** - Format: double */
-  price: number;
-  /** - Format: double */
-  qty: number;
-  /** - Format: int64 */
-  tradeId: number;
-  commissionAsset?: string;
 }
 
 export interface POSTransactionHistoryListResponseVM {

@@ -12,6 +12,7 @@ module.exports = {
     const __STAGE__ = process.env.__STAGE__;
     const __STAGE_TEST__ = process.env.__STAGE_TEST__;
     const __TESTNET__ = process.env.__TESTNET__;
+    const __TEST_DEV__ = process.env.__TEST_DEV__;
 
     const __PLATFORM__ = process.env.__PLATFORM__;
 
@@ -22,6 +23,7 @@ module.exports = {
         __CLIENT_ID__: `"${clientId}"`,
         __STAGE__,
         __STAGE_TEST__,
+        __TEST_DEV__,
         __MOCK__: false,
         __TESTNET__,
         __PLATFORM__: `"${__PLATFORM__}"`,

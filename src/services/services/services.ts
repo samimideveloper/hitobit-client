@@ -101,6 +101,7 @@ import {
   GetExchangeV1PublicTicker24hrQueryParams,
   GetExchangeV1PublicTradesQueryParams,
   GetOcoOrderResponseVM,
+  GetOrderResponseVM,
   GetPartyV1PrivateFavoritemarketQueryParams,
   GetPartyV1PrivateNotificationAllQueryParams,
   GetPartyV1PrivatePluginListQueryParams,
@@ -153,7 +154,6 @@ import {
   OcoOrderResultInfoResponseVM,
   OrderAckInfoResponseVM,
   OrderBookResponseVM,
-  OrderFullInfoResponseVM,
   OrderResultInfoListResponseVM,
   OrderResultInfoResponseVM,
   PayerCurrencyRequestVM,
@@ -1238,7 +1238,7 @@ getExchangeV1PrivateOpenorders.key = "/exchange/v1/private/openorders";
 export const getExchangeV1PrivateOrder = (
   queryParams?: GetExchangeV1PrivateOrderQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<OrderFullInfoResponseVM>> => {
+): Promise<SwaggerResponse<GetOrderResponseVM>> => {
   return Http.getRequest(
     getExchangeV1PrivateOrder.key,
     queryParams,

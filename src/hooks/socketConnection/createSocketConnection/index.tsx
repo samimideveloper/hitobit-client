@@ -65,9 +65,6 @@ export const createSocketConnection = <T extends string>(
               ]);
             }
           }}
-          onError={async (error) => {
-            console.log("custom error", error);
-          }}
           onReconnect={() => {
             if (
               SocketConnection.connection?.state ===

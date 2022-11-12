@@ -302,6 +302,7 @@ import {
   GetExchangeV1PublicTicker24hrQueryParams,
   GetExchangeV1PublicTradesQueryParams,
   GetOcoOrderResponseVM,
+  GetOrderResponseVM,
   GetPartyV1PrivateFavoritemarketQueryParams,
   GetPartyV1PrivateNotificationAllQueryParams,
   GetPartyV1PrivatePluginListQueryParams,
@@ -354,7 +355,6 @@ import {
   OcoOrderResultInfoResponseVM,
   OrderAckInfoResponseVM,
   OrderBookResponseVM,
-  OrderFullInfoResponseVM,
   OrderResultInfoListResponseVM,
   OrderResultInfoResponseVM,
   PayerCurrencyRequestVM,
@@ -2841,7 +2841,7 @@ useGetExchangeV1PrivateOpenorders.prefetch = (
 };
 export const useGetExchangeV1PrivateOrder = (
   queryParams?: GetExchangeV1PrivateOrderQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<OrderFullInfoResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<GetOrderResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOrder.info(
@@ -2867,7 +2867,7 @@ useGetExchangeV1PrivateOrder.info = (
 useGetExchangeV1PrivateOrder.prefetch = (
   client: QueryClient,
   queryParams?: GetExchangeV1PrivateOrderQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<OrderFullInfoResponseVM>,
+  options?: SwaggerTypescriptUseQueryOptions<GetOrderResponseVM>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PrivateOrder.info(
