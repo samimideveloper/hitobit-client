@@ -1,4 +1,4 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 import {
   Notification2ListResponseVM,
   useGetEngagementV1PrivateNotification,
@@ -10,12 +10,12 @@ const useUpdateUserNotificationWithSignalr = () => {
 
   /** NOTIFICATION INFINITE QUERY */
   useUserSignalREvent("notification", (data) => {
-    queryClient.setQueriesData<Notification2ListResponseVM>(
+    queryClient.setQueriesData<InfiniteData<Notification2ListResponseVM>>(
       useGetEngagementV1PrivateNotification.info({}).key,
       (prev) => {
-        const list = [...(prev?.list || [])];
+        const pages = [...(prev?.pages || [])];
 
-        list.unshift({
+        pages?.[0]?.list?.unshift({
           createDate: data.createDate,
           id: data.id,
           level: data.level,
@@ -25,10 +25,12 @@ const useUpdateUserNotificationWithSignalr = () => {
           message: data.message,
           readDate: data.readDate,
         });
+        pages[0].count = pages[0].count + 1;
 
-        const prevCount = prev?.count || 0;
-
-        return { count: prevCount + 1, list };
+        return {
+          pages,
+          pageParams: [],
+        };
       },
     );
   });
