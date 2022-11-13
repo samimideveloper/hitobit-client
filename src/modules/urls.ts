@@ -21,7 +21,7 @@ class URLManager {
     return `https://${URLManager.PREFIX_TESTNET}.${URLManager.domainName}.com/hapi/`;
   }
   private static get API_TESTDEV() {
-    return `https://${URLManager.PREFIX_TESTDEV}.${URLManager.domainName}.com/hapi/`;
+    return `http://${URLManager.PREFIX_TESTDEV}.${URLManager.domainName}.com/hapi/`;
   }
   private static get API_PRODUCTION() {
     return `https://${URLManager.domainName}.com/hapi/`;
@@ -59,7 +59,7 @@ class URLManager {
     return `https://stream.${URLManager.PREFIX_TESTNET}.${URLManager.domainName}.com/stream`;
   }
   private static get SIGNALR_TESTDEV() {
-    return `https://stream.${URLManager.PREFIX_TESTDEV}.${URLManager.domainName}.com/stream`;
+    return `http://stream.${URLManager.PREFIX_TESTDEV}.${URLManager.domainName}.com/stream`;
   }
   private static get SIGNALR_PRODUCTION() {
     return `https://stream.${URLManager.domainName}.com/stream`;
