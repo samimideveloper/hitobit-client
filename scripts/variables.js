@@ -18,7 +18,7 @@ module.exports = {
 
     config.plugins.push(
       new webpack.DefinePlugin({
-        __DEV__: !__STAGE__ && !__TESTNET__ && !__STAGE_TEST__,
+        __DEV__: !__STAGE__ && !__TESTNET__ && !__STAGE_TEST__ && !__TEST_DEV__,
         __CLIENT_SECRET__: `"${clientSecret}"`,
         __CLIENT_ID__: `"${clientId}"`,
         __STAGE__,
