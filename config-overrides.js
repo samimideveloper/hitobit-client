@@ -16,6 +16,7 @@ module.exports = {
     const clientId = process.env.REACT_APP_CLIENT_ID;
     const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
     const __STAGE__ = Boolean(process.env.__STAGE__);
+    const __TEST_DEV__ = Boolean(process.env.__TEST_DEV__);
 
     config.globals = {
       ...config.globals,
@@ -25,7 +26,7 @@ module.exports = {
       __CLIENT_ID__: `"${clientId}"`,
       __STAGE__,
       __STAGE_TEST__: false,
-      __TEST_DEV__: false,
+      __TEST_DEV__,
       __TESTNET__: false,
       __PLATFORM__: "web",
       __PRODUCTION__: false,
