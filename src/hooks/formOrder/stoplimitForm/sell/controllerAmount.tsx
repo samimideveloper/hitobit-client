@@ -1,6 +1,5 @@
 import Decimal from "decimal.js";
 import { ControllerRenderProps } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
@@ -14,12 +13,10 @@ const ControllerAmount = ({
     field: ControllerRenderProps<StopLimitOrderValues, "amount">;
   }) => any;
 }) => {
-  const { t } = useTranslation();
   const {
     setValue: sellSetValue,
     getValues,
     trigger,
-    setError,
   } = SellForm.useFormContext();
 
   const { selectedSymbol } = selectedSymbolStore.useState();
@@ -40,13 +37,8 @@ const ControllerAmount = ({
           check: (value) => {
             const { price } = getValues();
 
-            if (!price) {
-              setError("price", { message: t("enterPrice") });
-
-              return;
-            }
-
             if (!Number(value)) {
+              sellSetValue("slider", 0);
               return;
             }
 

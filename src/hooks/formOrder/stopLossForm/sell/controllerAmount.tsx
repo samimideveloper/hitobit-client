@@ -34,11 +34,12 @@ const ControllerAmount = ({
       rules={{
         validate: {
           check: (value) => {
-            if (selectedOption.value !== "amount") {
+            if (!Number(value)) {
+              setValue("slider", 0);
               return;
             }
 
-            if (!Number(value)) {
+            if (selectedOption.value !== "amount") {
               return;
             }
 

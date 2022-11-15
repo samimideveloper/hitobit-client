@@ -40,12 +40,13 @@ const ControllerAmount = ({
           check: (value) => {
             const { price } = getValues();
 
-            if (!price) {
-              setError("price", { message: t("enterAmount") });
+            if (!Number(value)) {
+              buySetValue("slider", 0);
               return;
             }
 
-            if (!Number(value)) {
+            if (!price) {
+              setError("price", { message: t("enterAmount") });
               return;
             }
 

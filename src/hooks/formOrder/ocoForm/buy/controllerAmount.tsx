@@ -1,6 +1,5 @@
 import Decimal from "decimal.js";
 import { ControllerRenderProps } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
@@ -14,13 +13,11 @@ const ControllerAmount = ({
     field: ControllerRenderProps<OcoOrderValues, "amount">;
   }) => any;
 }) => {
-  const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
 
   const {
     setValue: buySetValue,
     getValues,
-    setError,
     trigger,
   } = BuyForm.useFormContext();
 
@@ -40,12 +37,8 @@ const ControllerAmount = ({
           check: (value) => {
             const { limit, price } = getValues();
 
-            if (!limit) {
-              setError("limit", { message: t("enterAmount") });
-              return;
-            }
-            if (!price) {
-              setError("price", { message: t("enterAmount") });
+            if (!Number(value)) {
+              buySetValue("slider", 0);
               return;
             }
 
