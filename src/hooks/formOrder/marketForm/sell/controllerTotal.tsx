@@ -15,7 +15,7 @@ const ControllerTotal = ({
 }) => {
   const { selectedSymbol } = selectedSymbolStore.useState();
   const { selectedOption } = SellForm.useWatch();
-  const { setValue, trigger } = SellForm.useFormContext();
+  const { setValue, trigger, reset } = SellForm.useFormContext();
 
   const { getSymbolMarketTicker } = useMarketTicker();
   const currentTicker = getSymbolMarketTicker(selectedSymbol?.symbol);
@@ -33,6 +33,7 @@ const ControllerTotal = ({
             }
 
             if (!Number(value)) {
+              setValue("slider", 0);
               return;
             }
 

@@ -1,5 +1,4 @@
 import { ControllerRenderProps } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { MarketOrderValues, SellForm } from "../types";
@@ -11,8 +10,6 @@ const ControllerStopPrice = ({
     field: ControllerRenderProps<MarketOrderValues, "stopPrice">;
   }) => any;
 }) => {
-  const { t } = useTranslation();
-
   const { selectedSymbol } = selectedSymbolStore.useState();
 
   const { getPriceError } = useOrderPlacingError();
@@ -23,10 +20,6 @@ const ControllerStopPrice = ({
       rules={{
         validate: {
           check: (value) => {
-            if (!value) {
-              return t("enterStop");
-            }
-
             return getPriceError({
               symbol: selectedSymbol?.symbol,
               price: Number(value),

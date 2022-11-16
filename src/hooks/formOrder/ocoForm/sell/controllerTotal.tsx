@@ -30,7 +30,11 @@ const ControllerTotal = ({
       rules={{
         validate: {
           check: (value) => {
-            const { price } = getValues();
+            const { price, amount, limit, stopPrice } = getValues();
+            if (!price || !stopPrice || !limit || !amount) {
+              return;
+            }
+
             return getTotalError({
               symbol: selectedSymbol?.symbol,
               side: "Sell",

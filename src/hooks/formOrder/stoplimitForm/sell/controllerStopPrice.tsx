@@ -20,10 +20,9 @@ const ControllerStopPrice = ({
       rules={{
         validate: {
           check: (value) => {
-            if (!value) {
+            if (!Number(value)) {
               return;
             }
-
             return getPriceError({
               symbol: selectedSymbol?.symbol,
               price: Number(value),

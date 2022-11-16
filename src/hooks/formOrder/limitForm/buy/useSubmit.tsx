@@ -36,6 +36,11 @@ const useSubmit = ({
   const onBuySubmit = ({ price, amount }: LimitOrderValues) => {
     const quantity = Number(amount);
 
+    if (!Number(price)) {
+      setError("price", { message: t("enterPrice") });
+      return;
+    }
+
     if (!quantity) {
       setError("amount", {
         message: t("enterAmount"),

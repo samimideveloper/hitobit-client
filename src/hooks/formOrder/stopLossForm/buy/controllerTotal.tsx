@@ -34,6 +34,7 @@ const ControllerTotal = ({
             }
 
             if (!Number(value)) {
+              setValue("slider", 0);
               return;
             }
 

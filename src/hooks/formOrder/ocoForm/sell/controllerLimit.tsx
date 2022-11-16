@@ -28,10 +28,6 @@ const ControllerLimit = ({
       rules={{
         validate: {
           check: (value) => {
-            if (!value) {
-              return t("enterPrice");
-            }
-
             return getPriceError({
               symbol: selectedSymbol?.symbol,
               price: Number(value),
