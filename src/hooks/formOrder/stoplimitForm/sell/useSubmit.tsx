@@ -46,7 +46,7 @@ const useSubmit = ({
     const quantity = Number(amount);
     const stopPrice = Number(_stopPrice);
 
-    if (stopPrice) {
+    if (!stopPrice) {
       setError("stopPrice", {
         message: t("enterPrice"),
       });
