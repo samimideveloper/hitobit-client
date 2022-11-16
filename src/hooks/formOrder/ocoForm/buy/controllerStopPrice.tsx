@@ -29,11 +29,10 @@ const ControllerStopPrice = ({
       rules={{
         validate: {
           check: (value) => {
-            if (!value) {
-              return t("enterStop");
-            }
-
-            if (new Decimal(value).lessThanOrEqualTo(market?.lastPrice || 0)) {
+            if (
+              value &&
+              new Decimal(value).lessThanOrEqualTo(market?.lastPrice || 0)
+            ) {
               return t("stopPriceShouldBeMoreThanLastPrice");
             }
 

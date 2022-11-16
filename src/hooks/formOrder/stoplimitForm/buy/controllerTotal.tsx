@@ -32,6 +32,14 @@ const ControllerTotal = ({
           check: (value) => {
             const { price } = getValues();
 
+            if (!price) {
+              return;
+            }
+
+            if (!Number(value)) {
+              return;
+            }
+
             return getTotalError({
               symbol: selectedSymbol?.symbol,
               side: "Buy",

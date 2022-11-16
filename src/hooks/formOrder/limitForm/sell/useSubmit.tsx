@@ -51,6 +51,13 @@ const useSubmit = ({
       });
     };
 
+    if (!Number(price)) {
+      setError("price", {
+        message: t("enterPrice"),
+      });
+      return;
+    }
+
     if (!quantity) {
       setError("amount", {
         message: t("enterAmount"),

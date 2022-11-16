@@ -34,11 +34,11 @@ const ControllerAmount = ({
       rules={{
         validate: {
           check: (value) => {
-            if (selectedOption.value !== "amount") {
+            if (!Number(value)) {
               return;
             }
 
-            if (!Number(value)) {
+            if (selectedOption.value !== "amount") {
               return;
             }
 

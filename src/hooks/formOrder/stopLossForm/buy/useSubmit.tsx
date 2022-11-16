@@ -25,6 +25,13 @@ const useSubmit = () => {
     let quantity: number | undefined;
     let quoteOrderQty: number | undefined;
 
+    if (!Number(stopPrice)) {
+      setError("stopPrice", {
+        message: t("enterPrice"),
+      });
+      return;
+    }
+
     if (selectedOption.value === "amount") {
       quantity = Number(amount);
 

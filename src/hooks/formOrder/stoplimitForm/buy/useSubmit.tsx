@@ -44,16 +44,25 @@ const useSubmit = ({
     const quantity = Number(amount);
     const stopPrice = Number(_stopPrice);
 
-    if (!quantity) {
-      setError("amount", {
-        message: t("enterAmount"),
-      });
-    }
-
     if (!stopPrice) {
       setError("stopPrice", {
         message: t("enterStop"),
       });
+      return;
+    }
+
+    if (!Number(price)) {
+      setError("price", {
+        message: t("enterPrice"),
+      });
+      return;
+    }
+
+    if (!quantity) {
+      setError("amount", {
+        message: t("enterAmount"),
+      });
+      return;
     }
 
     const placeOrder = () => {

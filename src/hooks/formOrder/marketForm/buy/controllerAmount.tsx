@@ -1,6 +1,5 @@
 import Decimal from "decimal.js";
 import { ControllerRenderProps } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useMarketTicker } from "../../../marketTicker";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
@@ -15,7 +14,6 @@ const ControllerAmount = ({
     field: ControllerRenderProps<MarketOrderValues, "amount">;
   }) => any;
 }) => {
-  const { t } = useTranslation();
   const { setValue, trigger } = BuyForm.useFormContext();
   const { selectedOption } = BuyForm.useWatch();
   const { selectedSymbol } = selectedSymbolStore.useState();
@@ -36,12 +34,12 @@ const ControllerAmount = ({
       rules={{
         validate: {
           check: (value) => {
-            if (selectedOption.value !== "amount") {
+            if (!Number(value)) {
               return;
             }
 
-            if (!Number(value)) {
-              return t("enterAmount");
+            if (selectedOption.value !== "amount") {
+              return;
             }
 
             return getAmountError({

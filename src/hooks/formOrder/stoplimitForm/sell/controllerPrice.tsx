@@ -1,6 +1,5 @@
 import Decimal from "decimal.js";
 import { ControllerRenderProps } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useOrderPlacingError } from "../../../useOrderPlacingError";
 import { useStepSize } from "../../../useStepSize";
@@ -13,7 +12,6 @@ const ControllerPrice = ({
     field: ControllerRenderProps<StopLimitOrderValues, "price">;
   }) => any;
 }) => {
-  const { t } = useTranslation();
   const {
     setValue: sellSetValue,
     getValues,
@@ -32,10 +30,6 @@ const ControllerPrice = ({
       rules={{
         validate: {
           check: (value) => {
-            if (!value) {
-              return t("enterPrice");
-            }
-
             return getPriceError({
               symbol: selectedSymbol?.symbol,
               price: Number(value),

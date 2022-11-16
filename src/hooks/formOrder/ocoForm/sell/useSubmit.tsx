@@ -44,26 +44,32 @@ const useSubmit = ({
     const price = Number(_price);
     const limit = Number(_limit);
 
-    if (!amount) {
-      setError("amount", {
-        message: t("enterAmount"),
+    if (!price) {
+      setError("price", {
+        message: t("enterPrice"),
       });
+      return;
     }
 
     if (!stopPrice) {
       setError("stopPrice", {
         message: t("enterStop"),
       });
+      return;
     }
-    if (!price) {
-      setError("price", {
-        message: t("enterStop"),
-      });
-    }
+
     if (!limit) {
       setError("limit", {
-        message: t("enterStop"),
+        message: t("enterPrice"),
       });
+      return;
+    }
+
+    if (!amount) {
+      setError("amount", {
+        message: t("enterAmount"),
+      });
+      return;
     }
 
     const placeOrder = () => {
