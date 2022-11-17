@@ -42,20 +42,20 @@ const ControllerAmount = ({
 
             if (!Number(value)) {
               buySetValue("slider", 0);
-              return;
+              return undefined;
             }
 
             if (!price) {
               setError("price", { message: t("enterAmount") });
-              return;
+              return undefined;
             }
 
-            return getAmountError({
-              symbol: selectedSymbol?.symbol,
-              side: "Buy",
-              baseQuantity: Number(value),
-              price: Number(price),
-            });
+            // return getAmountError({
+            //   symbol: selectedSymbol?.symbol,
+            //   side: "Buy",
+            //   baseQuantity: Number(value),
+            //   price: Number(price),
+            // });
           },
         },
       }}
@@ -73,7 +73,7 @@ const ControllerAmount = ({
                   : "",
               );
 
-              onChange(onChangeValue(_value));
+              onChange(onChangeValue(_value) || _value);
               trigger(["amount"]);
             },
             ...rest,

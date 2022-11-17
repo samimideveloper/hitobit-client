@@ -39,15 +39,15 @@ const ControllerAmount = ({
 
             if (!Number(value)) {
               buySetValue("slider", 0);
-              return;
+              return undefined;
             }
 
-            return getAmountError({
-              symbol: selectedSymbol?.symbol,
-              side: "Buy",
-              baseQuantity: Number(value),
-              price: Math.max(Number(limit), Number(price)),
-            });
+            // return getAmountError({
+            //   symbol: selectedSymbol?.symbol,
+            //   side: "Buy",
+            //   baseQuantity: Number(value),
+            //   price: Math.max(Number(limit), Number(price)),
+            // });
           },
         },
       }}
@@ -67,7 +67,7 @@ const ControllerAmount = ({
               } else {
                 buySetValue("total", "");
               }
-              onChange(onChangeValue(amount));
+              onChange(onChangeValue(amount) || amount);
               trigger(["total"]);
             },
             ...rest,

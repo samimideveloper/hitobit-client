@@ -35,18 +35,18 @@ const ControllerAmount = ({
         validate: {
           check: (value) => {
             if (!Number(value)) {
-              return;
+              return undefined;
             }
 
             if (selectedOption.value !== "amount") {
-              return;
+              return undefined;
             }
 
-            return getAmountError({
-              symbol: selectedSymbol?.symbol,
-              side: "Buy",
-              baseQuantity: Number(value),
-            });
+            // return getAmountError({
+            //   symbol: selectedSymbol?.symbol,
+            //   side: "Buy",
+            //   baseQuantity: Number(value),
+            // });
           },
         },
       }}
@@ -65,7 +65,7 @@ const ControllerAmount = ({
                   ? toTickSize(new Decimal(_value).mul(currentTicker.lastPrice))
                   : "",
               );
-              onChange(onChangeValue(_value));
+              onChange(onChangeValue(_value) || _value);
               trigger(["amount", "total"]);
             },
             ...rest,

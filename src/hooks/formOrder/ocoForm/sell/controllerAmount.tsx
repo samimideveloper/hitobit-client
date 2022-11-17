@@ -39,15 +39,15 @@ const ControllerAmount = ({
 
             if (!Number(value)) {
               sellSetValue("slider", 0);
-              return;
+              return undefined;
             }
 
-            return getAmountError({
-              symbol: selectedSymbol?.symbol,
-              side: "Sell",
-              baseQuantity: Number(value),
-              price: Math.max(Number(limit), Number(price)),
-            });
+            // return getAmountError({
+            //   symbol: selectedSymbol?.symbol,
+            //   side: "Sell",
+            //   baseQuantity: Number(value),
+            //   price: Math.max(Number(limit), Number(price)),
+            // });
           },
         },
       }}
@@ -64,7 +64,7 @@ const ControllerAmount = ({
                   ? toTickSize(new Decimal(_value).mul(Number(price)))
                   : "",
               );
-              onChange(onChangeValue(_value));
+              onChange(onChangeValue(_value) || _value);
 
               trigger(["total"]);
             },
