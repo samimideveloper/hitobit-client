@@ -42,12 +42,12 @@ const ControllerAmount = ({
               return undefined;
             }
 
-            // return getAmountError({
-            //   symbol: selectedSymbol?.symbol,
-            //   side: "Sell",
-            //   baseQuantity: Number(value),
-            //   price: Math.max(Number(limit), Number(price)),
-            // });
+            return getAmountError({
+              symbol: selectedSymbol?.symbol,
+              side: "Sell",
+              baseQuantity: Number(value),
+              price: Math.max(Number(limit), Number(price)),
+            });
           },
         },
       }}
