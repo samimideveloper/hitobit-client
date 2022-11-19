@@ -41,11 +41,11 @@ const ControllerAmount = ({
               return undefined;
             }
 
-            // return getAmountError({
-            //   symbol: selectedSymbol?.symbol,
-            //   side: "Sell",
-            //   baseQuantity: Number(value),
-            // });
+            return getAmountError({
+              symbol: selectedSymbol?.symbol,
+              side: "Sell",
+              baseQuantity: Number(value),
+            });
           },
         },
       }}

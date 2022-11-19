@@ -51,12 +51,12 @@ const ControllerAmount = ({
             }
             /** @todo Fix this */
 
-            // return getAmountError({
-            //   symbol: selectedSymbol?.symbol,
-            //   side: "Sell",
-            //   baseQuantity: Number(value),
-            //   price: Number(price),
-            // });
+            return getAmountError({
+              symbol: selectedSymbol?.symbol,
+              side: "Sell",
+              baseQuantity: Number(value),
+              price: Number(price),
+            });
           },
         },
       }}
