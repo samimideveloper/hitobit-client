@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function useAggregate({ selectedAggregate, length = 40 }: Props) {
-  const { asks, bids } = useOrdersBook();
+  const { asks, bids, isLoading } = useOrdersBook();
 
   const _asks = aggregate(asks, selectedAggregate);
   const _bids = aggregate(bids, selectedAggregate);
@@ -32,7 +32,7 @@ export function useAggregate({ selectedAggregate, length = 40 }: Props) {
     (item) => Number(item[0]) * Number(item[1]),
   ) || [0, 0];
 
-  return { last24Asks, maximumAsk, last24Bids, maximumBid };
+  return { last24Asks, maximumAsk, last24Bids, maximumBid, isLoading };
 }
 
 function aggregate(
