@@ -119,6 +119,7 @@ export interface NotificationModel {
   read: boolean;
   readDate: string;
   type: NotificationTypes;
+  subject: string;
 }
 
 export enum Status {
