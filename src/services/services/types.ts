@@ -2562,6 +2562,8 @@ export interface TradeReferralHistoryResponseVM {
   defaultCryptoAmount: number;
   /** - Format: double */
   defaultFiatAmount: number;
+  /** - Format: int64 */
+  referralProgramId: number;
   /** - Format: date-time */
   signedUpAt: string;
   traded: boolean;
@@ -2685,6 +2687,7 @@ export interface UserBankResponseVM {
   /** - Format: uuid */
   userId: string;
   accountNo?: string;
+  cardNumber?: string;
   firstName?: string;
   /** - Format: date-time */
   lastChangeStatusDate?: string;
@@ -2787,6 +2790,7 @@ export interface UserInfoVM {
   id: string;
   identityStatus: IdentityStatus;
   isBusinessUser: boolean;
+  limitAccess: boolean;
   nextLevel: IdentificationLevel;
   userStatus: UserStatus;
   userType: UserType;
