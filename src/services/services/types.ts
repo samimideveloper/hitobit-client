@@ -961,6 +961,7 @@ export interface GetCapitalV1PrivateDepositListQueryParams {
   currencySymbol?: string;
   /** - Format: date-time */
   endTime?: string;
+  moneyNetworkSymbol?: string;
   /** - Format: int32 */
   pageNumber?: number;
   /** - Format: int32 */
@@ -1008,6 +1009,7 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   currencySymbol?: string;
   /** - Format: date-time */
   endTime?: string;
+  moneyNetworkSymbol?: string;
   /** - Format: int32 */
   pageNumber?: number;
   /** - Format: int32 */
