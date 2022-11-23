@@ -1,6 +1,6 @@
 import Decimal from "decimal.js";
-import { t } from "i18next";
 import { ControllerRenderProps } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { selectedSymbolStore } from "../../../../store";
 import { useStepSize } from "../../../useStepSize";
 import { useUserSelectedUserAssets } from "../../../useUserSelectedUserAssets";
@@ -21,6 +21,8 @@ const ControllerSlider = ({
     setError,
     trigger,
   } = BuyForm.useFormContext();
+
+  const { t } = useTranslation();
 
   const { toStepSize, toTickSize } = useStepSize(selectedSymbol?.symbol);
 
