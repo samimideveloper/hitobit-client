@@ -17,19 +17,21 @@ module.exports = {
     const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
     const __STAGE__ = Boolean(process.env.__STAGE__);
     const __TEST_DEV__ = Boolean(process.env.__TEST_DEV__);
+    const __DEV__ = process.env.NODE_ENV !== "production";
+    const __PRODUCTION__ = process.env.NODE_ENV === "production";
 
     config.globals = {
       ...config.globals,
-      __DEV__: true,
+      __DEV__,
+      __STAGE__,
+      __TEST_DEV__,
+      __PRODUCTION__,
       __MOCK__: true,
       __CLIENT_SECRET__: `"${clientSecret}"`,
       __CLIENT_ID__: `"${clientId}"`,
-      __STAGE__,
       __STAGE_TEST__: false,
-      __TEST_DEV__,
       __TESTNET__: false,
       __PLATFORM__: "web",
-      __PRODUCTION__: false,
     };
     config.modulePaths = [
       ...config.modulePaths,
