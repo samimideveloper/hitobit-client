@@ -35,13 +35,13 @@ const ControllerTotal = ({
           check: (value) => {
             const { price } = getValues();
 
-            if (!price) {
-              setError("price", { message: t("enterPrice") });
-
+            if (!Number(value)) {
               return;
             }
 
-            if (!Number(value)) {
+            if (!price) {
+              setError("price", { message: t("enterPrice") });
+
               return;
             }
 

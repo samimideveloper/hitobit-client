@@ -42,13 +42,14 @@ const ControllerAmount = ({
 
             if (!Number(value)) {
               sellSetValue("slider", 0);
-              return;
+              return undefined;
             }
 
             if (!price) {
               setError("price", { message: t("enterPrice") });
-              return;
+              return undefined;
             }
+            /** @todo Fix this */
 
             return getAmountError({
               symbol: selectedSymbol?.symbol,
@@ -72,7 +73,7 @@ const ControllerAmount = ({
                   ? toTickSize(new Decimal(_value).mul(Number(price)))
                   : "",
               );
-              onChange(onChangeValue(_value));
+              onChange(onChangeValue(_value) || _value);
 
               trigger(["total"]);
             },

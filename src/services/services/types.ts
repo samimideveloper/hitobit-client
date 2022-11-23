@@ -961,6 +961,7 @@ export interface GetCapitalV1PrivateDepositListQueryParams {
   currencySymbol?: string;
   /** - Format: date-time */
   endTime?: string;
+  moneyNetworkSymbol?: string;
   /** - Format: int32 */
   pageNumber?: number;
   /** - Format: int32 */
@@ -1008,6 +1009,7 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   currencySymbol?: string;
   /** - Format: date-time */
   endTime?: string;
+  moneyNetworkSymbol?: string;
   /** - Format: int32 */
   pageNumber?: number;
   /** - Format: int32 */
@@ -2562,6 +2564,8 @@ export interface TradeReferralHistoryResponseVM {
   defaultCryptoAmount: number;
   /** - Format: double */
   defaultFiatAmount: number;
+  /** - Format: int64 */
+  referralProgramId: number;
   /** - Format: date-time */
   signedUpAt: string;
   traded: boolean;
@@ -2685,6 +2689,7 @@ export interface UserBankResponseVM {
   /** - Format: uuid */
   userId: string;
   accountNo?: string;
+  cardNumber?: string;
   firstName?: string;
   /** - Format: date-time */
   lastChangeStatusDate?: string;
@@ -2787,6 +2792,7 @@ export interface UserInfoVM {
   id: string;
   identityStatus: IdentityStatus;
   isBusinessUser: boolean;
+  limitAccess: boolean;
   nextLevel: IdentificationLevel;
   userStatus: UserStatus;
   userType: UserType;

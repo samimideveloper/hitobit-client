@@ -39,7 +39,7 @@ const ControllerAmount = ({
 
             if (!Number(value)) {
               buySetValue("slider", 0);
-              return;
+              return undefined;
             }
 
             return getAmountError({
@@ -65,7 +65,7 @@ const ControllerAmount = ({
                   : "",
               );
 
-              onChange(onChangeValue(_value));
+              onChange(onChangeValue(_value) || _value);
               trigger(["total"]);
             },
             ...rest,

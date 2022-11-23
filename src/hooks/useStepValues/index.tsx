@@ -22,10 +22,16 @@ export const useStepValues = (symbol?: string) => {
       .parseNumber({ decimal: true })
       .toNumber();
 
-    if (isBuy && new Decimal(_numberedValue).greaterThan(maxNotional)) {
+    if (
+      isBuy &&
+      new Decimal(_numberedValue || 0).greaterThan(maxNotional || 0)
+    ) {
       return maxNotional;
     }
-    if (!isBuy && new Decimal(_numberedValue).greaterThan(maxQuantity)) {
+    if (
+      !isBuy &&
+      new Decimal(_numberedValue || 0).greaterThan(maxQuantity || 0)
+    ) {
       return maxQuantity;
     }
 

@@ -2,6 +2,7 @@ import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 import {
   Notification2ListResponseVM,
   useGetEngagementV1PrivateNotification,
+  useGetEngagementV1PrivateNotificationType,
 } from "../../services";
 import { Status, useUserSignalREvent } from "./useUserSignalREvent";
 
@@ -24,11 +25,16 @@ const useUpdateUserNotificationWithSignalr = () => {
             userId: data.userId,
             message: data.message,
             readDate: data.readDate,
+            subject: data.subject,
           });
           item.count = item.count + 1;
         }
         return prev;
       },
+    );
+    queryClient.invalidateQueries(
+      useGetEngagementV1PrivateNotificationType.info().key,
+      { refetchType: "all" },
     );
   });
 
