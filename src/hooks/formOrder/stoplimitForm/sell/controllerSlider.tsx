@@ -1,4 +1,5 @@
 import Decimal from "decimal.js";
+import { t } from "i18next";
 import { ControllerRenderProps } from "react-hook-form";
 import { selectedSymbolStore } from "../../../../store";
 import { useStepSize } from "../../../useStepSize";
@@ -15,6 +16,7 @@ const ControllerSlider = ({
   const {
     setValue: sellSetValue,
     getValues,
+    setError,
     trigger,
   } = SellForm.useFormContext();
 
@@ -35,7 +37,7 @@ const ControllerSlider = ({
               let result: Decimal = new Decimal(0);
 
               if (!price) {
-                trigger(["price"]);
+                setError("price", { message: t("enterPrice") });
 
                 return;
               }
