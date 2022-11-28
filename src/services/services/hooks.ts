@@ -69,8 +69,6 @@ import {
   getCapitalV1PrivateWithdrawTodaytotal,
   getCapitalV1PublicCurrencyAll,
   getCapitalV1PublicMoneynetworkAll,
-  getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid,
-  getDomaincurrencyfeerateV1PublicBydomainid,
   getEngagementV1PrivateNotification,
   getEngagementV1PrivateNotificationType,
   getExchangeV1PrivateAllorderlist,
@@ -90,7 +88,6 @@ import {
   getExchangeV1PublicTrades,
   getPartyV1PrivateDomainForcetwofa,
   getPartyV1PrivateDomainMultiwallet,
-  getPartyV1PrivateDomainSetting,
   getPartyV1PrivateFavoritemarket,
   getPartyV1PrivateIdentificationlevelUserInfo,
   getPartyV1PrivateNotificationAll,
@@ -98,6 +95,7 @@ import {
   getPartyV1PrivatePluginList,
   getPartyV1PrivateUsersettingPreference,
   getPartyV1PrivateWalletsettingMaxreferalprogrampercent,
+  getPartyV1PublicDomainSetting,
   getPartyV1PublicIdentificationlevelGuide,
   getPartyV1PublicPlugin,
   getPaymentV1PrivateEpayrequestCommission,
@@ -124,6 +122,8 @@ import {
   getWalletV1Private,
   getWalletV1PrivateAll,
   getWalletV1PrivateBankAll,
+  getWalletV1PrivateDomaincurrencyfeerate,
+  getWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid,
   getWalletV1PrivateGrouptransferCommission,
   getWalletV1PrivateInternalwithdrawInfo,
   getWalletV1PrivateSubuserAll,
@@ -201,6 +201,7 @@ import {
   putPartyV1PrivateNotificationRead,
   putPartyV1PrivateNotificationReadall,
   putPartyV1PrivatePlugin,
+  putPartyV1PrivateUserManagesuspension,
   putPartyV1PrivateUsersettingPreference,
   putPaymentV1PrivateEpayrequestAssigneduser,
   putPaymentV1PublicEpayrequestCancel,
@@ -286,8 +287,6 @@ import {
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
-  GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
-  GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -326,6 +325,7 @@ import {
   GetSettlementV1PrivateReportQueryParams,
   GetSettlementV1PrivateSubuserQueryParams,
   GetStorageV1PrivateFileDownloadQueryParams,
+  GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQueryParams,
   GetWalletV1PrivateGrouptransferCommissionQueryParams,
   GetWalletV1PrivateInternalwithdrawInfoQueryParams,
   GetWalletV1PrivateQueryParams,
@@ -374,6 +374,7 @@ import {
   ProvinceResponseVM,
   PurposeType,
   PutEngagementV1PrivateNotificationReadallQueryParams,
+  PutPartyV1PrivateUserManagesuspensionQueryParams,
   PutPaymentV1PublicEpayrequestCancelQueryParams,
   PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
   PuzzleModelResponseVM,
@@ -2387,96 +2388,6 @@ useGetCapitalV1PublicMoneynetworkAll.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid = (
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.info(
-      queryParams,
-      configOverride,
-    );
-  return useQuery(key, fun, options);
-};
-useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.info = (
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [
-      getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.key,
-
-      queryParams,
-    ] as QueryKey,
-    fun: () =>
-      getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid(
-        queryParams,
-
-        configOverride,
-      ),
-  };
-};
-useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.prefetch = (
-  client: QueryClient,
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } =
-    useGetDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.info(
-      queryParams,
-      configOverride,
-    );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
-export const useGetDomaincurrencyfeerateV1PublicBydomainid = (
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetDomaincurrencyfeerateV1PublicBydomainid.info(
-    queryParams,
-    configOverride,
-  );
-  return useQuery(key, fun, options);
-};
-useGetDomaincurrencyfeerateV1PublicBydomainid.info = (
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [
-      getDomaincurrencyfeerateV1PublicBydomainid.key,
-
-      queryParams,
-    ] as QueryKey,
-    fun: () =>
-      getDomaincurrencyfeerateV1PublicBydomainid(
-        queryParams,
-
-        configOverride,
-      ),
-  };
-};
-useGetDomaincurrencyfeerateV1PublicBydomainid.prefetch = (
-  client: QueryClient,
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM[]>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetDomaincurrencyfeerateV1PublicBydomainid.info(
-    queryParams,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
 export const useGetEngagementV1PrivateNotification = (
   queryParams?: GetEngagementV1PrivateNotificationQueryParams,
   options?: UseInfiniteQueryOptions<
@@ -3259,32 +3170,6 @@ useGetPartyV1PrivateDomainMultiwallet.prefetch = (
     ? Promise.resolve()
     : client.prefetchQuery(key, () => fun(), options);
 };
-export const useGetPartyV1PrivateDomainSetting = (
-  options?: SwaggerTypescriptUseQueryOptions<DomainSettingVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateDomainSetting.info(configOverride);
-  return useQuery(key, fun, options);
-};
-useGetPartyV1PrivateDomainSetting.info = (
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getPartyV1PrivateDomainSetting.key] as QueryKey,
-    fun: () => getPartyV1PrivateDomainSetting(configOverride),
-  };
-};
-useGetPartyV1PrivateDomainSetting.prefetch = (
-  client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<DomainSettingVM>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPartyV1PrivateDomainSetting.info(configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery(key, () => fun(), options);
-};
 export const useGetPartyV1PrivateFavoritemarket = (
   queryParams?: GetPartyV1PrivateFavoritemarketQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<string[]>,
@@ -3523,6 +3408,32 @@ useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent.prefetch = (
     useGetPartyV1PrivateWalletsettingMaxreferalprogrampercent.info(
       configOverride,
     );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetPartyV1PublicDomainSetting = (
+  options?: SwaggerTypescriptUseQueryOptions<DomainSettingVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPartyV1PublicDomainSetting.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetPartyV1PublicDomainSetting.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getPartyV1PublicDomainSetting.key] as QueryKey,
+    fun: () => getPartyV1PublicDomainSetting(configOverride),
+  };
+};
+useGetPartyV1PublicDomainSetting.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<DomainSettingVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPartyV1PublicDomainSetting.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -4529,6 +4440,81 @@ useGetWalletV1PrivateBankAll.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetWalletV1PrivateBankAll.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetWalletV1PrivateDomaincurrencyfeerate = (
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetWalletV1PrivateDomaincurrencyfeerate.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetWalletV1PrivateDomaincurrencyfeerate.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getWalletV1PrivateDomaincurrencyfeerate.key] as QueryKey,
+    fun: () => getWalletV1PrivateDomaincurrencyfeerate(configOverride),
+  };
+};
+useGetWalletV1PrivateDomaincurrencyfeerate.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetWalletV1PrivateDomaincurrencyfeerate.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid =
+  (
+    queryParams?: GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQueryParams,
+    options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM>,
+    configOverride?: AxiosRequestConfig,
+  ) => {
+    const { key, fun } =
+      useGetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid.info(
+        queryParams,
+        configOverride,
+      );
+    return useQuery(key, fun, options);
+  };
+useGetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid.info = (
+  queryParams?: GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      getWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid.key,
+
+      queryParams,
+    ] as QueryKey,
+    fun: () =>
+      getWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid.prefetch = (
+  client: QueryClient,
+  queryParams?: GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<DomainCurrencyClassResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid.info(
+      queryParams,
+      configOverride,
+    );
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -6378,6 +6364,20 @@ export const usePutPartyV1PrivatePlugin = <TExtra>(
 
       configOverride,
     );
+  }, options);
+};
+
+export const usePutPartyV1PrivateUserManagesuspension = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { queryParams?: PutPartyV1PrivateUserManagesuspensionQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const { queryParams, configOverride } = _o || {};
+
+    return putPartyV1PrivateUserManagesuspension(queryParams, configOverride);
   }, options);
 };
 

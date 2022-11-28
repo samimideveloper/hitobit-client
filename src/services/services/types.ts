@@ -450,9 +450,9 @@ export interface CreateUserBankDetailRequestVM {
 }
 
 export interface CreateUserBankRequestVM {
-  /** - Format: int32 */
-  bankId: number;
   accountNo?: string;
+  /** - Format: int32 */
+  bankId?: number;
   cardNumber?: string;
   name?: string;
   shebaNo?: string;
@@ -1019,16 +1019,6 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   txId?: string;
 }
 
-export interface GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams {
-  /** - Format: int32 */
-  domainCurrencyClassId?: number;
-}
-
-export interface GetDomaincurrencyfeerateV1PublicBydomainidQueryParams {
-  /** - Format: int32 */
-  domainId?: number;
-}
-
 export interface GetEngagementV1PrivateNotificationQueryParams {
   /** - Format: date-time */
   endDate?: string;
@@ -1416,6 +1406,11 @@ export interface GetSettlementV1PrivateSubuserQueryParams {
 export interface GetStorageV1PrivateFileDownloadQueryParams {
   /** - Format: uuid */
   fileUniqueId?: string;
+}
+
+export interface GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQueryParams {
+  /** - Format: int32 */
+  domainCurrencyClassId?: number;
 }
 
 export interface GetWalletV1PrivateGrouptransferCommissionQueryParams {
@@ -2204,6 +2199,11 @@ export interface PutEngagementV1PrivateNotificationReadallQueryParams {
   type?: NotificationTypes;
 }
 
+export interface PutPartyV1PrivateUserManagesuspensionQueryParams {
+  suspend?: boolean;
+  suspensionCause?: string;
+}
+
 export interface PutPaymentV1PublicEpayrequestCancelQueryParams {
   token?: string;
 }
@@ -2678,8 +2678,6 @@ export interface UserAssetResponseVM {
 
 export interface UserBankResponseVM {
   bankAccountStatus: IdentityStatus;
-  /** - Format: int32 */
-  bankId: number;
   /** - Format: date-time */
   createDate: string;
   /** - Format: int64 */
@@ -2689,6 +2687,8 @@ export interface UserBankResponseVM {
   /** - Format: uuid */
   userId: string;
   accountNo?: string;
+  /** - Format: int32 */
+  bankId?: number;
   cardNumber?: string;
   firstName?: string;
   /** - Format: date-time */

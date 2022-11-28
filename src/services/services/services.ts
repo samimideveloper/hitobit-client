@@ -85,8 +85,6 @@ import {
   GetCapitalV1PrivateWithdrawDetailQueryParams,
   GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
-  GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
-  GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
@@ -125,6 +123,7 @@ import {
   GetSettlementV1PrivateReportQueryParams,
   GetSettlementV1PrivateSubuserQueryParams,
   GetStorageV1PrivateFileDownloadQueryParams,
+  GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQueryParams,
   GetWalletV1PrivateGrouptransferCommissionQueryParams,
   GetWalletV1PrivateInternalwithdrawInfoQueryParams,
   GetWalletV1PrivateQueryParams,
@@ -173,6 +172,7 @@ import {
   ProvinceResponseVM,
   PurposeType,
   PutEngagementV1PrivateNotificationReadallQueryParams,
+  PutPartyV1PrivateUserManagesuspensionQueryParams,
   PutPaymentV1PublicEpayrequestCancelQueryParams,
   PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
   PuzzleModelResponseVM,
@@ -1088,40 +1088,6 @@ export const getCapitalV1PublicMoneynetworkAll = (
 /** Key is end point string without base url */
 getCapitalV1PublicMoneynetworkAll.key = "/capital/v1/public/moneynetwork/all";
 
-export const getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid = (
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomaincurrencyclassidQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DomainCurrencyClassResponseVM>> => {
-  return Http.getRequest(
-    getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getDomaincurrencyfeerateV1PublicBydomaincurrencyclassid.key =
-  "/domaincurrencyfeerate/v1/public/bydomaincurrencyclassid";
-
-export const getDomaincurrencyfeerateV1PublicBydomainid = (
-  queryParams?: GetDomaincurrencyfeerateV1PublicBydomainidQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DomainCurrencyClassResponseVM[]>> => {
-  return Http.getRequest(
-    getDomaincurrencyfeerateV1PublicBydomainid.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getDomaincurrencyfeerateV1PublicBydomainid.key =
-  "/domaincurrencyfeerate/v1/public/bydomainid";
-
 export const getEngagementV1PrivateNotification = (
   queryParams?: GetEngagementV1PrivateNotificationQueryParams,
   configOverride?: AxiosRequestConfig,
@@ -1424,21 +1390,6 @@ export const getPartyV1PrivateDomainMultiwallet = (
 /** Key is end point string without base url */
 getPartyV1PrivateDomainMultiwallet.key = "/party/v1/private/domain/multiwallet";
 
-export const getPartyV1PrivateDomainSetting = (
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DomainSettingVM>> => {
-  return Http.getRequest(
-    getPartyV1PrivateDomainSetting.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getPartyV1PrivateDomainSetting.key = "/party/v1/private/domain/setting";
-
 export const getPartyV1PrivateFavoritemarket = (
   queryParams?: GetPartyV1PrivateFavoritemarketQueryParams,
   configOverride?: AxiosRequestConfig,
@@ -1549,6 +1500,21 @@ export const getPartyV1PrivateWalletsettingMaxreferalprogrampercent = (
 /** Key is end point string without base url */
 getPartyV1PrivateWalletsettingMaxreferalprogrampercent.key =
   "/party/v1/private/walletsetting/maxreferalprogrampercent";
+
+export const getPartyV1PublicDomainSetting = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DomainSettingVM>> => {
+  return Http.getRequest(
+    getPartyV1PublicDomainSetting.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPartyV1PublicDomainSetting.key = "/party/v1/public/domain/setting";
 
 export const getPartyV1PublicIdentificationlevelGuide = (
   configOverride?: AxiosRequestConfig,
@@ -1973,6 +1939,39 @@ export const getWalletV1PrivateBankAll = (
 
 /** Key is end point string without base url */
 getWalletV1PrivateBankAll.key = "/wallet/v1/private/bank/all";
+
+export const getWalletV1PrivateDomaincurrencyfeerate = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DomainCurrencyClassResponseVM[]>> => {
+  return Http.getRequest(
+    getWalletV1PrivateDomaincurrencyfeerate.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getWalletV1PrivateDomaincurrencyfeerate.key =
+  "/wallet/v1/private/domaincurrencyfeerate";
+
+export const getWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid = (
+  queryParams?: GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DomainCurrencyClassResponseVM>> => {
+  return Http.getRequest(
+    getWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid.key =
+  "/wallet/v1/private/domaincurrencyfeerate/bydomaincurrencyclassid";
 
 export const getWalletV1PrivateGrouptransferCommission = (
   queryParams?: GetWalletV1PrivateGrouptransferCommissionQueryParams,
@@ -3320,6 +3319,23 @@ export const putPartyV1PrivatePlugin = (
 
 /** Key is end point string without base url */
 putPartyV1PrivatePlugin.key = "/party/v1/private/plugin";
+
+export const putPartyV1PrivateUserManagesuspension = (
+  queryParams?: PutPartyV1PrivateUserManagesuspensionQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    putPartyV1PrivateUserManagesuspension.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putPartyV1PrivateUserManagesuspension.key =
+  "/party/v1/private/user/managesuspension";
 
 export const putPartyV1PrivateUsersettingPreference = (
   requestBody: PreferenceUserSettingRequestVM,
