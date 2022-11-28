@@ -2,9 +2,12 @@ import { MessageHeaders } from "@microsoft/signalr";
 import { QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { Fragment, lazy, ReactNode } from "react";
 import { initializeI18n } from "../../modules";
+import { useGetPartyV1PublicDomainSetting } from "../../services";
 import {
   AuthenticationProvider,
+  baseCurrencyStore,
   BaseCurrencyStoreProvider,
+  changeBaseCurrency,
   SelectedSymbolStoreProvider,
   setStoredAuthentication,
   setStoredBaseCurrency,
@@ -79,6 +82,21 @@ const Child = ({
   i18nResources,
   fallback = null,
 }: ProvidersProps) => {
+  const dispatch = baseCurrencyStore.useDispatch();
+  useGetPartyV1PublicDomainSetting({
+    onSettled(data) {
+      dispatch(
+        changeBaseCurrency({
+          asset:
+            data?.defaultFiatCurrencySymbol || (__PRODUCTION__ ? "IRT" : "IRR"),
+          fullName: "",
+          status: "TRADING",
+          symbol: "",
+        }),
+      );
+    },
+  });
+
   const { data } = useQuery(
     [ChildInitialSymbol],
     async () => {

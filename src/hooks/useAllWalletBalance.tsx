@@ -44,12 +44,13 @@ const useAllWalletBalance = () => {
           const toBTCValue = convertBaseToQuote(
             cur.totalRemain!,
             cur.symbol!,
-            "IRR",
+            domainSetting?.defaultFiatCurrencySymbol ||
+              (__PRODUCTION__ ? "IRT" : "IRR"),
           );
 
           return new Decimal(toBTCValue).plus(prev).toNumber();
         }, 0) || 0,
-    [convertBaseToQuote, userAssets],
+    [convertBaseToQuote, domainSetting, userAssets],
   );
 
   const totalBTC = useMemo(
