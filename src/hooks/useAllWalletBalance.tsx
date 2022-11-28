@@ -1,6 +1,6 @@
 import Decimal from "decimal.js";
 import { useMemo } from "react";
-import { useGetPartyV1PrivateDomainSetting } from "../services";
+import { useGetPartyV1PublicDomainSetting } from "../services";
 import { baseCurrencyStore } from "../store";
 import { useAssets } from "./useAssets";
 import { useConvertBaseToQuote } from "./useConvertBaseToQuote";
@@ -19,7 +19,7 @@ const useAllWalletBalance = () => {
     refetch,
   } = useAssets();
 
-  const { data: domainSetting } = useGetPartyV1PrivateDomainSetting();
+  const { data: domainSetting } = useGetPartyV1PublicDomainSetting();
 
   const cryptosInBtc = useMemo(
     () =>
