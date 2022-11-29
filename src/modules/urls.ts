@@ -43,7 +43,7 @@ class URLManager {
     return `http://cdn.${URLManager.PREFIX_TESTDEV}.${URLManager.domainName}.com`;
   }
   private static get CDN_PRODUCTION() {
-    return `http://cdn.${URLManager.domainName}.com`;
+    return `https://cdn.${URLManager.domainName}.com`;
   }
 
   private static get SIGNALR_DEV() {
