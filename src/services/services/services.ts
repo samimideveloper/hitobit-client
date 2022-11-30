@@ -172,7 +172,7 @@ import {
   ProvinceResponseVM,
   PurposeType,
   PutEngagementV1PrivateNotificationReadallQueryParams,
-  PutPartyV1PrivateUserManagesuspensionQueryParams,
+  PutPartyV1ProtectUserSuspendQueryParams,
   PutPaymentV1PublicEpayrequestCancelQueryParams,
   PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
   PuzzleModelResponseVM,
@@ -3320,23 +3320,6 @@ export const putPartyV1PrivatePlugin = (
 /** Key is end point string without base url */
 putPartyV1PrivatePlugin.key = "/party/v1/private/plugin";
 
-export const putPartyV1PrivateUserManagesuspension = (
-  queryParams?: PutPartyV1PrivateUserManagesuspensionQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<any>> => {
-  return Http.putRequest(
-    putPartyV1PrivateUserManagesuspension.key,
-    queryParams,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT0, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putPartyV1PrivateUserManagesuspension.key =
-  "/party/v1/private/user/managesuspension";
-
 export const putPartyV1PrivateUsersettingPreference = (
   requestBody: PreferenceUserSettingRequestVM,
   configOverride?: AxiosRequestConfig,
@@ -3353,6 +3336,22 @@ export const putPartyV1PrivateUsersettingPreference = (
 /** Key is end point string without base url */
 putPartyV1PrivateUsersettingPreference.key =
   "/party/v1/private/usersetting/preference";
+
+export const putPartyV1ProtectUserSuspend = (
+  queryParams?: PutPartyV1ProtectUserSuspendQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    putPartyV1ProtectUserSuspend.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putPartyV1ProtectUserSuspend.key = "/party/v1/protect/user/suspend";
 
 export const putPaymentV1PrivateEpayrequestAssigneduser = (
   requestBody: UpdateEpayRequestAssignedUserRequestVM,

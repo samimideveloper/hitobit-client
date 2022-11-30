@@ -2193,14 +2193,14 @@ export type PurposeType =
   | "Register"
   | "PhoneCode"
   | "NewEmail"
-  | "Email";
+  | "Email"
+  | "Suspend";
 
 export interface PutEngagementV1PrivateNotificationReadallQueryParams {
   type?: NotificationTypes;
 }
 
-export interface PutPartyV1PrivateUserManagesuspensionQueryParams {
-  suspend?: boolean;
+export interface PutPartyV1ProtectUserSuspendQueryParams {
   suspensionCause?: string;
 }
 
@@ -2543,6 +2543,7 @@ export interface TradeIncomeHistoryResponseVM {
   transactionDate: string;
   /** - Format: uuid */
   userId: string;
+  account?: string;
   commissionCurrencySymbol?: string;
 }
 

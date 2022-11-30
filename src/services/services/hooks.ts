@@ -201,8 +201,8 @@ import {
   putPartyV1PrivateNotificationRead,
   putPartyV1PrivateNotificationReadall,
   putPartyV1PrivatePlugin,
-  putPartyV1PrivateUserManagesuspension,
   putPartyV1PrivateUsersettingPreference,
+  putPartyV1ProtectUserSuspend,
   putPaymentV1PrivateEpayrequestAssigneduser,
   putPaymentV1PublicEpayrequestCancel,
   putPaymentV1PublicEpayrequestCustomdata,
@@ -374,7 +374,7 @@ import {
   ProvinceResponseVM,
   PurposeType,
   PutEngagementV1PrivateNotificationReadallQueryParams,
-  PutPartyV1PrivateUserManagesuspensionQueryParams,
+  PutPartyV1ProtectUserSuspendQueryParams,
   PutPaymentV1PublicEpayrequestCancelQueryParams,
   PutWalletV1PrivateUserreferralprogramDefaultQueryParams,
   PuzzleModelResponseVM,
@@ -6367,20 +6367,6 @@ export const usePutPartyV1PrivatePlugin = <TExtra>(
   }, options);
 };
 
-export const usePutPartyV1PrivateUserManagesuspension = <TExtra>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    any,
-    { queryParams?: PutPartyV1PrivateUserManagesuspensionQueryParams },
-    TExtra
-  >,
-) => {
-  return useMutation((_o) => {
-    const { queryParams, configOverride } = _o || {};
-
-    return putPartyV1PrivateUserManagesuspension(queryParams, configOverride);
-  }, options);
-};
-
 export const usePutPartyV1PrivateUsersettingPreference = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
@@ -6400,6 +6386,20 @@ export const usePutPartyV1PrivateUsersettingPreference = <TExtra>(
 
       configOverride,
     );
+  }, options);
+};
+
+export const usePutPartyV1ProtectUserSuspend = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { queryParams?: PutPartyV1ProtectUserSuspendQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const { queryParams, configOverride } = _o || {};
+
+    return putPartyV1ProtectUserSuspend(queryParams, configOverride);
   }, options);
 };
 
