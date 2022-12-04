@@ -67,11 +67,7 @@ const OrderBookProvider = memo<Props>(({ children }) => {
     ordersBufferRef.current = [];
   }, [selectedSymbol]);
 
-  const {
-    refetch,
-    isLoading: isDepthLoading,
-    isFetching: isDepthFetching,
-  } = useGetExchangeV1PublicDepth(
+  const { refetch, isLoading: isDepthLoading } = useGetExchangeV1PublicDepth(
     { symbol: selectedSymbol?.symbol, limit: 1000 },
     {
       enabled: __MOCK__ || false,
@@ -184,8 +180,7 @@ const OrderBookProvider = memo<Props>(({ children }) => {
     marketTicker?.lastMarketInfoChangeDate,
   ]);
 
-  const isLoading =
-    isMarketTickerLoading || (isDepthLoading && isDepthFetching);
+  const isLoading = isMarketTickerLoading || isDepthLoading;
 
   const value = useMemo(() => ({ ...state, isLoading }), [isLoading, state]);
 
