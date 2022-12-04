@@ -96,6 +96,7 @@ import {
   GetExchangeV1PublicDepthQueryParams,
   GetExchangeV1PublicKlinesQueryParams,
   GetExchangeV1PublicMarketsQueryParams,
+  GetExchangeV1PublicSymbolRateQueryParams,
   GetExchangeV1PublicTicker24hrQueryParams,
   GetExchangeV1PublicTradesQueryParams,
   GetOcoOrderResponseVM,
@@ -191,6 +192,7 @@ import {
   SettlementRequestInfoResponseVM,
   SettlementTransactionHistoryListResponseVM,
   SubuserAccessRequestVM,
+  SymbolRateResponseVM,
   TodayTotalWithdrawResponseVM,
   TokenResponseVM,
   TradeIncomeHistoryListResponseVM,
@@ -1327,6 +1329,22 @@ export const getExchangeV1PublicMarkets = (
 
 /** Key is end point string without base url */
 getExchangeV1PublicMarkets.key = "/exchange/v1/public/markets";
+
+export const getExchangeV1PublicSymbolRate = (
+  queryParams?: GetExchangeV1PublicSymbolRateQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SymbolRateResponseVM>> => {
+  return Http.getRequest(
+    getExchangeV1PublicSymbolRate.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getExchangeV1PublicSymbolRate.key = "/exchange/v1/public/symbol/rate";
 
 export const getExchangeV1PublicTicker24hr = (
   queryParams?: GetExchangeV1PublicTicker24hrQueryParams,
