@@ -67,38 +67,39 @@ const OrderBookProvider = memo<Props>(({ children }) => {
     ordersBufferRef.current = [];
   }, [selectedSymbol]);
 
-  const { refetch, isLoading: isDepthLoading } = useGetExchangeV1PublicDepth(
-    { symbol: selectedSymbol?.symbol, limit: 1000 },
-    {
-      enabled: __MOCK__ || false,
-      cacheTime: 0,
-      staleTime: 0,
-      onSuccess: (data) => {
-        isDataFetched.current = true;
+  const { refetch, isInitialLoading: isDepthLoading } =
+    useGetExchangeV1PublicDepth(
+      { symbol: selectedSymbol?.symbol, limit: 1000 },
+      {
+        enabled: __MOCK__ || false,
+        cacheTime: 0,
+        staleTime: 0,
+        onSuccess: (data) => {
+          isDataFetched.current = true;
 
-        ordersBufferRef.current = ordersBufferRef.current.filter(
-          (item) => !(item.lastUpdateId! <= data.lastUpdateId!),
-        );
+          ordersBufferRef.current = ordersBufferRef.current.filter(
+            (item) => !(item.lastUpdateId! <= data.lastUpdateId!),
+          );
 
-        const asks = (data?.asks || []) as [number, number][];
+          const asks = (data?.asks || []) as [number, number][];
 
-        const bids = (data?.bids || []) as [number, number][];
+          const bids = (data?.bids || []) as [number, number][];
 
-        ordersRef.current = {
-          bids: bids,
-          asks: asks,
-        };
+          ordersRef.current = {
+            bids: bids,
+            asks: asks,
+          };
 
-        if (ordersBufferRef.current.length > 0) {
-          ordersBufferRef.current.forEach((_data) => {
-            handleDepthChange(_data);
-          });
-        } else {
-          handleDepthChange();
-        }
+          if (ordersBufferRef.current.length > 0) {
+            ordersBufferRef.current.forEach((_data) => {
+              handleDepthChange(_data);
+            });
+          } else {
+            handleDepthChange();
+          }
+        },
       },
-    },
-  );
+    );
   const [state, setState] = useState<BitAskState>({ bids: [], asks: [] });
   const throttledSetOrders = useDebounceAnimationFrameCallback(setState, []);
 

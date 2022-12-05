@@ -129,7 +129,7 @@ function useKlines({ interval, symbol }: KlineInstance) {
     return () => unsubscribe({ interval, symbol });
   }, [interval, subscribe, symbol, unsubscribe]);
 
-  const { data: klines, isLoading: isKlinesLoading } =
+  const { data: klines, isInitialLoading: isKlinesLoading } =
     useGetExchangeV1PublicKlines(
       { symbol, interval, limit: 200 },
       {

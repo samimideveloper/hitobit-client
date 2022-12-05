@@ -22,7 +22,7 @@ const useAssets = ({
 
   const {
     data: privateUserAssets,
-    isLoading: isLoadingUserAsset,
+    isInitialLoading: isLoadingUserAsset,
     error: errorUserAsset,
     remove: removeUserAssets,
     refetch: refetchUserAssets,
