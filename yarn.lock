@@ -11888,10 +11888,10 @@ stackframe@^1.3.4:
   resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.3.4.tgz#b881a004c8c149a5e8efef37d51b16e412943310"
   integrity sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==
 
-starkstring@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/starkstring/-/starkstring-0.4.3.tgz#5937f8f25dc6ab94dec52b9073d71c8a527ed343"
-  integrity sha512-zaKuFLjZW9/k8forQsCFa+9TaKv42GPfMSawUDx07qpAKIFuvWxj0T/frQJi3rEein0ZRS92UbTxsqI9/Do35w==
+starkstring@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/starkstring/-/starkstring-0.4.4.tgz#7db65b5965cee97f0ce94ba8dfb821fb60374e3f"
+  integrity sha512-eQT59M8ICFGWUZXNRFpY++RDROJi73LeTLbS0lMm7IZeB3d5/qwuuV0exFvM/fWKjp3rnDOfm7VasHoyBg6FdQ==
 
 statuses@2.0.1:
   version "2.0.1"
