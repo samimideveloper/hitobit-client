@@ -22,7 +22,7 @@ const useAssets = ({
 
   const {
     data: privateUserAssets,
-    isLoading: isLoadingUserAsset,
+    isInitialLoading: isLoadingUserAsset,
     error: errorUserAsset,
     remove: removeUserAssets,
     refetch: refetchUserAssets,
@@ -47,6 +47,11 @@ const useAssets = ({
     refetchUserAssets();
     refetchAssets();
   };
+  useEffect(() => {
+    if (userData === null) {
+      removeUserAssets();
+    }
+  }, [removeUserAssets, userData]);
 
   const { allAssets, userAssets } = useMemo<{
     allAssets: Asset[] | undefined;

@@ -20,14 +20,15 @@ export const useFavoriteMarket = ({
 
   const { t } = useTranslation();
   const { successNotification, errorNotification } = useNotification();
-  const { data, isLoading, refetch } = useGetPartyV1PrivateFavoritemarket(
-    {
-      marketType: "Spot",
-    },
-    {
-      enabled: !!userData?.access_token,
-    },
-  );
+  const { data, isInitialLoading, refetch } =
+    useGetPartyV1PrivateFavoritemarket(
+      {
+        marketType: "Spot",
+      },
+      {
+        enabled: !!userData?.access_token,
+      },
+    );
 
   const { mutate: addToFavorites } = usePostPartyV1PrivateFavoritemarket({
     onSuccess: () => {
@@ -92,7 +93,7 @@ export const useFavoriteMarket = ({
 
   return {
     favoritesMarket: data,
-    isFavoritesLoading: isLoading,
+    isFavoritesLoading: isInitialLoading,
     onToggleFavorite,
     isSymbolFavorite,
   };

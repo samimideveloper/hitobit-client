@@ -1124,6 +1124,10 @@ export interface GetExchangeV1PublicMarketsQueryParams {
   symbols?: string[];
 }
 
+export interface GetExchangeV1PublicSymbolRateQueryParams {
+  symbol?: string;
+}
+
 export interface GetExchangeV1PublicTicker24hrQueryParams {
   symbol?: string;
 }
@@ -2482,6 +2486,15 @@ export type SymbolFilterType =
   | "MAX_NUM_ALGO_ORDERS"
   | "ICEBERG_PARTS"
   | "MAX_POSITION";
+
+export interface SymbolRateResponseVM {
+  /** - Format: double */
+  cryptoRate: number;
+  /** - Format: double */
+  fiatRate: number;
+  cryptoSymbol?: string;
+  fiatSymbol?: string;
+}
 
 export type SymbolStatus =
   | "PRE_TRADING"

@@ -84,6 +84,7 @@ import {
   getExchangeV1PublicDomaintraderlevels,
   getExchangeV1PublicKlines,
   getExchangeV1PublicMarkets,
+  getExchangeV1PublicSymbolRate,
   getExchangeV1PublicTicker24hr,
   getExchangeV1PublicTrades,
   getPartyV1PrivateDomainForcetwofa,
@@ -298,6 +299,7 @@ import {
   GetExchangeV1PublicDepthQueryParams,
   GetExchangeV1PublicKlinesQueryParams,
   GetExchangeV1PublicMarketsQueryParams,
+  GetExchangeV1PublicSymbolRateQueryParams,
   GetExchangeV1PublicTicker24hrQueryParams,
   GetExchangeV1PublicTradesQueryParams,
   GetOcoOrderResponseVM,
@@ -393,6 +395,7 @@ import {
   SettlementRequestInfoResponseVM,
   SettlementTransactionHistoryListResponseVM,
   SubuserAccessRequestVM,
+  SymbolRateResponseVM,
   TodayTotalWithdrawResponseVM,
   TokenResponseVM,
   TradeIncomeHistoryListResponseVM,
@@ -3026,6 +3029,46 @@ useGetExchangeV1PublicMarkets.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetExchangeV1PublicMarkets.info(
+    queryParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetExchangeV1PublicSymbolRate = (
+  queryParams?: GetExchangeV1PublicSymbolRateQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SymbolRateResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetExchangeV1PublicSymbolRate.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetExchangeV1PublicSymbolRate.info = (
+  queryParams?: GetExchangeV1PublicSymbolRateQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getExchangeV1PublicSymbolRate.key, queryParams] as QueryKey,
+    fun: () =>
+      getExchangeV1PublicSymbolRate(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetExchangeV1PublicSymbolRate.prefetch = (
+  client: QueryClient,
+  queryParams?: GetExchangeV1PublicSymbolRateQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<SymbolRateResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetExchangeV1PublicSymbolRate.info(
     queryParams,
     configOverride,
   );

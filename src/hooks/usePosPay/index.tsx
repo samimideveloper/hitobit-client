@@ -36,7 +36,7 @@ export function usePosPay({
   const { userData } = useAuth();
   const {
     data,
-    isLoading: targetIsLoading,
+    isInitialLoading: targetIsLoading,
     error,
     refetch: refetchTarget,
     remove,

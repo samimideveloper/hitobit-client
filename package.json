@@ -1,6 +1,6 @@
 {
   "name": "@hitobit/client",
-  "version": "1.2.43",
+  "version": "1.2.45",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -36,7 +36,7 @@
     "react-principal": "^2.1.5",
     "react-signalr": "^0.2.14",
     "reactjs-view-core": "^2.1.0",
-    "starkstring": "^0.4.3",
+    "starkstring": "^0.4.4",
     "uuid": "^8.3.2"
   },
   "scripts": {

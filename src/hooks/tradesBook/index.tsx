@@ -57,7 +57,7 @@ const TradesBookProvider = memo(({ children }: any) => {
     }),
     [selectedSymbol],
   );
-  const { data: trades, isLoading: isTradesLoading } =
+  const { data: trades, isInitialLoading: isTradesLoading } =
     useGetExchangeV1PublicTrades(tradeQueryParams, {
       enabled: !!selectedSymbol?.symbol,
     });
