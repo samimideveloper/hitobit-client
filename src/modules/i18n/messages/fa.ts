@@ -18,6 +18,7 @@ const fa = {
   insufficientBalancePleaseFund: "موجودی ناکافی لطفا حساب خود را شارژ کنید.",
   enterAmount: "مقدار را وارد کنید",
   enterPrice: "مبلغ را وارد کنید.",
+  failedTwoFa: "کد دو عاملی تایید نشد",
   enterStop: "توقف را وارد کنید.",
   takeProfit: "حد سود",
   stopLoss: "حد ضرر",
