@@ -17,6 +17,7 @@ export function getErrorMessage<T extends FieldErrors<any> | object | unknown>(
     [StatusCodes.IsNotAllowed]: i18n.t("IsNotAllowed"),
     [StatusCodes.InvalidUserNameOrPassword]: i18n.t("invalidUserPass"),
     [StatusCodes.UserIsSuspended]: i18n.t("UserIsSuspended"),
+    [StatusCodes.FaildTwoFa]: i18n.t("failedTwoFa"),
   };
   if (!error) {
     return "";

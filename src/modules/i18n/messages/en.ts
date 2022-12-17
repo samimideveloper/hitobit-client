@@ -30,6 +30,7 @@ const en = {
   valueShouldBeLessThanMaxPrice: "Value Should Be Less Than {{maxPrice}}",
   priceShouldBeMoreThanMinPrice: "Price Should Be More Than {{minPrice}}",
   priceShouldBeLessThanMaxPrice: "Price Should Be Less Than {{maxPrice}}",
+  failedTwoFa: "Failed 2FA",
   stopPriceShouldBeMoreThanLastPrice:
     "Stop Price Should Be More Than Last Price",
   stopPriceShouldBeLessThanLastPrice:
