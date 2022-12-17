@@ -42,7 +42,6 @@ const fa = {
   PendingCancel: "در انتظار لغو",
   Insurance: "بیمه",
   Adl: "ADL",
-  trillion: "تریلیون",
   BadRequest: "اطلاعات ارسالی نامعتبر است.",
   UntrustedDevice: "دستگاه شما معتبر نیست.",
   regNotComp: "ثبت نام کاربر کامل نشده است.",
