@@ -1028,15 +1028,6 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   txId?: string;
 }
 
-export interface GetEngagementV1PrivateCouponIsvalidQueryParams {
-  couponName?: string;
-}
-
-export interface GetEngagementV1PrivateCouponIsvalidforphonenumberQueryParams {
-  couponName?: string;
-  phonenumber?: string;
-}
-
 export interface GetEngagementV1PrivateNotificationQueryParams {
   /** - Format: date-time */
   endDate?: string;
@@ -1048,6 +1039,15 @@ export interface GetEngagementV1PrivateNotificationQueryParams {
   read?: boolean;
   /** - Format: date-time */
   startDate?: string;
+}
+
+export interface GetEngagementV1PublicCouponIsvalidQueryParams {
+  couponName?: string;
+}
+
+export interface GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams {
+  couponName?: string;
+  phonenumber?: string;
 }
 
 export interface GetExchangeV1PrivateAllorderlistQueryParams {
