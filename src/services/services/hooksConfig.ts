@@ -1,13 +1,13 @@
 /**
  * You can modify this file
  *
- * @version 5
+ * @version 6
  */
 import { SwaggerResponse } from "./config";
 
 type GetDataType<
   T extends Array<SwaggerResponse<any>>,
-  K extends string = "data" | "list" | "notifications" | "apiKeys",
+  K extends string = "data" | "list",
 > = T extends Array<SwaggerResponse<infer D>>
   ? D extends {
       [P in K]?: infer R1;
@@ -22,43 +22,33 @@ const paginationFlattenData = <T extends Array<SwaggerResponse<any>>>(
   pages?: T,
 ): GetDataType<T> | undefined =>
   pages?.flatMap((page) =>
-    Array.isArray(page)
-      ? page
-      : Array.isArray(page?.data)
+    Array.isArray(page.data)
       ? page.data
-      : Array.isArray(page?.list)
-      ? page.list
-      : Array.isArray(page?.notifications)
-      ? page.notifications
-      : Array.isArray(page?.apiKeys)
-      ? page.apiKeys
+      : Array.isArray(page.data?.data)
+      ? page.data.data
+      : Array.isArray(page.data?.list)
+      ? page.data.list
       : [],
   ) as any;
 
 const getTotal = <T extends Array<SwaggerResponse<any>>>(
   pages?: T,
 ): number | undefined => {
-  return (
-    pages?.[(pages?.length || 0) - 1]?.total |
-    pages?.[(pages?.length || 0) - 1]?.count |
-    pages?.[(pages?.length || 0) - 1]?.totalCount
-  );
+  return pages && pages[pages.length - 1]?.data?.total;
 };
 
 const getPageSize = (queryParams?: any): number | undefined => {
   const pageSize = Object.entries(queryParams || {}).find(([key, _value]) => {
     if (
       key.toLowerCase() === "pagesize" ||
-      key.toLowerCase() === "pagenumber" ||
-      key.toLowerCase() === "pageno"
+      key.toLowerCase() === "pagenumber"
     ) {
       return true;
     }
     return false;
   });
 
-  //@ts-ignore
-  return (pageSize[1] || 10) as number;
+  return (pageSize?.[1] || 10) as number;
 };
 
 export { paginationFlattenData, getTotal, getPageSize };
