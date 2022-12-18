@@ -649,6 +649,7 @@ export interface EPayRequestReceiptInfoResponseVM {
   cardNumber?: string;
   currencySymbol?: string;
   description?: string;
+  epayTryStatus?: EpayTryStatus;
   /** - Format: date-time */
   payDate?: string;
   payTo?: UserWalletInfoResponseVM[];
@@ -749,6 +750,7 @@ export interface EpayRequestInfoResponseVM {
   currencySymbol?: string;
   description?: string;
   epayRequestCustomDataInfos?: EpayRequestCustomDataInfoResponseVM[];
+  epayTryStatus?: EpayTryStatus;
   /** - Format: date-time */
   payDate?: string;
   payTo?: UserWalletInfoResponseVM[];
@@ -793,6 +795,13 @@ export type EpayRequestType =
   | "IPG"
   | "DivideLink"
   | "DivideLinkWithBlock";
+
+export type EpayTryStatus =
+  | "Initiated"
+  | "UnPaid"
+  | "VerifyPending"
+  | "Paid"
+  | "WaitingForBankToken";
 
 export interface ExceptionDetails {
   /** - Format: int32 */
@@ -1017,6 +1026,15 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   /** - Format: date-time */
   startTime?: string;
   txId?: string;
+}
+
+export interface GetEngagementV1PrivateCouponIsvalidQueryParams {
+  couponName?: string;
+}
+
+export interface GetEngagementV1PrivateCouponIsvalidforphonenumberQueryParams {
+  couponName?: string;
+  phonenumber?: string;
 }
 
 export interface GetEngagementV1PrivateNotificationQueryParams {
@@ -2259,6 +2277,7 @@ export interface RecentTradeResponseVM {
 export type RedirectType = "None" | "Redirect" | "RedirectWithPost";
 
 export interface RegisterRequestVM {
+  couponCode?: string;
   password?: string;
   phoneNumber?: string;
   /** - Format: int64 */
@@ -2408,8 +2427,6 @@ export interface SettlementRequestInfoResponseVM {
   userBankId: number;
   /** - Format: int64 */
   userWalletId: number;
-  /** - Format: int64 */
-  voucherId: number;
   /** - Format: int32 */
   bankId?: number;
   bankLogoAddress?: string;
@@ -2423,6 +2440,8 @@ export interface SettlementRequestInfoResponseVM {
   userBankNumber?: string;
   userBankShebaNumber?: string;
   userDisplayName?: string;
+  /** - Format: int64 */
+  voucherId?: number;
   walletName?: string;
   walletNumber?: string;
 }
@@ -2430,7 +2449,9 @@ export interface SettlementRequestInfoResponseVM {
 export type SettlementRequestStatus =
   | "Pending"
   | "Paid"
-  | "PayCommandCreatedPendingForPay";
+  | "PayCommandCreatedPendingForPay"
+  | "VoucherCreatedPendingForPayCommand"
+  | "Canceled";
 
 export interface SettlementTransactionHistoryListResponseVM {
   /** - Format: int64 */
@@ -3109,7 +3130,8 @@ export type WithdrawRequestStatus =
   | "Processing"
   | "WithdrawCompletedWaitingForDeposit"
   | "Completed"
-  | "Failed";
+  | "Failed"
+  | "Canceled";
 
 export interface WithdrawRequestUserWalletCreateRequestVM {
   /** - Format: decimal */
