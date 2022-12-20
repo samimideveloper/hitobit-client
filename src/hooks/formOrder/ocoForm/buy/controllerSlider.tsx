@@ -39,7 +39,7 @@ const ControllerSlider = ({
               const { limit } = getValues();
 
               if (!limit) {
-                setError("limit", { message: t("enterPrice") });
+                setError("price", { message: t("enterPrice") });
                 return;
               }
 
