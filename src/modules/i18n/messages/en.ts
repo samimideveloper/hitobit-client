@@ -47,7 +47,6 @@ const en = {
   PendingCancel: "Pending Cancel",
   Insurance: "Insurance",
   Adl: "Adl",
-  trillion: "T",
   BadRequest: "The information sent is invalid.",
   UntrustedDevice: "Your device is not valid.",
   regNotComp: "User registration is not complete.",
