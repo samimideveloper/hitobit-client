@@ -1,6 +1,6 @@
 import { MessageHeaders } from "@microsoft/signalr";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Fragment, lazy, ReactNode, useEffect } from "react";
+import { QueryClientProvider, useQuery } from "@tanstack/react-query";
+import { Fragment, lazy, ReactNode } from "react";
 import { initializeI18n } from "../../modules";
 import { useGetPartyV1PublicDomainSetting } from "../../services";
 import {
@@ -73,6 +73,8 @@ const HitobitClientProvider = ({
   );
 };
 
+const ChildInitialSymbol = Symbol();
+
 const Child = ({
   children,
   initializer,
@@ -95,20 +97,22 @@ const Child = ({
     },
   });
 
-  useEffect(() => {
-    initializeI18n(language, i18nResources);
-  }, [language, i18nResources]);
-  useEffect(() => {
-    const init = async () => {
+  const { data } = useQuery(
+    [ChildInitialSymbol],
+    async () => {
       await setStoredAuthentication();
       await setStoredSeletedSymbol();
       await setStoredBaseCurrency();
+      initializeI18n(language, i18nResources);
       await initializer?.();
-    };
-    init();
-  }, [initializer]);
+      return true;
+    },
+    {
+      staleTime: Infinity,
+    },
+  );
 
-  return <>{typeof window === "undefined" ? children : fallback}</>;
+  return <>{data ? children : fallback}</>;
 };
 
 export { HitobitClientProvider };
