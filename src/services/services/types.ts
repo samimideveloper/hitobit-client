@@ -2277,7 +2277,7 @@ export interface RecentTradeResponseVM {
 export type RedirectType = "None" | "Redirect" | "RedirectWithPost";
 
 export interface RegisterRequestVM {
-  couponCode?: string;
+  couponName?: string;
   password?: string;
   phoneNumber?: string;
   /** - Format: int64 */
@@ -2464,7 +2464,7 @@ export interface SettlementTransactionHistoryResponseVM {
   createDate: string;
   /** - Format: int64 */
   id: number;
-  status: WithdrawRequestStatus;
+  status: TransactionHistoryStatus;
   /** - Format: decimal */
   transactionFee: number;
   /** - Format: uuid */
@@ -2650,7 +2650,8 @@ export type TransactionHistoryStatus =
   | "Pending"
   | "Processing"
   | "Completed"
-  | "Failed";
+  | "Failed"
+  | "Canceled";
 
 export interface TransferMoneyRequestVM {
   /** - Format: decimal */
