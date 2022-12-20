@@ -112,7 +112,7 @@ const Child = ({
     },
   );
 
-  return <>{data || typeof window === "undefined" ? children : fallback}</>;
+  return <>{data ? children : fallback}</>;
 };
 
 export { HitobitClientProvider };
