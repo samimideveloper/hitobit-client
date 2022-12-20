@@ -39,14 +39,20 @@ export const useBuySellPrice = (mode: "buy" | "sell") => {
         selectedMarket?.baseAsset,
         selectedMarket?.quoteAsset,
       );
-      return starkString(value).toCurrency().toString();
+      return starkString(value)
+        .scientificNotationToDecimal()
+        .toCurrency()
+        .toString();
     } else {
       const value = convert(
         Number(recieve || 0),
         selectedMarket?.quoteAsset,
         selectedMarket?.baseAsset,
       );
-      return starkString(value).toCurrency().toString();
+      return starkString(value)
+        .scientificNotationToDecimal()
+        .toCurrency()
+        .toString();
     }
   }, [convert, lastChangeInput, recieve, selectedMarket, spend]);
 
@@ -57,14 +63,20 @@ export const useBuySellPrice = (mode: "buy" | "sell") => {
         selectedMarket?.quoteAsset,
         selectedMarket?.baseAsset,
       );
-      return starkString(value).toCurrency().toString();
+      return starkString(value)
+        .scientificNotationToDecimal()
+        .toCurrency()
+        .toString();
     } else {
       const value = convert(
         Number(recieve || 0),
         selectedMarket?.baseAsset,
         selectedMarket?.quoteAsset,
       );
-      return starkString(value).toCurrency().toString();
+      return starkString(value)
+        .scientificNotationToDecimal()
+        .toCurrency()
+        .toString();
     }
   }, [convert, lastChangeInput, recieve, selectedMarket, spend]);
 

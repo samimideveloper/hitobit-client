@@ -71,6 +71,8 @@ import {
   getCapitalV1PublicMoneynetworkAll,
   getEngagementV1PrivateNotification,
   getEngagementV1PrivateNotificationType,
+  getEngagementV1PublicCouponIsvalid,
+  getEngagementV1PublicCouponIsvalidforphonenumber,
   getExchangeV1PrivateAllorderlist,
   getExchangeV1PrivateAllorders,
   getExchangeV1PrivateAlltrades,
@@ -289,6 +291,8 @@ import {
   GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
+  GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams,
+  GetEngagementV1PublicCouponIsvalidQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
   GetExchangeV1PrivateAlltradesQueryParams,
@@ -2488,6 +2492,90 @@ useGetEngagementV1PrivateNotificationType.prefetch = (
 ) => {
   const { key, fun } =
     useGetEngagementV1PrivateNotificationType.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetEngagementV1PublicCouponIsvalid = (
+  queryParams?: GetEngagementV1PublicCouponIsvalidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetEngagementV1PublicCouponIsvalid.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetEngagementV1PublicCouponIsvalid.info = (
+  queryParams?: GetEngagementV1PublicCouponIsvalidQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getEngagementV1PublicCouponIsvalid.key, queryParams] as QueryKey,
+    fun: () =>
+      getEngagementV1PublicCouponIsvalid(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetEngagementV1PublicCouponIsvalid.prefetch = (
+  client: QueryClient,
+  queryParams?: GetEngagementV1PublicCouponIsvalidQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetEngagementV1PublicCouponIsvalid.info(
+    queryParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetEngagementV1PublicCouponIsvalidforphonenumber = (
+  queryParams?: GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetEngagementV1PublicCouponIsvalidforphonenumber.info(
+    queryParams,
+    configOverride,
+  );
+  return useQuery(key, fun, options);
+};
+useGetEngagementV1PublicCouponIsvalidforphonenumber.info = (
+  queryParams?: GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      getEngagementV1PublicCouponIsvalidforphonenumber.key,
+
+      queryParams,
+    ] as QueryKey,
+    fun: () =>
+      getEngagementV1PublicCouponIsvalidforphonenumber(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetEngagementV1PublicCouponIsvalidforphonenumber.prefetch = (
+  client: QueryClient,
+  queryParams?: GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<boolean>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetEngagementV1PublicCouponIsvalidforphonenumber.info(
+    queryParams,
+    configOverride,
+  );
 
   return client.getQueryData(key)
     ? Promise.resolve()

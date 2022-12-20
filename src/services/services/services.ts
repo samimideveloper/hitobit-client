@@ -86,6 +86,8 @@ import {
   GetCapitalV1PrivateWithdrawInfoQueryParams,
   GetCapitalV1PrivateWithdrawListQueryParams,
   GetEngagementV1PrivateNotificationQueryParams,
+  GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams,
+  GetEngagementV1PublicCouponIsvalidQueryParams,
   GetExchangeV1PrivateAllorderlistQueryParams,
   GetExchangeV1PrivateAllordersQueryParams,
   GetExchangeV1PrivateAlltradesQueryParams,
@@ -1121,6 +1123,39 @@ export const getEngagementV1PrivateNotificationType = (
 /** Key is end point string without base url */
 getEngagementV1PrivateNotificationType.key =
   "/engagement/v1/private/notification/type";
+
+export const getEngagementV1PublicCouponIsvalid = (
+  queryParams?: GetEngagementV1PublicCouponIsvalidQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<boolean>> => {
+  return Http.getRequest(
+    getEngagementV1PublicCouponIsvalid.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getEngagementV1PublicCouponIsvalid.key = "/engagement/v1/public/coupon/isvalid";
+
+export const getEngagementV1PublicCouponIsvalidforphonenumber = (
+  queryParams?: GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<boolean>> => {
+  return Http.getRequest(
+    getEngagementV1PublicCouponIsvalidforphonenumber.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getEngagementV1PublicCouponIsvalidforphonenumber.key =
+  "/engagement/v1/public/coupon/isvalidforphonenumber";
 
 export const getExchangeV1PrivateAllorderlist = (
   queryParams?: GetExchangeV1PrivateAllorderlistQueryParams,

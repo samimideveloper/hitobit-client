@@ -23,7 +23,7 @@ export interface AddPostActionPlaceMarketBuyOrderRequestVM {
   marketType: MarketType;
   postActionNature: PostActionNature;
   postActionStatus: PostActionStatus;
-  /** - Format: double */
+  /** - Format: decimal */
   quoteQuantity: number;
   marketSymbol?: string;
 }
@@ -64,7 +64,7 @@ export type AddressType = "Standard" | "Universal";
 export interface AggregationResultResponseVM {
   /** - Format: int32 */
   count: number;
-  /** - Format: double */
+  /** - Format: decimal */
   sum: number;
 }
 
@@ -183,13 +183,13 @@ export interface BasePostActionInfoResponseVM {
 }
 
 export interface BlockchainAddressResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   /** - Format: int64 */
   domainWalletMoneyNetworkId: number;
   /** - Format: int32 */
   moneyNetworkId: number;
-  /** - Format: double */
+  /** - Format: decimal */
   paidAmount: number;
   blockchainAddress?: string;
   symbol?: string;
@@ -245,9 +245,9 @@ export interface CancelOrderRequestVM {
 }
 
 export interface CancelOrderResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   cummulativeQuoteQty: number;
-  /** - Format: double */
+  /** - Format: decimal */
   executedQty: number;
   /** - Format: int64 */
   orderId: number;
@@ -261,14 +261,14 @@ export interface CancelOrderResponseVM {
   type: AppOrderType;
   baseCurrencySymbol?: string;
   clientOrderId?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   origQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   origQuoteOrderQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   price?: number;
   quoteCurrencySymbol?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   stopPrice?: number;
   symbol?: string;
 }
@@ -308,10 +308,10 @@ export interface CommissionPolicyResponseVM {
   logicalActionType: LogicalActionType;
   commissionTypeDisplay?: string;
   currencySymbol?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   fixedValue?: number;
   logicalActionTypeDisplay?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   maxValue?: number;
   moneyNetworkSymbol?: string;
   /** - Format: double */
@@ -325,7 +325,7 @@ export interface CountryResponseVM {
 }
 
 export interface CreateChargeRequestRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   redirectType: RedirectType;
   clientUniqueId?: string;
@@ -337,7 +337,7 @@ export interface CreateChargeRequestRequestVM {
 }
 
 export interface CreateDivideIpgRequestRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   blockMoney: boolean;
   canPayViaWallet: boolean;
@@ -353,7 +353,7 @@ export interface CreateDivideIpgRequestRequestVM {
 }
 
 export interface CreateDivideLinkRequestRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   blockMoney: boolean;
   /** - Format: int32 */
@@ -376,7 +376,7 @@ export interface CreateDivideLinkRequestRequestVM {
 }
 
 export interface CreateIpgRequestRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   canPayViaWallet: boolean;
   payViaOtherCurrency: boolean;
@@ -391,7 +391,7 @@ export interface CreateIpgRequestRequestVM {
 }
 
 export interface CreateLinkRequestRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   /** - Format: int32 */
   expireDays: number;
@@ -414,7 +414,7 @@ export interface CreateLinkRequestRequestVM {
 }
 
 export interface CreatePosRequestRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   redirectType: RedirectType;
   clientUniqueId?: string;
@@ -428,7 +428,7 @@ export interface CreatePosRequestRequestVM {
 }
 
 export interface CreateSettlementRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   description?: string;
   /** - Format: int64 */
@@ -531,9 +531,9 @@ export interface DepositTransactionHistoryResponseVM {
 }
 
 export interface DivideEpayRequestShareInfoRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   dividerAmount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   userAmount: number;
   userApiKey?: string;
   userEmail?: string;
@@ -572,7 +572,7 @@ export type DocumentType =
 export interface DomainCurrencyClassResponseVM {
   /** - Format: int32 */
   domainId: number;
-  /** - Format: double */
+  /** - Format: decimal */
   feeRate: number;
   /** - Format: int32 */
   id: number;
@@ -587,39 +587,39 @@ export interface DomainCurrencyResponseVM {
 }
 
 export interface DomainMoneyNetworkResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   depositFee: number;
-  /** - Format: double */
+  /** - Format: decimal */
   maximumWithdraw: number;
-  /** - Format: double */
+  /** - Format: decimal */
   minimumWithdraw: number;
-  /** - Format: double */
+  /** - Format: decimal */
   withdrawFee: number;
   name?: string;
   symbol?: string;
 }
 
 export interface DomainSettingVM {
-  /** - Format: double */
+  /** - Format: decimal */
   minimumValueForHideSmallBalance: number;
   defaultCryptoCurrencySymbol?: string;
   defaultFiatCurrencySymbol?: string;
 }
 
 export interface DomainTraderLevelResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   cryptoMakerFeePercent: number;
-  /** - Format: double */
+  /** - Format: decimal */
   cryptoTakerFeePercent: number;
-  /** - Format: double */
+  /** - Format: decimal */
   fiatMakerFeePercent: number;
-  /** - Format: double */
+  /** - Format: decimal */
   fiatTakerFeePercent: number;
   /** - Format: int32 */
   levelIndex: number;
-  /** - Format: double */
+  /** - Format: decimal */
   tradeDefaultCryptoVolumeFrom: number;
-  /** - Format: double */
+  /** - Format: decimal */
   tradeDefaultCryptoVolumeTo: number;
   name?: string;
 }
@@ -637,18 +637,19 @@ export interface EPayRequestAudienceResponseVM {
 }
 
 export interface EPayRequestReceiptInfoResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   epayRequestGatewayType: EpayRequestGatewayType;
   epayRequestStatus: EpayRequestStatus;
   epayRequestType: EpayRequestType;
   payViaOtherCurrency: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   payerAmount: number;
   blockchainDepositInfos?: BlockchainDepositInfoResponseVM[];
   cardNumber?: string;
   currencySymbol?: string;
   description?: string;
+  epayTryStatus?: EpayTryStatus;
   /** - Format: date-time */
   payDate?: string;
   payTo?: UserWalletInfoResponseVM[];
@@ -657,7 +658,7 @@ export interface EPayRequestReceiptInfoResponseVM {
 }
 
 export interface EPayRequestSingleResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   /** - Format: uuid */
   assignedToUserId: string;
@@ -669,7 +670,7 @@ export interface EPayRequestSingleResponseVM {
   expireDate: string;
   /** - Format: int64 */
   id: number;
-  /** - Format: double */
+  /** - Format: decimal */
   requestedAmount: number;
   assignedUserDisplayName?: string;
   audiences?: EPayRequestAudienceResponseVM[];
@@ -722,11 +723,11 @@ export interface EpayRequestCustomDataResponseVM {
 export type EpayRequestGatewayType = "RialShaparak" | "BlockchainAddress";
 
 export interface EpayRequestInfoResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   /** - Format: uuid */
   assignedToUserId: string;
-  /** - Format: double */
+  /** - Format: decimal */
   commissionAmount: number;
   /** - Format: date-time */
   createDate: string;
@@ -736,9 +737,9 @@ export interface EpayRequestInfoResponseVM {
   expireDate: string;
   getComissionFromPayer: boolean;
   payViaOtherCurrency: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   payerAmount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   requestedAmount: number;
   status: EpayRequestActualState;
   assignedToAnonymous?: string;
@@ -749,6 +750,7 @@ export interface EpayRequestInfoResponseVM {
   currencySymbol?: string;
   description?: string;
   epayRequestCustomDataInfos?: EpayRequestCustomDataInfoResponseVM[];
+  epayTryStatus?: EpayTryStatus;
   /** - Format: date-time */
   payDate?: string;
   payTo?: UserWalletInfoResponseVM[];
@@ -793,6 +795,13 @@ export type EpayRequestType =
   | "IPG"
   | "DivideLink"
   | "DivideLinkWithBlock";
+
+export type EpayTryStatus =
+  | "Initiated"
+  | "UnPaid"
+  | "VerifyPending"
+  | "Paid"
+  | "WaitingForBankToken";
 
 export interface ExceptionDetails {
   /** - Format: int32 */
@@ -1032,6 +1041,15 @@ export interface GetEngagementV1PrivateNotificationQueryParams {
   startDate?: string;
 }
 
+export interface GetEngagementV1PublicCouponIsvalidQueryParams {
+  couponName?: string;
+}
+
+export interface GetEngagementV1PublicCouponIsvalidforphonenumberQueryParams {
+  couponName?: string;
+  phonenumber?: string;
+}
+
 export interface GetExchangeV1PrivateAllorderlistQueryParams {
   /** - Format: date-time */
   endTime?: string;
@@ -1152,9 +1170,9 @@ export interface GetOcoOrderResponseVM {
 }
 
 export interface GetOrderResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   cummulativeQuoteQty: number;
-  /** - Format: double */
+  /** - Format: decimal */
   executedQty: number;
   /** - Format: int64 */
   orderId: number;
@@ -1170,18 +1188,18 @@ export interface GetOrderResponseVM {
   type: AppOrderType;
   baseCurrencySymbol?: string;
   clientOrderId?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   icebergQty?: number;
   isWorking?: boolean;
   origClientOrderId?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   origQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   origQuoteOrderQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   price?: number;
   quoteCurrencySymbol?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   stopPrice?: number;
   symbol?: string;
   /** - Format: int64 */
@@ -1210,7 +1228,7 @@ export interface GetPartyV1PublicPluginQueryParams {
 }
 
 export interface GetPaymentV1PrivateEpayrequestCommissionQueryParams {
-  /** - Format: double */
+  /** - Format: decimal */
   amount?: number;
   moneyNetworkSymbol?: string;
   walletNumber?: string;
@@ -1304,7 +1322,7 @@ export interface GetSettlementV1PrivateAddressbookQueryParams {
 }
 
 export interface GetSettlementV1PrivateCommissionQueryParams {
-  /** - Format: double */
+  /** - Format: decimal */
   amount?: number;
   moneyNetworkSymbol?: string;
   walletNumber?: string;
@@ -1340,9 +1358,9 @@ export interface GetSettlementV1PrivateListQueryParams {
   /** - Format: date-time */
   EndDate?: string;
   IsAuto?: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   MaximumAmount?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   MinimumAmount?: number;
   /** - Format: int32 */
   PageNo?: number;
@@ -1392,9 +1410,9 @@ export interface GetSettlementV1PrivateSubuserQueryParams {
   /** - Format: date-time */
   EndDate?: string;
   IsAuto?: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   MaximumAmount?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   MinimumAmount?: number;
   /** - Format: int32 */
   PageNo?: number;
@@ -1418,7 +1436,7 @@ export interface GetWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassidQ
 }
 
 export interface GetWalletV1PrivateGrouptransferCommissionQueryParams {
-  /** - Format: double */
+  /** - Format: decimal */
   amount?: number;
   moneyNetworkSymbol?: string;
   walletNumber?: string;
@@ -1442,7 +1460,7 @@ export interface GetWalletV1PrivateSubuserAssignableQueryParams {
 }
 
 export interface GetWalletV1PrivateTransferCommissionQueryParams {
-  /** - Format: double */
+  /** - Format: decimal */
   amount?: number;
   moneyNetworkSymbol?: string;
   walletNumber?: string;
@@ -1468,7 +1486,7 @@ export interface GetWalletV1PublicFindQueryParams {
 export interface GetWithdrawRequestUserWalletItemResponseVM {
   /** - Format: date-time */
   createDate: string;
-  /** - Format: double */
+  /** - Format: decimal */
   requestAmount: number;
   /** - Format: uuid */
   submitUniqueId: string;
@@ -1505,14 +1523,14 @@ export interface GroupTransferMoneyRequestVM {
 }
 
 export interface GroupTransferMoneyTargetRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   description?: string;
   identifier?: string;
 }
 
 export interface GroupTransferResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   /** - Format: date-time */
   createDate: string;
@@ -1527,7 +1545,7 @@ export interface GroupTransferResponseVM {
 export interface GroupTransferTargetInfoResponseVM {
   /** - Format: int64 */
   accountId: number;
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   /** - Format: int32 */
   currencyId: number;
@@ -1564,11 +1582,11 @@ export interface IdentificationLevelGuideResponseVM {
   cryptoDepositAbility: boolean;
   cryptoTradeAbility: boolean;
   cryptoWithdrawAbility: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   dailyCryptoWithdrawAmount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   dailyFiatDepositAmount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   dailyFiatWithdrawAmount: number;
   fiatDepositAbility: boolean;
   fiatTradeAbility: boolean;
@@ -1605,9 +1623,9 @@ export type IdentityStatus =
   | "Rejected";
 
 export interface InternalWithdrawResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   comission: number;
   /** - Format: date-time */
   createDate: string;
@@ -1655,29 +1673,29 @@ export type KLineInterval =
   | "OneMonth";
 
 export interface KlineDataResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   baseVolume: number;
-  /** - Format: double */
+  /** - Format: decimal */
   close: number;
   /** - Format: int64 */
   closeTime: number;
-  /** - Format: double */
+  /** - Format: decimal */
   high: number;
-  /** - Format: double */
+  /** - Format: decimal */
   low: number;
-  /** - Format: double */
+  /** - Format: decimal */
   open: number;
   /** - Format: int64 */
   openTime: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quoteVolume: number;
-  /** - Format: double */
+  /** - Format: decimal */
   takerBuyBaseVolume: number;
-  /** - Format: double */
+  /** - Format: decimal */
   takerBuyQuoteVolume: number;
   /** - Format: int64 */
   tradeCount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   ignore?: number;
 }
 
@@ -1759,51 +1777,51 @@ export interface MarketSymbolResponseVM {
 }
 
 export interface MarketTickerPriceResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   askPrice: number;
-  /** - Format: double */
+  /** - Format: decimal */
   askQuantity: number;
-  /** - Format: double */
+  /** - Format: decimal */
   baseVolume: number;
-  /** - Format: double */
+  /** - Format: decimal */
   bidPrice: number;
-  /** - Format: double */
+  /** - Format: decimal */
   bidQuantity: number;
   /** - Format: int64 */
   closeTime: number;
   /** - Format: int64 */
   firstTradeId: number;
-  /** - Format: double */
+  /** - Format: decimal */
   highPrice: number;
   isHighlight: boolean;
   /** - Format: int64 */
   lastMarketInfoChangeDate: number;
-  /** - Format: double */
+  /** - Format: decimal */
   lastPrice: number;
-  /** - Format: double */
+  /** - Format: decimal */
   lastQuantity: number;
   /** - Format: int64 */
   lastTradeId: number;
-  /** - Format: double */
+  /** - Format: decimal */
   lowPrice: number;
-  /** - Format: double */
+  /** - Format: decimal */
   openPrice: number;
   /** - Format: int64 */
   openTime: number;
-  /** - Format: double */
+  /** - Format: decimal */
   prevDayClosePrice: number;
-  /** - Format: double */
+  /** - Format: decimal */
   priceChange: number;
-  /** - Format: double */
+  /** - Format: decimal */
   priceChangePercent: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quoteVolume: number;
   smartTradeEngine: boolean;
   /** - Format: int64 */
   symbolPublicOfferingDate: number;
-  /** - Format: double */
+  /** - Format: decimal */
   totalTrades: number;
-  /** - Format: double */
+  /** - Format: decimal */
   weightedAveragePrice: number;
   baseCurrencySymbol?: string;
   quoteCurrencySymbol?: string;
@@ -1978,9 +1996,9 @@ export interface OrderResultInfoListResponseVM {
 }
 
 export interface OrderResultInfoResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   cummulativeQuoteQty: number;
-  /** - Format: double */
+  /** - Format: decimal */
   executedQty: number;
   /** - Format: int64 */
   orderId: number;
@@ -1994,14 +2012,14 @@ export interface OrderResultInfoResponseVM {
   type: AppOrderType;
   baseCurrencySymbol?: string;
   clientOrderId?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   origQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   origQuoteOrderQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   price?: number;
   quoteCurrencySymbol?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   stopPrice?: number;
   symbol?: string;
 }
@@ -2046,21 +2064,21 @@ export interface PermissionRequestVM {
 
 export interface PlaceOcoOrderRequestVM {
   side: AppOrderSide;
-  /** - Format: double */
+  /** - Format: decimal */
   stopPrice: number;
   limitClientOrderId?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   limitIcebergQty?: number;
   listClientOrderId?: string;
   newOrderRespType?: OrderResponseType;
-  /** - Format: double */
+  /** - Format: decimal */
   price?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quantity?: number;
   stopClientOrderId?: string;
-  /** - Format: double */
+  /** - Format: decimal */
   stopIcebergQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   stopLimitPrice?: number;
   stopLimitTimeInForce?: AppTimeInForce;
   symbol?: string;
@@ -2072,17 +2090,17 @@ export interface PlaceOrderRequestVM {
   orderSourceType: AppOrderSourceType;
   side: AppOrderSide;
   type: AppOrderType;
-  /** - Format: double */
+  /** - Format: decimal */
   icebergQty?: number;
   newClientOrderId?: string;
   orderResponseType?: OrderResponseType;
-  /** - Format: double */
+  /** - Format: decimal */
   price?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quantity?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quoteOrderQty?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   stopPrice?: number;
   symbol?: string;
   timeInForce?: AppTimeInForce;
@@ -2241,15 +2259,15 @@ export type RateLimitInterval = "Second" | "Minute" | "Day";
 export type RateLimitType = "REQUEST_WEIGHT" | "ORDERS" | "RAW_REQUESTS";
 
 export interface RecentTradeResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   baseQuantity: number;
   buyerIsMaker: boolean;
   isBestMatch: boolean;
   /** - Format: int64 */
   orderId: number;
-  /** - Format: double */
+  /** - Format: decimal */
   price: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quoteQuantity: number;
   smartTradeEngine: boolean;
   /** - Format: int64 */
@@ -2259,6 +2277,7 @@ export interface RecentTradeResponseVM {
 export type RedirectType = "None" | "Redirect" | "RedirectWithPost";
 
 export interface RegisterRequestVM {
+  couponCode?: string;
   password?: string;
   phoneNumber?: string;
   /** - Format: int64 */
@@ -2290,7 +2309,7 @@ export interface ReportResultResponseVM {
   key: number;
   /** - Format: int32 */
   month: number;
-  /** - Format: double */
+  /** - Format: decimal */
   sum: number;
   /** - Format: int32 */
   year: number;
@@ -2350,11 +2369,11 @@ export type SecurityStatus = "Completed" | "Failed";
 
 export interface SettlementExcelResponseVM {
   automaticSettlement: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   commissionAmount: number;
   /** - Format: date-time */
   createDate: string;
-  /** - Format: double */
+  /** - Format: decimal */
   requestAmount: number;
   status: SettlementRequestStatus;
   /** - Format: int64 */
@@ -2368,9 +2387,9 @@ export interface SettlementFilterRequestVM {
   /** - Format: date-time */
   endDate?: string;
   isAuto?: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   maximumAmount?: number;
-  /** - Format: double */
+  /** - Format: decimal */
   minimumAmount?: number;
   /** - Format: int32 */
   pageNo?: number;
@@ -2390,9 +2409,9 @@ export interface SettlementRequestInfoListResponseVM {
 }
 
 export interface SettlementRequestInfoResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   commissionAmount: number;
   /** - Format: date-time */
   createDateUtc: string;
@@ -2408,8 +2427,6 @@ export interface SettlementRequestInfoResponseVM {
   userBankId: number;
   /** - Format: int64 */
   userWalletId: number;
-  /** - Format: int64 */
-  voucherId: number;
   /** - Format: int32 */
   bankId?: number;
   bankLogoAddress?: string;
@@ -2423,6 +2440,8 @@ export interface SettlementRequestInfoResponseVM {
   userBankNumber?: string;
   userBankShebaNumber?: string;
   userDisplayName?: string;
+  /** - Format: int64 */
+  voucherId?: number;
   walletName?: string;
   walletNumber?: string;
 }
@@ -2430,7 +2449,9 @@ export interface SettlementRequestInfoResponseVM {
 export type SettlementRequestStatus =
   | "Pending"
   | "Paid"
-  | "PayCommandCreatedPendingForPay";
+  | "PayCommandCreatedPendingForPay"
+  | "VoucherCreatedPendingForPayCommand"
+  | "Canceled";
 
 export interface SettlementTransactionHistoryListResponseVM {
   /** - Format: int64 */
@@ -2444,7 +2465,7 @@ export interface SettlementTransactionHistoryResponseVM {
   /** - Format: int64 */
   id: number;
   status: WithdrawRequestStatus;
-  /** - Format: double */
+  /** - Format: decimal */
   transactionFee: number;
   /** - Format: uuid */
   userId: string;
@@ -2488,9 +2509,9 @@ export type SymbolFilterType =
   | "MAX_POSITION";
 
 export interface SymbolRateResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   cryptoRate: number;
-  /** - Format: double */
+  /** - Format: decimal */
   fiatRate: number;
   cryptoSymbol?: string;
   fiatSymbol?: string;
@@ -2512,9 +2533,9 @@ export type SymbolStatus =
   | "SETTLING";
 
 export interface TodayTotalWithdrawResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   maxDailyWithdraw: number;
-  /** - Format: double */
+  /** - Format: decimal */
   todayWithdraw: number;
   symbol?: string;
 }
@@ -2544,7 +2565,7 @@ export interface TradeIncomeHistoryResponseVM {
   domainId: number;
   /** - Format: int64 */
   id: number;
-  /** - Format: double */
+  /** - Format: decimal */
   income: number;
   /** - Format: int64 */
   orderId: number;
@@ -2561,7 +2582,7 @@ export interface TradeIncomeHistoryResponseVM {
 }
 
 export interface TradeIncomeInviteeRankingResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   currencySymbol?: string;
   userName?: string;
@@ -2574,9 +2595,9 @@ export interface TradeReferralHistoryListResponseVM {
 }
 
 export interface TradeReferralHistoryResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   defaultCryptoAmount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   defaultFiatAmount: number;
   /** - Format: int64 */
   referralProgramId: number;
@@ -2588,15 +2609,15 @@ export interface TradeReferralHistoryResponseVM {
 }
 
 export interface TradeResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   commission: number;
   /** - Format: int64 */
   orderId: number;
-  /** - Format: double */
+  /** - Format: decimal */
   price: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quantity: number;
-  /** - Format: double */
+  /** - Format: decimal */
   quoteQuantity: number;
   side: AppOrderSide;
   /** - Format: date-time */
@@ -2614,7 +2635,7 @@ export interface TradeResposneListVM {
 export interface TransactionHistoryDetailResponseVM {
   /** - Format: date-time */
   createDate: string;
-  /** - Format: double */
+  /** - Format: decimal */
   requestAmount: number;
   status: TransactionHistoryStatus;
   currencySymbol?: string;
@@ -2632,7 +2653,7 @@ export type TransactionHistoryStatus =
   | "Failed";
 
 export interface TransferMoneyRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   description?: string;
   targetIdentifier?: string;
@@ -2679,11 +2700,11 @@ export interface UpdateUserWalletRequestVM {
 }
 
 export interface UserAssetResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   availableRemain: number;
-  /** - Format: double */
+  /** - Format: decimal */
   inUseRemain: number;
-  /** - Format: double */
+  /** - Format: decimal */
   totalRemain: number;
   symbol?: string;
   walletName?: string;
@@ -2724,7 +2745,7 @@ export interface UserBasicInfoRequestVM {
 }
 
 export interface UserCurrencyResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   availableRemain: number;
   canBuy: boolean;
   canCharge: boolean;
@@ -2735,9 +2756,9 @@ export interface UserCurrencyResponseVM {
   /** - Format: int32 */
   decimalDigits: number;
   enabled: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   inUseRemain: number;
-  /** - Format: double */
+  /** - Format: decimal */
   totalRemain: number;
   type: CurrencyType;
   logoAddress?: string;
@@ -2806,20 +2827,20 @@ export interface UserInfoVM {
   id: string;
   identityStatus: IdentityStatus;
   isBusinessUser: boolean;
-  limitAccess: boolean;
   nextLevel: IdentificationLevel;
   userStatus: UserStatus;
   userType: UserType;
+  withdrawLimit: boolean;
   displayName?: string;
   email?: string;
-  /** - Format: date-time */
-  limitAccessEnd?: string;
   nextLevelStatus?: IdentificationLevelRequestStatus;
   pendingRequestDescription?: string;
   phoneNumber?: string;
   /** - Format: uuid */
   profileImageFileUniqueId?: string;
   userName?: string;
+  /** - Format: date-time */
+  withdrawLimitEnd?: string;
 }
 
 export interface UserLoginHistoryDetailsVM {
@@ -2871,17 +2892,17 @@ export interface UserMoneyNetworkResponseVM {
   estimatedArrivalTime: number;
   isDefault: boolean;
   isTag: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   maximumWithdraw: number;
   /** - Format: int32 */
   minConfirmations: number;
-  /** - Format: double */
+  /** - Format: decimal */
   minimumWithdraw: number;
   settlementEnabled: boolean;
   /** - Format: int32 */
   unlockConfirm: number;
   withdrawEnabled: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   withdrawFee: number;
   addressRegex?: string;
   addressUrl?: string;
@@ -2916,10 +2937,10 @@ export interface UserPluginTogggleRequestVM {
 }
 
 export interface UserReferralProgramAddVM {
-  /** - Format: double */
+  /** - Format: decimal */
   inviteePercent: number;
   isDefault: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   referralPercent: number;
   description?: string;
   name?: string;
@@ -2930,10 +2951,10 @@ export interface UserReferralProgramVM {
   friendsCount: number;
   /** - Format: int64 */
   id: number;
-  /** - Format: double */
+  /** - Format: decimal */
   inviteePercent: number;
   isDefault: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   referralPercent: number;
   /** - Format: uuid */
   userId: string;
@@ -2967,22 +2988,22 @@ export interface UserStatusResponseVM {
 }
 
 export interface UserTotalReferralProgramVM {
-  /** - Format: double */
+  /** - Format: decimal */
   defaultCryptoAmount: number;
-  /** - Format: double */
+  /** - Format: decimal */
   defaultFiatAmount: number;
   /** - Format: int32 */
   friendsCount: number;
 }
 
 export interface UserTraderLevelResponseVM {
-  /** - Format: double */
+  /** - Format: decimal */
   cryptoMakerFeePercent: number;
-  /** - Format: double */
+  /** - Format: decimal */
   cryptoTakerFeePercent: number;
-  /** - Format: double */
+  /** - Format: decimal */
   fiatMakerFeePercent: number;
-  /** - Format: double */
+  /** - Format: decimal */
   fiatTakerFeePercent: number;
   /** - Format: int32 */
   levelIndex: number;
@@ -3035,15 +3056,15 @@ export interface UserWalletDisplayDetailResponseVM {
 export interface UserWalletDisplayResponseVM {
   accountStatus: AccountStatus;
   automaticSettlement: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   availableRemain: number;
   getComissionFromPayer: boolean;
-  /** - Format: double */
+  /** - Format: decimal */
   inUseRemain: number;
   isActive: boolean;
   /** - Format: int32 */
   relatedUserWalletIndex: number;
-  /** - Format: double */
+  /** - Format: decimal */
   totalRemain: number;
   userWalletType: UserWalletType;
   intermediatePayUserBankAccountNumber?: string;
@@ -3109,10 +3130,11 @@ export type WithdrawRequestStatus =
   | "Processing"
   | "WithdrawCompletedWaitingForDeposit"
   | "Completed"
-  | "Failed";
+  | "Failed"
+  | "Canceled";
 
 export interface WithdrawRequestUserWalletCreateRequestVM {
-  /** - Format: double */
+  /** - Format: decimal */
   amount: number;
   address?: string;
   currencySymbol?: string;
