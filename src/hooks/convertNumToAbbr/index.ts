@@ -29,13 +29,13 @@ export function useConvertNumToAbbr() {
       const digit = digits[abbreviation];
       let abbrNum: number | null = null;
       let abbrSymbol: string | null = null;
-      if (digit <= 10 && input > 1_000_000_000) {
+      if (digit <= 10 && input >= 1_000_000_000) {
         abbrNum = input / 1_000_000_000;
         abbrSymbol = t("billion");
-      } else if (digit <= 7 && input > 1_000_000) {
+      } else if (digit <= 7 && input >= 1_000_000) {
         abbrNum = input / 1_000_000;
         abbrSymbol = t("million");
-      } else if (digit <= 4 && input > 1000) {
+      } else if (digit <= 4 && input >= 1000) {
         abbrNum = input / 1000;
         abbrSymbol = t("kilo");
       }
