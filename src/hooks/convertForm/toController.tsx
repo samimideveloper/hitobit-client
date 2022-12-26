@@ -177,9 +177,10 @@ export const ConvertToController = ({
         }}
       />
       {renderErrorComponent &&
-        lastChangedField === "to" &&
         renderErrorComponent?.(
-          canThrowError ? errors["toAmount"]?.message : "",
+          lastChangedField === "to" && canThrowError
+            ? errors["toAmount"]?.message
+            : "",
         )}
     </>
   );

@@ -178,9 +178,10 @@ export const ConvertFromController = ({
         }}
       />
       {renderErrorComponent &&
-        lastChangedField === "from" &&
         renderErrorComponent?.(
-          canThrowError ? errors["fromAmount"]?.message : "",
+          lastChangedField === "from" && canThrowError
+            ? errors["fromAmount"]?.message
+            : "",
         )}
     </>
   );
