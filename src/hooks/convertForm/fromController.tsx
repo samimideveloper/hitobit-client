@@ -112,11 +112,9 @@ export const ConvertFromController = ({
         rules={{
           validate: {
             amount: (value) => {
-              if (!lastChangedField && !value) {
-                t("enterAmount");
+              if (!value) {
+                return t("enterAmount");
               }
-
-              if (lastChangedField !== "from") return undefined;
 
               return value
                 ? selectedCurrency?.symbol === selectedMarket?.baseAsset
@@ -180,6 +178,7 @@ export const ConvertFromController = ({
         }}
       />
       {renderErrorComponent &&
+        lastChangedField === "from" &&
         renderErrorComponent?.(
           canThrowError ? errors["fromAmount"]?.message : "",
         )}
