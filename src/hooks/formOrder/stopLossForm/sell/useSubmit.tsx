@@ -1,15 +1,18 @@
 import { useTranslation } from "react-i18next";
 import { usePostExchangeV1PrivateOrder } from "../../../../services";
 import { selectedSymbolStore } from "../../../../store";
+import { useClearPriceOnOrder } from "../../../useClearPriceOnOrder";
 import { MarketOrderValues, SellForm } from "../types";
 
 const useSubmit = () => {
   const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
-  const { handleSubmit, reset, setError } = SellForm.useFormContext();
+  const { handleSubmit, setError } = SellForm.useFormContext();
+  const { clearAllPrices } = useClearPriceOnOrder();
+
   const { mutate, isLoading, error } = usePostExchangeV1PrivateOrder({
     onSuccess: () => {
-      reset();
+      clearAllPrices();
     },
   });
 

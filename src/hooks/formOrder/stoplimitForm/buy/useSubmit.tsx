@@ -6,6 +6,7 @@ import {
 } from "../../../../services";
 import { selectedSymbolStore } from "../../../../store";
 import { useMarketTicker } from "../../../marketTicker";
+import { useClearPriceOnOrder } from "../../../useClearPriceOnOrder";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { BuyForm, StopLimitOrderValues } from "../types";
 
@@ -20,16 +21,13 @@ const useSubmit = ({
   const { getSymbolMarketTicker } = useMarketTicker();
   const selectedTicker = getSymbolMarketTicker(selectedSymbol?.symbol);
 
-  const {
-    handleSubmit: buyHandleSubmit,
-    reset,
-    setError,
-  } = BuyForm.useFormContext();
+  const { handleSubmit: buyHandleSubmit, setError } = BuyForm.useFormContext();
   useResetOnSymbol(BuyForm.useFormContext);
+  const { clearAllPrices } = useClearPriceOnOrder();
 
   const { mutate, isLoading, error } = usePostExchangeV1PrivateOrder({
     onSuccess: () => {
-      reset();
+      clearAllPrices();
     },
   });
   const { userData } = useAuth();

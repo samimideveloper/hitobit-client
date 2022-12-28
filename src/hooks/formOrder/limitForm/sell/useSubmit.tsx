@@ -5,6 +5,7 @@ import {
   usePostExchangeV1PrivateOrder,
 } from "../../../../services";
 import { selectedSymbolStore } from "../../../../store";
+import { useClearPriceOnOrder } from "../../../useClearPriceOnOrder";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { LimitOrderValues, SellForm } from "../types";
 
@@ -14,18 +15,16 @@ const useSubmit = ({
   onOpenConfirmationModal?: (onConfirm: () => void) => void;
 }) => {
   const { t } = useTranslation();
-  const {
-    handleSubmit: sellHandleSubmit,
-    reset,
-    setError,
-  } = SellForm.useFormContext();
+  const { handleSubmit: sellHandleSubmit, setError } =
+    SellForm.useFormContext();
   useResetOnSymbol(SellForm.useFormContext);
+  const { clearAllPrices } = useClearPriceOnOrder();
 
   const { selectedSymbol } = selectedSymbolStore.useState();
 
   const { mutate, isLoading, error } = usePostExchangeV1PrivateOrder({
     onSuccess() {
-      reset();
+      clearAllPrices();
     },
   });
 

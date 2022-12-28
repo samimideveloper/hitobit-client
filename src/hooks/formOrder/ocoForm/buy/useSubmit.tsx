@@ -5,6 +5,7 @@ import {
   usePostExchangeV1PrivateOrderOco,
 } from "../../../../services";
 import { selectedSymbolStore } from "../../../../store";
+import { useClearPriceOnOrder } from "../../../useClearPriceOnOrder";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { BuyForm, OcoOrderValues } from "../types";
 
@@ -16,16 +17,13 @@ const useSubmit = ({
   const { t } = useTranslation();
   const { selectedSymbol } = selectedSymbolStore.useState();
 
-  const {
-    handleSubmit: buyHandleSubmit,
-    reset,
-    setError,
-  } = BuyForm.useFormContext();
+  const { handleSubmit: buyHandleSubmit, setError } = BuyForm.useFormContext();
   useResetOnSymbol(BuyForm.useFormContext);
+  const { clearAllPrices } = useClearPriceOnOrder();
 
   const { mutate, isLoading, error } = usePostExchangeV1PrivateOrderOco({
     onSuccess: () => {
-      reset();
+      clearAllPrices();
     },
   });
   const { userData } = useAuth();
