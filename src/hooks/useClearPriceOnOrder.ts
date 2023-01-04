@@ -1,6 +1,8 @@
 import {
   FormLimitBuy,
   FormLimitSell,
+  FormMarketBuy,
+  FormMarketSell,
   FormOcoBuy,
   FormOcoSell,
   FormStopLimitBuy,
@@ -14,6 +16,8 @@ export function useClearPriceOnOrder() {
   const { reset: resetStopLimitSellValue } = FormStopLimitSell.useFormContext();
   const { reset: resetOcoBuyValue } = FormOcoBuy.useFormContext();
   const { reset: resetOcoSellValue } = FormOcoSell.useFormContext();
+  const { reset: resetMarketBuyValue } = FormMarketBuy.useFormContext();
+  const { reset: resetMarketSellValue } = FormMarketSell.useFormContext();
 
   const clearAllPrices = () => {
     resetLimitBuyValue();
@@ -22,6 +26,8 @@ export function useClearPriceOnOrder() {
     resetStopLimitSellValue();
     resetOcoBuyValue();
     resetOcoSellValue();
+    resetMarketBuyValue();
+    resetMarketSellValue();
   };
 
   return { clearAllPrices };
