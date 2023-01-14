@@ -38,7 +38,7 @@ export const ConvertFromController = ({
   renderErrorComponent,
 }: ConvertFromRenderProps) => {
   const { t } = useTranslation();
-  const { toMarket, fromAmount, fromAsset, lastChangedField } =
+  const { toMarket, fromAmount, fromAsset, toAmount, lastChangedField } =
     ConvertContext.useWatch();
 
   const queryClient = useQueryClient();
@@ -112,6 +112,8 @@ export const ConvertFromController = ({
         rules={{
           validate: {
             amount: (value) => {
+              if (toAmount) return undefined;
+
               if (!lastChangedField && !value) {
                 t("enterAmount");
               }
