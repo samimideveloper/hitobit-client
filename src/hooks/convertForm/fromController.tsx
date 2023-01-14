@@ -114,11 +114,9 @@ export const ConvertFromController = ({
             amount: (value) => {
               if (toAmount) return undefined;
 
-              if (!lastChangedField && !value) {
-                t("enterAmount");
+              if (!value) {
+                return t("enterAmount");
               }
-
-              if (lastChangedField !== "from") return undefined;
 
               return value
                 ? selectedCurrency?.symbol === selectedMarket?.baseAsset
@@ -183,7 +181,9 @@ export const ConvertFromController = ({
       />
       {renderErrorComponent &&
         renderErrorComponent?.(
-          canThrowError ? errors["fromAmount"]?.message : "",
+          lastChangedField === "from" && canThrowError
+            ? errors["fromAmount"]?.message
+            : "",
         )}
     </>
   );

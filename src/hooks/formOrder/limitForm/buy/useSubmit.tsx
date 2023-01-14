@@ -5,6 +5,7 @@ import {
   usePostExchangeV1PrivateOrder,
 } from "../../../../services";
 import { selectedSymbolStore } from "../../../../store";
+import { useClearPriceOnOrder } from "../../../useClearPriceOnOrder";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { BuyForm, LimitOrderValues } from "../types";
 
@@ -19,17 +20,14 @@ const useSubmit = ({
   const { data: userPreferences } = useGetPartyV1PrivateUsersettingPreference({
     enabled: !!userData,
   });
+  const { clearAllPrices } = useClearPriceOnOrder();
 
-  const {
-    handleSubmit: buyHandleSubmit,
-    reset,
-    setError,
-  } = BuyForm.useFormContext();
+  const { handleSubmit: buyHandleSubmit, setError } = BuyForm.useFormContext();
   useResetOnSymbol(BuyForm.useFormContext);
 
   const { mutate, isLoading, error } = usePostExchangeV1PrivateOrder({
     onSuccess: () => {
-      reset();
+      clearAllPrices();
     },
   });
 

@@ -2550,6 +2550,15 @@ export interface TokenResponseVM {
   tokenType?: string;
 }
 
+export interface TotalTradeQuantityResponseVM {
+  /** - Format: decimal */
+  oneDayQuantity: number;
+  /** - Format: decimal */
+  sevenDayQuantity: number;
+  /** - Format: decimal */
+  thirtyDayQuantity: number;
+}
+
 export interface TradeIncomeHistoryListResponseVM {
   /** - Format: int64 */
   count: number;

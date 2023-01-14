@@ -197,6 +197,7 @@ import {
   SymbolRateResponseVM,
   TodayTotalWithdrawResponseVM,
   TokenResponseVM,
+  TotalTradeQuantityResponseVM,
   TradeIncomeHistoryListResponseVM,
   TradeIncomeHistoryResponseVM,
   TradeIncomeInviteeRankingResponseVM,
@@ -726,6 +727,22 @@ export const getAnalyticsV1PublicTradehistoryRank = (
 /** Key is end point string without base url */
 getAnalyticsV1PublicTradehistoryRank.key =
   "/analytics/v1/public/tradehistory/rank";
+
+export const getAnalyticsV1PublicTradehistoryTotalquantity = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TotalTradeQuantityResponseVM>> => {
+  return Http.getRequest(
+    getAnalyticsV1PublicTradehistoryTotalquantity.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAnalyticsV1PublicTradehistoryTotalquantity.key =
+  "/analytics/v1/public/tradehistory/totalquantity";
 
 export const getAuthV1PrivateApikey = (
   queryParams?: GetAuthV1PrivateApikeyQueryParams,

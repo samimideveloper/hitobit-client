@@ -6,6 +6,7 @@ import {
 } from "../../../../services";
 import { selectedSymbolStore } from "../../../../store";
 import { useMarketTicker } from "../../../marketTicker";
+import { useClearPriceOnOrder } from "../../../useClearPriceOnOrder";
 import { useResetOnSymbol } from "../../useResetOnSymbol";
 import { SellForm, StopLimitOrderValues } from "../types";
 
@@ -21,12 +22,10 @@ const useSubmit = ({
   const { getSymbolMarketTicker } = useMarketTicker();
   const selectedTicker = getSymbolMarketTicker(selectedSymbol?.symbol);
 
-  const {
-    handleSubmit: sellHandleSubmit,
-    reset,
-    setError,
-  } = SellForm.useFormContext();
+  const { handleSubmit: sellHandleSubmit, setError } =
+    SellForm.useFormContext();
   useResetOnSymbol(SellForm.useFormContext);
+  const { clearAllPrices } = useClearPriceOnOrder();
 
   const { userData } = useAuth();
   const { data: userPreferences } = useGetPartyV1PrivateUsersettingPreference({
@@ -34,7 +33,7 @@ const useSubmit = ({
   });
   const { mutate, isLoading, error } = usePostExchangeV1PrivateOrder({
     onSuccess() {
-      reset();
+      clearAllPrices();
     },
   });
 

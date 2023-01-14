@@ -46,6 +46,7 @@ import {
   getAnalyticsV1PrivateUserloginhistoryList,
   getAnalyticsV1PrivateUserreferralprogramTotal,
   getAnalyticsV1PublicTradehistoryRank,
+  getAnalyticsV1PublicTradehistoryTotalquantity,
   getAuthV1PrivateApikey,
   getAuthV1PrivateApikeyList,
   getAuthV1PrivateAuthGetqrcode,
@@ -402,6 +403,7 @@ import {
   SymbolRateResponseVM,
   TodayTotalWithdrawResponseVM,
   TokenResponseVM,
+  TotalTradeQuantityResponseVM,
   TradeIncomeHistoryListResponseVM,
   TradeIncomeHistoryResponseVM,
   TradeIncomeInviteeRankingResponseVM,
@@ -1364,6 +1366,34 @@ useGetAnalyticsV1PublicTradehistoryRank.prefetch = (
 ) => {
   const { key, fun } =
     useGetAnalyticsV1PublicTradehistoryRank.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetAnalyticsV1PublicTradehistoryTotalquantity = (
+  options?: SwaggerTypescriptUseQueryOptions<TotalTradeQuantityResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PublicTradehistoryTotalquantity.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetAnalyticsV1PublicTradehistoryTotalquantity.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getAnalyticsV1PublicTradehistoryTotalquantity.key] as QueryKey,
+    fun: () => getAnalyticsV1PublicTradehistoryTotalquantity(configOverride),
+  };
+};
+useGetAnalyticsV1PublicTradehistoryTotalquantity.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<TotalTradeQuantityResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetAnalyticsV1PublicTradehistoryTotalquantity.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()

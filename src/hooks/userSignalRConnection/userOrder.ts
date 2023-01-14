@@ -1,4 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
+import Decimal from "decimal.js";
 import moment from "moment";
 import { useRef } from "react";
 import { i18n } from "../../modules";
@@ -154,7 +155,7 @@ const updateOrders = (
     clientOrderId: order.clientOrderID,
     executedQty: Number(order.cumulativeFilledQuantity),
     origQuoteOrderQty: order.orderQuantity
-      ? Number(order.orderQuantity) * Number(order.orderPrice || 0)
+      ? new Decimal(order.orderPrice).mul(order.orderQuantity).toNumber()
       : 0,
     transactTime: moment(order.transactionTime).local().toDate().getTime(),
     cummulativeQuoteQty: Number(order.cumulativeQuoteAssetTransactedQuantity),

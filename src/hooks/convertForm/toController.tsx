@@ -120,14 +120,11 @@ export const ConvertToController = ({
         rules={{
           validate: {
             amount: (value) => {
-              if (fromAmount) return;
+              if (fromAmount) return undefined;
 
-              if (!lastChangedField && !value) {
-                t("enterAmount");
+              if (!value) {
+                return t("enterAmount");
               }
-
-              if (lastChangedField !== "to") return undefined;
-
               return value
                 ? selectedCurrency?.symbol === selectedMarket?.quoteAsset
                   ? getAmountError({
@@ -183,7 +180,9 @@ export const ConvertToController = ({
       />
       {renderErrorComponent &&
         renderErrorComponent?.(
-          canThrowError ? errors["toAmount"]?.message : "",
+          lastChangedField === "to" && canThrowError
+            ? errors["toAmount"]?.message
+            : "",
         )}
     </>
   );
