@@ -539,24 +539,43 @@ export const useDeleteAuthV1PrivateUsertrusteddevice = <TExtra>(
 export const useDeleteAuthV1ProtectApikey = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { queryParams?: DeleteAuthV1ProtectApikeyQueryParams },
+    {
+      queryParams?: DeleteAuthV1ProtectApikeyQueryParams;
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
     TExtra
   >,
 ) => {
   return useMutation((_o) => {
-    const { queryParams, configOverride } = _o || {};
+    const { queryParams, headerParams, configOverride } = _o || {};
 
-    return deleteAuthV1ProtectApikey(queryParams, configOverride);
+    return deleteAuthV1ProtectApikey(queryParams, headerParams, configOverride);
   }, options);
 };
 
 export const useDeleteAuthV1ProtectApikeyAll = <TExtra>(
-  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    {
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
+    TExtra
+  >,
 ) => {
   return useMutation((_o) => {
-    const { configOverride } = _o || {};
+    const { headerParams, configOverride } = _o || {};
 
-    return deleteAuthV1ProtectApikeyAll(configOverride);
+    return deleteAuthV1ProtectApikeyAll(headerParams, configOverride);
   }, options);
 };
 
@@ -5405,7 +5424,15 @@ export const usePostAuthV1PrivateAuthRevoketoken = <TExtra>(
 export const usePostAuthV1ProtectApikey = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     ApiKeyAddResponseVM,
-    { requestBody: ApiKeyAddRequestVM },
+    {
+      requestBody: ApiKeyAddRequestVM;
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
     TExtra
   >,
 ) => {
@@ -5413,12 +5440,14 @@ export const usePostAuthV1ProtectApikey = <TExtra>(
     const {
       requestBody,
 
+      headerParams,
       configOverride,
     } = _o || {};
 
     return postAuthV1ProtectApikey(
       requestBody,
 
+      headerParams,
       configOverride,
     );
   }, options);
@@ -5659,7 +5688,15 @@ export const usePostCapitalV1PrivateDepositQuerywalletdepositaddress = <TExtra>(
 export const usePostCapitalV1ProtectedWithdrawApply = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     CreateWithdrawRequestUserWalletResponseVM,
-    { requestBody: WithdrawRequestUserWalletCreateRequestVM },
+    {
+      requestBody: WithdrawRequestUserWalletCreateRequestVM;
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
     TExtra
   >,
 ) => {
@@ -5667,12 +5704,14 @@ export const usePostCapitalV1ProtectedWithdrawApply = <TExtra>(
     const {
       requestBody,
 
+      headerParams,
       configOverride,
     } = _o || {};
 
     return postCapitalV1ProtectedWithdrawApply(
       requestBody,
 
+      headerParams,
       configOverride,
     );
   }, options);
@@ -6091,7 +6130,15 @@ export const usePostPaymentV1PublicEpayrequestSmsResend = <TExtra>(
 export const usePostSettlementV1PrivateAddressbook = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: AddressBookAddRequestVM[] },
+    {
+      requestBody: AddressBookAddRequestVM[];
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
     TExtra
   >,
 ) => {
@@ -6099,12 +6146,14 @@ export const usePostSettlementV1PrivateAddressbook = <TExtra>(
     const {
       requestBody,
 
+      headerParams,
       configOverride,
     } = _o || {};
 
     return postSettlementV1PrivateAddressbook(
       requestBody,
 
+      headerParams,
       configOverride,
     );
   }, options);
@@ -6362,7 +6411,15 @@ export const usePutAuthV1PrivateAuthEmail = <TExtra>(
 export const usePutAuthV1ProtectApikey = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: ApiKeyUpdateRequestVM },
+    {
+      requestBody: ApiKeyUpdateRequestVM;
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
     TExtra
   >,
 ) => {
@@ -6370,12 +6427,14 @@ export const usePutAuthV1ProtectApikey = <TExtra>(
     const {
       requestBody,
 
+      headerParams,
       configOverride,
     } = _o || {};
 
     return putAuthV1ProtectApikey(
       requestBody,
 
+      headerParams,
       configOverride,
     );
   }, options);
@@ -6386,7 +6445,13 @@ export const usePutAuthV1ProtectAuthChangepassword = <TExtra>(
     any,
     {
       requestBody: ChangePasswordRequestVM;
-      headerParams?: { platformType: PlatformType };
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        platformType: PlatformType;
+        purpose: PurposeType;
+        totp: string;
+      };
     },
     TExtra
   >,
@@ -6553,14 +6618,26 @@ export const usePutPartyV1PrivateUsersettingPreference = <TExtra>(
 export const usePutPartyV1ProtectUserSuspend = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { queryParams?: PutPartyV1ProtectUserSuspendQueryParams },
+    {
+      queryParams?: PutPartyV1ProtectUserSuspendQueryParams;
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
     TExtra
   >,
 ) => {
   return useMutation((_o) => {
-    const { queryParams, configOverride } = _o || {};
+    const { queryParams, headerParams, configOverride } = _o || {};
 
-    return putPartyV1ProtectUserSuspend(queryParams, configOverride);
+    return putPartyV1ProtectUserSuspend(
+      queryParams,
+      headerParams,
+      configOverride,
+    );
   }, options);
 };
 
@@ -6647,7 +6724,15 @@ export const usePutSettlementV1PrivateAddressbookWhitelistDisable = <TExtra>(
 export const usePutSettlementV1PrivateAddressbookWhitelistEnable = <TExtra>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: number[] },
+    {
+      requestBody: number[];
+      headerParams?: {
+        otpcode: string;
+        otptoken: string;
+        purpose: PurposeType;
+        totp: string;
+      };
+    },
     TExtra
   >,
 ) => {
@@ -6655,12 +6740,14 @@ export const usePutSettlementV1PrivateAddressbookWhitelistEnable = <TExtra>(
     const {
       requestBody,
 
+      headerParams,
       configOverride,
     } = _o || {};
 
     return putSettlementV1PrivateAddressbookWhitelistEnable(
       requestBody,
 
+      headerParams,
       configOverride,
     );
   }, options);

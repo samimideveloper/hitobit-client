@@ -2907,6 +2907,8 @@ export interface UserMoneyNetworkResponseVM {
   /** - Format: int32 */
   minConfirmations: number;
   /** - Format: decimal */
+  minDeposit: number;
+  /** - Format: decimal */
   minimumWithdraw: number;
   settlementEnabled: boolean;
   /** - Format: int32 */

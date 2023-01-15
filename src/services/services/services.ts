@@ -296,7 +296,7 @@ export const deleteAuthV1PrivateAuthEmail = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -312,7 +312,7 @@ export const deleteAuthV1PrivateUsertrusteddevice = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -321,6 +321,12 @@ deleteAuthV1PrivateUsertrusteddevice.key = "/auth/v1/private/usertrusteddevice";
 
 export const deleteAuthV1ProtectApikey = (
   queryParams?: DeleteAuthV1ProtectApikeyQueryParams,
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.deleteRequest(
@@ -328,7 +334,15 @@ export const deleteAuthV1ProtectApikey = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT0,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -336,6 +350,12 @@ export const deleteAuthV1ProtectApikey = (
 deleteAuthV1ProtectApikey.key = "/auth/v1/protect/apikey";
 
 export const deleteAuthV1ProtectApikeyAll = (
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.deleteRequest(
@@ -343,7 +363,15 @@ export const deleteAuthV1ProtectApikeyAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT0,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -359,7 +387,7 @@ export const deleteEngagementV1PrivateNotificationClearall = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -376,7 +404,7 @@ export const deleteExchangeV1PrivateOpenorders = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -392,7 +420,7 @@ export const deleteExchangeV1PrivateOrder = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -408,7 +436,7 @@ export const deleteExchangeV1PrivateOrderlist = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -424,7 +452,7 @@ export const deletePartyV1PrivateFavoritemarket = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -440,7 +468,7 @@ export const deletePartyV1PrivateNotification = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -455,7 +483,7 @@ export const deletePartyV1PrivateNotificationAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -471,7 +499,7 @@ export const deleteSettlementV1PrivateAddressbook = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -487,7 +515,7 @@ export const deleteWalletV1PrivateWalletpermission = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -504,7 +532,7 @@ export const getAnalyticsV1PrivateResellercommissionhistoryActiveusercount = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -521,7 +549,7 @@ export const getAnalyticsV1PrivateResellercommissionhistoryNewusercount = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -538,7 +566,7 @@ export const getAnalyticsV1PrivateResellercommissionhistoryTotalincome = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -555,7 +583,7 @@ export const getAnalyticsV1PrivateResellercommissionhistoryTransactioncount = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -572,7 +600,7 @@ export const getAnalyticsV1PrivateSecurityactivityList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -589,7 +617,7 @@ export const getAnalyticsV1PrivateTradehistoryIncomeinviteeList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -605,7 +633,7 @@ export const getAnalyticsV1PrivateTradehistoryIncomeinviteeRecent = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -622,7 +650,7 @@ export const getAnalyticsV1PrivateTradehistoryIncomereferralList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -638,7 +666,7 @@ export const getAnalyticsV1PrivateTradehistoryIncomereferralRecent = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -655,7 +683,7 @@ export const getAnalyticsV1PrivateTradehistoryReferralhistory = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -671,7 +699,7 @@ export const getAnalyticsV1PrivateUserloginhistoryLast = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -688,7 +716,7 @@ export const getAnalyticsV1PrivateUserloginhistoryList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -704,7 +732,7 @@ export const getAnalyticsV1PrivateUserreferralprogramTotal = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -720,7 +748,7 @@ export const getAnalyticsV1PublicTradehistoryRank = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -736,7 +764,7 @@ export const getAnalyticsV1PublicTradehistoryTotalquantity = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -753,7 +781,7 @@ export const getAuthV1PrivateApikey = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -769,7 +797,7 @@ export const getAuthV1PrivateApikeyList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -784,7 +812,7 @@ export const getAuthV1PrivateAuthGetqrcode = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -799,7 +827,7 @@ export const getAuthV1PrivateAuthUserstatus = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -814,7 +842,7 @@ export const getAuthV1PrivateIdentityresourceGetpropertylist = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -830,7 +858,7 @@ export const getAuthV1PrivateIdentityresourceGetscopelist = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -847,7 +875,7 @@ export const getAuthV1PrivateUsertrusteddeviceList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -864,7 +892,7 @@ export const getAuthV1PrivateUsertrusteddeviceLoginhistoryList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -881,7 +909,7 @@ export const getAuthV1PublicAuthIsphonenumberregistered = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -898,7 +926,7 @@ export const getBaseinfoV1PublicCityList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -914,7 +942,7 @@ export const getBaseinfoV1PublicCountryAll = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -930,7 +958,7 @@ export const getBaseinfoV1PublicProvinceList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -946,7 +974,7 @@ export const getCapitalV1PrivateDepositList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -961,7 +989,7 @@ export const getCapitalV1PrivateDepositRecent = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -977,7 +1005,7 @@ export const getCapitalV1PrivatePosList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -993,7 +1021,7 @@ export const getCapitalV1PrivateSettlementList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1009,7 +1037,7 @@ export const getCapitalV1PrivateWithdrawDetail = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1025,7 +1053,7 @@ export const getCapitalV1PrivateWithdrawInfo = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1041,7 +1069,7 @@ export const getCapitalV1PrivateWithdrawList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1056,7 +1084,7 @@ export const getCapitalV1PrivateWithdrawRecent = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1071,7 +1099,7 @@ export const getCapitalV1PrivateWithdrawTodaytotal = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1087,7 +1115,7 @@ export const getCapitalV1PublicCurrencyAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1102,7 +1130,7 @@ export const getCapitalV1PublicMoneynetworkAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1118,7 +1146,7 @@ export const getEngagementV1PrivateNotification = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1133,7 +1161,7 @@ export const getEngagementV1PrivateNotificationType = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1150,7 +1178,7 @@ export const getEngagementV1PublicCouponIsvalid = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1166,7 +1194,7 @@ export const getEngagementV1PublicCouponIsvalidforphonenumber = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1183,7 +1211,7 @@ export const getExchangeV1PrivateAllorderlist = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1199,7 +1227,7 @@ export const getExchangeV1PrivateAllorders = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1215,7 +1243,7 @@ export const getExchangeV1PrivateAlltrades = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1231,7 +1259,7 @@ export const getExchangeV1PrivateOpenocoorderlist = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1248,7 +1276,7 @@ export const getExchangeV1PrivateOpenorders = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1264,7 +1292,7 @@ export const getExchangeV1PrivateOrder = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1280,7 +1308,7 @@ export const getExchangeV1PrivateOrderlist = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1295,7 +1323,7 @@ export const getExchangeV1PrivateUsertraderlevel = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1311,7 +1339,7 @@ export const getExchangeV1PublicAlltickers24hr = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1327,7 +1355,7 @@ export const getExchangeV1PublicDepth = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1342,7 +1370,7 @@ export const getExchangeV1PublicDomaintraderlevels = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1359,7 +1387,7 @@ export const getExchangeV1PublicKlines = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1375,7 +1403,7 @@ export const getExchangeV1PublicMarkets = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1391,7 +1419,7 @@ export const getExchangeV1PublicSymbolRate = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1407,7 +1435,7 @@ export const getExchangeV1PublicTicker24hr = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1423,7 +1451,7 @@ export const getExchangeV1PublicTrades = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1438,7 +1466,7 @@ export const getPartyV1PrivateDomainForcetwofa = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1453,7 +1481,7 @@ export const getPartyV1PrivateDomainMultiwallet = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1469,7 +1497,7 @@ export const getPartyV1PrivateFavoritemarket = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1484,7 +1512,7 @@ export const getPartyV1PrivateIdentificationlevelUserInfo = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1501,7 +1529,7 @@ export const getPartyV1PrivateNotificationAll = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1516,7 +1544,7 @@ export const getPartyV1PrivateNotificationTypes = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1532,7 +1560,7 @@ export const getPartyV1PrivatePluginList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1547,7 +1575,7 @@ export const getPartyV1PrivateUsersettingPreference = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1563,7 +1591,7 @@ export const getPartyV1PrivateWalletsettingMaxreferalprogrampercent = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1579,7 +1607,7 @@ export const getPartyV1PublicDomainSetting = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1594,7 +1622,7 @@ export const getPartyV1PublicIdentificationlevelGuide = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1611,7 +1639,7 @@ export const getPartyV1PublicPlugin = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1627,7 +1655,7 @@ export const getPaymentV1PrivateEpayrequestCommission = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1644,7 +1672,7 @@ export const getPaymentV1PrivateEpayrequestCount = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1661,7 +1689,7 @@ export const getPaymentV1PrivateEpayrequestCountFromme = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1678,7 +1706,7 @@ export const getPaymentV1PrivateEpayrequestInfoClientuniqueid = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1695,7 +1723,7 @@ export const getPaymentV1PrivateEpayrequestList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1711,7 +1739,7 @@ export const getPaymentV1PrivateEpayrequestListFromme = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1728,7 +1756,7 @@ export const getPaymentV1PrivateEpayrequestPluginCount = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1745,7 +1773,7 @@ export const getPaymentV1PublicEpayrequestGetblockchainaddress = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1762,7 +1790,7 @@ export const getPaymentV1PublicEpayrequestInfoToken = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1779,7 +1807,7 @@ export const getPaymentV1PublicEpayrequestReceiptinfoClientuniqueid = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1796,7 +1824,7 @@ export const getPaymentV1PublicEpayrequestReceiptinfoToken = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1813,7 +1841,7 @@ export const getSettlementV1Private = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1829,7 +1857,7 @@ export const getSettlementV1PrivateAddressbook = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1844,7 +1872,7 @@ export const getSettlementV1PrivateAddressbookAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1861,7 +1889,7 @@ export const getSettlementV1PrivateCommission = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1877,7 +1905,7 @@ export const getSettlementV1PrivateCount = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1892,7 +1920,7 @@ export const getSettlementV1PrivateGlobalwalletproviderAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1909,7 +1937,7 @@ export const getSettlementV1PrivateList = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1925,7 +1953,7 @@ export const getSettlementV1PrivateReport = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1941,7 +1969,7 @@ export const getSettlementV1PrivateSubuser = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1957,7 +1985,7 @@ export const getStorageV1PrivateFileDownload = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1973,7 +2001,7 @@ export const getWalletV1Private = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -1988,7 +2016,7 @@ export const getWalletV1PrivateAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2003,7 +2031,7 @@ export const getWalletV1PrivateBankAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2018,7 +2046,7 @@ export const getWalletV1PrivateDomaincurrencyfeerate = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2035,7 +2063,7 @@ export const getWalletV1PrivateDomaincurrencyfeerateBydomaincurrencyclassid = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2052,7 +2080,7 @@ export const getWalletV1PrivateGrouptransferCommission = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2069,7 +2097,7 @@ export const getWalletV1PrivateInternalwithdrawInfo = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2086,7 +2114,7 @@ export const getWalletV1PrivateSubuserAll = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2102,7 +2130,7 @@ export const getWalletV1PrivateSubuserAssignable = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2119,7 +2147,7 @@ export const getWalletV1PrivateTransferCommission = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2135,7 +2163,7 @@ export const getWalletV1PrivateUserassetAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2151,7 +2179,7 @@ export const getWalletV1PrivateUserassetSpotDefault = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2167,7 +2195,7 @@ export const getWalletV1PrivateUserassetSpotDefaultAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2183,7 +2211,7 @@ export const getWalletV1PrivateUserbankAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2197,7 +2225,7 @@ export const getWalletV1PrivateUserbankHascurrentuserapprovedorpenddinguserbank 
       undefined,
       undefined,
       undefined,
-      overrideConfig(_CONSTANT1, configOverride),
+      overrideConfig(_CONSTANT2, configOverride),
     );
   };
 
@@ -2214,7 +2242,7 @@ export const getWalletV1PrivateUserbankStatus = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2229,7 +2257,7 @@ export const getWalletV1PrivateUserreferralprogramAll = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2245,7 +2273,7 @@ export const getWalletV1PrivateUserreferralprogramDefault = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2261,7 +2289,7 @@ export const getWalletV1PublicCurrencyInfo = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2277,7 +2305,7 @@ export const getWalletV1PublicFind = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2293,7 +2321,7 @@ export const patchWalletV1Private = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2308,7 +2336,7 @@ export const postApiCspreportLog = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2328,7 +2356,7 @@ export const postAuthV1PrivateAuthDisabletwofactor = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT3,
+          ..._CONSTANT0,
           ...headerParams,
         },
       },
@@ -2350,7 +2378,7 @@ export const postAuthV1PrivateAuthEmail = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2370,7 +2398,7 @@ export const postAuthV1PrivateAuthEmailSendcode = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT2,
+          ..._CONSTANT3,
           ...headerParams,
         },
       },
@@ -2395,7 +2423,7 @@ export const postAuthV1PrivateAuthEnabletwofactor = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT3,
+          ..._CONSTANT0,
           ...headerParams,
         },
       },
@@ -2416,7 +2444,7 @@ export const postAuthV1PrivateAuthGeneratewebsocketusertoken = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2436,7 +2464,7 @@ export const postAuthV1PrivateAuthGetcode = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT2,
+          ..._CONSTANT3,
           ...headerParams,
         },
       },
@@ -2461,7 +2489,7 @@ export const postAuthV1PrivateAuthPhonecallSendcode = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT2,
+          ..._CONSTANT3,
           ...headerParams,
         },
       },
@@ -2483,7 +2511,7 @@ export const postAuthV1PrivateAuthRevoketoken = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2492,6 +2520,12 @@ postAuthV1PrivateAuthRevoketoken.key = "/auth/v1/private/auth/revoketoken";
 
 export const postAuthV1ProtectApikey = (
   requestBody: ApiKeyAddRequestVM,
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ApiKeyAddResponseVM>> => {
   return Http.postRequest(
@@ -2499,7 +2533,15 @@ export const postAuthV1ProtectApikey = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT3,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -2515,7 +2557,7 @@ export const postAuthV1PublicAuthAnonyverifysecure = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2532,7 +2574,7 @@ export const postAuthV1PublicAuthChecktwofactorisenable = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2553,7 +2595,7 @@ export const postAuthV1PublicAuthConnectToken = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT2,
+          ..._CONSTANT3,
           ...headerParams,
         },
       },
@@ -2573,7 +2615,7 @@ export const postAuthV1PublicAuthGetcaptcha = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2593,7 +2635,7 @@ export const postAuthV1PublicAuthGetcode = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT2,
+          ..._CONSTANT3,
           ...headerParams,
         },
       },
@@ -2614,7 +2656,7 @@ export const postAuthV1PublicAuthRegister = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2630,7 +2672,7 @@ export const postAuthV1PublicAuthRegisterverify = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2646,7 +2688,7 @@ export const postAuthV1PublicAuthSetuserbasicinfo = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2663,7 +2705,7 @@ export const postAuthV1PublicAuthValidatecaptcha = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2680,7 +2722,7 @@ export const postCapitalV1PrivateDepositQueryuserdepositaddress = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2697,7 +2739,7 @@ export const postCapitalV1PrivateDepositQuerywalletdepositaddress = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2707,6 +2749,12 @@ postCapitalV1PrivateDepositQuerywalletdepositaddress.key =
 
 export const postCapitalV1ProtectedWithdrawApply = (
   requestBody: WithdrawRequestUserWalletCreateRequestVM,
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<CreateWithdrawRequestUserWalletResponseVM>> => {
   return Http.postRequest(
@@ -2714,7 +2762,15 @@ export const postCapitalV1ProtectedWithdrawApply = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT3,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -2731,7 +2787,7 @@ export const postExchangeV1PrivateOrder = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2747,7 +2803,7 @@ export const postExchangeV1PrivateOrderOco = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2763,7 +2819,7 @@ export const postPartyV1PrivateFavoritemarket = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2779,7 +2835,7 @@ export const postPartyV1PrivateIdentificationlevelLevelone = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2796,7 +2852,7 @@ export const postPartyV1PrivateIdentificationlevelLevelthree = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2813,7 +2869,7 @@ export const postPartyV1PrivateIdentificationlevelLeveltwo = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2849,7 +2905,7 @@ export const postPaymentV1PrivateEpayrequestCharge = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2866,7 +2922,7 @@ export const postPaymentV1PrivateEpayrequestDivideipg = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2883,7 +2939,7 @@ export const postPaymentV1PrivateEpayrequestDividelink = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2900,7 +2956,7 @@ export const postPaymentV1PrivateEpayrequestIpg = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2916,7 +2972,7 @@ export const postPaymentV1PrivateEpayrequestLink = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2933,7 +2989,7 @@ export const postPaymentV1PrivateEpayrequestPaywithwallet = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2951,7 +3007,7 @@ export const postPaymentV1PrivateEpayrequestPostactioninternaldepositepayrequest
       undefined,
       requestBody,
       undefined,
-      overrideConfig(_CONSTANT1, configOverride),
+      overrideConfig(_CONSTANT2, configOverride),
     );
   };
 
@@ -2968,7 +3024,7 @@ export const postPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -2985,7 +3041,7 @@ export const postPaymentV1PrivateEpayrequestSetpayercurrenyinfo = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3002,7 +3058,7 @@ export const postPaymentV1PrivateEpayrequestUnblock = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3019,7 +3075,7 @@ export const postPaymentV1PublicEpayrequestPos = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3035,7 +3091,7 @@ export const postPaymentV1PublicEpayrequestSmsResend = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3045,6 +3101,12 @@ postPaymentV1PublicEpayrequestSmsResend.key =
 
 export const postSettlementV1PrivateAddressbook = (
   requestBody: AddressBookAddRequestVM[],
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -3052,7 +3114,15 @@ export const postSettlementV1PrivateAddressbook = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT0,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -3068,7 +3138,7 @@ export const postSettlementV1PrivateExcel = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3085,7 +3155,7 @@ export const postSettlementV1PrivateUserWalletNumber = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3121,7 +3191,7 @@ export const postWalletV1Private = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3137,7 +3207,7 @@ export const postWalletV1PrivateGrouptransfer = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3153,7 +3223,7 @@ export const postWalletV1PrivateTransfer = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3169,7 +3239,7 @@ export const postWalletV1PrivateUserbank = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3185,7 +3255,7 @@ export const postWalletV1PrivateUserbankDetailed = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3202,7 +3272,7 @@ export const postWalletV1PrivateUserreferralprogram = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3219,7 +3289,7 @@ export const postWalletV1PrivateWalletpermission = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3235,7 +3305,7 @@ export const putAuthV1PrivateAuthEmail = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3244,6 +3314,12 @@ putAuthV1PrivateAuthEmail.key = "/auth/v1/private/auth/email";
 
 export const putAuthV1ProtectApikey = (
   requestBody: ApiKeyUpdateRequestVM,
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
@@ -3251,7 +3327,15 @@ export const putAuthV1ProtectApikey = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT0,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -3260,7 +3344,13 @@ putAuthV1ProtectApikey.key = "/auth/v1/protect/apikey";
 
 export const putAuthV1ProtectAuthChangepassword = (
   requestBody: ChangePasswordRequestVM,
-  headerParams?: { platformType: PlatformType },
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    platformType: PlatformType;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
@@ -3271,7 +3361,7 @@ export const putAuthV1ProtectAuthChangepassword = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT3,
+          ..._CONSTANT0,
           ...headerParams,
         },
       },
@@ -3296,7 +3386,7 @@ export const putAuthV1PublicAuthForgotpassword = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT3,
+          ..._CONSTANT0,
           ...headerParams,
         },
       },
@@ -3317,7 +3407,7 @@ export const putEngagementV1PrivateNotificationRead = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3334,7 +3424,7 @@ export const putEngagementV1PrivateNotificationReadall = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3351,7 +3441,7 @@ export const putPartyV1PrivateNotificationRead = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3366,7 +3456,7 @@ export const putPartyV1PrivateNotificationReadall = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3383,7 +3473,7 @@ export const putPartyV1PrivatePlugin = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3399,7 +3489,7 @@ export const putPartyV1PrivateUsersettingPreference = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3409,6 +3499,12 @@ putPartyV1PrivateUsersettingPreference.key =
 
 export const putPartyV1ProtectUserSuspend = (
   queryParams?: PutPartyV1ProtectUserSuspendQueryParams,
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
@@ -3416,7 +3512,15 @@ export const putPartyV1ProtectUserSuspend = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT0,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -3432,7 +3536,7 @@ export const putPaymentV1PrivateEpayrequestAssigneduser = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3449,7 +3553,7 @@ export const putPaymentV1PublicEpayrequestCancel = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3466,7 +3570,7 @@ export const putPaymentV1PublicEpayrequestCustomdata = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT2, configOverride),
   );
 };
 
@@ -3483,7 +3587,7 @@ export const putSettlementV1PrivateAddressbookWhitelistDisable = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3493,6 +3597,12 @@ putSettlementV1PrivateAddressbookWhitelistDisable.key =
 
 export const putSettlementV1PrivateAddressbookWhitelistEnable = (
   requestBody: number[],
+  headerParams?: {
+    otpcode: string;
+    otptoken: string;
+    purpose: PurposeType;
+    totp: string;
+  },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(
@@ -3500,7 +3610,15 @@ export const putSettlementV1PrivateAddressbookWhitelistEnable = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT0,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
   );
 };
 
@@ -3517,7 +3635,7 @@ export const putWalletV1PrivateUserreferralprogramDefault = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -3534,31 +3652,31 @@ export const putWalletV1PrivateWalletpermission = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
 /** Key is end point string without base url */
 putWalletV1PrivateWalletpermission.key = "/wallet/v1/private/walletpermission";
 export const _CONSTANT0 = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+};
+export const _CONSTANT1 = {
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
 };
-export const _CONSTANT1 = {
+export const _CONSTANT2 = {
   headers: {
     "Content-Type": "application/json",
     Accept: "text/plain",
   },
 };
-export const _CONSTANT2 = {
-  "Content-Type": "application/json",
-  Accept: "text/plain",
-};
 export const _CONSTANT3 = {
   "Content-Type": "application/json",
-  Accept: "application/json",
+  Accept: "text/plain",
 };
 export const _CONSTANT4 = {
   headers: {
