@@ -63,7 +63,6 @@ const SocketConnection = createSocketConnection<
   | `${string}@depth`
   | `${string}@trade`
   | "!miniTicker@arr"
-  // | `${string}@ticker`
 >(["!miniTicker@arr"]);
 
 export { SocketConnection, createSocketConnection };

@@ -45,7 +45,6 @@ export const createSocketConnection = <T extends string>(
         <SocketConnection.Provider
           url={URLManager.signalRBaseUrl}
           onOpen={async (connection) => {
-            connection.off("SUBSCRIBE");
             if (connection?.state === HubConnectionState.Connected) {
               if (__DEV__) {
                 connection.keepAliveIntervalInMilliseconds = 120000;
