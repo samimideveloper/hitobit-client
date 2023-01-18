@@ -31,16 +31,17 @@ const useSubscribe = () => {
         const { token } = StoreAuthentication.state.signalRToken || {};
 
         if (token) {
-          UserSignalRContext.connection?.invoke(SignalREvents.UNSUBSCRIBE, [
-            token,
-          ]);
+          await UserSignalRContext.connection?.invoke(
+            SignalREvents.UNSUBSCRIBE,
+            [token],
+          );
         }
 
         dispatch(setSignalRToken(data));
-        // setTimeout(() => {
-        //   UserSignalRContext.connection?.off(SignalREvents.SUBSCRIBE);
-        //   refetchSignal();
-        // }, REFRESH_SIGNAL_MS);
+        setTimeout(async () => {
+          await UserSignalRContext.connection?.stop();
+          refetchSignal();
+        }, REFRESH_SIGNAL_MS);
       }
     };
 
@@ -50,14 +51,18 @@ const useSubscribe = () => {
       ) {
         return;
       }
+
       const { date, token } = StoreAuthentication.state.signalRToken || {};
+
       clearInterval(timerRef.current);
+
       let duration = date ? Date.now() - Number(date) : 0;
 
       duration = duration > REFRESH_SIGNAL_MS ? 0 : duration;
+
       try {
         if (token) {
-          UserSignalRContext.connection
+          await UserSignalRContext.connection
             ?.invoke(SignalREvents.SUBSCRIBE, [token])
             .catch((e) => console.log(e));
         }
@@ -65,15 +70,15 @@ const useSubscribe = () => {
         console.log(e);
       }
 
-      setTimeout(() => {
-        UserSignalRContext.connection?.off(SignalREvents.SUBSCRIBE);
+      setTimeout(async () => {
+        await UserSignalRContext.connection?.stop();
         refetchSignal();
       }, duration);
     }, REFRESH_SIGNAL_MS);
 
     return () => {
-      UserSignalRContext.connection?.stop();
       clearInterval(timerRef.current);
+      UserSignalRContext.connection?.stop();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
