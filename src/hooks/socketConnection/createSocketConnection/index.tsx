@@ -31,11 +31,6 @@ export const createSocketConnection = <T extends string>(
   const Provider = ({ children }: { children: any }) => {
     useEffect(() => {
       return () => {
-        events.forEach((event) => {
-          if (event) {
-            SocketConnection.connection?.off(event);
-          }
-        });
         _events.clear();
       };
     }, []);
@@ -45,11 +40,10 @@ export const createSocketConnection = <T extends string>(
         <SocketConnection.Provider
           url={URLManager.signalRBaseUrl}
           onOpen={async (connection) => {
-            await connection?.invoke("UNSUBSCRIBE", [...events]);
-
             if (connection.state === HubConnectionState.Disconnected) {
               await connection.start();
             }
+            await connection?.invoke("UNSUBSCRIBE", [...events]);
 
             if (connection?.state === HubConnectionState.Connected) {
               if (__DEV__) {
@@ -70,11 +64,10 @@ export const createSocketConnection = <T extends string>(
             }
           }}
           onReconnect={async (connection) => {
-            await connection?.invoke("UNSUBSCRIBE", [...events]);
-
             if (connection.state === HubConnectionState.Disconnected) {
               await connection.start();
             }
+            await connection?.invoke("UNSUBSCRIBE", [...events]);
 
             if (connection?.state === HubConnectionState.Connected) {
               await connection?.invoke("SUBSCRIBE", [
