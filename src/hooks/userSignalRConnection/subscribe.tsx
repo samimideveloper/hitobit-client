@@ -1,4 +1,5 @@
 import { HubConnectionState } from "@microsoft/signalr";
+import hermes from "hermes-channel";
 import { useEffect, useRef } from "react";
 import { useAuth } from "react-oidc-js";
 import { postAuthV1PrivateAuthGeneratewebsocketusertoken } from "../../services";
@@ -10,6 +11,7 @@ const useSubscribe = () => {
   const { userData } = useAuth();
   const dispatch = StoreAuthentication.useDispatch();
   const timerRef = useRef<NodeJS.Timeout>();
+  const { signalRToken } = StoreAuthentication.useState();
 
   useEffect(() => {
     if (!userData?.access_token) return;
@@ -35,7 +37,10 @@ const useSubscribe = () => {
         }
 
         dispatch(setSignalRToken(data));
-        aborter.abort("socket disconnected!");
+        // setTimeout(() => {
+        //   UserSignalRContext.connection?.off(SignalREvents.SUBSCRIBE);
+        //   refetchSignal();
+        // }, REFRESH_SIGNAL_MS);
       }
     };
 
@@ -46,7 +51,7 @@ const useSubscribe = () => {
         return;
       }
       const { date, token } = StoreAuthentication.state.signalRToken || {};
-
+      clearInterval(timerRef.current);
       let duration = date ? Date.now() - Number(date) : 0;
 
       duration = duration > REFRESH_SIGNAL_MS ? 0 : duration;
@@ -61,15 +66,27 @@ const useSubscribe = () => {
       }
 
       setTimeout(() => {
+        UserSignalRContext.connection?.off(SignalREvents.SUBSCRIBE);
         refetchSignal();
       }, duration);
     }, REFRESH_SIGNAL_MS);
 
     return () => {
+      UserSignalRContext.connection?.stop();
       clearInterval(timerRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
+
+  UserSignalRContext.useSignalREffect(
+    String(signalRToken?.token),
+    (data: { e: string }) => {
+      hermes.send("userEvent_" + data.e, data, "current");
+    },
+    [signalRToken],
+  );
+
+  return null;
 };
 
 // const useSubscribe = () => {
@@ -141,16 +158,6 @@ const useSubscribe = () => {
 //     };
 //     // eslint-disable-next-line react-hooks/exhaustive-deps
 //   }, [userData]);
-
-//   UserSignalRContext.useSignalREffect(
-//     String(signalRToken?.token),
-//     (data: { e: string }) => {
-//       hermes.send("userEvent_" + data.e, data, "current");
-//     },
-//     [signalRToken],
-//   );
-
-//   return null;
 // };
 
 export { useSubscribe };
