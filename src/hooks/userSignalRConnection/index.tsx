@@ -22,6 +22,8 @@ const UserSignalRConnectionProvider = ({
 }): any => {
   const { userData } = useAuth();
 
+  console.log("UserSignalRConnectionProvider !!!");
+
   return (
     <UserSignalRContext.Provider
       connectEnabled={!!userData?.access_token && typeof window !== "undefined"}
@@ -34,7 +36,7 @@ const UserSignalRConnectionProvider = ({
       }}
       headers={headers}
       dependencies={[
-        !!userData?.access_token,
+        userData,
         URLManager.signalRBaseUrl,
         ...(dependencies || []),
       ]}

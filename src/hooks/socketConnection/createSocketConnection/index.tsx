@@ -31,6 +31,11 @@ export const createSocketConnection = <T extends string>(
   const Provider = ({ children }: { children: any }) => {
     useEffect(() => {
       return () => {
+        events.forEach((event) => {
+          if (event) {
+            SocketConnection.off?.(event);
+          }
+        });
         _events.clear();
       };
     }, []);
@@ -39,38 +44,35 @@ export const createSocketConnection = <T extends string>(
       <HasProviderContext.Provider value={true}>
         <SocketConnection.Provider
           url={URLManager.signalRBaseUrl}
-          onOpen={() => {
-            if (
-              SocketConnection.connection?.state ===
-              HubConnectionState.Connected
-            ) {
+          onOpen={async (connection) => {
+            connection.off("SUBSCRIBE");
+            if (connection?.state === HubConnectionState.Connected) {
               if (__DEV__) {
-                SocketConnection.connection.keepAliveIntervalInMilliseconds = 120000;
+                connection.keepAliveIntervalInMilliseconds = 120000;
               }
+              await connection?.invoke("SUBSCRIBE", [
+                ...events,
+                ...Array.from(_events.keys()),
+              ]);
+            }
+          }}
+          onBeforeClose={async (connection) => {
+            if (connection?.state === HubConnectionState.Connected) {
+              await connection?.invoke("UNSUBSCRIBE", [
+                ...events,
+                ...Array.from(_events.keys()),
+              ]);
+            }
+          }}
+          onReconnect={async (connection) => {
+            await connection.stop();
 
-              SocketConnection.connection?.invoke("SUBSCRIBE", [
-                ...events,
-                ...Array.from(_events.keys()),
-              ]);
+            if (connection.state === HubConnectionState.Disconnected) {
+              await connection.start();
             }
-          }}
-          onBeforeClose={() => {
-            if (
-              SocketConnection.connection?.state ===
-              HubConnectionState.Connected
-            ) {
-              SocketConnection.connection?.invoke("UNSUBSCRIBE", [
-                ...events,
-                ...Array.from(_events.keys()),
-              ]);
-            }
-          }}
-          onReconnect={() => {
-            if (
-              SocketConnection.connection?.state ===
-              HubConnectionState.Connected
-            ) {
-              SocketConnection.connection?.invoke("SUBSCRIBE", [
+
+            if (connection?.state === HubConnectionState.Connected) {
+              await connection?.invoke("SUBSCRIBE", [
                 ...events,
                 ...Array.from(_events.keys()),
               ]);
