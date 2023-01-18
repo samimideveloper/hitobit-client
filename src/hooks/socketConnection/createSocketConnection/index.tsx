@@ -33,7 +33,7 @@ export const createSocketConnection = <T extends string>(
       return () => {
         events.forEach((event) => {
           if (event) {
-            SocketConnection.off?.(event);
+            SocketConnection.connection?.off(event);
           }
         });
         _events.clear();
@@ -45,6 +45,12 @@ export const createSocketConnection = <T extends string>(
         <SocketConnection.Provider
           url={URLManager.signalRBaseUrl}
           onOpen={async (connection) => {
+            await connection?.invoke("UNSUBSCRIBE", [...events]);
+
+            if (connection.state === HubConnectionState.Disconnected) {
+              await connection.start();
+            }
+
             if (connection?.state === HubConnectionState.Connected) {
               if (__DEV__) {
                 connection.keepAliveIntervalInMilliseconds = 120000;
@@ -64,7 +70,7 @@ export const createSocketConnection = <T extends string>(
             }
           }}
           onReconnect={async (connection) => {
-            await connection.stop();
+            await connection?.invoke("UNSUBSCRIBE", [...events]);
 
             if (connection.state === HubConnectionState.Disconnected) {
               await connection.start();

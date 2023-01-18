@@ -150,6 +150,7 @@ const useUserSignalREvent = <T extends keyof EventsData>(
   const perCallback = useEvent(callback);
 
   useEffect(() => {
+    console.log(`useUserSignalREvent: ${event}`);
     hermes.on("userEvent_" + event, perCallback);
 
     return () => hermes.off("userEvent_" + event, perCallback);
