@@ -15,12 +15,8 @@ const useSubscribe = () => {
   useEffect(() => {
     if (!userData?.access_token) return;
 
-    const aborter = new AbortController();
-
     const refetchSignal = async () => {
-      const data = await postAuthV1PrivateAuthGeneratewebsocketusertoken({
-        signal: aborter.signal,
-      });
+      const data = await postAuthV1PrivateAuthGeneratewebsocketusertoken();
 
       const response = (await UserSignalRContext.connection?.invoke(
         SignalREvents.SUBSCRIBE,
@@ -49,7 +45,6 @@ const useSubscribe = () => {
       if (
         UserSignalRContext.connection?.state !== HubConnectionState.Connected
       ) {
-        aborter.abort("socket disconnected!");
         return;
       }
 
@@ -77,7 +72,6 @@ const useSubscribe = () => {
     }, 1000);
 
     return () => {
-      aborter.abort("component unmounted!");
       clearInterval(timer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
