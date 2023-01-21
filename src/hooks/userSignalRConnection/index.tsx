@@ -34,7 +34,7 @@ const UserSignalRConnectionProvider = ({
       }}
       headers={headers}
       dependencies={[
-        !!userData?.access_token,
+        userData,
         URLManager.signalRBaseUrl,
         ...(dependencies || []),
       ]}

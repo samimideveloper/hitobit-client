@@ -15,8 +15,12 @@ const useSubscribe = () => {
   useEffect(() => {
     if (!userData?.access_token) return;
 
+    const aborter = new AbortController();
+
     const refetchSignal = async () => {
-      const data = await postAuthV1PrivateAuthGeneratewebsocketusertoken();
+      const data = await postAuthV1PrivateAuthGeneratewebsocketusertoken({
+        signal: aborter.signal,
+      });
 
       const response = (await UserSignalRContext.connection?.invoke(
         SignalREvents.SUBSCRIBE,
@@ -27,13 +31,15 @@ const useSubscribe = () => {
         const { token } = StoreAuthentication.state.signalRToken || {};
 
         if (token) {
-          UserSignalRContext.connection?.invoke(SignalREvents.UNSUBSCRIBE, [
-            token,
-          ]);
+          await UserSignalRContext.connection?.invoke(
+            SignalREvents.UNSUBSCRIBE,
+            [token],
+          );
         }
 
         dispatch(setSignalRToken(data));
-        setTimeout(() => {
+
+        setTimeout(async () => {
           refetchSignal();
         }, REFRESH_SIGNAL_MS);
       }
@@ -43,17 +49,21 @@ const useSubscribe = () => {
       if (
         UserSignalRContext.connection?.state !== HubConnectionState.Connected
       ) {
+        aborter.abort("socket disconnected!");
         return;
       }
+
       clearInterval(timer);
+
       const { date, token } = StoreAuthentication.state.signalRToken || {};
 
       let duration = date ? Date.now() - Number(date) : 0;
 
       duration = duration > REFRESH_SIGNAL_MS ? 0 : duration;
+
       try {
         if (token) {
-          UserSignalRContext.connection
+          await UserSignalRContext.connection
             ?.invoke(SignalREvents.SUBSCRIBE, [token])
             .catch((e) => console.log(e));
         }
@@ -61,12 +71,15 @@ const useSubscribe = () => {
         console.log(e);
       }
 
-      setTimeout(() => {
+      setTimeout(async () => {
         refetchSignal();
       }, duration);
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      aborter.abort("component unmounted!");
+      clearInterval(timer);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
