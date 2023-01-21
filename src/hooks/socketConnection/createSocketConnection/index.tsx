@@ -40,6 +40,11 @@ export const createSocketConnection = <T extends string>(
         <SocketConnection.Provider
           url={URLManager.signalRBaseUrl}
           onOpen={async (connection) => {
+            if (connection.state === HubConnectionState.Disconnected) {
+              await connection.start();
+            }
+            await connection?.invoke("UNSUBSCRIBE", [...events]);
+
             if (connection?.state === HubConnectionState.Connected) {
               if (__DEV__) {
                 connection.keepAliveIntervalInMilliseconds = 120000;
@@ -59,6 +64,11 @@ export const createSocketConnection = <T extends string>(
             }
           }}
           onReconnect={async (connection) => {
+            if (connection.state === HubConnectionState.Disconnected) {
+              await connection.start();
+            }
+            await connection?.invoke("UNSUBSCRIBE", [...events]);
+
             if (connection?.state === HubConnectionState.Connected) {
               await connection?.invoke("SUBSCRIBE", [
                 ...events,
