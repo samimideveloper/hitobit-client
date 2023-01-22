@@ -1,17 +1,19 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Decimal from "decimal.js";
 import moment from "moment";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { i18n } from "../../modules";
 import {
   AppOrderSide,
   AppOrderStatus,
   AppOrderType,
   AppTimeInForce,
+  getExchangeV1PublicMarkets,
   OrderResultInfoResponseVM,
   useGetExchangeV1PrivateOpenorders,
 } from "../../services";
 import { selectedSymbolStore } from "../../store";
+import { MarketFilterPriceFilter } from "../../utils";
 import { NotificationArgsProps, useNotification } from "../notification";
 import { useDebounceAnimationFrameCallback } from "../useDebounceAnimationFrameCallback";
 import { useUserSignalREvent } from "./useUserSignalREvent";
@@ -95,6 +97,43 @@ const useUpdateOrderWithSignalr = () => {
 
   const newOrdersRef = useRef<UserAssetSignal[]>([]);
 
+  const { data } = useQuery(
+    ["useUpdateOrderWithSignalr"],
+    async () => {
+      const data = await getExchangeV1PublicMarkets();
+
+      return data;
+    },
+    {
+      cacheTime: Infinity,
+      staleTime: Infinity,
+    },
+  );
+
+  const toTickSize = useCallback(
+    (value: number | Decimal | string, passedSymbol?: string) => {
+      const filters = data?.symbols?.find(
+        ({ name }) => name === passedSymbol,
+      )?.filters;
+
+      const tickSize = (
+        filters?.find(
+          ({ filterType }) => filterType === "PRICE_FILTER",
+        ) as MarketFilterPriceFilter
+      )?.tickSize;
+
+      if (tickSize !== undefined && value !== "") {
+        return new Decimal(value)
+          .div(tickSize)
+          .floor()
+          .mul(tickSize)
+          .toString();
+      }
+      return value.toString();
+    },
+    [data],
+  );
+
   const assignToQueryClient = useDebounceAnimationFrameCallback(() => {
     const stackedOrders = [...newOrdersRef.current];
     newOrdersRef.current = [];
@@ -103,7 +142,21 @@ const useUpdateOrderWithSignalr = () => {
       (queryData) => {
         let prev = queryData || [];
         stackedOrders.forEach((order) => {
-          prev = updateOrders(prev, order, successNotification) || prev;
+          const quotePrice = new Decimal(order.orderPrice).mul(
+            order.orderQuantity,
+          );
+
+          const _origQuoteOrderQty = toTickSize(quotePrice, order.symbol);
+
+          const origQuoteOrderQty = _origQuoteOrderQty
+            ? Number(_origQuoteOrderQty)
+            : 0;
+
+          console.log({ quotePrice, _origQuoteOrderQty });
+
+          prev =
+            updateOrders(prev, order, origQuoteOrderQty, successNotification) ||
+            prev;
         });
 
         return [...prev];
@@ -139,6 +192,7 @@ function mapObjectToSynonyms<T>(data: object, synonym: any): T {
 const updateOrders = (
   prev: OrderResultInfoResponseVM[],
   order: UserAssetSignal,
+  origQuoteOrderQty: number,
   successNotification: (notification: NotificationArgsProps) => void,
 ): OrderResultInfoResponseVM[] => {
   const newOrder: OrderResultInfoResponseVM = {
@@ -154,9 +208,7 @@ const updateOrders = (
     stopPrice: order.stopPrice ? Number(order.stopPrice) : undefined,
     clientOrderId: order.clientOrderID,
     executedQty: Number(order.cumulativeFilledQuantity),
-    origQuoteOrderQty: order.orderQuantity
-      ? new Decimal(order.orderPrice).mul(order.orderQuantity).toNumber()
-      : 0,
+    origQuoteOrderQty: origQuoteOrderQty,
     transactTime: moment(order.transactionTime).local().toDate().getTime(),
     cummulativeQuoteQty: Number(order.cumulativeQuoteAssetTransactedQuantity),
   };
