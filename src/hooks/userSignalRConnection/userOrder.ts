@@ -152,8 +152,6 @@ const useUpdateOrderWithSignalr = () => {
             ? Number(_origQuoteOrderQty)
             : 0;
 
-          console.log({ quotePrice, _origQuoteOrderQty });
-
           prev =
             updateOrders(prev, order, origQuoteOrderQty, successNotification) ||
             prev;

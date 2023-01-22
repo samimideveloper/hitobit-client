@@ -43,11 +43,8 @@ export const useProtectedAuth = () => {
   };
 
   const onSubmit = (purpose: PurposeType, otpCode: string, totp?: string) => {
-    console.log("1");
     triggerRef.current?.onResolve({ otpCode, totp, otpToken, purpose });
-    console.log("2");
     onClose();
-    console.log("3");
 
     triggerRef.current?.onReject?.(error);
 
