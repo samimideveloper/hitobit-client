@@ -188,6 +188,7 @@ import {
   ReportResultResponseVM,
   RevokeTokenRequestVM,
   SecurityActivityListVM,
+  SecurityUserSettingRequestVM,
   SettlementExcelResponseVM,
   SettlementFilterRequestVM,
   SettlementRequestInfoListResponseVM,
@@ -3526,6 +3527,23 @@ export const putPartyV1ProtectUserSuspend = (
 
 /** Key is end point string without base url */
 putPartyV1ProtectUserSuspend.key = "/party/v1/protect/user/suspend";
+
+export const putPartyV1ProtectUsersettingSecurity = (
+  requestBody: SecurityUserSettingRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    putPartyV1ProtectUsersettingSecurity.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putPartyV1ProtectUsersettingSecurity.key =
+  "/party/v1/protect/usersetting/security";
 
 export const putPaymentV1PrivateEpayrequestAssigneduser = (
   requestBody: UpdateEpayRequestAssignedUserRequestVM,

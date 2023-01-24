@@ -206,6 +206,7 @@ import {
   putPartyV1PrivateNotificationReadall,
   putPartyV1PrivatePlugin,
   putPartyV1PrivateUsersettingPreference,
+  putPartyV1ProtectUsersettingSecurity,
   putPartyV1ProtectUserSuspend,
   putPaymentV1PrivateEpayrequestAssigneduser,
   putPaymentV1PublicEpayrequestCancel,
@@ -394,6 +395,7 @@ import {
   ReportResultResponseVM,
   RevokeTokenRequestVM,
   SecurityActivityListVM,
+  SecurityUserSettingRequestVM,
   SettlementExcelResponseVM,
   SettlementFilterRequestVM,
   SettlementRequestInfoListResponseVM,
@@ -6636,6 +6638,28 @@ export const usePutPartyV1ProtectUserSuspend = <TExtra>(
     return putPartyV1ProtectUserSuspend(
       queryParams,
       headerParams,
+      configOverride,
+    );
+  }, options);
+};
+
+export const usePutPartyV1ProtectUsersettingSecurity = <TExtra>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: SecurityUserSettingRequestVM },
+    TExtra
+  >,
+) => {
+  return useMutation((_o) => {
+    const {
+      requestBody,
+
+      configOverride,
+    } = _o || {};
+
+    return putPartyV1ProtectUsersettingSecurity(
+      requestBody,
+
       configOverride,
     );
   }, options);
