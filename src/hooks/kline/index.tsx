@@ -9,8 +9,8 @@ import {
 } from "react";
 import { useEvent } from "reactjs-view-core";
 import {
+  AppKLineInterval,
   KlineDataResponseVM,
-  KLineInterval,
   useGetExchangeV1PublicKlines,
 } from "../../services";
 import {
@@ -24,7 +24,7 @@ interface KlinesProviderProps {
 }
 
 type KlineInstance = {
-  interval: KLineInterval;
+  interval: AppKLineInterval;
   symbol: string;
 };
 
