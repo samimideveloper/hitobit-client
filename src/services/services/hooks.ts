@@ -98,6 +98,7 @@ import {
   getPartyV1PrivateNotificationTypes,
   getPartyV1PrivatePluginList,
   getPartyV1PrivateUsersettingPreference,
+  getPartyV1PrivateUsersettingSecurity,
   getPartyV1PrivateWalletsettingMaxreferalprogrampercent,
   getPartyV1PublicDomainSetting,
   getPartyV1PublicIdentificationlevelGuide,
@@ -437,6 +438,7 @@ import {
   UserReferralProgramAddVM,
   UserReferralProgramVM,
   UserSettingPreferenseResponseVM,
+  UserSettingSecurityResponseVM,
   UserStatusResponseVM,
   UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
@@ -3555,6 +3557,34 @@ useGetPartyV1PrivateUsersettingPreference.prefetch = (
 ) => {
   const { key, fun } =
     useGetPartyV1PrivateUsersettingPreference.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery(key, () => fun(), options);
+};
+export const useGetPartyV1PrivateUsersettingSecurity = (
+  options?: SwaggerTypescriptUseQueryOptions<UserSettingSecurityResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetPartyV1PrivateUsersettingSecurity.info(configOverride);
+  return useQuery(key, fun, options);
+};
+useGetPartyV1PrivateUsersettingSecurity.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getPartyV1PrivateUsersettingSecurity.key] as QueryKey,
+    fun: () => getPartyV1PrivateUsersettingSecurity(configOverride),
+  };
+};
+useGetPartyV1PrivateUsersettingSecurity.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<UserSettingSecurityResponseVM>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGetPartyV1PrivateUsersettingSecurity.info(configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()

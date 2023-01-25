@@ -230,6 +230,7 @@ import {
   UserReferralProgramAddVM,
   UserReferralProgramVM,
   UserSettingPreferenseResponseVM,
+  UserSettingSecurityResponseVM,
   UserStatusResponseVM,
   UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
@@ -1583,6 +1584,22 @@ export const getPartyV1PrivateUsersettingPreference = (
 /** Key is end point string without base url */
 getPartyV1PrivateUsersettingPreference.key =
   "/party/v1/private/usersetting/preference";
+
+export const getPartyV1PrivateUsersettingSecurity = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserSettingSecurityResponseVM>> => {
+  return Http.getRequest(
+    getPartyV1PrivateUsersettingSecurity.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT2, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPartyV1PrivateUsersettingSecurity.key =
+  "/party/v1/private/usersetting/security";
 
 export const getPartyV1PrivateWalletsettingMaxreferalprogrampercent = (
   configOverride?: AxiosRequestConfig,

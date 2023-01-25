@@ -2996,6 +2996,10 @@ export interface UserSettingPreferenseResponseVM {
   tradeNotification: boolean;
 }
 
+export interface UserSettingSecurityResponseVM {
+  activateWhiteList: boolean;
+}
+
 export type UserStatus =
   | "None"
   | "NotVerified"
