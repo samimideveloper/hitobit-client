@@ -41,12 +41,11 @@ export const useCharge = ({
   const [errorState, setError] = useState("");
   const { userData } = useAuth();
   const { t } = useTranslation();
-  const { mutate, isLoading, error } = usePostPaymentV1PrivateEpayrequestCharge(
-    {
+  const { mutate, isLoading, error, ...rest } =
+    usePostPaymentV1PrivateEpayrequestCharge({
       onSuccess,
       onError,
-    },
-  );
+    });
 
   const { data, isLoading: isLoadingSpot } =
     useGetWalletV1PrivateUserassetSpotDefault(
@@ -113,5 +112,6 @@ export const useCharge = ({
     minDeposit,
     maxDeposit,
     clearError,
+    ...rest,
   };
 };
