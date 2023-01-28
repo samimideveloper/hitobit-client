@@ -51,6 +51,9 @@ const fa = {
   IsNotAllowed: "دسترسی معتبر ندارید.",
   invalidUserPass: "نام کاربری یا رمزعبور صحیح نمی باشد.",
   UserIsSuspended: "حساب کاربری شما به حالت تعلیق درآمده است.",
+  depositValueShouldBeMoreThanMinPrice:
+    "مبلغ بایستی بیشتر از {{minPrice}} باشد",
+  depositValueShouldBeLessThanMaxPrice: "مبلغ بایستی کمتر از {{maxPrice}} باشد",
 };
 
 export type Fa = typeof fa;

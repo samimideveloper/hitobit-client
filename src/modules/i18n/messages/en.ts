@@ -55,6 +55,10 @@ const en = {
   IsNotAllowed: "You do not have valid access.",
   invalidUserPass: "Username or password is not correct.",
   UserIsSuspended: "Your account has been suspended.",
+  depositValueShouldBeMoreThanMinPrice:
+    "amount should be more than {{minPrice}} price",
+  depositValueShouldBeLessThanMaxPrice:
+    "amount should be less than {{maxPrice}} price",
 };
 
 export default en;
