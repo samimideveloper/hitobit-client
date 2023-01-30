@@ -47,7 +47,7 @@ export const useCharge = ({
       onError,
     });
 
-  const { data, isLoading: isLoadingSpot } =
+  const { data, isInitialLoading: isLoadingSpot } =
     useGetWalletV1PrivateUserassetSpotDefault(
       { symbol: currency || "" },
       { enabled: !!currency && !!userData },
