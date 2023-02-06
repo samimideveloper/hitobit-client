@@ -2805,6 +2805,8 @@ export interface UserExistResponseVM {
 export interface UserIdentificationLevelOneRequestVM {
   /** - Format: date-time */
   birthDate: string;
+  firstName?: string;
+  lastName?: string;
   nationalCardFile?: DocumentFileRequestVM;
   nationalCode?: string;
   userBankAdd?: CreateUserBankRequestVM;
@@ -2853,6 +2855,8 @@ export interface UserInfoVM {
   withdrawLimit: boolean;
   displayName?: string;
   email?: string;
+  firstName?: string;
+  lastName?: string;
   nextLevelStatus?: IdentificationLevelRequestStatus;
   pendingRequestDescription?: string;
   phoneNumber?: string;
