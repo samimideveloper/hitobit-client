@@ -6,10 +6,11 @@ import {
   AppOrderSide,
   AppOrderType,
   usePostExchangeV1PrivateOrder,
-  usePostPaymentV1PrivateEpayrequestCharge,
   usePostPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder,
 } from "../../services";
+import { getErrorMessage } from "../../utils";
 import { MarketTicker, useMarketTicker } from "../marketTicker";
+import { useCharge } from "../useCharge";
 import { useConvertBaseToQuote } from "../useConvertBaseToQuote";
 import { BuySellContext, BuySellProps } from "./context";
 
@@ -114,12 +115,18 @@ export const useBuySell = (callbacks?: BuySellProps) => {
     },
   });
 
-  const { mutate: requestCharge, isLoading: isLoadingCharge } =
-    usePostPaymentV1PrivateEpayrequestCharge({
-      onSuccess: (data) => {
-        window.location.href = data?.paymentLink || "";
-      },
-    });
+  const {
+    charge: requestCharge,
+    isLoading: isLoadingCharge,
+    errorAmount,
+    serverError,
+    clearError,
+  } = useCharge({
+    currency: selectedMarket?.quoteAsset,
+    onSuccess: (data) => {
+      window.location.href = data?.paymentLink || "";
+    },
+  });
 
   const { mutate: postAction, isLoading: isLoadingPostAction } =
     usePostPaymentV1PrivateEpayrequestPostactionplacemarketbuyorder<Charge>({
@@ -130,15 +137,10 @@ export const useBuySell = (callbacks?: BuySellProps) => {
             ? new Decimal(spend || 0).minus(availableRemain)
             : new Decimal(convertedBaseQuantity).minus(availableRemain);
 
-        requestCharge({
-          requestBody: {
-            userWalletCurrencySymbol: selectedMarket?.quoteAsset,
-            amount: requiredAmount.toNumber(),
-            clientUniqueId: clientUniqueId,
-            redirectType: "Redirect",
-            redirectUrl: window.location.origin + _extraVariables?.redirectUrl,
-            postActionUniqueId,
-          },
+        requestCharge(requiredAmount.toNumber(), {
+          postActionUniqueId,
+          redirectUrl: window.location.origin + _extraVariables?.redirectUrl,
+          clientUniqueId,
         });
       },
     });
@@ -214,5 +216,7 @@ export const useBuySell = (callbacks?: BuySellProps) => {
     lastChangeInput,
     selectedAssignedValue,
     reset: resetApi,
+    chargeError: errorAmount || getErrorMessage(serverError),
+    clearChargeError: clearError,
   };
 };

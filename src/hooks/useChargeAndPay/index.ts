@@ -21,9 +21,14 @@ const useChargeAndPay = ({
   getAfterPayRedirectUri: (clientUniqueId: string) => string;
   redirectToPayLink: (paymentLink: string) => string;
 }) => {
-  const { onCharge, isChargeLoading, chargeError } = useCharge({
-    getAfterPayRedirectUri,
-    redirectToPayLink,
+  const {
+    charge,
+    errorAmount: chargeError,
+    isLoading: isChargeLoading,
+  } = useCharge({
+    onSuccess(data) {
+      data.paymentLink && redirectToPayLink(data.paymentLink);
+    },
   });
 
   const {
@@ -49,11 +54,11 @@ const useChargeAndPay = ({
           },
         );
 
-      onCharge({
+      charge(chargeAmount, {
         postActionUniqueId,
-        chargeAmount,
-        walletNumber,
-        postActionClientUniqueId: clientUniqueId,
+        userWalletNumber: walletNumber,
+        redirectUrl: getAfterPayRedirectUri(clientUniqueId),
+        clientUniqueId,
       });
     },
   );

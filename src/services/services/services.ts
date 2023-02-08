@@ -188,6 +188,7 @@ import {
   ReportResultResponseVM,
   RevokeTokenRequestVM,
   SecurityActivityListVM,
+  SecurityUserSettingRequestVM,
   SettlementExcelResponseVM,
   SettlementFilterRequestVM,
   SettlementRequestInfoListResponseVM,
@@ -229,6 +230,7 @@ import {
   UserReferralProgramAddVM,
   UserReferralProgramVM,
   UserSettingPreferenseResponseVM,
+  UserSettingSecurityResponseVM,
   UserStatusResponseVM,
   UserTotalReferralProgramVM,
   UserTraderLevelResponseVM,
@@ -1582,6 +1584,22 @@ export const getPartyV1PrivateUsersettingPreference = (
 /** Key is end point string without base url */
 getPartyV1PrivateUsersettingPreference.key =
   "/party/v1/private/usersetting/preference";
+
+export const getPartyV1PrivateUsersettingSecurity = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserSettingSecurityResponseVM>> => {
+  return Http.getRequest(
+    getPartyV1PrivateUsersettingSecurity.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT2, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPartyV1PrivateUsersettingSecurity.key =
+  "/party/v1/private/usersetting/security";
 
 export const getPartyV1PrivateWalletsettingMaxreferalprogrampercent = (
   configOverride?: AxiosRequestConfig,
@@ -3526,6 +3544,23 @@ export const putPartyV1ProtectUserSuspend = (
 
 /** Key is end point string without base url */
 putPartyV1ProtectUserSuspend.key = "/party/v1/protect/user/suspend";
+
+export const putPartyV1ProtectUsersettingSecurity = (
+  requestBody: SecurityUserSettingRequestVM,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    putPartyV1ProtectUsersettingSecurity.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putPartyV1ProtectUsersettingSecurity.key =
+  "/party/v1/protect/usersetting/security";
 
 export const putPaymentV1PrivateEpayrequestAssigneduser = (
   requestBody: UpdateEpayRequestAssignedUserRequestVM,

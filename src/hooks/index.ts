@@ -13,6 +13,7 @@ export * from "./tradesBook";
 export * from "./useAggregate";
 export * from "./useAllWalletBalance";
 export * from "./useAssets";
+export * from "./useCharge";
 export * from "./useCheckAvailableRemain";
 export * from "./useClearPriceOnOrder";
 export * from "./useConvertBaseToQuote";

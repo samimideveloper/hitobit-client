@@ -129,6 +129,23 @@ export interface ApiScopeResponseVM {
   name?: string;
 }
 
+export type AppKLineInterval =
+  | "OneMinute"
+  | "ThreeMinutes"
+  | "FiveMinutes"
+  | "FifteenMinutes"
+  | "ThirtyMinutes"
+  | "OneHour"
+  | "TwoHour"
+  | "FourHour"
+  | "SixHour"
+  | "EightHour"
+  | "TwelveHour"
+  | "OneDay"
+  | "ThreeDay"
+  | "OneWeek"
+  | "OneMonth";
+
 export type AppListOrderStatus = "EXECUTING" | "ALL_DONE" | "REJECT";
 
 export type AppListStatusType = "RESPONSE" | "EXEC_STARTED" | "ALL_DONE";
@@ -977,6 +994,7 @@ export interface GetCapitalV1PrivateDepositListQueryParams {
   pageSize?: number;
   /** - Format: date-time */
   startTime?: string;
+  status?: TransactionHistoryStatus;
   txId?: string;
 }
 
@@ -990,6 +1008,7 @@ export interface GetCapitalV1PrivatePosListQueryParams {
   pageSize?: number;
   /** - Format: date-time */
   startTime?: string;
+  status?: TransactionHistoryStatus;
 }
 
 export interface GetCapitalV1PrivateSettlementListQueryParams {
@@ -1002,6 +1021,7 @@ export interface GetCapitalV1PrivateSettlementListQueryParams {
   pageSize?: number;
   /** - Format: date-time */
   startTime?: string;
+  status?: TransactionHistoryStatus;
 }
 
 export interface GetCapitalV1PrivateWithdrawDetailQueryParams {
@@ -1025,6 +1045,7 @@ export interface GetCapitalV1PrivateWithdrawListQueryParams {
   pageSize?: number;
   /** - Format: date-time */
   startTime?: string;
+  status?: TransactionHistoryStatus;
   txId?: string;
 }
 
@@ -1129,7 +1150,7 @@ export interface GetExchangeV1PublicDepthQueryParams {
 export interface GetExchangeV1PublicKlinesQueryParams {
   /** - Format: date-time */
   endTime?: string;
-  interval?: KLineInterval;
+  interval?: AppKLineInterval;
   /** - Format: int32 */
   limit?: number;
   /** - Format: date-time */
@@ -1655,23 +1676,6 @@ export interface InternalWithdrawResponseVM {
   withdrawRequestUserWalletId?: number;
 }
 
-export type KLineInterval =
-  | "OneMinute"
-  | "ThreeMinutes"
-  | "FiveMinutes"
-  | "FifteenMinutes"
-  | "ThirtyMinutes"
-  | "OneHour"
-  | "TwoHour"
-  | "FourHour"
-  | "SixHour"
-  | "EightHour"
-  | "TwelveHour"
-  | "OneDay"
-  | "ThreeDay"
-  | "OneWeek"
-  | "OneMonth";
-
 export interface KlineDataResponseVM {
   /** - Format: decimal */
   baseVolume: number;
@@ -2035,6 +2039,7 @@ export interface POSTransactionHistoryResponseVM {
   createDate: string;
   /** - Format: int64 */
   id: number;
+  status: TransactionHistoryStatus;
   transferType: TransferType;
   /** - Format: uuid */
   userId: string;
@@ -2216,7 +2221,8 @@ export type PurposeType =
   | "PhoneCode"
   | "NewEmail"
   | "Email"
-  | "Suspend";
+  | "Suspend"
+  | "WhiteListAddressActivation";
 
 export interface PutEngagementV1PrivateNotificationReadallQueryParams {
   type?: NotificationTypes;
@@ -2366,6 +2372,10 @@ export interface SecurityActivityVM {
 }
 
 export type SecurityStatus = "Completed" | "Failed";
+
+export interface SecurityUserSettingRequestVM {
+  activateWhiteList?: boolean;
+}
 
 export interface SettlementExcelResponseVM {
   automaticSettlement: boolean;
@@ -2795,6 +2805,8 @@ export interface UserExistResponseVM {
 export interface UserIdentificationLevelOneRequestVM {
   /** - Format: date-time */
   birthDate: string;
+  firstName?: string;
+  lastName?: string;
   nationalCardFile?: DocumentFileRequestVM;
   nationalCode?: string;
   userBankAdd?: CreateUserBankRequestVM;
@@ -2843,6 +2855,8 @@ export interface UserInfoVM {
   withdrawLimit: boolean;
   displayName?: string;
   email?: string;
+  firstName?: string;
+  lastName?: string;
   nextLevelStatus?: IdentificationLevelRequestStatus;
   pendingRequestDescription?: string;
   phoneNumber?: string;
@@ -2921,6 +2935,8 @@ export interface UserMoneyNetworkResponseVM {
   contractAddress?: string;
   contractType?: string;
   depositDescription?: string;
+  /** - Format: decimal */
+  maxDeposit?: number;
   memoRegex?: string;
   name?: string;
   specialTips?: string;
@@ -2982,6 +2998,10 @@ export interface UserSettingPreferenseResponseVM {
   stopLimitOrder: boolean;
   systemMessages: boolean;
   tradeNotification: boolean;
+}
+
+export interface UserSettingSecurityResponseVM {
+  activateWhiteList: boolean;
 }
 
 export type UserStatus =
