@@ -73,7 +73,16 @@ export const useBuySell = (callbacks?: BuySellProps) => {
           (item) => item?.quoteAsset?.toLowerCase() === fiat.toLowerCase(),
         );
       } else {
-        _selected = marketsTickerGrouped[0];
+        const defaultSelected = marketsTickerGrouped?.find(
+          ({ symbol }) =>
+            symbol?.toLowerCase() === (__DEV__ ? "btcirr" : "btcirt"),
+        );
+
+        if (defaultSelected) {
+          _selected = defaultSelected;
+        } else {
+          _selected = marketsTickerGrouped[0];
+        }
       }
 
       setValue(
