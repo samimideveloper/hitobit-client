@@ -54,8 +54,8 @@ export const useBuySell = (callbacks?: BuySellProps) => {
       marketsTicker?.filter((item) => item.quoteCurrency?.canCharge),
       (item) => item.quoteAsset,
     ),
-    (item) => item[0],
-  );
+    (item) => item,
+  )[0];
 
   const selectedAssignedValue = useCallback(
     ({ crypto, fiat }: SelectedQueries) => {
