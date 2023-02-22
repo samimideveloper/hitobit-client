@@ -54,6 +54,7 @@ const fa = {
   depositValueShouldBeMoreThanMinPrice:
     "مبلغ بایستی بیشتر از {{minPrice}} باشد",
   depositValueShouldBeLessThanMaxPrice: "مبلغ بایستی کمتر از {{maxPrice}} باشد",
+  SelectBankAccount: "حساب بانکی را انتخاب کنید",
 };
 
 export type Fa = typeof fa;

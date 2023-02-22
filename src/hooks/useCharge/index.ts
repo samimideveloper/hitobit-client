@@ -69,6 +69,7 @@ export const useCharge = ({
 
   const charge = (
     amount?: number | string | null,
+    userBankId?: number | null,
     configOveride?: Omit<
       CreateChargeRequestRequestVM,
       "amount" | "userWalletCurrencySymbol" | "redirectType"
@@ -76,6 +77,9 @@ export const useCharge = ({
   ) => {
     if (amount === null || amount === undefined || amount === "") {
       return setError(t("enterAmount"));
+    }
+    if (userBankId === null || userBankId === undefined) {
+      return setError(t("SelectBankAccount"));
     }
     if (minDeposit === undefined || maxDeposit === undefined) {
       return setError(t("anUnexpectedErrorOccurred"));
@@ -100,6 +104,7 @@ export const useCharge = ({
         userWalletCurrencySymbol: currency || undefined,
         amount: Number(amount),
         redirectType: "Redirect",
+        userBankId,
       },
     });
   };

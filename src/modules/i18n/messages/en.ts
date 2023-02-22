@@ -59,6 +59,7 @@ const en = {
     "amount should be more than {{minPrice}} price",
   depositValueShouldBeLessThanMaxPrice:
     "amount should be less than {{maxPrice}} price",
+  SelectBankAccount: "Select a bank account",
 };
 
 export default en;
